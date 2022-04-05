@@ -1,0 +1,32 @@
+
+EasyFramesDB = {
+	["profileKeys"] = {
+		["Rentaki - Kazzak"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["player"] = {
+				["customHealthFormat"] = "%CURRENT%",
+				["healthFormat"] = "1",
+				["portrait"] = "1",
+				["showName"] = false,
+			},
+			["general"] = {
+				["lightTexture"] = true,
+				["buffSize"] = 18,
+				["brightFrameBorder"] = 0,
+				["selfBuffSize"] = 18,
+				["barTexture"] = "PlaterBackground 2",
+				["forceManaBarTexture"] = true,
+			},
+			["target"] = {
+				["portrait"] = "1",
+				["customHealthFormat"] = "%CURRENT% / %PERCENT%",
+				["healthFormat"] = "custom",
+			},
+			["boss"] = {
+				["scaleFrame"] = 1.2,
+			},
+		},
+	},
+}
