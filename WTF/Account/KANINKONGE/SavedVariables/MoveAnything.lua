@@ -54,6 +54,7 @@ MADB = {
 					},
 					["name"] = "MultiBarBottomLeft",
 					["scale"] = 1.100000023841858,
+					["orgScale"] = 1,
 					["pos"] = {
 						"BOTTOMLEFT", -- [1]
 						"UIParent", -- [2]
@@ -61,7 +62,6 @@ MADB = {
 						704.7786865234375, -- [4]
 						78.81210327148438, -- [5]
 					},
-					["orgScale"] = 1,
 				},
 				["TargetFrame"] = {
 					["orgPos"] = {
@@ -73,6 +73,7 @@ MADB = {
 					},
 					["name"] = "TargetFrame",
 					["scale"] = 1.199999928474426,
+					["orgScale"] = 1,
 					["pos"] = {
 						"CENTER", -- [1]
 						"UIParent", -- [2]
@@ -80,7 +81,6 @@ MADB = {
 						293, -- [4]
 						-168, -- [5]
 					},
-					["orgScale"] = 1,
 				},
 				["ChatEditBoxesMover"] = {
 					["orgPos"] = {
@@ -92,6 +92,7 @@ MADB = {
 					},
 					["name"] = "ChatEditBoxesMover",
 					["scale"] = 1.044934293484019,
+					["orgScale"] = 1,
 					["pos"] = {
 						"TOPLEFT", -- [1]
 						"ChatFrame1", -- [2]
@@ -99,7 +100,6 @@ MADB = {
 						-3.214575514496198, -- [4]
 						204.6009537819215, -- [5]
 					},
-					["orgScale"] = 1,
 				},
 				["PetActionButtonsMover"] = {
 					["orgPos"] = {
@@ -145,6 +145,7 @@ MADB = {
 					},
 					["name"] = "BasicActionButtonsMover",
 					["scale"] = 1.100000023841858,
+					["orgScale"] = 1,
 					["pos"] = {
 						"BOTTOMLEFT", -- [1]
 						"UIParent", -- [2]
@@ -152,7 +153,6 @@ MADB = {
 						705.77880859375, -- [4]
 						38.99734878540039, -- [5]
 					},
-					["orgScale"] = 1,
 				},
 				["MultiBarRightMover"] = {
 					["orgPos"] = {
@@ -181,6 +181,7 @@ MADB = {
 					},
 					["name"] = "TalkingHeadFrame",
 					["scale"] = 0.6186236746539896,
+					["orgScale"] = 1,
 					["pos"] = {
 						"BOTTOM", -- [1]
 						"UIParent", -- [2]
@@ -188,7 +189,6 @@ MADB = {
 						-1327.678212387013, -- [4]
 						397.2593383789063, -- [5]
 					},
-					["orgScale"] = 1,
 				},
 				["PlayerFrame"] = {
 					["orgPos"] = {
@@ -200,7 +200,6 @@ MADB = {
 					},
 					["name"] = "PlayerFrame",
 					["scale"] = 1.199999928474426,
-					["orgScale"] = 1,
 					["pos"] = {
 						"CENTER", -- [1]
 						"UIParent", -- [2]
@@ -208,25 +207,19 @@ MADB = {
 						-293, -- [4]
 						-168, -- [5]
 					},
-				},
-				["FocusFrameSpellBar"] = {
-					["orgPos"] = {
-						"TOPLEFT", -- [1]
-						"FocusFrame", -- [2]
-						"BOTTOMLEFT", -- [3]
-						25, -- [4]
-						6.999999523162842, -- [5]
-					},
-					["name"] = "FocusFrameSpellBar",
-					["scale"] = 1.299999952316284,
 					["orgScale"] = 1,
-					["pos"] = {
-						"BOTTOMLEFT", -- [1]
+				},
+				["FocusFrame"] = {
+					["orgPos"] = {
+						"RIGHT", -- [1]
 						"UIParent", -- [2]
-						"BOTTOMLEFT", -- [3]
-						900.7727661132812, -- [4]
-						487.4917907714844, -- [5]
+						"RIGHT", -- [3]
+						-354, -- [4]
+						81.99999237060547, -- [5]
 					},
+					["name"] = "FocusFrame",
+					["scale"] = 1.199999928474426,
+					["orgScale"] = 1,
 				},
 				["CastingBarFrame"] = {
 					["orgPos"] = {
@@ -238,7 +231,6 @@ MADB = {
 					},
 					["name"] = "CastingBarFrame",
 					["scale"] = 1.299999952316284,
-					["orgScale"] = 1,
 					["pos"] = {
 						"BOTTOM", -- [1]
 						"UIParent", -- [2]
@@ -246,22 +238,24 @@ MADB = {
 						6.038834507525122e-05, -- [4]
 						145.4687652587891, -- [5]
 					},
+					["orgScale"] = 1,
 				},
-				["VehicleSeatIndicator"] = {
+				["TooltipMover"] = {
 					["orgPos"] = {
-						"TOPRIGHT", -- [1]
-						"MinimapCluster", -- [2]
-						"BOTTOMRIGHT", -- [3]
-						40, -- [4]
-						15, -- [5]
+						"TOP", -- [1]
+						"UIParent", -- [2]
+						0, -- [3]
+						0, -- [4]
 					},
-					["name"] = "VehicleSeatIndicator",
+					["name"] = "TooltipMover",
+					["scale"] = 1.100000023841858,
+					["orgScale"] = 1,
 					["pos"] = {
-						"TOPRIGHT", -- [1]
-						"MinimapCluster", -- [2]
-						"BOTTOMRIGHT", -- [3]
-						-1288.922973632813, -- [4]
-						-664.6142578125, -- [5]
+						"TOP", -- [1]
+						"UIParent", -- [2]
+						"TOP", -- [3]
+						784.7126020951705, -- [4]
+						-747.4712025035511, -- [5]
 					},
 				},
 				["ObjectiveTrackerFrameMover"] = {
@@ -300,6 +294,7 @@ MADB = {
 					},
 					["name"] = "MultiBarBottomRight",
 					["scale"] = 1.100000023841858,
+					["orgScale"] = 1,
 					["pos"] = {
 						"BOTTOMLEFT", -- [1]
 						"UIParent", -- [2]
@@ -307,22 +302,22 @@ MADB = {
 						1247.669555664063, -- [4]
 						118.5766220092773, -- [5]
 					},
-					["orgScale"] = 1,
 				},
-				["TooltipMover"] = {
+				["VehicleSeatIndicator"] = {
 					["orgPos"] = {
-						"TOP", -- [1]
-						"UIParent", -- [2]
-						0, -- [3]
-						0, -- [4]
+						"TOPRIGHT", -- [1]
+						"MinimapCluster", -- [2]
+						"BOTTOMRIGHT", -- [3]
+						40, -- [4]
+						15, -- [5]
 					},
-					["name"] = "TooltipMover",
+					["name"] = "VehicleSeatIndicator",
 					["pos"] = {
-						"TOP", -- [1]
-						"UIParent", -- [2]
-						"TOP", -- [3]
-						870.5687255859375, -- [4]
-						-828.7825317382812, -- [5]
+						"TOPRIGHT", -- [1]
+						"MinimapCluster", -- [2]
+						"BOTTOMRIGHT", -- [3]
+						-1288.922973632813, -- [4]
+						-664.6142578125, -- [5]
 					},
 				},
 				["MultiBarLeftMover"] = {
@@ -342,24 +337,31 @@ MADB = {
 						-21.6409912109375, -- [5]
 					},
 				},
-				["FocusFrame"] = {
+				["FocusFrameSpellBar"] = {
 					["orgPos"] = {
-						"RIGHT", -- [1]
-						"UIParent", -- [2]
-						"RIGHT", -- [3]
-						-354, -- [4]
-						81.99999237060547, -- [5]
+						"TOPLEFT", -- [1]
+						"FocusFrame", -- [2]
+						"BOTTOMLEFT", -- [3]
+						25, -- [4]
+						6.999999523162842, -- [5]
 					},
-					["name"] = "FocusFrame",
-					["scale"] = 1.199999928474426,
+					["name"] = "FocusFrameSpellBar",
+					["scale"] = 1.299999952316284,
+					["pos"] = {
+						"BOTTOMLEFT", -- [1]
+						"UIParent", -- [2]
+						"BOTTOMLEFT", -- [3]
+						900.7727661132812, -- [4]
+						487.4917907714844, -- [5]
+					},
 					["orgScale"] = 1,
 				},
 			},
 		},
 	},
 	["modifiedFramesOnly"] = true,
-	["frameListRows"] = 18,
-	["playSound"] = false,
-	["noMMMW"] = false,
 	["closeGUIOnEscape"] = false,
+	["noMMMW"] = false,
+	["playSound"] = false,
+	["frameListRows"] = 18,
 }

@@ -38,13 +38,13 @@ VER 3 000000000000010A ".sh eq" "INV_MISC_QUESTIONMARK"
 #showtooltip earthbind totem
 /cast [@cursor] Earthquake
 END
-VER 3 0000000000000103 ".sh es" "INV_MISC_QUESTIONMARK"
-#showtooltip tremor totem
-/cast earth shock
-END
 VER 3 00000000000000F7 ".sh es" "INV_MISC_QUESTIONMARK"
 #showtooltip cleanse spirit
 /use [@mouseover,help,nodead][help,nodead][@player] earth shield
+END
+VER 3 0000000000000103 ".sh es" "INV_MISC_QUESTIONMARK"
+#showtooltip tremor totem
+/cast earth shock
 END
 VER 3 000000000000010C ".sh fire ele" "INV_MISC_QUESTIONMARK"
 #showtooltip thunderstorm
@@ -163,14 +163,14 @@ END
 VER 3 00000000000000E7 "focus purge" "INV_MISC_QUESTIONMARK"
 /cast [@focus] Purge
 END
+VER 3 000000000000006C "FS mo" "INV_MISC_QUESTIONMARK"
+#showtooltip Blessing of Freedom
+/cast [@mouseover] Blessing of Freedom
+END
 VER 3 00000000000000E3 "fs mo" "INV_MISC_QUESTIONMARK"
 #showtooltip Flame Shock
 /cast [nomod] flame shock
 /cast [mod:alt, @mouseover] flame shock 
-END
-VER 3 000000000000006C "FS mo" "INV_MISC_QUESTIONMARK"
-#showtooltip Blessing of Freedom
-/cast [@mouseover] Blessing of Freedom
 END
 VER 3 00000000000000F4 "fs/purge" "INV_MISC_QUESTIONMARK"
 #showtooltip Flame Shock
