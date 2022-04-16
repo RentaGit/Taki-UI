@@ -2,7 +2,7 @@ VER 3 00000000000000E8 ".cov dmg" "3636849"
 #showtooltip
 /use [@cursor]Vesper Totem
 /use [@cursor]Fae Transfusion
-/use [@mouseover,harm,nodead][harm]Primordial Wave
+/use Chain harvest
 /run local G=GetSpellInfo SetMacroSpell(GetRunningMacro(), G"Primordial Wave" or G"Vesper Totem" or G"Fae Transfusion")
 END
 VER 3 00000000000000EE ".cov-sig-ability" "3586268"
@@ -17,119 +17,27 @@ VER 3 00000000000000FE ".sh astral shift" "136039"
 #showtooltip grounding totem
 /cast astral shift
 END
-VER 3 00000000000000F9 ".sh blood fury" "1385911"
-#showtooltop lightning lasso
-/cast blood fury
-END
-VER 3 0000000000000101 ".sh chain light" "INV_MISC_QUESTIONMARK"
-#showtooltip capacitor totem
-/cast chain lightning
-END
-VER 3 000000000000010D ".sh earth ele" "INV_MISC_QUESTIONMARK"
-#showtooltip thunderstorm
-/cast earth elemental
-END
-VER 3 00000000000000FF ".sh eb/es" "INV_MISC_QUESTIONMARK"
-#showtooltip capacitor totem
-/cast [talent:2/2] Echoing Shock
-/cast [talent:2/3] Elemental Blast
-END
 VER 3 000000000000010A ".sh eq" "INV_MISC_QUESTIONMARK"
-#showtooltip earthbind totem
+#showtooltip
 /cast [@cursor] Earthquake
 END
-VER 3 00000000000000F7 ".sh es" "INV_MISC_QUESTIONMARK"
-#showtooltip cleanse spirit
-/use [@mouseover,help,nodead][help,nodead][@player] earth shield
-END
-VER 3 0000000000000103 ".sh es" "INV_MISC_QUESTIONMARK"
-#showtooltip tremor totem
-/cast earth shock
-END
-VER 3 000000000000010C ".sh fire ele" "INV_MISC_QUESTIONMARK"
-#showtooltip thunderstorm
-/cast fire elemental
-END
 VER 3 0000000000000104 ".sh flame sh" "INV_MISC_QUESTIONMARK"
-#showtooltip tremor totem
+#showtooltip
 /cast [nomod] flame shock
 /cast [mod:alt, @mouseover] flame shock 
 END
-VER 3 00000000000000F8 ".sh frost shock" "INV_MISC_QUESTIONMARK"
-#showtooltip cleanse spirit
-/cast frost shock
+VER 3 00000000000000FA ".sh gw/ag/wr" "INV_MISC_QUESTIONMARK"
+#showtooltop
+/cast [talent:5/2] Ancestral Guidance
+/cast [talent:5/3, @cursor] Wind Rush Totem
 END
-VER 3 0000000000000110 ".sh gr totem" "136039"
-#showtooltip grounding totem
-/cast grounding totem
-END
-VER 3 00000000000000FA ".sh gw/ag/wr" "1385911"
-#showtooltop lightning lasso
-/cast [nomod] ghost wolf
-/cast [talent:5/2, mod: alt] Ancestral Guidance
-/cast [talent:5/3, mod: alt, @cursor] Wind Rush Totem
-END
-VER 3 0000000000000102 ".sh hst" "INV_MISC_QUESTIONMARK"
-#showtooltip tremor totem
-/cast healing stream totem
-END
-VER 3 0000000000000105 ".sh if/pe" "135829"
-#showtooltip skyfury totem
-/use [talent:6/3]Icefury;[pet: Primal Storm Elemental]Eye of the Storm;[pet: Primal Fire Elemental]Meteor;[pet: Primal Earth Elemental]Harden Skin
-END
-VER 3 000000000000010F ".sh lasso" "1385911"
-#showtooltip Lightning Lasso(PvP Talent)
-/cast lightning lasso
-END
-VER 3 00000000000000F6 ".sh light shield" "INV_MISC_QUESTIONMARK"
-#showtooltip cleanse spirit
-/cast lightning shield
-END
-VER 3 0000000000000100 ".sh lightning bo" "INV_MISC_QUESTIONMARK"
-#showtooltip capacitor totem
-/cast lightning bolt
-END
-VER 3 0000000000000108 ".sh lvb" "INV_MISC_QUESTIONMARK"
-#showtooltip earthbind totem
-/cqs
-/cast lava burst
-END
-VER 3 000000000000010B ".sh sk/asc" "INV_MISC_QUESTIONMARK"
-#showtooltip thunderstorm
-/cast [talent:7/2] Stormkeeper
-/cast [talent:7/3] Ascendance
-END
-VER 3 0000000000000111 ".sh skyfury" "135829"
-#showtooltip skyfury totem
-/cast skyfury totem
-END
-VER 3 00000000000000FC ".sh swg" "136039"
-#showtooltip grounding totem
-/cast spiritwalker's grace
-END
-VER 3 0000000000000107 ".sh trinket 2" "135829"
-#showtooltip skyfury totem
-/use 14
-END
-VER 3 0000000000000106 ".sh trinket1" "135829"
-#showtooltip skyfury totem
-/use 13
-/cast blood fury
-END
-VER 3 00000000000000FD ".sh wind shear" "136039"
-#showtooltip grounding totem
-/cast wind shear
-END
-VER 3 00000000000000FB ".sh ww" "1385911"
-#showtooltip lightning lasso
-/cast water walking
-END
-VER 3 00000000000000E0 "13" "INV_MISC_QUESTIONMARK"
+VER 3 00000000000000E0 ".trinket1" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use 13
 /use blood fury
+/use Prismatic Bauble
 END
-VER 3 00000000000000E1 "14" "INV_MISC_QUESTIONMARK"
+VER 3 0000000000000107 ".trinket2" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use 14
 END
@@ -151,14 +59,16 @@ END
 VER 3 00000000000000F1 "DISPELL" "132125"
 /run C_ChatInfo.SendAddonMessage("CAUSESE_DISPEL", "123", "RAID")
 END
-VER 3 00000000000000AA "eq" "INV_MISC_QUESTIONMARK"
-#showtooltip Earthquake
-/cast [@cursor] Earthquake
-END
 VER 3 00000000000000DD "ewt/apt" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /cast [talent:4/2] Earthen Wall Totem
 /cast [talent:4/3] Ancestral Protection Totem
+END
+VER 3 0000000000000114 "feral spirit" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast feral spirit
+/cast blood fury
+/use prismatic bauble
 END
 VER 3 00000000000000E7 "focus purge" "INV_MISC_QUESTIONMARK"
 /cast [@focus] Purge
@@ -166,16 +76,6 @@ END
 VER 3 000000000000006C "FS mo" "INV_MISC_QUESTIONMARK"
 #showtooltip Blessing of Freedom
 /cast [@mouseover] Blessing of Freedom
-END
-VER 3 00000000000000E3 "fs mo" "INV_MISC_QUESTIONMARK"
-#showtooltip Flame Shock
-/cast [nomod] flame shock
-/cast [mod:alt, @mouseover] flame shock 
-END
-VER 3 00000000000000F4 "fs/purge" "INV_MISC_QUESTIONMARK"
-#showtooltip Flame Shock
-/cast [nomod] flame shock
-/cast [mod:shift] purge
 END
 VER 3 00000000000000EA "ground/skyfury" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -186,15 +86,6 @@ VER 3 00000000000000B9 "healing rain cur" "INV_MISC_QUESTIONMARK"
 #showtooltip Healing Rain
 /cast [@cursor] Healing Rain
 END
-VER 3 00000000000000CA "heals" "136043"
-/cancelaura Atonement
-/cancelaura Rejuvenation
-/cancelaura Regrowth
-/cancelaura Wild Growth
-/cancelaura Glimmer of Light
-/cancelaura Concentrated Mending
-/cancelaura Bracing Chill
-END
 VER 3 00000000000000DF "hex" "INV_MISC_QUESTIONMARK"
 #showtooltip hex
 /cast [nomod] hex
@@ -204,7 +95,7 @@ VER 3 00000000000000E2 "if/pe" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use [talent:6/3]Icefury;[pet: Primal Storm Elemental]Eye of the Storm;[pet: Primal Fire Elemental]Meteor;[pet: Primal Earth Elemental]Harden Skin
 END
-VER 3 00000000000000B2 "Liquid Magma Tot" "INV_MISC_QUESTIONMARK"
+VER 3 00000000000000B2 "LMT" "INV_MISC_QUESTIONMARK"
 #showtooltip Liquid Magma Totem
 /cast [@cursor] Liquid Magma Totem
 END
@@ -213,23 +104,26 @@ VER 3 00000000000000F5 "necro mo" "INV_MISC_QUESTIONMARK"
 /cast [nomod] Primordial Wave(Necrolord)
 /cast [mod:alt, @mouseover] Primordial Wave(Necrolord)
 END
-VER 3 000000000000010E "resto gw" "INV_MISC_QUESTIONMARK"
+VER 3 0000000000000112 "resto wr" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/cast [nomod] ghost wolf
-/cast [talent:5/3, mod: alt, @cursor] Wind Rush Totem
+/cast [@cursor] Wind Rush Totem
 END
 VER 3 00000000000000E6 "RocketJump" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/cast Rocket Jump
+/cast blood fury
 /use Prismatic Bauble
 END
 VER 3 00000000000000EB "shocktest" "INV_MISC_QUESTIONMARK"
 /cast [@mouseover, exists, nodead][] Holy Shock
 END
+VER 3 0000000000000113 "surge of earth" "INV_MISC_QUESTIONMARK"
+#showtooltip surge of earth
+/use [@mouseover,help,nodead][help,nodead][@player] surge of earth
+END
 VER 3 00000000000000F3 "surge/dispel" "INV_MISC_QUESTIONMARK"
 #showtooltip cleanse spirit
 /cast [nomod, @mouseover,help,nodead][nomod, @player, help,nodead]healing surge
-/cast [mod:shift, @mouseover,help,nodead][nomod, @player, help,nodead]cleanse spirit
+/cast [mod:shift, @mouseover,help,nodead][mod:shift,, @player, help,nodead]cleanse spirit
 /cast [mod:alt] Ancestral Spirit
 END
 VER 3 00000000000000F2 "ts/purge" "INV_MISC_QUESTIONMARK"

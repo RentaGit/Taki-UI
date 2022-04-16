@@ -9,7 +9,7 @@ VER 3 0100000000000008 "chainheal" "INV_MISC_QUESTIONMARK"
 END
 VER 3 0100000000000027 "cleanse spirit" "INV_MISC_QUESTIONMARK"
 #showtooltip cleanse spirit
-/cast [@mouseover,help,nodead][help,nodead][@player] Cleanse Spirit
+/cast [@mouseover,help,nodead][help,nodead][@player] cleanse spirit
 END
 VER 3 010000000000000D "dispell" "INV_MISC_QUESTIONMARK"
 #showtooltip purify spirit
@@ -25,7 +25,7 @@ VER 3 010000000000000B "earthshield" "INV_MISC_QUESTIONMARK"
 #showtooltip earth shield
 /use [@mouseover,help,nodead][help,nodead][@player] earth shield
 END
-VER 3 010000000000002A "EB/Echo" "INV_MISC_QUESTIONMARK"
+VER 3 010000000000002A "eb/echo" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /cast [talent:2/2] Echoing Shock
 /cast [talent:2/3] Elemental Blast

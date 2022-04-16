@@ -4,8 +4,8 @@ SimulationCraftDB = {
 		["Hunteraki - Frostmane"] = "Hunteraki - Frostmane",
 		["Takidari - Ravencrest"] = "Takidari - Ravencrest",
 		["Takikultiran - Ravencrest"] = "Takikultiran - Ravencrest",
-		["Takiragthree - Kazzak"] = "Takiragthree - Kazzak",
-		["Takitest - Ravencrest"] = "Takitest - Ravencrest",
+		["Takitalon - Arathi"] = "Takitalon - Arathi",
+		["Rentaki - Ravencrest"] = "Rentaki - Ravencrest",
 		["Takirogtrial - Ravencrest"] = "Takirogtrial - Ravencrest",
 		["Rintake - Argent Dawn"] = "Rintake - Argent Dawn",
 		["Takistonez - Ravencrest"] = "Takistonez - Ravencrest",
@@ -15,7 +15,7 @@ SimulationCraftDB = {
 		["Takuu - Ravencrest"] = "Takuu - Ravencrest",
 		["Takiorc - Kazzak"] = "Takiorc - Kazzak",
 		["Takihunt - Kazzak"] = "Takihunt - Kazzak",
-		["Rentaki - Ravencrest"] = "Rentaki - Ravencrest",
+		["Takitest - Ravencrest"] = "Takitest - Ravencrest",
 		["Takioblivion - Medivh"] = "Takioblivion - Medivh",
 		["Rentaco - Kazzak"] = "Rentaco - Kazzak",
 		["Takicado - Doomhammer"] = "Takicado - Doomhammer",
@@ -60,7 +60,7 @@ SimulationCraftDB = {
 		["Takidk - Kazzak"] = "Takidk - Kazzak",
 		["Takiragtwo - Kazzak"] = "Takiragtwo - Kazzak",
 		["Takeera - Kazzak"] = "Takeera - Kazzak",
-		["Takitalon - Arathi"] = "Takitalon - Arathi",
+		["Takiragthree - Kazzak"] = "Takiragthree - Kazzak",
 		["Takifistzz - Kazzak"] = "Takifistzz - Kazzak",
 		["Takiworra - Kazzak"] = "Takiworra - Kazzak",
 		["Rentaco - Ravencrest"] = "Rentaco - Ravencrest",
@@ -73,9 +73,12 @@ SimulationCraftDB = {
 		},
 		["Takikultiran - Ravencrest"] = {
 		},
-		["Takiragthree - Kazzak"] = {
+		["Takitalon - Arathi"] = {
 		},
-		["Takitest - Ravencrest"] = {
+		["Rentaki - Ravencrest"] = {
+			["minimap"] = {
+				["minimapPos"] = 209.4758992989915,
+			},
 		},
 		["Takirogtrial - Ravencrest"] = {
 		},
@@ -95,10 +98,7 @@ SimulationCraftDB = {
 		},
 		["Takihunt - Kazzak"] = {
 		},
-		["Rentaki - Ravencrest"] = {
-			["minimap"] = {
-				["minimapPos"] = 209.4758992989915,
-			},
+		["Takitest - Ravencrest"] = {
 		},
 		["Takioblivion - Medivh"] = {
 		},
@@ -196,7 +196,7 @@ SimulationCraftDB = {
 		},
 		["Takeera - Kazzak"] = {
 		},
-		["Takitalon - Arathi"] = {
+		["Takiragthree - Kazzak"] = {
 		},
 		["Takifistzz - Kazzak"] = {
 		},

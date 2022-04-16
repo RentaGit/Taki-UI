@@ -20,9 +20,10 @@ OmniCDDB = {
 		["Ivelea - Argent Dawn"] = "Default",
 	},
 	["global"] = {
-		["oodVer"] = 2635,
-		["oodChk"] = 220118,
 		["disableElvMsg"] = true,
+		["oodChk"] = 220407,
+		["oodVer"] = 2710,
+		["oodMsg"] = "|cfff16436 A new update is available. |cff99cdff(Minor update)",
 	},
 	["namespaces"] = {
 		["LibDualSpec-1.0"] = {

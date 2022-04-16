@@ -159,9 +159,9 @@ OneRing_Config = {
 					23767, -- [2]
 					["sliceToken"] = "ABue5Fkwtgr",
 				}, -- [2]
-				["limit"] = "Rentaki-Kazzak",
-				["save"] = true,
 				["name"] = "M+ stuff",
+				["save"] = true,
+				["limit"] = "Rentaki-Kazzak",
 			},
 			["rtantStuff"] = {
 				{

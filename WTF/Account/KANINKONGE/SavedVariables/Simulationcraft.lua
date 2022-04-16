@@ -5,7 +5,7 @@ SimulationCraftDB = {
 		["Takidari - Ravencrest"] = "Takidari - Ravencrest",
 		["Takikultiran - Ravencrest"] = "Takikultiran - Ravencrest",
 		["Rentamdi - Kazzak"] = "Rentamdi - Kazzak",
-		["Rentaki - Ravencrest"] = "Rentaki - Ravencrest",
+		["Takitest - Ravencrest"] = "Takitest - Ravencrest",
 		["Takirogtrial - Ravencrest"] = "Takirogtrial - Ravencrest",
 		["Takiworra - Kazzak"] = "Takiworra - Kazzak",
 		["Takistonez - Ravencrest"] = "Takistonez - Ravencrest",
@@ -15,7 +15,7 @@ SimulationCraftDB = {
 		["Takuu - Ravencrest"] = "Takuu - Ravencrest",
 		["Takiorc - Kazzak"] = "Takiorc - Kazzak",
 		["Takihunt - Kazzak"] = "Takihunt - Kazzak",
-		["Takitalon - Arathi"] = "Takitalon - Arathi",
+		["Takiragthree - Kazzak"] = "Takiragthree - Kazzak",
 		["Takeera - Kazzak"] = "Takeera - Kazzak",
 		["Takibank - Argent Dawn"] = "Takibank - Argent Dawn",
 		["Takiragone - Kazzak"] = "Takiragone - Kazzak",
@@ -60,11 +60,11 @@ SimulationCraftDB = {
 		["Takidk - Kazzak"] = "Takidk - Kazzak",
 		["Takiragtwo - Kazzak"] = "Takiragtwo - Kazzak",
 		["Takimogaasd - Ravencrest"] = "Takimogaasd - Ravencrest",
-		["Takiragthree - Kazzak"] = "Takiragthree - Kazzak",
+		["Takitalon - Arathi"] = "Takitalon - Arathi",
 		["Takicado - Doomhammer"] = "Takicado - Doomhammer",
 		["Rintake - Argent Dawn"] = "Rintake - Argent Dawn",
 		["Rentaco - Ravencrest"] = "Rentaco - Ravencrest",
-		["Takitest - Ravencrest"] = "Takitest - Ravencrest",
+		["Rentaki - Ravencrest"] = "Rentaki - Ravencrest",
 	},
 	["profiles"] = {
 		["Hunteraki - Frostmane"] = {
@@ -75,10 +75,7 @@ SimulationCraftDB = {
 		},
 		["Rentamdi - Kazzak"] = {
 		},
-		["Rentaki - Ravencrest"] = {
-			["minimap"] = {
-				["minimapPos"] = 209.4758992989915,
-			},
+		["Takitest - Ravencrest"] = {
 		},
 		["Takirogtrial - Ravencrest"] = {
 		},
@@ -98,7 +95,7 @@ SimulationCraftDB = {
 		},
 		["Takihunt - Kazzak"] = {
 		},
-		["Takitalon - Arathi"] = {
+		["Takiragthree - Kazzak"] = {
 		},
 		["Takeera - Kazzak"] = {
 		},
@@ -196,7 +193,7 @@ SimulationCraftDB = {
 		},
 		["Takimogaasd - Ravencrest"] = {
 		},
-		["Takiragthree - Kazzak"] = {
+		["Takitalon - Arathi"] = {
 		},
 		["Takicado - Doomhammer"] = {
 		},
@@ -204,7 +201,10 @@ SimulationCraftDB = {
 		},
 		["Rentaco - Ravencrest"] = {
 		},
-		["Takitest - Ravencrest"] = {
+		["Rentaki - Ravencrest"] = {
+			["minimap"] = {
+				["minimapPos"] = 209.4758992989915,
+			},
 		},
 	},
 }
