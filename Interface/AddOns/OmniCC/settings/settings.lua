@@ -31,7 +31,10 @@ end
 
 function Addon:GetDBDefaults()
     return {
-        global = {},
+        global = {
+            -- set to true to automatically disable blizzard cooldown count
+            disableBlizzardCooldownText = true
+        },
         profile = {
             rules = {
                 ['**'] = {
@@ -79,6 +82,9 @@ function Addon:GetDBDefaults()
                     minSize = 0.5,
                     -- how long a cooldown (in seconds) must be to display text
                     minDuration = 2,
+                    -- how long a cooldown (in seconds) can at most be to display text
+                    -- set to zero for unlimited maximum durations
+                    maxDuration = 0,
                     -- at what duration (in seconds) remaining should start
                     -- displaying cooldowns in tenths of seconds format (ex, 3.1)
                     tenthsDuration = 0,
@@ -142,9 +148,7 @@ function Addon:UpgradeDB()
     if dbVersion ~= DB_VERSION then
         if dbVersion == nil then
             self:MigrateLegacySettings(_G[LEGACY_DB_NAME])
-        end
-
-        if dbVersion < 6 then
+        elseif dbVersion < 6 then
             self:MigrateDrawSwipesSetting()
         end
 
@@ -158,16 +162,22 @@ function Addon:UpgradeDB()
 end
 
 function Addon:MigrateLegacySettings(legacyDb)
-    if type(legacyDb) ~= 'table' then return end
+    if type(legacyDb) ~= 'table' then
+        return
+    end
 
     local function getThemeID(id)
-        if id == 'base' then return DEFAULT end
+        if id == 'base' then
+            return DEFAULT
+        end
 
         return id
     end
 
     local function copyTable(src, dest)
-        if type(dest) ~= 'table' then dest = {} end
+        if type(dest) ~= 'table' then
+            dest = {}
+        end
 
         for k, v in pairs(src) do
             if type(v) == 'table' then

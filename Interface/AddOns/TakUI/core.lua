@@ -1,7 +1,7 @@
 -- bars
 MainMenuBarArtFrameBackground:Hide()
-MainMenuBarArtFrame.LeftEndCap:Hide()
-MainMenuBarArtFrame.RightEndCap:Hide()
+--MainMenuBarArtFrame.LeftEndCap:Hide()
+--MainMenuBarArtFrame.RightEndCap:Hide()
 MainMenuBarArtFrame.PageNumber:Hide()
 ActionBarUpButton:Hide()
 ActionBarDownButton:Hide()
@@ -15,5 +15,5 @@ MultiBarBottomRightButton1:SetPoint("cENTER",-398,0)
 MultiBarBottomRightButton1.SetPoint = function() end
 
 -- remove macro text
-r={"MultiBarBottomLeft", "MultiBarBottomRight", "Action", "MultiBarLeft", "MultiBarRight"} for b=1,#r do for i=1,12 do _G[r[b].."Button"..i.."Name"]:SetAlpha(0) end end
+--r={"MultiBarBottomLeft", "MultiBarBottomRight", "Action", "MultiBarLeft", "MultiBarRight"} for b=1,#r do for i=1,12 do _G[r[b].."Button"..i.."Name"]:SetAlpha(0) end end
 

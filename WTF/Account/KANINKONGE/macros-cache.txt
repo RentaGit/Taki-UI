@@ -34,8 +34,6 @@ END
 VER 3 00000000000000E0 ".trinket1" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use 13
-/use blood fury
-/use Prismatic Bauble
 END
 VER 3 0000000000000107 ".trinket2" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -47,6 +45,14 @@ END
 VER 3 00000000000000ED "belt" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use 6
+END
+VER 3 0000000000000115 "buff" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use Eternal Augment Rune
+/cast lightning shield
+END
+VER 3 0000000000000116 "CANCELSTUFF" "136041"
+/cancelaura soulshape
 END
 VER 3 000000000000009B "cap mo" "INV_MISC_QUESTIONMARK"
 #showtooltip capacitor totem
@@ -67,7 +73,6 @@ END
 VER 3 0000000000000114 "feral spirit" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /cast feral spirit
-/cast blood fury
 /use prismatic bauble
 END
 VER 3 00000000000000E7 "focus purge" "INV_MISC_QUESTIONMARK"
@@ -99,6 +104,11 @@ VER 3 00000000000000B2 "LMT" "INV_MISC_QUESTIONMARK"
 #showtooltip Liquid Magma Totem
 /cast [@cursor] Liquid Magma Totem
 END
+VER 3 0000000000000117 "lunge/windrush" "INV_MISC_QUESTIONMARK"
+#showtooltop
+/cast [talent:5/2] Feral Lunge
+/cast [talent:5/3, @cursor] Wind Rush Totem
+END
 VER 3 00000000000000F5 "necro mo" "INV_MISC_QUESTIONMARK"
 #showtooltip Primordial Wave(Necrolord)
 /cast [nomod] Primordial Wave(Necrolord)
@@ -110,7 +120,7 @@ VER 3 0000000000000112 "resto wr" "INV_MISC_QUESTIONMARK"
 END
 VER 3 00000000000000E6 "RocketJump" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/cast blood fury
+/cast Rocket Jump
 /use Prismatic Bauble
 END
 VER 3 00000000000000EB "shocktest" "INV_MISC_QUESTIONMARK"

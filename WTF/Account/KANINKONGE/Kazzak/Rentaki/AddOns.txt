@@ -190,14 +190,20 @@ CopyPasta: enabled
 LittleWigs_Classic: enabled
 LittleWigs_WrathOfTheLichKing: enabled
 MRT: enabled
-OmniCD: enabled
+OmniCD: disabled
 Quartz: disabled
 SUI: enabled
 Whaazz UI: enabled
 ACU: disabled
-RulezItemLevel: enabled
+RulezItemLevel: disabled
 Masque_Newsom: disabled
 Masque_Shadowlands: disabled
 Masque_Onyx: disabled
 Masque_Goldpaw: disabled
 BugSack: disabled
+LortiUI: disabled
+UberUI: disabled
+Narcissus_Database_Item: disabled
+Narcissus_Database_NPC: disabled
+Narcissus_GamePad: disabled
+Narcissus_Achievements: disabled

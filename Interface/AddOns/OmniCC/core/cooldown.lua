@@ -64,6 +64,12 @@ function Cooldown:CanShowText()
         return false
     end
 
+    -- at most max duration
+    local maxDuration = settings.maxDuration or 0
+    if maxDuration > 0 and duration > maxDuration then
+        return false
+    end
+
     -- hide text if we don't want to display it for this kind of cooldown
     if not settings.enableText then
         return false
@@ -232,8 +238,11 @@ function Cooldown:UpdateStyle()
         return
     end
 
-    if self:GetAlpha() ~= settings.cooldownOpacity then
-        self:SetAlpha(settings.cooldownOpacity)
+    local opacity = tonumber(settings.cooldownOpacity) or 1
+    if opacity < 1 then
+        if self:GetAlpha() ~= opacity then
+            self:SetAlpha(opacity)
+        end
     end
 end
 

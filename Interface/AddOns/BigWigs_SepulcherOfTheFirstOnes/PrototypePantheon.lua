@@ -37,6 +37,7 @@ if L then
 	L.wild_stampede = "Stampede"
 	L.withering_seeds = "Seeds"
 	L.hand_of_destruction = "Hand"
+	L.nighthunter_marks_additional_desc = "|cFFFF0000Marking with a priority for melee on the first markers and using their raid group position as secondary priority.|r"
 end
 
 --------------------------------------------------------------------------------
@@ -82,6 +83,10 @@ function mod:GetOptions()
 	}
 end
 
+function mod:OnRegister()
+	L.custom_off_361745_desc = L.custom_off_361745_desc.." "..L.nighthunter_marks_additional_desc
+end
+
 function mod:OnBossEnable()
 	self:RegisterEvent("RAID_BOSS_EMOTE") -- Used for Wild Stampede
 	self:Log("SPELL_CAST_START", "Reconstruction", 361300) -- Stage Changes
@@ -93,7 +98,7 @@ function mod:OnBossEnable()
 	self:Log("SPELL_AURA_REMOVED", "RunecarversDeathtouchRemoved", 360687)
 	self:Log("SPELL_CAST_START", "HumblingStrikes", 365272)
 	self:Log("SPELL_AURA_APPLIED", "HumblingStrikesApplied", 365269)
-	self:Log("SPELL_AURA_REMOVED", "HumblingStrikesApplied", 365269)
+	self:Log("SPELL_AURA_APPLIED_DOSE", "HumblingStrikesApplied", 365269)
 	self:Log("SPELL_AURA_APPLIED", "BastionsWardApplied", 361067)
 	self:Log("SPELL_AURA_REMOVED", "BastionsWardRemoved", 361067)
 	self:Log("SPELL_CAST_SUCCESS", "WindsweptWings", 364941)
@@ -111,6 +116,10 @@ function mod:OnBossEnable()
 	self:Log("SPELL_CAST_START", "HandOfDestruction", 361789)
 	self:Log("SPELL_AURA_APPLIED", "NightHunterApplied", 361745)
 	self:Log("SPELL_AURA_REMOVED", "NightHunterRemoved", 361745)
+
+	if IsEncounterInProgress() and self:Mythic() then -- Only if logging in late
+		self:UpdateRolePositions() -- For Marking based on Melee > Ranged priority
+	end
 end
 
 function mod:OnEngage()
@@ -134,6 +143,9 @@ function mod:OnEngage()
 
 	if self:GetOption(witheringSeedMarker) then
 		self:RegisterTargetEvents("MarkAdds")
+	end
+	if self:Mythic() then
+		self:UpdateRolePositions() -- For Marking based on Melee > Ranged priority
 	end
 end
 
@@ -170,7 +182,7 @@ do
 	local playerList = {}
 	function mod:Reconstruction(args)
 		local t = args.time
-		if t-prev > 2 then
+		if t-prev > 10 then
 			prev = t
 
 			self:StopBar(365269)
@@ -422,25 +434,53 @@ function mod:HandOfDestruction(args)
 end
 
 do
-	local playerList = {}
+	local playerList, iconList = {}, {}
 	local prev = 0
+	local scheduled = nil
+	local function sortMelee(first, second)
+		if first and second then
+			if first.melee ~= second.melee then
+				return first.melee and not second.melee
+			end
+			return first.index < second.index
+		end
+	 end
+
+	function mod:MarkPlayers()
+		if scheduled then
+			self:CancelTimer(scheduled)
+			scheduled = nil
+		end
+		table.sort(iconList, sortMelee) -- Priority for melee on first markers
+		for i = 1, #iconList do
+			local icon = worldMarkers[i]
+			if iconList[i].player == self:UnitName("player") then
+				self:PlaySound(361745, "warning")
+				self:Yell(361745, CL.count_rticon:format(self:SpellName(361745), i, icon))
+				self:YellCountdown(361745, 8, icon)
+			end
+			playerList[#playerList+1] = iconList[i].player
+			playerList[iconList[i].player] = icon
+			self:NewTargetsMessage(361745, "orange", playerList, 4)
+			self:CustomIcon(nightHunterMarker, iconList[i].player, icon)
+		end
+	end
+
 	function mod:NightHunterApplied(args)
 		local t = args.time
 		if t-prev > 5 then
 			prev = t
+			iconList = {}
 			playerList = {}
 			self:CastBar(args.spellId, 8)
+			if not scheduled then
+				scheduled = self:ScheduleTimer("MarkPlayers", 0.3)
+			end
 		end
-		local count = #playerList+1
-		local icon = worldMarkers[count]
-		playerList[count] = args.destName
-		playerList[args.destName] = icon -- Set raid marker
-		if self:Me(args.destGUID)then
-			self:Yell(args.spellId, CL.count_rticon:format(args.spellName, icon, icon))
-			self:YellCountdown(args.spellId, 8, icon)
+		iconList[#iconList+1] = {player=args.destName, melee=self:Melee(args.destName), index=UnitInRaid(args.destName) or 99} -- 99 for players not in your raid (or if you have no raid)
+		if #iconList == 4 then
+			self:MarkPlayers()
 		end
-		self:NewTargetsMessage(args.spellId, "orange", playerList)
-		self:CustomIcon(nightHunterMarker, args.destName, icon)
 	end
 
 	function mod:NightHunterRemoved(args)

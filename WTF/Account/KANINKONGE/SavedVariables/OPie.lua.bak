@@ -3,7 +3,7 @@ OneRing_Config = {
 	["CharProfiles"] = {
 		["Ravencrest-Rentaki"] = "default",
 	},
-	["_GameVersion"] = "9.2.0",
+	["_GameVersion"] = "9.2.5",
 	["_OPieVersion"] = "Xe 6 (3.106)",
 	["ProfileStorage"] = {
 		["default"] = {
@@ -226,8 +226,8 @@ OneRing_Config = {
 					["sliceToken"] = "ABuexmP8vte",
 				}, -- [13]
 				{
-					["id"] = 69046,
 					["sliceToken"] = "ABuejA9FANs",
+					["id"] = 69046,
 				}, -- [14]
 				{
 					"item", -- [1]
@@ -264,18 +264,18 @@ OneRing_Config = {
 				}, -- [2]
 				{
 					"item", -- [1]
-					181468, -- [2]
-					["sliceToken"] = "ABue5KEG6B7",
-				}, -- [3]
-				{
-					"item", -- [1]
 					173049, -- [2]
 					["sliceToken"] = "ABue5KEG6BE",
-				}, -- [4]
+				}, -- [3]
 				{
 					"item", -- [1]
 					172045, -- [2]
 					["sliceToken"] = "ABue5KEG6BW",
+				}, -- [4]
+				{
+					"item", -- [1]
+					172041, -- [2]
+					["sliceToken"] = "ABuecgoE7He",
 				}, -- [5]
 				{
 					"item", -- [1]
@@ -297,6 +297,11 @@ OneRing_Config = {
 					171437, -- [2]
 					["sliceToken"] = "ABue5KV5nYe",
 				}, -- [9]
+				{
+					"item", -- [1]
+					190384, -- [2]
+					["sliceToken"] = "ABuexAeLEar",
+				}, -- [10]
 				["name"] = "consumes",
 				["save"] = true,
 			},

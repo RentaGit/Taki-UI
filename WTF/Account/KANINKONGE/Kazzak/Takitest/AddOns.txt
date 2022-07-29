@@ -112,3 +112,8 @@ ProjectAzilroka: disabled
 ElvUI_BenikUI: disabled
 !KMediaTags: disabled
 Tukui: disabled
+AdvancedInterfaceOptions: disabled
+BigDebuffs: disabled
+RulezItemLevel: disabled
+TakUI: disabled
+SUI: disabled

@@ -13,9 +13,7 @@ VER 3 0100000000000027 "cleanse spirit" "INV_MISC_QUESTIONMARK"
 END
 VER 3 010000000000000D "dispell" "INV_MISC_QUESTIONMARK"
 #showtooltip purify spirit
-/cast [nomod, @mouseover,help,nodead][nomod, @player, help,nodead] purify spirit
-/cast [mod:shift, @mouseover,help,nodead][nomod, @player, help,nodead] Ancestral Spirit
-/cast [mod:alt] Ancestral Vision
+/cast [@mouseover,help,nodead][nomod, @player, help,nodead] purify spirit
 END
 VER 3 010000000000002B "earthgrab" "INV_MISC_QUESTIONMARK"
 #showtooltip Earthgrab Totem
@@ -48,6 +46,7 @@ VER 3 0100000000000009 "healingwave" "INV_MISC_QUESTIONMARK"
 /cast [@mouseover] healing wave
 END
 VER 3 0100000000000029 "lvb" "INV_MISC_QUESTIONMARK"
+#showtooltip
 /cqs
 /cast lava burst
 END

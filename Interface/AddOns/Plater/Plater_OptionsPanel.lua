@@ -179,6 +179,8 @@ function Plater.OpenOptionsPanel()
 	local CVarDesc = "\n\n|cFFFF7700[*]|r |cFFa0a0a0CVar, saved within Plater profile and restored when loading the profile.|r"
 	local CVarIcon = "|cFFFF7700*|r"
 	local CVarNeedReload = "\n\n|cFFFF2200[*]|r |cFFa0a0a0A /reload may be required to take effect.|r"
+	local ImportantText = "|cFFFFFF00" .. "Important" .."|r: "
+	local SliderRightClickDesc = "\n\n" .. ImportantText .. "right click to type the value."
 	
 	local frame_options = {
 		y_offset = 0,
@@ -240,7 +242,7 @@ function Plater.OpenOptionsPanel()
 		{name = "resourceFrame",			title = L["OPTIONS_TABNAME_COMBOPOINTS"]},
 
 		{name = "SearchFrame", title = L["OPTIONS_TABNAME_SEARCH"]},
-		--{name = "WagoIo", title = "Wago Imports"}, --wago_imports --localize-me
+		{name = "WagoIo", title = "Wago Imports"}, --wago_imports --localize-me
 		
 	}, 
 	frame_options, hookList)
@@ -337,7 +339,7 @@ function Plater.OpenOptionsPanel()
 
 	--4th row
 	local searchFrame			= mainFrame.AllFrames [25]
-	--local wagoIoFrame = mainFrame.AllFrames [26] --wago_imports
+	local wagoIoFrame 			= mainFrame.AllFrames [26] --wago_imports
 
 	local scriptButton		= mainFrame.AllButtons [6] --also need update on line 115 and 13818
 	local modButton		 	= mainFrame.AllButtons [7]
@@ -504,14 +506,20 @@ function Plater.OpenOptionsPanel()
 					local aura_cache_by_name = Plater.db.profile.aura_cache_by_name
 					local captured_casts = Plater.db.profile.captured_casts -- ? local DB ?
 					local npc_cache = Plater.db.profile.npc_cache
+					local cvars_caller_cache = Plater.db.profile.saved_cvars_last_change
 
 					Plater.db.profile.captured_spells = {}
 					Plater.db.profile.aura_cache_by_name = {}
 					Plater.db.profile.captured_casts = {}
 					Plater.db.profile.npc_cache = {}
+					Plater.db.profile.saved_cvars_last_change = {}
 					
 					--retain npc_cache for set npc_colors
 					for npcID, _ in pairs (Plater.db.profile.npc_colors) do
+						Plater.db.profile.npc_cache [npcID] = npc_cache [npcID]
+					end
+					--retain npc_cache for set npc_colors
+					for npcID, _ in pairs (Plater.db.profile.npcs_renamed) do
 						Plater.db.profile.npc_cache [npcID] = npc_cache [npcID]
 					end
 					
@@ -537,6 +545,7 @@ function Plater.OpenOptionsPanel()
 					Plater.db.profile.aura_cache_by_name = aura_cache_by_name
 					Plater.db.profile.captured_casts = captured_casts
 					Plater.db.profile.npc_cache = npc_cache
+					Plater.db.profile.saved_cvars_last_change = cvars_caller_cache
 				end)
 				
 				C_Timer.After (.3, function()
@@ -705,7 +714,7 @@ function Plater.OpenOptionsPanel()
 					end
 					
 					if profileExists then
-						--DF:ShowPromptPanel ("Warning!\nA Plater profile with the name \"" .. profileName.. "\" already exists. Are you sure you want to overwrite it?\nIf not: please specify a new name for the profile.\nOverwriting an existing profile cannot be undone!", function() profilesFrame.DoProfileImport(profileName, profile) end, function() end, true, 500)
+						--DF:ShowPromptPanel ("Warning!\nA Plater profile with the name \profileName.. "\" already exists. Are you sure you want to overwrite it?\nIf not: please specify a new name for the profile.\nOverwriting an existing profile cannot be undone!", function() profilesFrame.DoProfileImport(profileName, profile) end, function() end, true, 500)
 						DF:ShowPromptPanel (format (L["OPTIONS_PROFILE_IMPORT_OVERWRITE"], profileName), function() profilesFrame.DoProfileImport(profileName, profile, true, isWagoUpdate) end, function() end, true, 500)
 					else
 						profilesFrame.DoProfileImport(profileName, profile, false, false)
@@ -824,8 +833,8 @@ function Plater.OpenOptionsPanel()
 		
 				local url = Plater.db.profile.url or ""
 				local id = url:match("wago.io/([^/]+)/([0-9]+)") or url:match("wago.io/([^/]+)$")
-				if id and WeakAurasCompanion.Plater.slugs[id] then
-					local update = WeakAurasCompanion.Plater.slugs[id]
+				if id and Plater.CompanionDataSlugs[id] then
+					local update = Plater.CompanionDataSlugs[id]
 					
 					profilesFrame.IsExporting = nil
 					profilesFrame.IsImporting = true
@@ -977,8 +986,8 @@ function Plater.OpenOptionsPanel()
 				
 				local url = Plater.db.profile.url or ""
 				local id = url:match("wago.io/([^/]+)/([0-9]+)") or url:match("wago.io/([^/]+)$")
-				if id and WeakAurasCompanion.Plater.slugs[id] then
-					local update = WeakAurasCompanion.Plater.slugs[id]
+				if id and Plater.CompanionDataSlugs[id] then
+					local update = Plater.CompanionDataSlugs[id]
 					
 					local wagoProfile = Plater.DecompressData (update.encoded, "print")				
 					if (wagoProfile and type (wagoProfile == "table") and wagoProfile.plate_config) then
@@ -1653,7 +1662,7 @@ local debuff_options = {
 		get = function() return Plater.db.profile.aura_grow_direction end,
 		values = function() return build_grow_direction_options ("aura_grow_direction") end,
 		name = "Grow Direction",
-		desc = "To which side aura icons should grow.\n\n|cFFFFFF00Important|r: debuffs are added first, buffs after.",
+		desc = "To which side aura icons should grow.\n\n" .. ImportantText .. "debuffs are added first, buffs after.",
 	},
 	
 	{
@@ -1708,7 +1717,7 @@ local debuff_options = {
 			Plater.UpdateAllPlates()
 		end,
 		name = L["OPTIONS_ENABLED"],
-		desc = "When enabled auras are separated: Buffs are placed on this second frame, Debuffs on the first.\n\n|cFFFFFF00Important|r: require /reload when disabling this feature.",
+		desc = "When enabled auras are separated: Buffs are placed on this second frame, Debuffs on the first.",
 	},
 	--> grow direction
 	{
@@ -1807,7 +1816,7 @@ local debuff_options = {
 			Plater.UpdateAllPlates()
 		end,
 		name = L["OPTIONS_SHADOWCOLOR"],
-		desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+		desc = ImportantText .. "hide and show nameplates to see changes.",
 	},
 
 	{
@@ -1843,7 +1852,7 @@ local debuff_options = {
 		step = 1,
 		usedecimals = true,
 		name = L["OPTIONS_XOFFSET"],
-		desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+		desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 	},
 	--y offset
 	{
@@ -1858,7 +1867,7 @@ local debuff_options = {
 		step = 1,
 		usedecimals = true,
 		name = L["OPTIONS_YOFFSET"],
-		desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+		desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 	},
 	
 	{type = "breakline"},
@@ -1921,6 +1930,18 @@ local debuff_options = {
 		name = L["OPTIONS_ENABLED"],
 		desc = "Time left on buff or debuff.",
 	},
+	
+	{
+		type = "toggle",
+		get = function() return Plater.db.profile.aura_timer_decimals end,
+		set = function (self, fixedparam, value) 
+			Plater.db.profile.aura_timer_decimals = value
+			Plater.RefreshAuras()
+			Plater.UpdateAllPlates()
+		end,
+		name = "Show Decimals",
+		desc = "Show decimals below 10s remaining time",
+	},
 
 	{
 		type = "toggle",
@@ -1930,7 +1951,7 @@ local debuff_options = {
 			Plater.RefreshOmniCCGroup()
 		end,
 		name = "Hide OmniCC/TullaCC Timer",
-		desc = "OmniCC/TullaCC timers won't show in the aura.\n\n|cFFFFFF00Important|r: require /reload when toggling this feature.",
+		desc = "OmniCC/TullaCC timers won't show in the aura.\n\n" .. ImportantText .. "require /reload when toggling this feature.",
 	},
 	
 	{
@@ -1977,7 +1998,7 @@ local debuff_options = {
 			Plater.UpdateAllPlates()
 		end,
 		name = L["OPTIONS_SHADOWCOLOR"],
-		desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+		desc = ImportantText .. "hide and show nameplates to see changes.",
 	},
 
 	
@@ -2014,7 +2035,7 @@ local debuff_options = {
 		step = 1,
 		usedecimals = true,
 		name = L["OPTIONS_XOFFSET"],
-		desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+		desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 	},
 	--y offset
 	{
@@ -2029,7 +2050,7 @@ local debuff_options = {
 		step = 1,
 		usedecimals = true,
 		name = L["OPTIONS_YOFFSET"],
-		desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+		desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 	},
 	
 	{type = "blank"},
@@ -2089,7 +2110,7 @@ local debuff_options = {
 			Plater.UpdateAllPlates()
 		end,
 		name = "Show Auras Casted by other Players",
-		desc = "Show Auras Casted by other Players.\n\n|cFFFFFF00Important|r: This may cause a lot of auras to show!",
+		desc = "Show Auras Casted by other Players.\n\n" .. ImportantText .. "This may cause a lot of auras to show!",
 	},
 
 	{type = "blank"},
@@ -2493,6 +2514,10 @@ Plater.CreateAuraTesting()
 			colorsFrame.ModelFrame:SetBackdropColor (.4, .4, .4, 1)
 
 			colorsFrame.ModelFrame:SetScript ("OnEnter", nil)
+			--colorsFrame.ModelFrame:SetScript ("OnMouseWheel", nil)
+			colorsFrame.ModelFrame.zoomLevel = 0.1
+			colorsFrame.ModelFrame.minZoom = 0.01
+			colorsFrame.ModelFrame.maxZoom = 1
 			
 			--store npcID = checkbox object
 			--this is used when selecting the color from the dropdown, it'll automatically enable the color and need to set the checkbox to checked for feedback
@@ -3114,12 +3139,13 @@ Plater.CreateAuraTesting()
 							local dbColors = Plater.db.profile.npc_colors
 							--table storing all npcs already detected inside dungeons and raids
 							local allNpcsDetectedTable = Plater.db.profile.npc_cache
+							local allNpcsRenamed = Plater.db.profile.npcs_renamed
 
 							--the uncompressed table is a numeric table of tables
 							for i, colorTable in pairs (colorData) do
 								--check integrity
 								if (type (colorTable) == "table") then
-									local npcID, scriptOnly, colorID, npcName, zoneName = unpack (colorTable)
+									local npcID, scriptOnly, colorID, npcName, zoneName, renamedName = unpack (colorTable)
 									if (npcID and colorID and npcName and zoneName) then
 										if (type (colorID) == "string" and type (npcName) == "string" and type (zoneName) == "string") then
 											if (type (npcID) == "number" and type (scriptOnly) == "boolean") then
@@ -3132,6 +3158,8 @@ Plater.CreateAuraTesting()
 												allNpcsDetectedTable [npcID] = allNpcsDetectedTable [npcID] or {}
 												allNpcsDetectedTable [npcID] [1] = npcName
 												allNpcsDetectedTable [npcID] [2] = zoneName
+												
+												allNpcsRenamed [npcID] = renamedName
 											end
 										end
 									end
@@ -3202,8 +3230,9 @@ Plater.CreateAuraTesting()
 								--build a table to store one the npc and insert the table inside the main table which will be compressed
 								--only add the npc if it is enabled in the color panel
 								if (enabled1) then
-												       --number   | boolean     | string   | string      | string
-									tinsert (exportedTable, {npcID, enabled2, colorID, npcName, zoneName})
+									local renamedName = Plater.db.profile.npcs_renamed [npcID]
+															--number| boolean |string  |string  |string   |string
+									tinsert (exportedTable, {npcID, enabled2, colorID, npcName, zoneName, renamedName})
 								end
 							end
 						end
@@ -3224,8 +3253,9 @@ Plater.CreateAuraTesting()
 							--build a table to store one the npc and insert the table inside the main table which will be compressed
 							--only add the npc if it is enabled in the color panel
 							if (enabled1 and npcName and zoneName) then
-											       --number   | boolean     | string   | string      | string
-								tinsert (exportedTable, {npcID, enabled2, colorID, npcName, zoneName})
+								local renamedName = Plater.db.profile.npcs_renamed [npcID]
+															--number| boolean |string  |string  |string   |string
+									tinsert (exportedTable, {npcID, enabled2, colorID, npcName, zoneName, renamedName})
 							end
 						end
 					end
@@ -4103,10 +4133,12 @@ Plater.CreateAuraTesting()
 		specialAuraFrame:SetPoint ("topright", auraSpecialFrame, "topright", -10, startY)
 		--DF:ApplyStandardBackdrop (specialAuraFrame, false, 0.6)
 		
+		local LoadGameSpellsCalled = false
 		function specialAuraFrame.LoadGameSpells()
-			if (not next (Plater.SpellHashTable)) then
+			if (not next (Plater.SpellHashTable) and not LoadGameSpellsCalled) then
 				--load all spells in the game
 				DF:LoadAllSpells (Plater.SpellHashTable, Plater.SpellIndexTable)
+				LoadGameSpellsCalled = true
 				return true
 			end
 		end
@@ -4249,8 +4281,11 @@ Plater.CreateAuraTesting()
 						-- avoids "unknown spell" in this case
 
 						if (not next (Plater.SpellHashTable)) then
-							specialAuraFrame.LoadGameSpells()
-							C_Timer.After (0.2, function() self:Refresh() end)
+							local loaded = specialAuraFrame.LoadGameSpells()
+							if loaded then
+								DF.LoadingAuraAlertFrame:HookScript("OnHide", function() self:Refresh() end)
+							end
+							--C_Timer.After (1, function() self:Refresh() end)
 						end
 						local id = Plater.SpellHashTable[lower(aura)]
 						spellName, _, spellIcon = GetSpellInfo (id)
@@ -4490,6 +4525,16 @@ Plater.CreateAuraTesting()
 				name = "Default Border Color",
 				desc = "Default Border Color",
 			},
+			{
+				type = "toggle",
+				get = function() return Plater.db.profile.extra_icon_cooldown_reverse end,
+				set = function (self, fixedparam, value) 
+					Plater.db.profile.extra_icon_cooldown_reverse = value
+					Plater.UpdateAllPlates()
+				end,
+				name = "Swipe Closure Inverted",
+				desc = "If enabled the swipe closure texture is applied as the swipe moves instead.",
+			},
 			
 			{type = "breakline"},
 			--{type = "label", get = function() return "Text Settings:" end, text_template = DF:GetTemplate ("font", "ORANGE_FONT_TEMPLATE")},
@@ -4503,6 +4548,16 @@ Plater.CreateAuraTesting()
 				end,
 				name = "Show Timer",
 				desc = "Show Timer",
+			},
+			{
+				type = "toggle",
+				get = function() return Plater.db.profile.extra_icon_timer_decimals end,
+				set = function (self, fixedparam, value) 
+					Plater.db.profile.extra_icon_timer_decimals = value
+					Plater.UpdateAllPlates()
+				end,
+				name = "Show Decimals",
+				desc = "Show decimals below 10s remaining time",
 			},
 			{
 				type = "select",
@@ -4838,7 +4893,7 @@ Plater.CreateAuraTesting()
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_XOFFSET"],
-				desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 			},
 			--y offset
 			{
@@ -4853,7 +4908,7 @@ Plater.CreateAuraTesting()
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_YOFFSET"],
-				desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 			},
 			
 			{type = "blank"},
@@ -5010,7 +5065,7 @@ do
 			end,
 			nocombat = true,
 			name = "Module Enabled",
-			desc = "Enable Plater nameplates for the personal bar.\n\n|cFFFFFF00Important|r: Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
+			desc = "Enable Plater nameplates for the personal bar.\n\n" .. ImportantText .. "Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
 		},
 		
 		{
@@ -5035,7 +5090,7 @@ do
 			end,
 			nocombat = true,
 			name = "Always Show" .. CVarIcon,
-			desc = "If enabled, the personal health bar is always shown.\n\n|cFFFFFF00Important|r: 'Personal Health and Mana Bars' (in the Main Menu tab) must be enabled." .. CVarDesc,
+			desc = "If enabled, the personal health bar is always shown.\n\n" .. ImportantText .. "'Personal Health and Mana Bars' (in the Main Menu tab) must be enabled." .. CVarDesc,
 		},
 
 		{
@@ -5050,7 +5105,7 @@ do
 			end,
 			nocombat = true,
 			name = "Show When you Have a Target" .. CVarIcon,
-			desc = "If enabled, show the personal bar when you have a target.\n\n|cFFFFFF00Important|r: 'Personal Health and Mana Bars' (in the Main Menu tab) must be enabled." .. CVarDesc,
+			desc = "If enabled, show the personal bar when you have a target.\n\n" .. ImportantText .. "'Personal Health and Mana Bars' (in the Main Menu tab) must be enabled." .. CVarDesc,
 		},
 		{
 			type = "toggle",
@@ -5064,7 +5119,7 @@ do
 			end,
 			nocombat = true,
 			name = "Show In Combat" .. CVarIcon,
-			desc = "If enabled, show the personal bar when you are in combat.\n\n|cFFFFFF00Important|r: 'Personal Health and Mana Bars' (in the Main Menu tab) must be enabled." .. CVarDesc,
+			desc = "If enabled, show the personal bar when you are in combat.\n\n" .. ImportantText .. "'Personal Health and Mana Bars' (in the Main Menu tab) must be enabled." .. CVarDesc,
 		},
 		{
 			type = "range",
@@ -5188,7 +5243,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "blank"},
@@ -5438,7 +5493,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--y offset
 		{
@@ -5453,7 +5508,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "blank"},
@@ -5519,7 +5574,7 @@ do
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--spell name text anchor
@@ -5543,7 +5598,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--spell name text anchor x offset
 		{
@@ -5558,7 +5613,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "breakline"},
@@ -5619,7 +5674,7 @@ do
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--cast time text color
@@ -5659,7 +5714,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--cast time anchor x offset
 		{
@@ -5674,7 +5729,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		
@@ -5752,7 +5807,7 @@ do
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--pecent text color
@@ -5806,7 +5861,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--percent anchor x offset
 		{
@@ -5821,7 +5876,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},			
 		
 		{type = "breakline"},
@@ -5959,7 +6014,7 @@ do
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--pecent text color"
@@ -6013,7 +6068,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--percent anchor x offset
 		{
@@ -6028,7 +6083,7 @@ do
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		--class resources
@@ -6253,7 +6308,7 @@ local targetOptions = {
 				Plater.FullRefreshAllPlates()
 			end,
 			name = "Hover Over Highlight",
-			desc = "Highlight effect when the mouse is over the nameplate.\n\n|cFFFFFF00Important|r: for enemies only (players and npcs).",
+			desc = "Highlight effect when the mouse is over the nameplate.\n\n" .. ImportantText .. "for enemies only (players and npcs).",
 		},
 		{
 			type = "range",
@@ -6314,7 +6369,7 @@ local targetOptions = {
 			thumbscale = 1.7,
 			usedecimals = true,
 			name = "Lock to Screen (Top Side)" .. CVarIcon,
-			desc = "Min space between the nameplate and the top of the screen. Increase this if some part of the nameplate are going out of the screen.\n\n|cFFFFFFFFDefault: 0.065|r\n\n|cFFFFFF00Important|r: if you're having issue, manually set using these macros:\n/run SetCVar ('nameplateOtherTopInset', '0.065')\n/run SetCVar ('nameplateLargeTopInset', '0.065')\n\n|cFFFFFF00Important|r: setting to 0 disables this feature." .. CVarDesc,
+			desc = "Min space between the nameplate and the top of the screen. Increase this if some part of the nameplate are going out of the screen.\n\n|cFFFFFFFFDefault: 0.065|r\n\n" .. ImportantText .. "if you're having issue, manually set using these macros:\n/run SetCVar ('nameplateOtherTopInset', '0.065')\n/run SetCVar ('nameplateLargeTopInset', '0.065')\n\n" .. ImportantText .. "setting to 0 disables this feature." .. CVarDesc,
 			nocombat = true,
 		},
 		
@@ -6622,8 +6677,8 @@ local relevance_options = {
 				Plater.db.profile.honor_blizzard_plate_alpha = value
 				Plater.UpdateAllPlates()
 			end,
-			name = "Use Blizzard's Nameplate Alpha" .. CVarIcon,
-			desc = "Use the 'occluded' and other blizzard nameplate alpha values from blizzard settings.\n\nThis setting only works with 'Use custom strata channels' enabled." .. CVarDesc,
+			name = "Use Blizzard's Nameplate Alpha",
+			desc = "Use the 'occluded' and other blizzard nameplate alpha values from blizzard settings.\n\nThis setting only works with 'Use custom strata channels' enabled.",
 			id = "transparency_blizzard_alpha",
 		},
 		{
@@ -6661,7 +6716,7 @@ local relevance_options = {
 				end
 			end,
 			name = "Stacking Nameplates" .. CVarIcon,
-			desc = "If enabled, nameplates won't overlap each other." .. CVarDesc .. "\n\n|cFFFFFF00Important|r: to set the amount of space between each nameplate see '|cFFFFFFFFNameplate Vertical Padding|r' option below.\nPlease check the Auto tab settings to setup automatic toggling of this option.",
+			desc = "If enabled, nameplates won't overlap each other." .. CVarDesc .. "\n\n" .. ImportantText .. "to set the amount of space between each nameplate see '|cFFFFFFFFNameplate Vertical Padding|r' option below.\nPlease check the Auto tab settings to setup automatic toggling of this option.",
 			nocombat = true,
 		},
 		
@@ -6681,7 +6736,7 @@ local relevance_options = {
 			thumbscale = 1.7,
 			usedecimals = true,
 			name = "Nameplate Overlap (V)" .. CVarIcon,
-			desc = "The space between each nameplate vertically when stacking is enabled.\n\n|cFFFFFFFFDefault: 1.10|r" .. CVarDesc .. "\n\n|cFFFFFF00Important|r: if you find issues with this setting, use:\n|cFFFFFFFF/run SetCVar ('nameplateOverlapV', '1.6')|r",
+			desc = "The space between each nameplate vertically when stacking is enabled.\n\n|cFFFFFFFFDefault: 1.10|r" .. CVarDesc .. "\n\n" .. ImportantText .. "if you find issues with this setting, use:\n|cFFFFFFFF/run SetCVar ('nameplateOverlapV', '1.6')|r",
 			nocombat = true,
 		},
 		
@@ -6696,10 +6751,10 @@ local relevance_options = {
 				end
 			end,
 			min = IS_WOW_PROJECT_MAINLINE and 60 or 20, --20y for tbc and classic
-			max = (IS_WOW_PROJECT_MAINLINE and 60) or (IS_WOW_PROJECT_CLASSIC_TBC and 40) or 20, --40y for tbc, 20y for classic era
+			max = (IS_WOW_PROJECT_MAINLINE and 60) or (IS_WOW_PROJECT_CLASSIC_TBC and 41) or 20, --41y for tbc, 20y for classic era
 			step = 1,
 			name = "View Distance" .. CVarIcon,
-			desc = "How far you can see nameplates (in yards).\n\n|cFFFFFFFFCurrent limitations: Retail = 60y, TBC = 20-40y, Classic = 20y|r" .. CVarDesc,
+			desc = "How far you can see nameplates (in yards).\n\n|cFFFFFFFFCurrent limitations: Retail = 60y, TBC = 20-41y, Classic = 20y|r" .. CVarDesc,
 			nocombat = true,
 		},
 	
@@ -6813,7 +6868,7 @@ local relevance_options = {
 			step = 0.1,
 			usedecimals = true,
 			name = "Border Thickness",
-			desc = "How thick the border should be.\n\n|cFFFFFF00Important|r: right click the slider to manually type the value.",
+			desc = "How thick the border should be.\n\n" .. ImportantText .. "right click the slider to manually type the value.",
 		},
 
 		{type = "blank"},
@@ -7079,7 +7134,7 @@ local relevance_options = {
 				Plater.UpdateAllPlates()
 			end,
 			name = "Use No Combat Alpha",
-			desc = "Changes the nameplate alpha when you are in combat and the unit isn't.\n\n|cFFFFFF00Important|r: If the unit isn't in combat, it overrides the alpha from the range check.",
+			desc = "Changes the nameplate alpha when you are in combat and the unit isn't.\n\n" .. ImportantText .. "If the unit isn't in combat, it overrides the alpha from the range check.",
 		},
 		{
 			type = "range",
@@ -7439,6 +7494,17 @@ local relevance_options = {
 			name = "Pet Icon",
 			desc = "Pet Icon",
 		},
+
+		{
+			type = "toggle",
+			get = function() return Plater.db.profile.indicator_shield end,
+			set = function (self, fixedparam, value) 
+				Plater.db.profile.indicator_shield = value
+				Plater.UpdateAllPlates()
+			end,
+			name = "Shield Bar",
+			desc = "Shield Bar",
+		},
 		
 		{
 			type = "toggle",
@@ -7534,7 +7600,7 @@ local relevance_options = {
 				Plater.UpdateAllPlates()
 			end,
 			name = "Enemy Spec",
-			desc = "Enemy player spec icon.\n\n|cFFFFFF00Important|r: must have Details! Damage Meter installed to work outside of BG/Arena.",
+			desc = "Enemy player spec icon.\n\n" .. ImportantText .. "must have Details! Damage Meter installed to work outside of BG/Arena.",
 		},
 		{
 			type = "toggle",
@@ -7564,7 +7630,7 @@ local relevance_options = {
 				Plater.UpdateAllPlates()
 			end,
 			name = "Friendly Spec",
-			desc = "Friendly player spec icon.\n\n|cFFFFFF00Important|r: must have Details! Damage Meter installed to work outside of BG/Arena.",
+			desc = "Friendly player spec icon.\n\n" .. ImportantText .. "must have Details! Damage Meter installed to work outside of BG/Arena.",
 		},
 		{
 			type = "range",
@@ -7712,7 +7778,7 @@ end
 			end,
 			nocombat = true,
 			name = "Module Enabled",
-			desc = "Enable Plater nameplates for friendly players.\n\n|cFFFFFF00Important|r: Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
+			desc = "Enable Plater nameplates for friendly players.\n\n" .. ImportantText .. "Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
 		},
 		
 		{
@@ -7757,7 +7823,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = "Only Show Player Name",
-			desc = "Hide the health bar, only show the character name.\n\n|cFFFFFF00Important|r: If 'Only Damaged Players' is selected and the player is damaged, this setting will be overwritten and the health bar will be shown.",
+			desc = "Hide the health bar, only show the character name.\n\n" .. ImportantText .. "If 'Only Damaged Players' is selected and the player is damaged, this setting will be overwritten and the health bar will be shown.",
 		},
 		{
 			type = "toggle",
@@ -7777,7 +7843,7 @@ end
 				Plater.UpdatePlateClickSpace (nil, true)
 			end,
 			name = "Click Through",
-			desc = "Friendly player nameplates won't receive mouse clicks.\n\n|cFFFFFF00Important|r: also affects friendly npcs and can affect some neutral npcs too.",
+			desc = "Friendly player nameplates won't receive mouse clicks.\n\n" .. ImportantText .. "also affects friendly npcs and can affect some neutral npcs too.",
 		},		
 
 		{type = "blank"},
@@ -7795,7 +7861,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "label", get = function() return "Cast Bar:" end, text_template = DF:GetTemplate ("font", "ORANGE_FONT_TEMPLATE")},
@@ -7812,7 +7878,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--y offset
 		{
@@ -7827,7 +7893,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "blank"},
@@ -8073,7 +8139,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--npc name anchor
@@ -8097,7 +8163,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--npc name anchor x offset
 		{
@@ -8112,7 +8178,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},	
 		
 		--cast text size
@@ -8179,7 +8245,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 
 		--spell name text anchor
@@ -8203,7 +8269,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--spell name text anchor x offset
 		{
@@ -8218,7 +8284,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		
@@ -8279,7 +8345,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},		
 		
 		--cast time text color
@@ -8319,7 +8385,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--cast time anchor x offset
 		{
@@ -8334,7 +8400,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},		
 
 		{type = "breakline"},
@@ -8444,7 +8510,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},		
 		
 		--pecent text color
@@ -8498,7 +8564,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--percent anchor x offset
 		{
@@ -8513,7 +8579,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 
@@ -8576,7 +8642,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},		
 		
 		--level text alpha
@@ -8615,7 +8681,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--level anchor x offset
 		{
@@ -8630,7 +8696,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		
@@ -8688,7 +8754,7 @@ end
 			end,
 			nocombat = true,
 			name = "Module Enabled",
-			desc = "Enable Plater nameplates for enemy players.\n\n|cFFFFFF00Important|r: Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
+			desc = "Enable Plater nameplates for enemy players.\n\n" .. ImportantText .. "Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
 		},
 		
 		{
@@ -8742,7 +8808,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},		
 		
 		{type = "label", get = function() return "Cast Bar:" end, text_template = DF:GetTemplate ("font", "ORANGE_FONT_TEMPLATE")},
@@ -8759,7 +8825,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--y offset
 		{
@@ -8774,7 +8840,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "blank" },
@@ -8975,7 +9041,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},		
 		
 		--npc name anchor
@@ -8999,7 +9065,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--npc name anchor x offset
 		{
@@ -9014,7 +9080,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},	
 		
 		{type = "breakline"},
@@ -9080,7 +9146,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--spell name text anchor
@@ -9104,7 +9170,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--spell name text anchor x offset
 		{
@@ -9119,7 +9185,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		--level text settings
@@ -9181,7 +9247,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--cast time text color
@@ -9221,7 +9287,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--cast time anchor x offset
 		{
@@ -9236,7 +9302,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 
 		{type = "breakline"},
@@ -9347,7 +9413,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--pecent text color
@@ -9401,7 +9467,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--percent anchor x offset
 		{
@@ -9416,7 +9482,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "breakline"},
@@ -9478,7 +9544,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		
@@ -9518,7 +9584,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--level anchor x offset
 		{
@@ -9533,7 +9599,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},		
 
 	}
@@ -9610,7 +9676,7 @@ end
 			end,
 			nocombat = true,
 			name = L["OPTIONS_ENABLED"] .. CVarIcon,
-			desc = "Show nameplate for friendly npcs.\n\n|cFFFFFF00Important|r: This option is dependent on the client`s nameplate state (on/off).\n\n|cFFFFFF00Important|r: when disabled but enabled on the client through (" .. (GetBindingKey ("FRIENDNAMEPLATES") or "") .. ") the healthbar isn't visible but the nameplate is still clickable." .. CVarDesc,
+			desc = "Show nameplate for friendly npcs.\n\n" .. ImportantText .. "This option is dependent on the client`s nameplate state (on/off).\n\n" .. ImportantText .. "when disabled but enabled on the client through (" .. (GetBindingKey ("FRIENDNAMEPLATES") or "") .. ") the healthbar isn't visible but the nameplate is still clickable." .. CVarDesc,
 		},
 		{
 			type = "toggle",
@@ -9627,7 +9693,7 @@ end
 			end,
 			nocombat = true,
 			name = "Module Enabled",
-			desc = "Enable Plater nameplates for friendly NPCs.\n\n|cFFFFFF00Important|r: Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
+			desc = "Enable Plater nameplates for friendly NPCs.\n\n" .. ImportantText .. "Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
 		},
 
 		{
@@ -9635,7 +9701,7 @@ end
 			get = function() return Plater.db.profile.plate_config [ACTORTYPE_FRIENDLY_NPC].relevance_state end,
 			values = function() return relevance_options end,
 			name = "Show",
-			desc = "Modify the way friendly npcs are shown.\n\n|cFFFFFF00Important|r: This option is dependent on the client`s nameplate state (on/off).",
+			desc = "Modify the way friendly npcs are shown.\n\n" .. ImportantText .. "This option is dependent on the client`s nameplate state (on/off).",
 		},
 		
 		{type = "blank"},
@@ -9654,7 +9720,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "label", get = function() return "Cast Bar:" end, text_template = DF:GetTemplate ("font", "ORANGE_FONT_TEMPLATE")},
@@ -9671,7 +9737,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--y offset
 		{
@@ -9686,7 +9752,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 
 		{type = "breakline"},
@@ -9872,7 +9938,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--npc name anchor
@@ -9896,7 +9962,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--npc name anchor x offset
 		{
@@ -9911,7 +9977,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},	
 		
 		{type = "breakline"},
@@ -9977,7 +10043,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 	
 		--spell name text anchor
@@ -10001,7 +10067,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--spell name text anchor x offset
 		{
@@ -10016,7 +10082,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 
 		{type = "blank"},
@@ -10076,7 +10142,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},		
 		
 		--cast time text color
@@ -10115,7 +10181,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--cast time anchor x offset
 		{
@@ -10130,7 +10196,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 
 		{type = "breakline"},
@@ -10241,7 +10307,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},		
 		
 		--pecent text color
@@ -10295,7 +10361,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--percent anchor x offset
 		{
@@ -10310,7 +10376,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "blank"},
@@ -10361,7 +10427,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--text color
@@ -10440,7 +10506,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},		
 		
 		--level text alpha
@@ -10479,7 +10545,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 		},
 		--level anchor x offset
 		{
@@ -10494,7 +10560,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 		},
 		
 		{type = "blank"},
@@ -10585,7 +10651,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},
 		
 		--profession text color
@@ -10666,7 +10732,7 @@ end
 				end,
 				nocombat = true,
 				name = "Module Enabled",
-				desc = "Enable Plater nameplates for enemy NPCs.\n\n|cFFFFFF00Important|r: Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
+				desc = "Enable Plater nameplates for enemy NPCs.\n\n" .. ImportantText .. "Forces a /reload on change.\nThis option is dependent on the client`s nameplate state (on/off)",
 			},
 			
 			{type = "blank"},
@@ -10684,7 +10750,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_YOFFSET"],
-				desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 			},
 			
 			{type = "label", get = function() return "Cast Bar:" end, text_template = DF:GetTemplate ("font", "ORANGE_FONT_TEMPLATE")},
@@ -10701,7 +10767,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_XOFFSET"],
-				desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 			},
 			--y offset
 			{
@@ -10716,7 +10782,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_YOFFSET"],
-				desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 			},				
 			
 			{type = "blank"},
@@ -10728,7 +10794,7 @@ end
 				get = function() return Plater.db.profile.plate_config.enemynpc.big_actorname_text_size end,
 				set = function (self, fixedparam, value) 
 					Plater.db.profile.plate_config.enemynpc.big_actorname_text_size = value
-					Plater.db.profile.plate_config.enemynpc.big_actortitle_text_size = value
+					--Plater.db.profile.plate_config.enemynpc.big_actortitle_text_size = value --why? there's a separate setting.
 					Plater.UpdateAllPlates()
 				end,
 				min = 6,
@@ -10768,7 +10834,7 @@ end
 					Plater.UpdateAllPlates()
 				end,
 				name = L["OPTIONS_SHADOWCOLOR"],
-				desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+				desc = ImportantText .. "hide and show nameplates to see changes.",
 			},
 			
 			--[=[
@@ -10851,7 +10917,7 @@ end
 					Plater.UpdateAllPlates()
 				end,
 				name = L["OPTIONS_SHADOWCOLOR"],
-				desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+				desc = ImportantText .. "hide and show nameplates to see changes.",
 			},
 			
 			--[[--profession text color
@@ -11050,7 +11116,7 @@ end
 					Plater.UpdateAllPlates()
 				end,
 				name = L["OPTIONS_SHADOWCOLOR"],
-				desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+				desc = ImportantText .. "hide and show nameplates to see changes.",
 			},
 			
 			--npc name anchor
@@ -11074,7 +11140,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_XOFFSET"],
-				desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 			},
 			--npc name anchor x offset
 			{
@@ -11089,7 +11155,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_YOFFSET"],
-				desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 			},	
 			
 			{type = "breakline"},
@@ -11155,7 +11221,7 @@ end
 					Plater.UpdateAllPlates()
 				end,
 				name = L["OPTIONS_SHADOWCOLOR"],
-				desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+				desc = ImportantText .. "hide and show nameplates to see changes.",
 			},
 			
 			--spell name text anchor
@@ -11179,7 +11245,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_XOFFSET"],
-				desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 			},
 			--spell name text anchor x offset
 			{
@@ -11194,7 +11260,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_YOFFSET"],
-				desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 			},
 			
 			{type = "blank"},
@@ -11254,7 +11320,7 @@ end
 					Plater.UpdateAllPlates()
 				end,
 				name = L["OPTIONS_SHADOWCOLOR"],
-				desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+				desc = ImportantText .. "hide and show nameplates to see changes.",
 			},
 			
 			
@@ -11295,7 +11361,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_XOFFSET"],
-				desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 			},
 			--cast time anchor x offset
 			{
@@ -11310,7 +11376,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_YOFFSET"],
-				desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 			},			
 			
 			{type = "breakline"},
@@ -11421,7 +11487,7 @@ end
 					Plater.UpdateAllPlates()
 				end,
 				name = L["OPTIONS_SHADOWCOLOR"],
-				desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+				desc = ImportantText .. "hide and show nameplates to see changes.",
 			},
 			
 			
@@ -11476,7 +11542,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_XOFFSET"],
-				desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 			},
 			--percent anchor x offset
 			{
@@ -11491,7 +11557,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_YOFFSET"],
-				desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 			},
 
 			--level text settings
@@ -11553,7 +11619,7 @@ end
 					Plater.UpdateAllPlates()
 				end,
 				name = L["OPTIONS_SHADOWCOLOR"],
-				desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+				desc = ImportantText .. "hide and show nameplates to see changes.",
 			},
 			
 			--level text alpha
@@ -11592,7 +11658,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_XOFFSET"],
-				desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 			},
 			--level anchor x offset
 			{
@@ -11607,7 +11673,7 @@ end
 				step = 1,
 				usedecimals = true,
 				name = L["OPTIONS_YOFFSET"],
-				desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+				desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 			},
 			
 			{type = "blank"},
@@ -11701,7 +11767,7 @@ end
 --> ~scripts ~scripting ~code �nimations ~animations
 	Plater.CreateScriptingPanel()
 	Plater.CreateHookingPanel()
-	--Plater.CreateWagoPanel() --wago_imports
+	Plater.CreateWagoPanel() --wago_imports
 	Plater.CreateSpellAnimationPanel()
 	
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -11781,7 +11847,7 @@ end
 				Plater:Msg ("this setting require a /reload to take effect.")
 			end,
 			name = "Use Custom Strata Channels",
-			desc = "Allow nameplates to be placed in custom frame strata channels.\n\n|cFFFFFF00Important|r: a /reload will be triggered on changing this setting.",
+			desc = "Allow nameplates to be placed in custom frame strata channels.\n\n" .. ImportantText .. "a /reload will be triggered on changing this setting.",
 		},
 		
 		{type = "blank"},
@@ -12010,7 +12076,7 @@ end
 				Plater.RefreshAutoToggle()
 			end,
 			name = L["OPTIONS_ENABLED"],
-			desc = "When enabled, Plater will enable or disable stacking nameplates based on the settings below.\n\n|cFFFFFF00Important|r: only toggle on if 'Stacking Nameplates' is enabled in the General Settings tab.",
+			desc = "When enabled, Plater will enable or disable stacking nameplates based on the settings below.\n\n" .. ImportantText .. "only toggle on if 'Stacking Nameplates' is enabled in the General Settings tab.",
 		},
 		
 		{
@@ -12474,7 +12540,7 @@ end
 				Plater.UpdateAllPlates()
 			end,
 			name = L["OPTIONS_SHADOWCOLOR"],
-			desc = "|cFFFFFF00Important|r: hide and show nameplates to see changes.",
+			desc = ImportantText .. "hide and show nameplates to see changes.",
 		},		
 		
 		{
@@ -13022,7 +13088,7 @@ end
 			thumbscale = 1.7,
 			usedecimals = true,
 			name = "Lock to Screen (Top Side)" .. CVarIcon,
-			desc = "Min space between the nameplate and the top of the screen. Increase this if some part of the nameplate are going out of the screen.\n\n|cFFFFFFFFDefault: 0.065|r\n\n|cFFFFFF00Important|r: if you're having issue, manually set using these macros:\n/run SetCVar ('nameplateOtherTopInset', '0.065')\n/run SetCVar ('nameplateLargeTopInset', '0.065')\n\n|cFFFFFF00Important|r: setting to 0 disables this feature." .. CVarDesc,
+			desc = "Min space between the nameplate and the top of the screen. Increase this if some part of the nameplate are going out of the screen.\n\n|cFFFFFFFFDefault: 0.065|r\n\n" .. ImportantText .. "if you're having issue, manually set using these macros:\n/run SetCVar ('nameplateOtherTopInset', '0.065')\n/run SetCVar ('nameplateLargeTopInset', '0.065')\n\n" .. ImportantText .. "setting to 0 disables this feature." .. CVarDesc,
 			nocombat = true,
 		},
 		
@@ -13042,7 +13108,7 @@ end
 			thumbscale = 1.7,
 			usedecimals = true,
 			name = "Nameplate Overlap (V)" .. CVarIcon,
-			desc = "The space between each nameplate vertically when stacking is enabled.\n\n|cFFFFFFFFDefault: 1.10|r" .. CVarDesc .. "\n\n|cFFFFFF00Important|r: if you find issues with this setting, use:\n|cFFFFFFFF/run SetCVar ('nameplateOverlapV', '1.6')|r",
+			desc = "The space between each nameplate vertically when stacking is enabled.\n\n|cFFFFFFFFDefault: 1.10|r" .. CVarDesc .. "\n\n" .. ImportantText .. "if you find issues with this setting, use:\n|cFFFFFFFF/run SetCVar ('nameplateOverlapV', '1.6')|r",
 			nocombat = true,
 		},
 		{
@@ -13061,7 +13127,7 @@ end
 			thumbscale = 1.7,
 			usedecimals = true,
 			name = "Nameplate Overlap (H)" .. CVarIcon,
-			desc = "The space between each nameplate horizontally when stacking is enabled.\n\n|cFFFFFFFFDefault: 0.8|r" .. CVarDesc .. "\n\n|cFFFFFF00Important|r: if you find issues with this setting, use:\n|cFFFFFFFF/run SetCVar ('nameplateOverlapH', '0.8')|r",
+			desc = "The space between each nameplate horizontally when stacking is enabled.\n\n|cFFFFFFFFDefault: 0.8|r" .. CVarDesc .. "\n\n" .. ImportantText .. "if you find issues with this setting, use:\n|cFFFFFFFF/run SetCVar ('nameplateOverlapH', '0.8')|r",
 			nocombat = true,
 		},
 		
@@ -13120,7 +13186,7 @@ end
 			thumbscale = 1.7,
 			usedecimals = true,
 			name = "Min Scale" .. CVarIcon,
-			desc = "Scale applied when the nameplate is far away from the camera.\n\n|cFFFFFF00Important|r: is the distance from the camera and |cFFFF4444not|r the distance from your character.\n\n|cFFFFFFFFDefault: 0.8|r" .. CVarDesc,
+			desc = "Scale applied when the nameplate is far away from the camera.\n\n" .. ImportantText .. "is the distance from the camera and |cFFFF4444not|r the distance from your character.\n\n|cFFFFFFFFDefault: 0.8|r" .. CVarDesc,
 			nocombat = true,
 		},
 
@@ -13130,6 +13196,21 @@ end
 			values = function() return nameplate_anchor_options end,
 			name = "Anchor Point" .. CVarIcon,
 			desc = "Where the nameplate is anchored to.\n\n|cFFFFFFFFDefault: Head|r" .. CVarDesc,
+			nocombat = true,
+		},
+		{
+			type = "toggle",
+			get = function() return GetCVarBool ("nameplateShowDebuffsOnFriendly") end,
+			set = function (self, fixedparam, value) 
+				if (not InCombatLockdown()) then
+					SetCVar ("nameplateShowDebuffsOnFriendly", value and "1" or "0")
+				else
+					Plater:Msg (L["OPTIONS_ERROR_CVARMODIFY"])
+					self:SetValue (GetCVarBool ("nameplateShowDebuffsOnFriendly"))
+				end
+			end,
+			name = "Show Debuffs on Blizzard Health Bars" .. CVarIcon,
+			desc = "While in dungeons or raids, if friendly nameplates are enabled it won't show debuffs on them.\nIf any Plater module is disabled, this will affect these nameplates as well." .. CVarDesc .. CVarNeedReload,
 			nocombat = true,
 		},
 		
@@ -13245,7 +13326,7 @@ end
 					self:SetValue (GetCVar ("nameplateShowFriendlyGuardians") == CVAR_ENABLED)
 				end
 			end,
-			name = "Show Friendly Guadians" .. CVarIcon,
+			name = "Show Friendly Guardians" .. CVarIcon,
 			desc = "Show nameplates for friendly pets considered as guardian" .. CVarDesc,
 			nocombat = true,
 		},
@@ -13526,7 +13607,7 @@ end
 				Plater:Msg ("this setting require a /reload to take effect.")
 			end,
 			name = "Masque Support",
-			desc = "If the Masque addon is installed, enabling this will make Plater to use Masque borders.\n\n|cFFFFFF00Important|r: require /reload after changing this setting.",
+			desc = "If the Masque addon is installed, enabling this will make Plater to use Masque borders.\n\n" .. ImportantText .. "require /reload after changing this setting.",
 		},
 		
 		{
@@ -13791,7 +13872,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_XOFFSET"],
-			desc = "Adjust the position on the X axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the X axis." .. SliderRightClickDesc,
 			hidden = IS_WOW_PROJECT_NOT_MAINLINE,
 		},
 		{
@@ -13806,7 +13887,7 @@ end
 			step = 1,
 			usedecimals = true,
 			name = L["OPTIONS_YOFFSET"],
-			desc = "Adjust the position on the Y axis.\n\n|cFFFFFF00Important|r: right click to type the value.",
+			desc = "Adjust the position on the Y axis." .. SliderRightClickDesc,
 			hidden = IS_WOW_PROJECT_NOT_MAINLINE,
 		},
 		

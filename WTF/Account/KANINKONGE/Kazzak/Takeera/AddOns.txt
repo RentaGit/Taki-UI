@@ -39,3 +39,5 @@ BigWigs_Shadowlands: enabled
 LittleWigs_Legion: enabled
 LittleWigs: enabled
 TomCats: disabled
+LortiUI: disabled
+UberUI: disabled

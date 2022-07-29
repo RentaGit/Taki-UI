@@ -30,7 +30,7 @@ E.SlashHandler = function(msg)
 		E.Write("reload or rl: " ..  L["Reload addon."])
 		E.Write("reset or rt: " .. L["Reset all cooldown timers."])
 	elseif (command == "rl" or command == "reload") then
-		E:Refresh(true)
+		E:Refresh()
 	elseif (command == "rt" or command == "reset") then
 		if (value == "") then
 			P:ResetAllIcons()
@@ -64,8 +64,6 @@ E.SlashHandler = function(msg)
 		E.Write(key, L["Manual Mode"], state)
 		P:Refresh()
 		E:ACR_NotifyChange()
-	elseif (command == "sync") then
-
 	elseif (command == "s" or command == "spell" or E.CFG_ZONE[command]) then
 		local zone = E.CFG_ZONE[command] and command or "arena"
 		value = value and string.lower(value)

@@ -1,40 +1,40 @@
 
 OmniCCDB = {
+	["global"] = {
+		["dbVersion"] = 6,
+		["addonVersion"] = "9.2.0",
+	},
 	["profileKeys"] = {
 		["Takidari - Ravencrest"] = "Default",
 		["Rintake - Ragnaros"] = "Default",
 		["Takidin - Ravencrest"] = "Default",
-		["Rentamdi - Kazzak"] = "Default",
 		["Rentaki - Ravencrest"] = "Default",
-		["Takiworra - Kazzak"] = "Default",
+		["Takitalon - Arathi"] = "Default",
+		["Rintake - Argent Dawn"] = "Default",
 		["Takikin - Kazzak"] = "Default",
-		["Ivelea - Argent Dawn"] = "Default",
+		["Takifistzz - Kazzak"] = "Default",
 		["Rentaco - Kazzak"] = "Default",
 		["Takuu - Ravencrest"] = "Default",
-		["Takiwar - Kazzak"] = "Default",
+		["Huntaki - Ravencrest"] = "Default",
 		["Rentakidh - Argent Dawn"] = "Default",
 		["Takidari - Kazzak"] = "Default",
 		["Taaku - Kazzak"] = "Default",
-		["Rentaki - Kazzak"] = "Default",
+		["Ivelea - Argent Dawn"] = "Default",
 		["Takidin - Kazzak"] = "Default",
-		["Renwarri - Kazzak"] = "Default",
+		["Takidk - Kazzak"] = "Default",
 		["Thaaeyn - Argent Dawn"] = "Default",
 		["Rentakisham - EU Mythic Dungeons"] = "Default",
 		["Renqqø - Kazzak"] = "Default",
-		["Rendudu - Kazzak"] = "Default",
+		["Takiwar - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
-		["Takidk - Kazzak"] = "Default",
+		["Renwarri - Kazzak"] = "Default",
 		["Takiscoper - Kazzak"] = "Default",
-		["Huntaki - Ravencrest"] = "Default",
-		["Takitalon - Arathi"] = "Default",
-		["Takifistzz - Kazzak"] = "Default",
-		["Rintake - Argent Dawn"] = "Default",
-		["Rentaco - Ravencrest"] = "Default",
+		["Rendudu - Kazzak"] = "Default",
 		["Takibank - Argent Dawn"] = "Default",
-	},
-	["global"] = {
-		["addonVersion"] = "9.0.6-beta1",
-		["dbVersion"] = 6,
+		["Rentaki - Kazzak"] = "Default",
+		["Takiworra - Kazzak"] = "Default",
+		["Rentaco - Ravencrest"] = "Default",
+		["Rentamdi - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -90,9 +90,9 @@ OmniCCDB = {
 				},
 				["Plater Nameplates Theme"] = {
 					["textStyles"] = {
-						["soon"] = {
-						},
 						["seconds"] = {
+						},
+						["soon"] = {
 						},
 						["minutes"] = {
 						},
@@ -103,6 +103,7 @@ OmniCCDB = {
 	},
 }
 OmniCC4Config = {
+	["version"] = "8.2.5",
 	["groupSettings"] = {
 		["base"] = {
 			["styles"] = {
@@ -145,20 +146,19 @@ OmniCC4Config = {
 					["r"] = 1,
 				},
 			},
-			["fontSize"] = 16,
-			["mmSSDuration"] = 600,
+			["fontFace"] = "Interface\\Addons\\SharedMedia\\fonts\\vixar\\vixar.ttf",
+			["yOff"] = -1,
 			["spiralOpacity"] = 1.00999997742474,
 			["minDuration"] = 2,
 			["xOff"] = 0,
 			["tenthsDuration"] = 0,
 			["fontOutline"] = "OUTLINE",
 			["minSize"] = 0.5,
+			["mmSSDuration"] = 600,
 			["minEffectDuration"] = 30,
-			["yOff"] = -1,
-			["fontFace"] = "Interface\\Addons\\SharedMedia\\fonts\\vixar\\vixar.ttf",
+			["fontSize"] = 16,
 		},
 	},
 	["groups"] = {
 	},
-	["version"] = "8.2.5",
 }

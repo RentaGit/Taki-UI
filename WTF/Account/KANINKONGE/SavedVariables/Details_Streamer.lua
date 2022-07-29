@@ -17,13 +17,13 @@ Details_StreamerDB = {
 		["Rentakibmah - Baelgun"] = "Hunteraki - Frostmane",
 		["Rintake - Ragnaros"] = "Hunteraki - Frostmane",
 		["Rentakigold - Twisting Nether"] = "Hunteraki - Frostmane",
-		["Takibank - Argent Dawn"] = "Hunteraki - Frostmane",
+		["Takidari - Ravencrest"] = "Hunteraki - Frostmane",
 		["Taaku - Kazzak"] = "Hunteraki - Frostmane",
-		["Takiworra - Kazzak"] = "Hunteraki - Frostmane",
+		["Rintake - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Takimage - Kazzak"] = "Hunteraki - Frostmane",
-		["Takiworgen - Ravencrest"] = "Hunteraki - Frostmane",
+		["Ivelea - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Takii - Frostmane"] = "Hunteraki - Frostmane",
-		["Takitalon - Arathi"] = "Hunteraki - Frostmane",
+		["Rentaki - Ravencrest"] = "Hunteraki - Frostmane",
 		["Rentakidh - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Takidari - Kazzak"] = "Hunteraki - Frostmane",
 		["Rentakigold - Eredar"] = "Hunteraki - Frostmane",
@@ -36,22 +36,17 @@ Details_StreamerDB = {
 		["Rendudu - Kazzak"] = "Hunteraki - Frostmane",
 		["Takeera - Kazzak"] = "Hunteraki - Frostmane",
 		["Takidk - Kazzak"] = "Hunteraki - Frostmane",
-		["Takioblivion - Medivh"] = "Hunteraki - Frostmane",
 		["Nyumi - Argent Dawn"] = "Hunteraki - Frostmane",
-		["Rentaki - Ravencrest"] = "Hunteraki - Frostmane",
-		["Ivelea - Argent Dawn"] = "Hunteraki - Frostmane",
-		["Rintake - Argent Dawn"] = "Hunteraki - Frostmane",
+		["Takioblivion - Medivh"] = "Hunteraki - Frostmane",
+		["Takitalon - Arathi"] = "Hunteraki - Frostmane",
+		["Takiworgen - Ravencrest"] = "Hunteraki - Frostmane",
+		["Takiworra - Kazzak"] = "Hunteraki - Frostmane",
 		["Rentaco - Ravencrest"] = "Hunteraki - Frostmane",
-		["Takidari - Ravencrest"] = "Hunteraki - Frostmane",
+		["Takibank - Argent Dawn"] = "Hunteraki - Frostmane",
 	},
 	["profiles"] = {
 		["Hunteraki - Frostmane"] = {
-			["font_color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
+			["use_square_mode"] = false,
 			["is_first_run"] = false,
 			["grow_direction"] = "right",
 			["arrow_color"] = {
@@ -69,17 +64,22 @@ Details_StreamerDB = {
 				["radius"] = 160,
 				["hide"] = false,
 			},
-			["point"] = "CENTER",
+			["scale"] = 1,
 			["arrow_anchor_x"] = 0,
 			["row_height"] = 20,
 			["row_texture"] = "Details Serenity",
-			["scale"] = 1,
-			["use_square_mode"] = false,
-			["author"] = "Details! Team",
+			["font_color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
+			["point"] = "CENTER",
+			["main_frame_strata"] = "LOW",
 			["square_amount"] = 5,
 			["enabled"] = false,
 			["arrow_size"] = 10,
-			["y"] = 4.57763671875e-05,
+			["font_size"] = 10,
 			["row_spacement"] = 21,
 			["main_frame_color"] = {
 				0, -- [1]
@@ -87,9 +87,13 @@ Details_StreamerDB = {
 				0, -- [3]
 				0.2, -- [4]
 			},
-			["main_frame_strata"] = "LOW",
+			["row_color"] = {
+				0.1, -- [1]
+				0.1, -- [2]
+				0.1, -- [3]
+				0.4, -- [4]
+			},
 			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
-			["font_size"] = 10,
 			["per_second"] = {
 				["enabled"] = false,
 				["point"] = "CENTER",
@@ -101,16 +105,12 @@ Details_StreamerDB = {
 				["update_speed"] = 0.05,
 				["attribute_type"] = 1,
 			},
+			["use_spark"] = true,
 			["x"] = 0,
 			["font_face"] = "Friz Quadrata TT",
 			["square_size"] = 32,
-			["use_spark"] = true,
-			["row_color"] = {
-				0.1, -- [1]
-				0.1, -- [2]
-				0.1, -- [3]
-				0.4, -- [4]
-			},
+			["y"] = 4.57763671875e-05,
+			["author"] = "Details! Team",
 			["main_frame_locked"] = false,
 			["arrow_anchor_y"] = 0,
 		},

@@ -11,6 +11,7 @@ C["Party"] = {
 		["raid"] = false,
 		["scenario"] = false,
 		["none"] = false,
+		["finder"] = true,
 		["size"] = 5,
 	},
 	arena = {
@@ -19,6 +20,7 @@ C["Party"] = {
 			["showPlayer"] = false,
 			["showPlayerEx"] = true,
 			["showTooltip"] = false,
+			["showRange"] = false,
 		},
 		position = {
 			["uf"] = "auto",
@@ -60,6 +62,7 @@ C["Party"] = {
 			["glowBuffs"] = true,
 			["glowType"] = "wardrobe",
 			["glowBuffTypes"] = {
+				["pvptrinket"] = false,
 				["racial"] = false,
 				["trinket"] = false,
 				["covenant"] = false,
@@ -354,7 +357,7 @@ else
 		209258,
 		187827,
 		196718,
-		200166,
+		191427,
 		205604,
 
 		106839,
