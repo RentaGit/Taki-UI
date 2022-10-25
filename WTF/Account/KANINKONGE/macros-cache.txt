@@ -50,6 +50,8 @@ VER 3 0000000000000115 "buff" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use Eternal Augment Rune
 /cast lightning shield
+/cast water shield
+/cancelaura Bron's Call to Action
 END
 VER 3 0000000000000116 "CANCELSTUFF" "136041"
 /cancelaura soulshape
@@ -100,6 +102,11 @@ VER 3 00000000000000E2 "if/pe" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use [talent:6/3]Icefury;[pet: Primal Storm Elemental]Eye of the Storm;[pet: Primal Fire Elemental]Meteor;[pet: Primal Earth Elemental]Harden Skin
 END
+VER 3 0000000000000119 "lava lash" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast lava lash
+/use Ring of Collapsing Futures
+END
 VER 3 00000000000000B2 "LMT" "INV_MISC_QUESTIONMARK"
 #showtooltip Liquid Magma Totem
 /cast [@cursor] Liquid Magma Totem
@@ -123,8 +130,18 @@ VER 3 00000000000000E6 "RocketJump" "INV_MISC_QUESTIONMARK"
 /cast Rocket Jump
 /use Prismatic Bauble
 END
+VER 3 000000000000011B "shaman mount" "INV_MISC_QUESTIONMARK"
+/cast [swimming,nomod,nomounted] Iron Skyreaver Phoenix;[swimming,mod:shift] Abyssal Seahorse;[flyable,nomod,nomounted] Iron Skyreaver; [nomounted] Vicious War Kodo;
+#show Smoke Bomb
+/dismount
+END
 VER 3 00000000000000EB "shocktest" "INV_MISC_QUESTIONMARK"
 /cast [@mouseover, exists, nodead][] Holy Shock
+END
+VER 3 0000000000000118 "stormstrike" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast stormstrike
+/use Ring of Collapsing Futures
 END
 VER 3 0000000000000113 "surge of earth" "INV_MISC_QUESTIONMARK"
 #showtooltip surge of earth
@@ -141,6 +158,10 @@ VER 3 00000000000000F2 "ts/purge" "INV_MISC_QUESTIONMARK"
 /cast [nomod] thunderstorm
 /cast [mod:shift] purge
 /cast [mod:alt, @focus] purge
+END
+VER 3 000000000000011A "Tuft" "INV_MISC_QUESTIONMARK"
+#showtooltip Tuft of Smoldering Plumage
+/use [@mouseover,exists,nodead] [] 13
 END
 VER 3 00000000000000D9 "vault" "413587"
 /run LoadAddOn("Blizzard_WeeklyRewards"); WeeklyRewardsFrame:Show()

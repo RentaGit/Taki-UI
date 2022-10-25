@@ -3,8 +3,8 @@ OneRing_Config = {
 	["CharProfiles"] = {
 		["Ravencrest-Rentaki"] = "default",
 	},
-	["_GameVersion"] = "9.2.5",
-	["_OPieVersion"] = "Xe 6 (3.106)",
+	["_GameVersion"] = "9.2.7",
+	["_OPieVersion"] = "Xe 8 (3.107)",
 	["ProfileStorage"] = {
 		["default"] = {
 			["Bindings"] = {
@@ -226,8 +226,8 @@ OneRing_Config = {
 					["sliceToken"] = "ABuexmP8vte",
 				}, -- [13]
 				{
-					["sliceToken"] = "ABuejA9FANs",
 					["id"] = 69046,
+					["sliceToken"] = "ABuejA9FANs",
 				}, -- [14]
 				{
 					"item", -- [1]

@@ -1,8 +1,11 @@
 # BigWigs
 
-## [v243.1](https://github.com/BigWigsMods/BigWigs/tree/v243.1) (2022-06-22)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v243...v243.1) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
+## [v248.1](https://github.com/BigWigsMods/BigWigs/tree/v248.1) (2022-09-17)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v248...v248.1) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
 
-- SepulcherOfTheFirstOnes/PrototypePantheon: Extend the throttle for stage changes in case one cast is delayed by more than 2 seconds  
-- Update frFR (#1232)  
-- Update zhTW/zhCN (#1233)  
+- CastleNathria/Affixes: Fix bar pausing error, closes #1268  
+- SepulcherOfTheFirstOnes/PrototypePantheon: Clean up comments  
+- SepulcherOfTheFirstOnes: Cleanups  
+- SanctumOfDomination/TheEyeOfTheJailer: Remove unused option flag "Immediate Extermination"  
+- SanctumOfDomination: Clean up comments  
+- SanctumOfDomination: Cleanups  

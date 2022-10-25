@@ -10,6 +10,7 @@ local IS_WOW_PROJECT_MAINLINE = WOW_PROJECT_ID == WOW_PROJECT_MAINLINE
 local IS_WOW_PROJECT_NOT_MAINLINE = WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE
 local IS_WOW_PROJECT_CLASSIC_ERA = WOW_PROJECT_ID == WOW_PROJECT_CLASSIC
 local IS_WOW_PROJECT_CLASSIC_TBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
+local IS_WOW_PROJECT_CLASSIC_WRATH = IS_WOW_PROJECT_NOT_MAINLINE and ClassicExpansionAtLeast and LE_EXPANSION_WRATH_OF_THE_LICH_KING and ClassicExpansionAtLeast(LE_EXPANSION_WRATH_OF_THE_LICH_KING)
 
 local PixelUtil = PixelUtil or DFPixelUtil
 
@@ -241,8 +242,8 @@ function Plater.OpenOptionsPanel()
 		{name = "AdvancedConfig",			title = L["OPTIONS_TABNAME_ADVANCED"]},
 		{name = "resourceFrame",			title = L["OPTIONS_TABNAME_COMBOPOINTS"]},
 
-		{name = "SearchFrame", title = L["OPTIONS_TABNAME_SEARCH"]},
 		{name = "WagoIo", title = "Wago Imports"}, --wago_imports --localize-me
+		{name = "SearchFrame", title = L["OPTIONS_TABNAME_SEARCH"]},
 		
 	}, 
 	frame_options, hookList)
@@ -338,8 +339,8 @@ function Plater.OpenOptionsPanel()
 	local resourceFrame			= mainFrame.AllFrames [24]
 
 	--4th row
-	local searchFrame			= mainFrame.AllFrames [25]
-	local wagoIoFrame 			= mainFrame.AllFrames [26] --wago_imports
+	local wagoIoFrame 			= mainFrame.AllFrames [25] --wago_imports
+	local searchFrame			= mainFrame.AllFrames [26]
 
 	local scriptButton		= mainFrame.AllButtons [6] --also need update on line 115 and 13818
 	local modButton		 	= mainFrame.AllButtons [7]
@@ -572,7 +573,7 @@ function Plater.OpenOptionsPanel()
 						local paste = strtrim(table.concat(pasteBuffer))
 						
 						local wagoProfile = Plater.DecompressData (paste, "print")
-						if (wagoProfile and type (wagoProfile == "table")) then
+						if (wagoProfile and type (wagoProfile) == "table") then
 							if  (wagoProfile.plate_config) then
 								local existingProfileName = nil
 								local wagoInfoText = "Import data verified.\n\n"
@@ -676,7 +677,7 @@ function Plater.OpenOptionsPanel()
 				local text = profilesFrame.ImportStringField.importDataText
 				local profile = Plater.DecompressData (text, "print")
 				
-				if (profile and type (profile == "table")) then
+				if (profile and type (profile) == "table") then
 				
 					--decompress success, need to see if this is a real profile and not a script
 					if (not profile.plate_config) then
@@ -990,7 +991,7 @@ function Plater.OpenOptionsPanel()
 					local update = Plater.CompanionDataSlugs[id]
 					
 					local wagoProfile = Plater.DecompressData (update.encoded, "print")				
-					if (wagoProfile and type (wagoProfile == "table") and wagoProfile.plate_config) then
+					if (wagoProfile and type(wagoProfile) == "table" and wagoProfile.plate_config) then
 				
 						local wagoInfoText = ""
 						wagoInfoText = wagoInfoText .. "Name: " .. update.name .. "\n\n"
@@ -1274,12 +1275,12 @@ interface_title:SetPoint (startX, startY)
 
 local in_combat_background = Plater:CreateImage (frontPageFrame)
 in_combat_background:SetColorTexture (.6, 0, 0, .1)
-in_combat_background:SetPoint ("topleft", interface_title, "bottomleft", 0, 2)
-in_combat_background:SetPoint ("bottomright", frontPageFrame, "bottomright", -10, 430)
+in_combat_background:SetPoint ("topleft", interface_title, "bottomleft", -5, 5)
+in_combat_background:SetSize(275, 288)
 in_combat_background:Hide()
 
 local in_combat_label = Plater:CreateLabel (frontPageFrame, "you are in combat", 24, "silver")
-in_combat_label:SetPoint ("right", in_combat_background, "right", -10, 0)
+in_combat_label:SetPoint ("right", in_combat_background, "right", -10, 10)
 in_combat_label:Hide()
 
 frontPageFrame:RegisterEvent ("PLAYER_REGEN_DISABLED")
@@ -2137,6 +2138,18 @@ local debuff_options = {
 		end,
 		name = "Show Dispellable Buffs",
 		desc = "Show auras which can be dispelled or stolen.",
+	},
+	
+	{
+		type = "toggle",
+		get = function() return Plater.db.profile.aura_show_only_short_dispellable_on_players end,
+		set = function (self, fixedparam, value) 
+			Plater.db.profile.aura_show_only_short_dispellable_on_players = value
+			Plater.RefreshDBUpvalues()
+			Plater.UpdateAllPlates()
+		end,
+		name = "Only short Dispellable Buffs on Players",
+		desc = "Show auras which can be dispelled or stolen on players if they are below 120sec duration (only applicable when 'Show Dispellable Buffs' is enabled).",
 	},
 	
 	{
@@ -3763,12 +3776,11 @@ Plater.CreateAuraTesting()
 			for i = 1, #scripts do
 				local scriptObject = scripts [i]
 				if (scriptObject.ScriptType == 1 or scriptObject.ScriptType == 2) then
-					tinsert (t, {0, 0, scriptObject.Name, scriptObject.Enabled and 1 or 0, label = scriptObject.Name, value = i, color = scriptObject.Enabled and "white" or "red", onclick = line_onclick_trigger_dropdown, desc = scriptObject.Desc})
+					tinsert (t, {0, 0, scriptObject.Name, scriptObject.Enabled and 1 or 0, 0, label = scriptObject.Name, value = i, color = scriptObject.Enabled and "white" or "red", onclick = line_onclick_trigger_dropdown, desc = scriptObject.Desc})
 				end
 			end
 			
 			table.sort (t, Plater.SortScripts)
-			
 			return t
 		end
 		
@@ -12397,6 +12409,21 @@ end
 		{
 			type = "color",
 			get = function()
+				local color = Plater.db.profile.cast_statusbar_color_channeling
+				return {color[1], color[2], color[3], color[4]}
+			end,
+			set = function (self, r, g, b, a) 
+				local color = Plater.db.profile.cast_statusbar_color_channeling
+				color[1], color[2], color[3], color[4] = r, g, b, a
+				Plater.UpdateAllPlates()
+				Plater.DoCastBarTest()
+			end,
+			name = "Channelled Cast",
+			desc = "Channelled Cast",
+		},
+		{
+			type = "color",
+			get = function()
 				local color = Plater.db.profile.cast_statusbar_color_nointerrupt
 				return {color[1], color[2], color[3], color[4]}
 			end,
@@ -12651,7 +12678,7 @@ end
 
 	_G.C_Timer.After(0.800, function() --~delay
 		--the -30 is to fix an annomaly where the options for castbars starts 30 pixels to the right, dunno why (tercio)
-		DF:BuildMenu (castBarFrame, castBar_options, startX - 30, startY, heightSize, true, options_text_template, options_dropdown_template, options_switch_template, true, options_slider_template, options_button_template, globalCallback)	
+		DF:BuildMenu (castBarFrame, castBar_options, startX-20, startY, heightSize, true, options_text_template, options_dropdown_template, options_switch_template, true, options_slider_template, options_button_template, globalCallback)	
 	end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -12895,7 +12922,7 @@ end
 	}
 	
 	
-	if IS_WOW_PROJECT_NOT_MAINLINE then
+	if IS_WOW_PROJECT_NOT_MAINLINE and not IS_WOW_PROJECT_CLASSIC_WRATH then
 		local thread_options_tank = {
 			{type = "label", get = function() return "Tank or DPS Colors:" end, text_template = DF:GetTemplate ("font", "ORANGE_FONT_TEMPLATE")},
 			
@@ -13187,6 +13214,26 @@ end
 			usedecimals = true,
 			name = "Min Scale" .. CVarIcon,
 			desc = "Scale applied when the nameplate is far away from the camera.\n\n" .. ImportantText .. "is the distance from the camera and |cFFFF4444not|r the distance from your character.\n\n|cFFFFFFFFDefault: 0.8|r" .. CVarDesc,
+			nocombat = true,
+		},
+		
+		{
+			type = "range",
+			get = function() return tonumber (GetCVar ("nameplateLargerScale")) end,
+			set = function (self, fixedparam, value) 
+				if (not InCombatLockdown()) then
+					SetCVar ("nameplateLargerScale", value)
+				else
+					Plater:Msg (L["OPTIONS_ERROR_CVARMODIFY"])
+				end
+			end,
+			min = 0.3,
+			max = 2,
+			step = 0.1,
+			thumbscale = 1.7,
+			usedecimals = true,
+			name = "Larger Scale" .. CVarIcon,
+			desc = "Scale applied to important monsters (such as bosses).\n\n|cFFFFFFFFDefault: 1.2|r" .. CVarDesc,
 			nocombat = true,
 		},
 

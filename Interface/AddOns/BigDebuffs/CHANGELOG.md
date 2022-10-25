@@ -1,2 +1,1 @@
-- Fix Viper Sting
-- Bug fix
+- Add support for WoTLK Classic

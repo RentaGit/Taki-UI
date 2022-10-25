@@ -2,6 +2,8 @@
 SUIDB = {
 	["profileKeys"] = {
 		["Rentaki - Kazzak"] = "Default",
+		["Takidin - Kazzak"] = "Default",
+		["Takil - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
 	},
 	["profiles"] = {
@@ -9,9 +11,9 @@ SUIDB = {
 			["general"] = {
 				["display"] = {
 					["ms"] = false,
-					["fps"] = false,
-					["ilvl"] = false,
 					["avgilvl"] = true,
+					["ilvl"] = false,
+					["fps"] = false,
 				},
 				["texture"] = "Interface\\AddOns\\SUI\\Media\\Textures\\Status\\Flat",
 			},
@@ -34,11 +36,13 @@ SUIDB = {
 					["point"] = "BOTTOM",
 					["scale"] = 1.299999952316284,
 				},
-				["PlayerFrame"] = {
+				["TargetFrameDragFrame"] = {
+					["y"] = -129.1408538818359,
+					["x"] = 339.6917724609375,
+					["point"] = "CENTER",
+					["scale"] = 1,
 				},
 				["FocusFrame"] = {
-				},
-				["TargetFrame"] = {
 				},
 				["TooltipFrame"] = {
 					["y"] = 275.8977355957031,
@@ -46,11 +50,9 @@ SUIDB = {
 					["point"] = "BOTTOMRIGHT",
 					["scale"] = 1,
 				},
-				["TargetFrameDragFrame"] = {
-					["y"] = -129.1408538818359,
-					["x"] = 339.6917724609375,
-					["point"] = "CENTER",
-					["scale"] = 1,
+				["TargetFrame"] = {
+				},
+				["PlayerFrame"] = {
 				},
 			},
 			["install"] = true,
@@ -62,6 +64,7 @@ SUIDB = {
 					["mouseover"] = true,
 				},
 				["buttons"] = {
+					["key"] = false,
 					["flash"] = true,
 				},
 			},

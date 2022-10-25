@@ -833,6 +833,7 @@ PLATER_DEFAULT_SETTINGS = {
 		
 		aura_show_important = true,
 		aura_show_dispellable = true,
+		aura_show_only_short_dispellable_on_players = false,
 		aura_show_enrage = false,
 		aura_show_magic = false,
 		aura_show_aura_by_the_player = true,
@@ -2632,6 +2633,7 @@ PLATER_DEFAULT_SETTINGS = {
 		cast_statusbar_bgtexture = "PlaterBackground 2",
 		cast_statusbar_bgcolor = {0.113725, 0.113725, 0.113725, 0.891240},
 		cast_statusbar_color = {1, .7, 0, 0.96},
+		cast_statusbar_color_channeling = {0, 1, 0, 0.96},
 		cast_statusbar_color_nointerrupt = {.5, .5, .5, 0.96},
 		cast_statusbar_color_interrupted = {1, .1, .1, 1},
 		cast_statusbar_color_finished = {0, 1, 0, 1},

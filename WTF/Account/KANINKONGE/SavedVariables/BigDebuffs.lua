@@ -5,13 +5,16 @@ BigDebuffsDB = {
 		},
 	},
 	["profileKeys"] = {
-		["Rentakisham - EU Mythic Dungeons"] = "Default",
 		["Rentaki - Kazzak"] = "Default",
+		["Takidin - Kazzak"] = "Default",
+		["Rentakisham - EU Mythic Dungeons"] = "Default",
+		["Takil - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
 			["raidFrames"] = {
+				["maxDebuffs"] = 3,
 				["anchor"] = "RIGHT",
 				["inRaid"] = {
 					["hide"] = true,

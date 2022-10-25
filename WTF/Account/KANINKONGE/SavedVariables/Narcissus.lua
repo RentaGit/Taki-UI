@@ -7,6 +7,7 @@ NarcissusDB = {
 	["ShrinkArea"] = 0,
 	["ColorChoice"] = 0,
 	["ShowItemID"] = false,
+	["DetailedIlvlInfo"] = true,
 	["Favorites"] = {
 		["FavoriteWeaponIDs"] = {
 		},
@@ -21,68 +22,68 @@ NarcissusDB = {
 	["ItemNameWidth"] = 180,
 	["UseEscapeButton"] = true,
 	["CorruptionTooltipModel"] = true,
-	["UseEntranceVisual"] = true,
-	["BorderTheme"] = "Bright",
+	["FontHeightItemName"] = 10,
+	["HideTextsWithUI"] = true,
 	["GlobalScale"] = 0.8,
 	["DressingRoom"] = true,
 	["UseBustShot"] = true,
 	["SearchRelativesHotkey"] = "TAB",
 	["AutoColorTheme"] = true,
-	["DressingRoomShowIconSelect"] = false,
-	["UseExitConfirmation"] = true,
 	["ShowFullBody"] = true,
+	["UseExitConfirmation"] = true,
 	["BaseLineOffset"] = 0,
-	["IsSortedByCategory"] = true,
-	["ConduitTooltip"] = false,
-	["DressingRoomUseTargetModel"] = false,
-	["MinimapButton"] = {
-		["Position"] = -2.600342923613213,
-	},
-	["AnchorToMinimap"] = true,
-	["AutoPlayAnimation"] = true,
-	["CameraTransition"] = true,
-	["AFKScreen"] = false,
-	["PaperDollWidget"] = true,
-	["Version"] = 10500,
-	["CorruptionTooltip"] = false,
-	["ShowModulePanelOnMouseOver"] = true,
-	["CameraSafeMode"] = true,
-	["DefaultLayout"] = 2,
-	["ProgenitorTheme"] = 1,
-	["EnableGrainEffect"] = false,
-	["OutfitSortMethod"] = "name",
-	["CorruptionBar"] = true,
-	["EnableDoubleTap"] = false,
-	["DressingRoomIncludeItemID"] = false,
-	["GemManager"] = true,
-	["ModelPanelScale"] = 1,
-	["TooltipTheme"] = "Bright",
-	["AlwaysShowModel"] = false,
-	["LetterboxRatio"] = 2.35,
-	["LetterboxEffect"] = false,
-	["TruncateText"] = false,
-	["PhotoModeButton"] = {
-		["HideTexts"] = true,
-	},
-	["WeatherEffect"] = true,
-	["CameraOrbit"] = true,
-	["FadeButton"] = false,
 	["ShowMinimapButton"] = true,
+	["IsSortedByCategory"] = true,
 	["Tutorials"] = {
 		["Domination"] = false,
 		["ExitConfirmation"] = false,
-		["WeaponBrowser"] = false,
-		["NPCBrowser"] = true,
 		["EquipmentSetManager"] = false,
+		["NPCBrowser"] = true,
+		["SpellVisualBrowser"] = false,
 		["IndependentMinimapButton"] = false,
 		["NPCBrowserEntance"] = false,
 		["Movement"] = false,
-		["SpellVisualBrowser"] = false,
+		["WeaponBrowser"] = false,
 	},
+	["FadeButton"] = false,
+	["CameraOrbit"] = true,
+	["Version"] = 10500,
+	["TruncateText"] = false,
+	["AutoPlayAnimation"] = true,
+	["AFKScreen"] = false,
+	["PaperDollWidget"] = true,
+	["LetterboxEffect"] = false,
+	["CorruptionTooltip"] = false,
+	["ShowModulePanelOnMouseOver"] = true,
+	["CameraSafeMode"] = true,
+	["EnableGrainEffect"] = false,
+	["ProgenitorTheme"] = 1,
+	["WeatherEffect"] = true,
+	["OutfitSortMethod"] = "name",
+	["LetterboxRatio"] = 2.35,
+	["TooltipTheme"] = "Bright",
+	["AlwaysShowModel"] = false,
+	["GemManager"] = true,
+	["ModelPanelScale"] = 1,
+	["DressingRoomIncludeItemID"] = false,
+	["EnableDoubleTap"] = false,
+	["CorruptionBar"] = true,
+	["UseEntranceVisual"] = true,
+	["CameraTransition"] = true,
+	["PhotoModeButton"] = {
+		["HideTexts"] = true,
+	},
+	["AnchorToMinimap"] = true,
+	["MinimapButton"] = {
+		["Position"] = -2.600342923613213,
+	},
+	["DefaultLayout"] = 2,
+	["BorderTheme"] = "Bright",
+	["DressingRoomShowIconSelect"] = false,
 	["ItemTooltipStyle"] = 1,
 	["FadeMusic"] = true,
-	["FontHeightItemName"] = 10,
-	["DetailedIlvlInfo"] = true,
+	["ConduitTooltip"] = false,
+	["DressingRoomUseTargetModel"] = false,
 }
 NarciCreatureOptions = {
 	["TranslateName"] = false,
@@ -94,20 +95,19 @@ NarciCreatureOptions = {
 	},
 }
 NarciAchievementOptions = {
-	["Theme"] = 1,
+	["IncompleteFirst"] = true,
 	["UseAsDefault"] = false,
 	["DIY"] = {
 	},
-	["ShowRedMark"] = false,
+	["UsedAsPrimary"] = true,
 	["Scale"] = 1,
 	["ReplaceToast"] = true,
-	["UsedAsPrimary"] = true,
-	["IncompleteFirst"] = true,
+	["Theme"] = 1,
+	["ShowRedMark"] = false,
 }
 NarciStatisticsDB = {
 	["InstalledDate"] = 1657455464,
 	["TimeSpentInNarcissus"] = 266,
-	["ScreenshotsTakenInNarcissus"] = 1,
 	["questReadingTime"] = {
 		["enUS"] = {
 			[58095] = {
@@ -150,21 +150,32 @@ NarciStatisticsDB = {
 				1, -- [2]
 				true, -- [3]
 			},
-			[61332] = {
-				46, -- [1]
-				1, -- [2]
-				false, -- [3]
-			},
 			[62055] = {
 				41, -- [1]
 				1, -- [2]
 				false, -- [3]
 			},
+			[61332] = {
+				46, -- [1]
+				1, -- [2]
+				false, -- [3]
+			},
 		},
 	},
+	["ScreenshotsTakenInNarcissus"] = 1,
 }
 NarciTurntableOptions = nil
 NarciCharacterProfiles = {
+	["0C45EA47"] = {
+		["race"] = 1,
+		["name"] = "Takil",
+		["birth"] = 1663498615,
+		["serverID"] = "1305",
+		["lastVisit"] = 1663499755,
+		["outfits"] = {
+		},
+		["class"] = 9,
+	},
 	["0B0DAE15"] = {
 		["race"] = 9,
 		["name"] = "Rentaki",
@@ -254,5 +265,27 @@ NarciCharacterProfiles = {
 			}, -- [20]
 		},
 		["class"] = 7,
+	},
+	["0B0683B1"] = {
+		["race"] = 10,
+		["name"] = "Takidin",
+		["birth"] = 1666036165,
+		["serverID"] = "1305",
+		["lastVisit"] = 1666036165,
+		["outfits"] = {
+			{
+				["s"] = "14932,43677,77345,4490,83202,83203,104604,43705,84223,4491,44379,14939:0:5862,19293",
+				["n"] = "Black & Gold",
+			}, -- [1]
+			{
+				["s"] = "29672,46799,77345,5695,83202,83203,46800,46796,46793,5700,46794,7545:-1:4084,146732",
+				["n"] = "Holy Vanguard",
+			}, -- [2]
+			{
+				["s"] = "29672,165871,77345,5695,83202,83203,46800,165868,165872,5700,165867,111001:-1:4084,108567",
+				["n"] = "Mage Tower",
+			}, -- [3]
+		},
+		["class"] = 2,
 	},
 }

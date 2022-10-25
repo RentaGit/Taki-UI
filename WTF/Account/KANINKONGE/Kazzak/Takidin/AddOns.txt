@@ -116,3 +116,5 @@ Quartz: enabled
 RulezItemLevel: enabled
 TakiBars: enabled
 SUI: enabled
+LortiUI: disabled
+UberUI: disabled

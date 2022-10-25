@@ -1,10 +1,10 @@
-tag ac314744089c122a3c852fe6209b7b6ae646dc91 DetailsRetail.9.2.5.9824.146
+tag 3810854f1e0505c3cea465d67536650ef91e7e95 Details.DF.SL.Wrath.10136.146
 Author:	Tercio Jose <terciob19@hotmail.com>
-Date:	Thu Jun 9 10:04:25 2022 -0300
+Date:	Sun Oct 9 20:49:31 2022 -0300
 
-commit 419999fb097ed9c700515e934483a5ad29eb4c3c
+commit b588d5e30cec44d78125022adcfdf76c760f825b
 Author: Tercio Jose <terciob19@hotmail.com>
-Date:   Thu Jun 9 09:59:35 2022 -0300
+Date:   Sun Oct 9 20:48:47 2022 -0300
 
-    Check if the left text has a valid text string before sending it to Truncate
+    Fixed an error while trying to move the window by clicking and holding on a window line
 

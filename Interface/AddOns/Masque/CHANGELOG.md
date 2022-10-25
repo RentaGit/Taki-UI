@@ -1,9 +1,7 @@
-## 9.2.5
+## 9.2.7
 
 ### Release Notes
 
-- Added _Discord_ and _Supporter_ information to the _About_ panel.
-- Updated the options panels to use new header widgets.
-- Updated the `Interface` version for _Retail_ to `90205`.
+- Updated the `Interface` version for _Retail_ to `90207`.
 
 [Release History](https://github.com/SFX-WoW/Masque/wiki/History)
