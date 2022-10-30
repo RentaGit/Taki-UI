@@ -3,8 +3,8 @@ OneRing_Config = {
 	["CharProfiles"] = {
 		["Ravencrest-Rentaki"] = "default",
 	},
-	["_GameVersion"] = "9.2.7",
-	["_OPieVersion"] = "Xe 8 (3.107)",
+	["_GameVersion"] = "10.0.0",
+	["_OPieVersion"] = "Xe 9 (3.109)",
 	["ProfileStorage"] = {
 		["default"] = {
 			["Bindings"] = {

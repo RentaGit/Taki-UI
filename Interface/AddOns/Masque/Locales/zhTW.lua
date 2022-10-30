@@ -9,12 +9,10 @@
 
 	[ Notes ]
 
-	To help with translations, use the localization system on WoWAce (https://www.wowace.com/projects/masque/localization)
+	To help with translations, use the localization system on CurseForge (https://www.curseforge.com/wow/addons/masque/localization)
 	or contribute directly on GitHub (https://github.com/SFX-WoW/Masque).
 
 ]]
-
--- GLOBALS: GetLocale
 
 if GetLocale() ~= "zhTW" then return end
 
@@ -30,7 +28,7 @@ L["API"] = "API"
 L["For more information, please visit one of the sites listed below."] = "更多訊息說明，請拜訪下列其中之一的網站。"
 L["Masque is a skinning engine for button-based add-ons."] = "Masque 是幫插件按鈕更換外觀的引擎。"
 L["Select to view."] = "選擇以查看。"
--- L["Supporters"] = "Supporters"
+L["Supporters"] = "支援者"
 L["You must have an add-on that supports Masque installed to use it."] = "必須安裝支援 Masque 按鈕外觀的插件才能使用。"
 
 ----------------------------------------
@@ -49,6 +47,18 @@ L["Load Options"] = "載入選項"
 L["Masque's options are load on demand. Click the button below to load them."] = "Masque的選項是需求時才載入。點擊下面的按鈕來載入它。"
 L["This action will increase memory usage."] = "這個動作會增加記憶體的使用量。"
 L["This section will allow you to view information about Masque and any skins you have installed."] = "此部分允許您查看有關Masque和已安裝的任何外觀的訊息。"
+
+----------------------------------------
+-- Default Classic Skin
+---
+
+-- L["The default Classic button style."] = "The default Classic button style."
+
+----------------------------------------
+-- Default Skin
+---
+
+-- L["The default button style."] = "The default button style."
 
 ----------------------------------------
 -- Developer Settings
@@ -105,6 +115,7 @@ L["Websites"] = "網站"
 -- Interface Settings
 ---
 
+-- L["Classic Scaling"] = "Classic Scaling"
 L["Enable the Minimap icon."] = "啟用小地圖按鈕。"
 L["Interface"] = "介面"
 L["Interface Settings"] = "介面設置"
@@ -112,6 +123,7 @@ L["Minimap Icon"] = "小地圖按鈕"
 L["Stand-Alone GUI"] = "獨立的圖形介面"
 L["This section will allow you to adjust settings that affect Masque's interface."] = "本部分允許您調整影響Masque介面的設置。"
 L["Use a resizable, stand-alone options window."] = "使用可調整大小的獨立選項視窗。"
+-- L["Use the old scaling method for action buttons."] = "Use the old scaling method for action buttons."
 
 ----------------------------------------
 -- LDB Launcher

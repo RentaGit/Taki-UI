@@ -1,7 +1,6 @@
 # BugSack
 
-## [v9.2.4](https://github.com/funkydude/BugSack/tree/v9.2.4) (2022-06-01)
-[Full Changelog](https://github.com/funkydude/BugSack/compare/v9.2.3...v9.2.4) [Previous Releases](https://github.com/funkydude/BugSack/releases)
+## [v10.0.0](https://github.com/funkydude/BugSack/tree/v10.0.0) (2022-10-26)
+[Full Changelog](https://github.com/funkydude/BugSack/compare/v9.2.6...v10.0.0) [Previous Releases](https://github.com/funkydude/BugSack/releases)
 
 - bump toc  
-- Workflow: move to checkout@v3  

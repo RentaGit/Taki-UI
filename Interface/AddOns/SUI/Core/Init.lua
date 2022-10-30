@@ -14,7 +14,7 @@ local defaults = {
       automation = {
         delete = true,
         decline = false,
-        repair = true,
+        repair = 'Default',
         sell = true,
         stackbuy = true,
         invite = false,
@@ -57,6 +57,36 @@ local defaults = {
         size = 20
       }
     },
+    nameplates = {
+      style = 'Default',
+      texture = 'Interface\\AddOns\\SUI\\Media\\Textures\\Status\\Smooth',
+      size = 1,
+      arenanumber = true,
+      totemicons = true,
+      options = {
+        NameSize =  10,
+        ShowLevel =  true,
+        ShowServerName =  false,
+        AbrrevLongNames =  true,
+        ShowPvP =  false,
+        ShowFriendlyClassColors =  true,
+        ShowEnemyClassColors =  true,
+        WhiteSelectionColor =  false,
+        RaidMarkerColoring =  false,
+        ShowExecuteRange =  false,
+        ExecuteValue =  35,
+        ExecuteColor =  { r = 0, g = 71/255, b = 126/255},
+        CurrentHealthOption =  2,
+        HideFriendly =  false,
+        SmallStacking =  false,
+        DontClamp =  false,
+        CombatPlates =  false,
+        TankMode =  false,
+        ColorNameByThreat =  false,
+        UseOffTankColor =  false,
+        OffTankColor =  { r = 0.60, g = 0.20, b = 1.0},
+      }
+    },
     raidframes = {
       texture = 'Interface\\AddOns\\SUI\\Media\\Textures\\Status\\Flat',
       alwaysontop = false
@@ -81,7 +111,8 @@ local defaults = {
     castbars = {
       style = 'Custom',
       timer = true,
-      icon = true
+      icon = true,
+      targetCastbar = true
     },
     tooltip = {
       style = 'Custom',
@@ -196,4 +227,20 @@ function SUI:OnInitialize()
       return color
     end
   end
+end
+
+function SUI:LSB_Helper(LSBList, LSBHash)
+  local list = {}
+  for index, name in pairs(LSBList) do
+    list[index] = {}
+    for k, v in pairs(LSBHash) do
+      if(name == k) then
+        list[index] = {
+          text = name,
+          value = v
+        }
+      end
+    end
+  end
+  return list
 end

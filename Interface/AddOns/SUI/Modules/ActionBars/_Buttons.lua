@@ -1,6 +1,80 @@
 ﻿local Module = SUI:NewModule("ActionBars.Buttons");
 
 function Module:OnEnable()
+
+  local dominos = IsAddOnLoaded("Dominos")
+  local bartender = IsAddOnLoaded("Bartender4")
+  if IsAddOnLoaded("Masque") and (dominos or bartender) then return end
+
+
+  local textures = {
+    textures = {
+      normal = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\gloss",
+      flash = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\flash",
+      hover = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\hover",
+      pushed = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\pushed",
+      checked = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\checked",
+      equipped = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\gloss_grey",
+      buttonback = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\button_background",
+      buttonbackflat = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\button_background_flat",
+      outer_shadow = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\outer_shadow"
+    },
+  }
+
+
+  function SUIStyleActionButton(self)
+    local name = self:GetName()
+    local normalTexture = _G[name .. "NormalTexture"]
+
+    hooksecurefunc(self, "Update", function(_)
+      normalTexture:SetVertexColor(unpack(SUI:Color()))
+      --SUIAddBackDrop(self)
+
+
+    end)
+  end
+
+  function SUIAddBackDrop(bu)
+    bu.bg = CreateFrame("Frame", nil, bu, "BackdropTemplate")
+    bu.bg:SetBackdrop(
+      {
+        bgFile = "",
+        edgeFile = "Interface\\Addons\\SUI\\Media\\Textures\\Core\\outer_shadow",
+        tile = false,
+        tileSize = 32,
+        edgeSize = 5,
+        insets = { left = 5, right = 5, top = 5, bottom = 5 }
+      }
+    )
+
+    bu.bg:SetPoint("TOPLEFT", bu, "TOPLEFT", -4, 4)
+    bu.bg:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT", 4, -4)
+    bu.bg:SetFrameLevel(bu:GetFrameLevel() - 1)
+
+    bu.bg:SetBackdropBorderColor(unpack(SUI:Color(0.25)))
+    bu.bg:SetAlpha(0.9)
+  end
+
+  for i = 1, NUM_ACTIONBAR_BUTTONS do
+    SUIStyleActionButton(_G["ActionButton" .. i])
+    SUIStyleActionButton(_G["MultiBarBottomLeftButton" .. i])
+    SUIStyleActionButton(_G["MultiBarBottomRightButton" .. i])
+    SUIStyleActionButton(_G["MultiBarRightButton" .. i])
+    SUIStyleActionButton(_G["MultiBarLeftButton" .. i])
+  end
+end
+
+-- Update Stance & Pet Bar
+hooksecurefunc(BaseActionButtonMixin, "UpdateButtonArt", function(self)
+  local name = self:GetName()
+  local normalTexture = _G[name .. "NormalTexture"]
+  normalTexture:SetVertexColor(unpack(SUI:Color()))
+end)
+
+
+--[[local Module = SUI:NewModule("ActionBars.Buttons");
+
+function Module:OnEnable()
   local db = {
     buttons = SUI.db.profile.actionbar.buttons,
     color = SUI.db.profile.general.color
@@ -414,3 +488,4 @@ function Module:OnEnable()
     end)
   end
 end
+]]

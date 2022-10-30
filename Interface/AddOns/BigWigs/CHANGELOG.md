@@ -1,11 +1,8 @@
 # BigWigs
 
-## [v248.1](https://github.com/BigWigsMods/BigWigs/tree/v248.1) (2022-09-17)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v248...v248.1) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
+## [v251.1](https://github.com/BigWigsMods/BigWigs/tree/v251.1) (2022-10-27)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v251...v251.1) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
 
-- CastleNathria/Affixes: Fix bar pausing error, closes #1268  
-- SepulcherOfTheFirstOnes/PrototypePantheon: Clean up comments  
-- SepulcherOfTheFirstOnes: Cleanups  
-- SanctumOfDomination/TheEyeOfTheJailer: Remove unused option flag "Immediate Extermination"  
-- SanctumOfDomination: Clean up comments  
-- SanctumOfDomination: Cleanups  
+- Cleanups  
+- Remove the force loading of the "talking head" addon. Blizzard thankfully converted this from an addon to a base FrameXML file.  
+- Update deDE (#1280)  

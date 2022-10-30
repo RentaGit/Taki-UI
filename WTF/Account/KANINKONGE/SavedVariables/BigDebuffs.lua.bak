@@ -29,7 +29,23 @@ BigDebuffsDB = {
 				["enabled"] = false,
 			},
 			["unitFrames"] = {
+				["party3"] = {
+				},
+				["arena2"] = {
+				},
+				["party4"] = {
+				},
+				["arena5"] = {
+				},
+				["arena4"] = {
+				},
 				["arena1"] = {
+				},
+				["party2"] = {
+				},
+				["party1"] = {
+				},
+				["arena3"] = {
 				},
 			},
 		},

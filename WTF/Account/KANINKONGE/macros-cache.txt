@@ -46,16 +46,6 @@ VER 3 00000000000000ED "belt" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use 6
 END
-VER 3 0000000000000115 "buff" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use Eternal Augment Rune
-/cast lightning shield
-/cast water shield
-/cancelaura Bron's Call to Action
-END
-VER 3 0000000000000116 "CANCELSTUFF" "136041"
-/cancelaura soulshape
-END
 VER 3 000000000000009B "cap mo" "INV_MISC_QUESTIONMARK"
 #showtooltip capacitor totem
 /cast [@cursor] capacitor totem
@@ -64,13 +54,10 @@ VER 3 00000000000000DE "cloak" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use 15
 END
-VER 3 00000000000000F1 "DISPELL" "132125"
-/run C_ChatInfo.SendAddonMessage("CAUSESE_DISPEL", "123", "RAID")
-END
-VER 3 00000000000000DD "ewt/apt" "INV_MISC_QUESTIONMARK"
+VER 3 000000000000011C "ele blast" "134400"
 #showtooltip
-/cast [talent:4/2] Earthen Wall Totem
-/cast [talent:4/3] Ancestral Protection Totem
+/cast nature's swiftness
+/cast elemental blast
 END
 VER 3 0000000000000114 "feral spirit" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -79,15 +66,6 @@ VER 3 0000000000000114 "feral spirit" "INV_MISC_QUESTIONMARK"
 END
 VER 3 00000000000000E7 "focus purge" "INV_MISC_QUESTIONMARK"
 /cast [@focus] Purge
-END
-VER 3 000000000000006C "FS mo" "INV_MISC_QUESTIONMARK"
-#showtooltip Blessing of Freedom
-/cast [@mouseover] Blessing of Freedom
-END
-VER 3 00000000000000EA "ground/skyfury" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/cast [pvptalent:3/7] grounding totem
-/cast [pvptalent:3/4] skyfury totem
 END
 VER 3 00000000000000B9 "healing rain cur" "INV_MISC_QUESTIONMARK"
 #showtooltip Healing Rain
@@ -98,10 +76,6 @@ VER 3 00000000000000DF "hex" "INV_MISC_QUESTIONMARK"
 /cast [nomod] hex
 /cast [mod:ctrl, @focus] hex
 END
-VER 3 00000000000000E2 "if/pe" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [talent:6/3]Icefury;[pet: Primal Storm Elemental]Eye of the Storm;[pet: Primal Fire Elemental]Meteor;[pet: Primal Earth Elemental]Harden Skin
-END
 VER 3 0000000000000119 "lava lash" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /cast lava lash
@@ -111,15 +85,14 @@ VER 3 00000000000000B2 "LMT" "INV_MISC_QUESTIONMARK"
 #showtooltip Liquid Magma Totem
 /cast [@cursor] Liquid Magma Totem
 END
-VER 3 0000000000000117 "lunge/windrush" "INV_MISC_QUESTIONMARK"
-#showtooltop
-/cast [talent:5/2] Feral Lunge
-/cast [talent:5/3, @cursor] Wind Rush Totem
-END
-VER 3 00000000000000F5 "necro mo" "INV_MISC_QUESTIONMARK"
+VER 3 00000000000000F5 "necro mo" "135974"
 #showtooltip Primordial Wave(Necrolord)
 /cast [nomod] Primordial Wave(Necrolord)
 /cast [mod:alt, @mouseover] Primordial Wave(Necrolord)
+END
+VER 3 000000000000011D "necrotic wave mo" "3578231"
+#showtooltip chain heal
+/cast [@mouseover] Necrotic Wave
 END
 VER 3 0000000000000112 "resto wr" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -143,21 +116,11 @@ VER 3 0000000000000118 "stormstrike" "INV_MISC_QUESTIONMARK"
 /cast stormstrike
 /use Ring of Collapsing Futures
 END
-VER 3 0000000000000113 "surge of earth" "INV_MISC_QUESTIONMARK"
-#showtooltip surge of earth
-/use [@mouseover,help,nodead][help,nodead][@player] surge of earth
-END
 VER 3 00000000000000F3 "surge/dispel" "INV_MISC_QUESTIONMARK"
 #showtooltip cleanse spirit
 /cast [nomod, @mouseover,help,nodead][nomod, @player, help,nodead]healing surge
 /cast [mod:shift, @mouseover,help,nodead][mod:shift,, @player, help,nodead]cleanse spirit
 /cast [mod:alt] Ancestral Spirit
-END
-VER 3 00000000000000F2 "ts/purge" "INV_MISC_QUESTIONMARK"
-#showtooltip thunderstorm
-/cast [nomod] thunderstorm
-/cast [mod:shift] purge
-/cast [mod:alt, @focus] purge
 END
 VER 3 000000000000011A "Tuft" "INV_MISC_QUESTIONMARK"
 #showtooltip Tuft of Smoldering Plumage
@@ -168,8 +131,5 @@ VER 3 00000000000000D9 "vault" "413587"
 END
 VER 3 00000000000000F0 "wm@xtra" "133125"
 /wm [@cursor] 2
-/click ExtraActionButton1
-END
-VER 3 0000000000000085 "XtraAB" "236248"
 /click ExtraActionButton1
 END

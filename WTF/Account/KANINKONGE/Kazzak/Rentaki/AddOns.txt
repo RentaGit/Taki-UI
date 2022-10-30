@@ -25,7 +25,7 @@ Bagnon_Config: disabled
 Bagnon_GuildBank: disabled
 Bagnon_VoidStorage: disabled
 Bartender4: disabled
-MoveAnything: enabled
+MoveAnything: disabled
 OmniCC: enabled
 OmniCC_Config: enabled
 Prat-3.0: disabled
@@ -207,3 +207,8 @@ Narcissus_Database_Item: disabled
 Narcissus_Database_NPC: disabled
 Narcissus_GamePad: disabled
 Narcissus_Achievements: disabled
+TakUI: disabled
+BigDebuffs: disabled
+DejaCharacterStats: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled

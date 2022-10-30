@@ -35,37 +35,37 @@ SimulationCraftDB = {
 		["Takiscoper - Kazzak"] = "Takiscoper - Kazzak",
 		["Takiragfour - Kazzak"] = "Takiragfour - Kazzak",
 		["Takii - Doomhammer"] = "Takii - Doomhammer",
-		["Takidari - Ravencrest"] = "Takidari - Ravencrest",
-		["Takitest - Ravencrest"] = "Takitest - Ravencrest",
+		["Felenia - Doomhammer"] = "Felenia - Doomhammer",
+		["Asdfasdfsaas - Kazzak"] = "Asdfasdfsaas - Kazzak",
 		["Rintake - Ragnaros"] = "Rintake - Ragnaros",
 		["Rentakigold - Twisting Nether"] = "Rentakigold - Twisting Nether",
-		["Rintake - Argent Dawn"] = "Rintake - Argent Dawn",
-		["Takicado - Doomhammer"] = "Takicado - Doomhammer",
-		["Takiragthree - Kazzak"] = "Takiragthree - Kazzak",
-		["Takioblivion - Medivh"] = "Takioblivion - Medivh",
+		["Takiworra - Kazzak"] = "Takiworra - Kazzak",
+		["Takipala - Ravencrest"] = "Takipala - Ravencrest",
+		["Rentaki - Ravencrest"] = "Rentaki - Ravencrest",
+		["Rentaco - Kazzak"] = "Rentaco - Kazzak",
 		["Takimage - Kazzak"] = "Takimage - Kazzak",
 		["Takimogaasd - Ravencrest"] = "Takimogaasd - Ravencrest",
 		["Takii - Frostmane"] = "Takii - Frostmane",
 		["Asdfasfdas - Kazzak"] = "Asdfasfdas - Kazzak",
 		["Rentakidh - Argent Dawn"] = "Rentakidh - Argent Dawn",
+		["Takidin - Kazzak"] = "Takidin - Kazzak",
+		["Nyumi - Argent Dawn"] = "Nyumi - Argent Dawn",
 		["Ivelea - Argent Dawn"] = "Ivelea - Argent Dawn",
 		["Huntaki - Ravencrest"] = "Huntaki - Ravencrest",
-		["Rentaki - Kazzak"] = "Rentaki - Kazzak",
-		["Nyumi - Argent Dawn"] = "Nyumi - Argent Dawn",
 		["Takigalywix - Aegwynn"] = "Takigalywix - Aegwynn",
 		["Takimogaa - Ravencrest"] = "Takimogaa - Ravencrest",
 		["Thaaeyn - Argent Dawn"] = "Thaaeyn - Argent Dawn",
 		["Rentakigold - Blackmoore"] = "Rentakigold - Blackmoore",
 		["Rendudu - Kazzak"] = "Rendudu - Kazzak",
-		["Takidin - Kazzak"] = "Takidin - Kazzak",
+		["Rentaki - Kazzak"] = "Rentaki - Kazzak",
 		["Takidk - Kazzak"] = "Takidk - Kazzak",
 		["Takiragtwo - Kazzak"] = "Takiragtwo - Kazzak",
-		["Rentaco - Kazzak"] = "Rentaco - Kazzak",
-		["Rentaki - Ravencrest"] = "Rentaki - Ravencrest",
-		["Takipala - Ravencrest"] = "Takipala - Ravencrest",
-		["Takiworra - Kazzak"] = "Takiworra - Kazzak",
-		["Asdfasdfsaas - Kazzak"] = "Asdfasdfsaas - Kazzak",
-		["Felenia - Doomhammer"] = "Felenia - Doomhammer",
+		["Takioblivion - Medivh"] = "Takioblivion - Medivh",
+		["Takiragthree - Kazzak"] = "Takiragthree - Kazzak",
+		["Takicado - Doomhammer"] = "Takicado - Doomhammer",
+		["Rintake - Argent Dawn"] = "Rintake - Argent Dawn",
+		["Takitest - Ravencrest"] = "Takitest - Ravencrest",
+		["Takidari - Ravencrest"] = "Takidari - Ravencrest",
 	},
 	["profiles"] = {
 		["Hunteraki - Frostmane"] = {
@@ -136,21 +136,24 @@ SimulationCraftDB = {
 		},
 		["Takii - Doomhammer"] = {
 		},
-		["Takidari - Ravencrest"] = {
+		["Felenia - Doomhammer"] = {
 		},
-		["Takitest - Ravencrest"] = {
+		["Asdfasdfsaas - Kazzak"] = {
 		},
 		["Rintake - Ragnaros"] = {
 		},
 		["Rentakigold - Twisting Nether"] = {
 		},
-		["Rintake - Argent Dawn"] = {
+		["Takiworra - Kazzak"] = {
 		},
-		["Takicado - Doomhammer"] = {
+		["Takipala - Ravencrest"] = {
 		},
-		["Takiragthree - Kazzak"] = {
+		["Rentaki - Ravencrest"] = {
+			["minimap"] = {
+				["minimapPos"] = 209.4758992989915,
+			},
 		},
-		["Takioblivion - Medivh"] = {
+		["Rentaco - Kazzak"] = {
 		},
 		["Takimage - Kazzak"] = {
 		},
@@ -162,21 +165,13 @@ SimulationCraftDB = {
 		},
 		["Rentakidh - Argent Dawn"] = {
 		},
+		["Takidin - Kazzak"] = {
+		},
+		["Nyumi - Argent Dawn"] = {
+		},
 		["Ivelea - Argent Dawn"] = {
 		},
 		["Huntaki - Ravencrest"] = {
-		},
-		["Rentaki - Kazzak"] = {
-			["minimap"] = {
-				["minimapPos"] = 167.773623984397,
-				["hide"] = true,
-			},
-			["frame"] = {
-				["ofsx"] = -6.565175135619938e-05,
-				["ofsy"] = -0.9999746084213257,
-			},
-		},
-		["Nyumi - Argent Dawn"] = {
 		},
 		["Takigalywix - Aegwynn"] = {
 		},
@@ -188,26 +183,31 @@ SimulationCraftDB = {
 		},
 		["Rendudu - Kazzak"] = {
 		},
-		["Takidin - Kazzak"] = {
+		["Rentaki - Kazzak"] = {
+			["frame"] = {
+				["ofsx"] = -6.565175135619938e-05,
+				["ofsy"] = -0.9999746084213257,
+			},
+			["minimap"] = {
+				["minimapPos"] = 167.773623984397,
+				["hide"] = true,
+			},
 		},
 		["Takidk - Kazzak"] = {
 		},
 		["Takiragtwo - Kazzak"] = {
 		},
-		["Rentaco - Kazzak"] = {
+		["Takioblivion - Medivh"] = {
 		},
-		["Rentaki - Ravencrest"] = {
-			["minimap"] = {
-				["minimapPos"] = 209.4758992989915,
-			},
+		["Takiragthree - Kazzak"] = {
 		},
-		["Takipala - Ravencrest"] = {
+		["Takicado - Doomhammer"] = {
 		},
-		["Takiworra - Kazzak"] = {
+		["Rintake - Argent Dawn"] = {
 		},
-		["Asdfasdfsaas - Kazzak"] = {
+		["Takitest - Ravencrest"] = {
 		},
-		["Felenia - Doomhammer"] = {
+		["Takidari - Ravencrest"] = {
 		},
 	},
 }

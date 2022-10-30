@@ -1,9 +1,3 @@
-VER 3 010000000000001F "asc/sk" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/cast [talent:7/2] Stormkeeper
-/cast [talent:7/3] Ascendance
-/use prismatic bauble
-END
 VER 3 0100000000000008 "chainheal" "INV_MISC_QUESTIONMARK"
 #showtooltip chain heal
 /cast [@mouseover] chain heal
@@ -54,6 +48,10 @@ END
 VER 3 0100000000000023 "mo eb" "INV_MISC_QUESTIONMARK"
 #showtooltip earthbind totem
 /cast [nomod, @cursor] earthbind totem
+END
+VER 3 010000000000002C "primal elemental" "651081"
+/cast meteor
+/cast tempest
 END
 VER 3 0100000000000022 "resto t7" "INV_MISC_QUESTIONMARK"
 #showtooltip

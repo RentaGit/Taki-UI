@@ -9,6 +9,11 @@ SUIDB = {
 	["profiles"] = {
 		["Default"] = {
 			["general"] = {
+				["color"] = {
+					["b"] = 1,
+					["g"] = 1,
+					["r"] = 1,
+				},
 				["display"] = {
 					["ms"] = false,
 					["avgilvl"] = true,

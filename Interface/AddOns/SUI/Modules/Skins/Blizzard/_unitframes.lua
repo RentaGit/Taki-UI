@@ -3,7 +3,7 @@ local Module = SUI:NewModule("Skins.UnitFrames");
 function Module:OnEnable()
   if (SUI:Color()) then
     for i, v in ipairs({
-      PlayerFrameTexture,
+      --[[PlayerFrameTexture,
       TargetFrameTextureFrameTexture,
       PlayerFrameAlternateManaBarBorder,
       PlayerFrameAlternateManaBarLeftBorder,
@@ -40,31 +40,29 @@ function Module:OnEnable()
       Boss4TargetFrameSpellBar.Border,
       Boss5TargetFrameSpellBar.Border,
       CastingBarFrame.Border,
-      FocusFrameSpellBar.Border,
-      TargetFrameSpellBar.Border,
+
       StatusTrackingBarManager.SingleBarLargeUpper,
-      StatusTrackingBarManager.SingleBarSmallUpper,
+      StatusTrackingBarManager.SingleBarSmallUpper,]]
+
+      FocusFrameSpellBar.Border,
+      FocusFrameSpellBar.Background,
+      TargetFrameSpellBar.Border,
+      TargetFrameSpellBar.Background,
+
+      PlayerFrame.PlayerFrameContainer.FrameTexture,
+      TargetFrame.TargetFrameContainer.FrameTexture,
+      FocusFrame.TargetFrameContainer.FrameTexture,
+      TargetFrameToT.FrameTexture,
+      FocusFrameToT.FrameTexture,
+      PaladinPowerBarFrameBG,
+      PaladinPowerBarFrameBankBG,
+      PlayerCastingBarFrame.Border,
+      PlayerCastingBarFrame.Background,
+      PetFrameTexture
     }) do
       v:SetVertexColor(unpack(SUI:Color(0.15)))
     end
 
-    -- SUI:SetScript("OnEvent", function(self, event)
-    --   ColorRaid()
-    --   PlayerFrameGroupIndicator:SetAlpha(0)
-    --   PlayerHitIndicator:SetText(nil)
-    --   PlayerHitIndicator.SetText = function()
-    --   end
-    --   PetHitIndicator:SetText(nil)
-    --   PetHitIndicator.SetText = function()
-    --   end
-    --   for _, child in pairs({WarlockPowerFrame:GetChildren()}) do
-    --     for _, region in pairs({child:GetRegions()}) do
-    --       if region:GetDrawLayer() == "BORDER" then
-    --         region:SetVertexColor(unpack(color.secondary))
-    --       end
-    --     end
-    --   end
-
-    -- end)
+    -- ROG COMBOPOINTS KYRIAN
   end
 end
