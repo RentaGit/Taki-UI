@@ -6,18 +6,18 @@ OmniCCDB = {
 		["Rintake - Ragnaros"] = "Default",
 		["Takidin - Ravencrest"] = "Default",
 		["Rentamdi - Kazzak"] = "Default",
-		["Takitalon - Arathi"] = "Default",
+		["Rentaco - Kazzak"] = "Default",
 		["Takiworra - Kazzak"] = "Default",
 		["Takikin - Kazzak"] = "Default",
 		["Rentaki - Kazzak"] = "Default",
-		["Rentaki - Ravencrest"] = "Default",
+		["Takibank - Argent Dawn"] = "Default",
 		["Takuu - Ravencrest"] = "Default",
 		["Rendudu - Kazzak"] = "Default",
 		["Rentakidh - Argent Dawn"] = "Default",
 		["Takidari - Kazzak"] = "Default",
 		["Taaku - Kazzak"] = "Default",
 		["Ivelea - Argent Dawn"] = "Default",
-		["Huntaki - Ravencrest"] = "Default",
+		["Takidin - Kazzak"] = "Default",
 		["Renwarri - Kazzak"] = "Default",
 		["Thaaeyn - Argent Dawn"] = "Default",
 		["Rentakisham - EU Mythic Dungeons"] = "Default",
@@ -26,12 +26,12 @@ OmniCCDB = {
 		["Takeera - Kazzak"] = "Default",
 		["Takidk - Kazzak"] = "Default",
 		["Takiscoper - Kazzak"] = "Default",
+		["Huntaki - Ravencrest"] = "Default",
+		["Rentaki - Ravencrest"] = "Default",
 		["Takifistzz - Kazzak"] = "Default",
-		["Takibank - Argent Dawn"] = "Default",
-		["Takidin - Kazzak"] = "Default",
 		["Rintake - Argent Dawn"] = "Default",
 		["Rentaco - Ravencrest"] = "Default",
-		["Rentaco - Kazzak"] = "Default",
+		["Takitalon - Arathi"] = "Default",
 	},
 	["global"] = {
 		["dbVersion"] = 6,
@@ -104,7 +104,6 @@ OmniCCDB = {
 	},
 }
 OmniCC4Config = {
-	["version"] = "8.2.5",
 	["groupSettings"] = {
 		["base"] = {
 			["styles"] = {
@@ -162,4 +161,5 @@ OmniCC4Config = {
 	},
 	["groups"] = {
 	},
+	["version"] = "8.2.5",
 }

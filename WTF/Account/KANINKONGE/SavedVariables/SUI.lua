@@ -10,15 +10,14 @@ SUIDB = {
 		["Default"] = {
 			["general"] = {
 				["color"] = {
-					["b"] = 1,
-					["g"] = 1,
 					["r"] = 1,
+					["g"] = 1,
+					["b"] = 1,
 				},
 				["display"] = {
 					["ms"] = false,
-					["avgilvl"] = true,
-					["ilvl"] = false,
 					["fps"] = false,
+					["avgilvl"] = true,
 				},
 				["texture"] = "Interface\\AddOns\\SUI\\Media\\Textures\\Status\\Flat",
 			},
@@ -41,13 +40,11 @@ SUIDB = {
 					["point"] = "BOTTOM",
 					["scale"] = 1.299999952316284,
 				},
-				["TargetFrameDragFrame"] = {
-					["y"] = -129.1408538818359,
-					["x"] = 339.6917724609375,
-					["point"] = "CENTER",
-					["scale"] = 1,
+				["PlayerFrame"] = {
 				},
 				["FocusFrame"] = {
+				},
+				["TargetFrame"] = {
 				},
 				["TooltipFrame"] = {
 					["y"] = 275.8977355957031,
@@ -55,12 +52,20 @@ SUIDB = {
 					["point"] = "BOTTOMRIGHT",
 					["scale"] = 1,
 				},
-				["TargetFrame"] = {
-				},
-				["PlayerFrame"] = {
+				["TargetFrameDragFrame"] = {
+					["y"] = -129.1408538818359,
+					["x"] = 339.6917724609375,
+					["point"] = "CENTER",
+					["scale"] = 1,
 				},
 			},
+			["tooltip"] = {
+				["mouseanchor"] = true,
+			},
 			["install"] = true,
+			["raidframes"] = {
+				["texture"] = "Interface\\AddOns\\Details\\images\\bar_background",
+			},
 			["actionbar"] = {
 				["gryphones"] = false,
 				["menu"] = {
@@ -78,6 +83,9 @@ SUIDB = {
 				["buffs"] = {
 					["size"] = 20,
 				},
+			},
+			["chat"] = {
+				["quickjoin"] = false,
 			},
 		},
 	},

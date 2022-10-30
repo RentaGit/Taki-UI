@@ -207,8 +207,9 @@ Narcissus_Database_Item: disabled
 Narcissus_Database_NPC: disabled
 Narcissus_GamePad: disabled
 Narcissus_Achievements: disabled
-TakUI: disabled
+TakUI: enabled
 BigDebuffs: disabled
 DejaCharacterStats: disabled
 Blizzard_ObjectiveTracker: enabled
 Blizzard_CompactRaidFrames: enabled
+Narcissus_BagFilter: disabled
