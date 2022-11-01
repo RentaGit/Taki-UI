@@ -59,9 +59,6 @@ SUIDB = {
 				["PlayerFrame"] = {
 				},
 			},
-			["tooltip"] = {
-				["mouseanchor"] = true,
-			},
 			["install"] = true,
 			["chat"] = {
 				["quickjoin"] = false,

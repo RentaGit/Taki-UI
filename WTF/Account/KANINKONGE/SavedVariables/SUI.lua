@@ -59,9 +59,6 @@ SUIDB = {
 					["scale"] = 1,
 				},
 			},
-			["tooltip"] = {
-				["mouseanchor"] = true,
-			},
 			["install"] = true,
 			["raidframes"] = {
 				["texture"] = "Interface\\AddOns\\Details\\images\\bar_background",

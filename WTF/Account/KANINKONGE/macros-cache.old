@@ -85,10 +85,14 @@ VER 3 00000000000000B2 "LMT" "INV_MISC_QUESTIONMARK"
 #showtooltip Liquid Magma Totem
 /cast [@cursor] Liquid Magma Totem
 END
-VER 3 00000000000000F5 "necro mo" "INV_MISC_QUESTIONMARK"
+VER 3 00000000000000F5 "necro mo" "135974"
 #showtooltip Primordial Wave(Necrolord)
 /cast [nomod] Primordial Wave(Necrolord)
 /cast [mod:alt, @mouseover] Primordial Wave(Necrolord)
+END
+VER 3 000000000000011D "necrotic wave mo" "3578231"
+#showtooltip chain heal
+/cast [@mouseover] Necrotic Wave
 END
 VER 3 0000000000000112 "resto wr" "INV_MISC_QUESTIONMARK"
 #showtooltip

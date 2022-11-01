@@ -59,10 +59,18 @@ VER 3 000000000000011C "ele blast" "134400"
 /cast nature's swiftness
 /cast elemental blast
 END
+VER 3 000000000000011E "ele cd" "136115"
+#showtooltip
+/cast stormkeeper
+/cast ascendance
+/use prismatic bauble
+/use sparkle wings
+END
 VER 3 0000000000000114 "feral spirit" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /cast feral spirit
 /use prismatic bauble
+/use sparkle wings
 END
 VER 3 00000000000000E7 "focus purge" "INV_MISC_QUESTIONMARK"
 /cast [@focus] Purge
