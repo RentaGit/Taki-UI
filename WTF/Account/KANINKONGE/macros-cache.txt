@@ -56,21 +56,28 @@ VER 3 00000000000000DE "cloak" "INV_MISC_QUESTIONMARK"
 END
 VER 3 000000000000011C "ele blast" "134400"
 #showtooltip
-/cast nature's swiftness
 /cast elemental blast
+/cast nature's swiftness
 END
 VER 3 000000000000011E "ele cd" "136115"
 #showtooltip
-/cast stormkeeper
-/cast ascendance
 /use prismatic bauble
 /use sparkle wings
+/use Fire-Eater's Vial
+/cast stormkeeper
+/cast ascendance
+END
+VER 3 000000000000011F "enha one shot" "134400"
+/use ascendance
+/use 13
+/cast bloodlust
 END
 VER 3 0000000000000114 "feral spirit" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/cast feral spirit
 /use prismatic bauble
 /use sparkle wings
+/use Fire-Eater's Vial
+/cast feral spirit
 END
 VER 3 00000000000000E7 "focus purge" "INV_MISC_QUESTIONMARK"
 /cast [@focus] Purge
@@ -98,9 +105,9 @@ VER 3 00000000000000F5 "necro mo" "135974"
 /cast [nomod] Primordial Wave(Necrolord)
 /cast [mod:alt, @mouseover] Primordial Wave(Necrolord)
 END
-VER 3 000000000000011D "necrotic wave mo" "3578231"
-#showtooltip chain heal
-/cast [@mouseover] Necrotic Wave
+VER 3 000000000000011D "primordial wave" "3578231"
+#showtooltip primordial wave
+/cast [@mouseover] primordial wave
 END
 VER 3 0000000000000112 "resto wr" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -118,6 +125,10 @@ VER 3 000000000000011B "shaman mount" "INV_MISC_QUESTIONMARK"
 END
 VER 3 00000000000000EB "shocktest" "INV_MISC_QUESTIONMARK"
 /cast [@mouseover, exists, nodead][] Holy Shock
+END
+VER 3 0000000000000120 "static field" "134400"
+#showtooltip
+/cast [@cursor] static field totem
 END
 VER 3 0000000000000118 "stormstrike" "INV_MISC_QUESTIONMARK"
 #showtooltip

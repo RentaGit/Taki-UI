@@ -1,30 +1,38 @@
 -- hide micro menu
 MicroButtonAndBagsBar:SetPoint("RIGHT", 1000, -30)
+
+-- move dungeon finder icon
 QueueStatusButton:ClearAllPoints()
 QueueStatusButton:SetPoint("CENTER", "MinimapBackdrop", "BOTTOM", -50, 25)
 QueueStatusButton:SetScale(0.8)
 
--- mouse over bar 5
-MultiBar5:EnableMouse(true)
-MultiBar5:SetAlpha(0)
-MultiBar5:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
-MultiBar5:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
-local function hidebar5() MultiBar5:SetAlpha(0) end
-local function showbar5() MultiBar5:SetAlpha(1) end
-for btn=1,12 do
-    _G["MultiBar5Button"..btn]:SetScript("OnEnter",showbar5)
-    _G["MultiBar5Button"..btn]:SetScript("OnLeave",hidebar5)
+-- move xp/status bar
+StatusTrackingBarManager:ClearAllPoints()
+StatusTrackingBarManager:SetPoint("CENTER", "UIParent", "TOPLEFT", 300, -2)
+
+-- Hide Bars --
+bars = {
+	MultiBar5,
+	MultiBar6
+}
+
+function SetBarBehaviour(bar)
+	bar:EnableMouse(true)
+	bar:SetAlpha(0)
+	bar:HookScript("OnEnter", function(self) self:SetAlpha(1) end)
+	bar:HookScript("OnLeave", function(self) self:SetAlpha(0) end)
+	local function hidebar() bar:SetAlpha(0) end
+	local function showbar() bar:SetAlpha(1) end
+	
+	-- Buttons have a different name in MainMenuBar. 
+	button_name = (bar:GetName() == "MainMenuBar" and "ActionButton" or bar:GetName().."Button")
+	for btn=1,12 do
+		_G[button_name..btn]:HookScript("OnEnter",showbar)
+		_G[button_name..btn]:HookScript("OnLeave",hidebar)
+	end
 end
 
--- mouse over bar 6
-MultiBar6:EnableMouse(true)
-MultiBar6:SetAlpha(0)
-MultiBar6:SetScript("OnEnter", function(self) self:SetAlpha(1) end)
-MultiBar6:SetScript("OnLeave", function(self) self:SetAlpha(0) end)
-local function hidebar6() MultiBar6:SetAlpha(0) end
-local function showbar6() MultiBar6:SetAlpha(1) end
-for btn=1,12 do
-    _G["MultiBar6Button"..btn]:SetScript("OnEnter",showbar6)
-    _G["MultiBar6Button"..btn]:SetScript("OnLeave",hidebar6)
+for k,bar in ipairs(bars) do
+	SetBarBehaviour(bar)
 end
 

@@ -1,10 +1,11 @@
 
-OneRing_Config = {
+OneRing_Config = nil
+OPie_SavedData = {
 	["CharProfiles"] = {
 		["Ravencrest-Rentaki"] = "default",
 	},
 	["_GameVersion"] = "10.0.0",
-	["_OPieVersion"] = "Xe 9 (3.109)",
+	["_OPieVersion"] = "Yuzu 1 (4.110)",
 	["ProfileStorage"] = {
 		["default"] = {
 			["Bindings"] = {
@@ -159,9 +160,9 @@ OneRing_Config = {
 					23767, -- [2]
 					["sliceToken"] = "ABue5Fkwtgr",
 				}, -- [2]
-				["limit"] = "Rentaki-Kazzak",
-				["save"] = true,
 				["name"] = "M+ stuff",
+				["save"] = true,
+				["limit"] = "Rentaki-Kazzak",
 			},
 			["rtantStuff"] = {
 				{
@@ -309,4 +310,3 @@ OneRing_Config = {
 	},
 	["_GameLocale"] = "enUS",
 }
-OPie_SavedData = nil

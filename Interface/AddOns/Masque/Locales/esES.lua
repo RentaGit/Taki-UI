@@ -43,10 +43,6 @@ L["An improved version of the game's default button style."] = "Una versión mej
 ---
 
 L["About"] = "Acerca de"
-L["Click to load Masque's options."] = "Haz clic para cargar las opciones de Masque."
-L["Load Options"] = "Cargar opciones"
-L["Masque's options are load on demand. Click the button below to load them."] = "Las opciones de Masque se cargan bajo demanda. Haz clic abajo para cargarlas."
--- L["This action will increase memory usage."] = "This action will increase memory usage."
 -- L["This section will allow you to view information about Masque and any skins you have installed."] = "This section will allow you to view information about Masque and any skins you have installed."
 
 ----------------------------------------
@@ -116,7 +112,6 @@ L["Websites"] = "Sitios web"
 -- Interface Settings
 ---
 
--- L["Classic Scaling"] = "Classic Scaling"
 L["Enable the Minimap icon."] = "Mostrar un icono en el minimapa."
 L["Interface"] = "Interfaz"
 L["Interface Settings"] = "Ajustes de interfaz"
@@ -124,7 +119,6 @@ L["Minimap Icon"] = "Icono en minimapa"
 -- L["Stand-Alone GUI"] = "Stand-Alone GUI"
 -- L["This section will allow you to adjust settings that affect Masque's interface."] = "This section will allow you to adjust settings that affect Masque's interface."
 -- L["Use a resizable, stand-alone options window."] = "Use a resizable, stand-alone options window."
--- L["Use the old scaling method for action buttons."] = "Use the old scaling method for action buttons."
 
 ----------------------------------------
 -- LDB Launcher
@@ -155,6 +149,7 @@ L["Profile Settings"] = "Ajustes de perfil"
 -- Skin Settings
 ---
 
+-- L["Adjust the scale of this group's skin."] = "Adjust the scale of this group's skin."
 L["Backdrop"] = "Opciones de Fondo"
 L["Checked"] = "Activado"
 L["Color"] = "Color"
@@ -164,6 +159,7 @@ L["Disable"] = "Desactivado"
 L["Disable the skinning of this group."] = "Deshabilitar las texturas para este grupo."
 L["Disabled"] = "Desactivado"
 L["Enable"] = "Activado"
+-- L["Enable skin scaling."] = "Enable skin scaling."
 L["Enable the Backdrop texture."] = "Habilitar la textura de fondo."
 L["Enable the Gloss texture."] = "Activar textura brillante."
 L["Enable the Shadow texture."] = "Activar textura de sombra."
@@ -177,6 +173,7 @@ L["Normal"] = "Normal"
 L["Pushed"] = "Pulsado"
 L["Reset all skin options to the defaults."] = "Reestablece todos los colores a los predefinidos."
 L["Reset Skin"] = "Restablecer Colores"
+-- L["Scale"] = "Scale"
 L["Set the color of the Backdrop texture."] = "Establece el color de la textura del fondo."
 L["Set the color of the Checked texture."] = "Establece el color de la textura activada."
 L["Set the color of the Cooldown animation."] = "Establece el color de la animación de enfriamiento."

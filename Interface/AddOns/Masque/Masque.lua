@@ -75,7 +75,6 @@ function Masque:OnInitialize()
 	local Defaults = {
 		profile = {
 			Debug = false,
-			NoScale = false,
 			SkinInfo = true,
 			StandAlone = true,
 			Groups = {
@@ -86,8 +85,10 @@ function Masque:OnInitialize()
 					Gloss = false,
 					Inherit = true,
 					Pulse = true,
+					Scale = 1,
 					Shadow = false,
 					SkinID = "Classic",
+					UseScale = false,
 				},
 			},
 			LDB = {
@@ -126,13 +127,10 @@ end
 -- PLAYER_LOGIN Event
 function Masque:OnEnable()
 	local Setup = Core.Setup
+
 	if Setup then
 		Setup("Core")
 		Setup("LDB")
-
-		if Core.WOW_RETAIL and not Core.db.profile.StandAlone then
-			Setup("LoD")
-		end
 	end
 
 	if Core.Queue then

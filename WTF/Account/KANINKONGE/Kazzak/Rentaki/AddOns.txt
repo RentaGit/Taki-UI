@@ -63,7 +63,7 @@ Masque: enabled
 Masque_ElvUIesque: enabled
 MethodDungeonTools: disabled
 NameplateAuras: disabled
-OPie: enabled
+OPie: disabled
 PetJournalEnhanced: disabled
 PetTracker: disabled
 PetTracker_Breeds: disabled
@@ -195,7 +195,7 @@ Quartz: disabled
 SUI: enabled
 Whaazz UI: enabled
 ACU: disabled
-RulezItemLevel: disabled
+RulezItemLevel: enabled
 Masque_Newsom: disabled
 Masque_Shadowlands: disabled
 Masque_Onyx: disabled
