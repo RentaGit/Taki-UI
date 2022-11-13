@@ -1,32 +1,8 @@
--- hide micro menu
-MicroButtonAndBagsBar:SetPoint("RIGHT", 1000, -30)
-
--- move dungeon finder icon
-QueueStatusButton:ClearAllPoints()
-QueueStatusButton:SetPoint("CENTER", "MinimapBackdrop", "BOTTOM", -50, 25)
-QueueStatusButton:SetScale(0.8)
-
--- move xp/status bar
-StatusTrackingBarManager:ClearAllPoints()
-StatusTrackingBarManager:SetPoint("CENTER", "UIParent", "TOPLEFT", 300, -2)
-
--- Hide the social button in text chat
-QuickJoinToastButton:Hide()
-
--- Remove bling/glow effects when cds' made availables
-for k,v in pairs(_G) do
-    if type(v)=="table" and type(v.SetDrawBling)=="function" then
-        v:SetDrawBling(false)
-    end
-end
-hooksecurefunc(getmetatable(ActionButton1Cooldown).__index, 'SetCooldown', function(self)
-    self:SetDrawBling(false)
-end)
-
 -- Hide bars --
 hideBars = {
 	MultiBar5,
-	MultiBar6
+	MultiBar6,
+	MultiBar7
 }
 
 function SetBarBehaviour(bar)
@@ -104,6 +80,12 @@ end
 
 updateButtons()
 
-
-
-
+-- Remove bling/glow effects when cds' made availables
+for k,v in pairs(_G) do
+    if type(v)=="table" and type(v.SetDrawBling)=="function" then
+        v:SetDrawBling(false)
+    end
+end
+hooksecurefunc(getmetatable(ActionButton1Cooldown).__index, 'SetCooldown', function(self)
+    self:SetDrawBling(false)
+end)
