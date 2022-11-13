@@ -1,5 +1,4 @@
 ## Interface: 90000
 ## Title: TakUI
---core.lua
 actionbars.lua
 misc.lua
