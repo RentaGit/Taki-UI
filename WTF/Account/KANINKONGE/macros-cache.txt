@@ -1,11 +1,97 @@
-VER 3 00000000000000E8 ".cov dmg" "3636849"
+VER 3 0000000000000096 ".sh ankh" "451167"
+#showtooltip reincarnation
+END
+VER 3 000000000000009B ".sh CAP" "136013"
+#showtooltip capacitor totem
+/cast [@cursor] capacitor totem
+END
+VER 3 0000000000000129 ".sh DW/PW" "1035054"
+#showtooltip
+/cast [known:Doom Winds] Doom Winds
+/cast [mod:alt,@mouseover,known:375982] Primordial Wave
+/cast [known:375982] Primordial Wave
+END
+VER 3 0000000000000123 ".sh ELE" "2065626"
+#showtooltip
+/cast [known:Fire Elemental] Fire Elemental;
+/cast [known:Storm Elemental] Storm Elemental;
+END
+VER 3 000000000000010A ".sh EQ" "451165"
+#showtooltip
+/cast [@cursor] Earthquake
+END
+VER 3 0000000000000121 ".sh F Purge" "451166"
+#showtooltip
+/cast [known:Greater Purge, @focus] Greater Purge;
+/cast [known:Purge, @focus] Purge;
+END
+VER 3 0000000000000104 ".sh FS" "135813"
+#showtooltip
+/cast [nomod] flame shock
+/cast [mod:alt, @mouseover] flame shock 
+END
+VER 3 0000000000000126 ".sh GoW/SW" "1029585"
+#showtooltip
+/cast [known:Gust of Wind] Gust of Wind;
+/cast [known:Spirit Walk] Spirit Walk;
+END
+VER 3 00000000000000DF ".sh HEX" "132193"
+#showtooltip hex
+/cast [nomod] hex
+/cast [mod:ctrl, @focus] hex
+END
+VER 3 00000000000000B9 ".sh HR" "134400"
+#showtooltip Healing Rain
+/cast [@cursor] Healing Rain
+END
+VER 3 0000000000000128 ".sh IS/FN" "135845"
+#showtooltip
+/cast [known:Ice Strike] Ice Strike
+/cast [known:Fire Nova] Fire Nova
+END
+VER 3 00000000000000B2 ".sh LMT/IF" "135855"
+#showtooltip
+/cast [known:Icefury] Icefury;
+/cast [known:Liquid Magma Totem, @cursor] Liquid Magma Totem;
+END
+VER 3 000000000000011D ".sh PE/PW" "3578231"
+#showtooltip
+/cast [known:known:117013, known:198067] Meteor
+/cast [known:117013, known:192249] Tempest
+/cast [mod:alt,@mouseover,known:375982] Primordial Wave
+/cast [known:375982] Primordial Wave
+END
+VER 3 0000000000000124 ".sh PURGE" "136075"
+#showtooltip
+/cast [known:Greater Purge] Greater Purge;
+/cast [known:Purge] Purge;
+END
+VER 3 0000000000000120 ".sh SF" "1020304"
+#showtooltip
+/cast [@cursor] static field totem
+END
+VER 3 0000000000000122 ".sh SK/ASC" "134400"
+#showtooltip
+/cast [known:Stormkeeper] Stormkeeper;
+/cast [known:Ascendance] Ascendance;
+END
+VER 3 0000000000000127 ".sh SST/TAT" "4667425"
+#showtooltip
+/cast [known:Stoneskin Totem] Stoneskin Totem;
+/cast [known:Tranquil Air Totem] Tranquil Air Totem;
+END
+VER 3 0000000000000112 ".sh WR" "538576"
+#showtooltip wind rush totem
+/cast [@cursor] Wind Rush Totem
+END
+VER 3 00000000000000E8 "EOL .cov dmg" "134331"
 #showtooltip
 /use [@cursor]Vesper Totem
 /use [@cursor]Fae Transfusion
 /use Chain harvest
 /run local G=GetSpellInfo SetMacroSpell(GetRunningMacro(), G"Primordial Wave" or G"Vesper Totem" or G"Fae Transfusion")
 END
-VER 3 00000000000000EE ".cov-sig-ability" "3586268"
+VER 3 00000000000000EE "EOL .cov-sig" "134331"
 #showtooltip
 /cast Door of Shadows
 /cast Soulshape
@@ -13,137 +99,26 @@ VER 3 00000000000000EE ".cov-sig-ability" "3586268"
 /cast Summon Steward
 /run local G=GetSpellInfo SetMacroSpell(GetRunningMacro(), G"Door of Shadows" or G"Soulshape" or G"Fleshcraft"or G"Summon Steward")
 END
-VER 3 00000000000000FE ".sh astral shift" "136039"
-#showtooltip grounding totem
-/cast astral shift
-END
-VER 3 000000000000010A ".sh eq" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/cast [@cursor] Earthquake
-END
-VER 3 0000000000000104 ".sh flame sh" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/cast [nomod] flame shock
-/cast [mod:alt, @mouseover] flame shock 
-END
-VER 3 00000000000000FA ".sh gw/ag/wr" "INV_MISC_QUESTIONMARK"
-#showtooltop
-/cast [talent:5/2] Ancestral Guidance
-/cast [talent:5/3, @cursor] Wind Rush Totem
-END
-VER 3 00000000000000E0 ".trinket1" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use 13
-END
-VER 3 0000000000000107 ".trinket2" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use 14
-END
-VER 3 0000000000000096 "ankh" "INV_MISC_QUESTIONMARK"
-#showtooltip reincarnation
-END
-VER 3 00000000000000ED "belt" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use 6
-END
-VER 3 000000000000009B "cap mo" "INV_MISC_QUESTIONMARK"
-#showtooltip capacitor totem
-/cast [@cursor] capacitor totem
-END
-VER 3 00000000000000DE "cloak" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use 15
-END
-VER 3 000000000000011C "ele blast" "134400"
-#showtooltip
-/cast elemental blast
-/cast nature's swiftness
-END
-VER 3 000000000000011E "ele cd" "136115"
-#showtooltip
-/use prismatic bauble
-/use sparkle wings
-/use Fire-Eater's Vial
-/cast stormkeeper
-/cast ascendance
-END
-VER 3 000000000000011F "enha one shot" "134400"
-/use ascendance
-/use 13
-/cast bloodlust
-END
-VER 3 0000000000000114 "feral spirit" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use prismatic bauble
-/use sparkle wings
-/use Fire-Eater's Vial
-/cast feral spirit
-END
-VER 3 00000000000000E7 "focus purge" "INV_MISC_QUESTIONMARK"
-/cast [@focus] Purge
-END
-VER 3 00000000000000B9 "healing rain cur" "INV_MISC_QUESTIONMARK"
-#showtooltip Healing Rain
-/cast [@cursor] Healing Rain
-END
-VER 3 00000000000000DF "hex" "INV_MISC_QUESTIONMARK"
-#showtooltip hex
-/cast [nomod] hex
-/cast [mod:ctrl, @focus] hex
-END
-VER 3 0000000000000119 "lava lash" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/cast lava lash
-/use Ring of Collapsing Futures
-END
-VER 3 00000000000000B2 "LMT" "INV_MISC_QUESTIONMARK"
-#showtooltip Liquid Magma Totem
-/cast [@cursor] Liquid Magma Totem
-END
-VER 3 00000000000000F5 "necro mo" "135974"
+VER 3 00000000000000F5 "EOL necro mo" "134331"
 #showtooltip Primordial Wave(Necrolord)
 /cast [nomod] Primordial Wave(Necrolord)
 /cast [mod:alt, @mouseover] Primordial Wave(Necrolord)
 END
-VER 3 000000000000011D "primordial wave" "3578231"
-#showtooltip primordial wave
-/cast [@mouseover] primordial wave
-END
-VER 3 0000000000000112 "resto wr" "INV_MISC_QUESTIONMARK"
+VER 3 00000000000000ED "use belt" "3048002"
 #showtooltip
-/cast [@cursor] Wind Rush Totem
+/use 6
 END
-VER 3 00000000000000E6 "RocketJump" "INV_MISC_QUESTIONMARK"
+VER 3 00000000000000DE "use cloak" "3048005"
 #showtooltip
-/cast Rocket Jump
-/use Prismatic Bauble
+/use 15
 END
-VER 3 000000000000011B "shaman mount" "INV_MISC_QUESTIONMARK"
-/cast [swimming,nomod,nomounted] Iron Skyreaver Phoenix;[swimming,mod:shift] Abyssal Seahorse;[flyable,nomod,nomounted] Iron Skyreaver; [nomounted] Vicious War Kodo;
-#show Smoke Bomb
-/dismount
-END
-VER 3 00000000000000EB "shocktest" "INV_MISC_QUESTIONMARK"
-/cast [@mouseover, exists, nodead][] Holy Shock
-END
-VER 3 0000000000000120 "static field" "134400"
+VER 3 00000000000000E0 "use trinket 1" "134490"
 #showtooltip
-/cast [@cursor] static field totem
+/use 13
 END
-VER 3 0000000000000118 "stormstrike" "INV_MISC_QUESTIONMARK"
+VER 3 0000000000000107 "use trinket 2" "134491"
 #showtooltip
-/cast stormstrike
-/use Ring of Collapsing Futures
-END
-VER 3 00000000000000F3 "surge/dispel" "INV_MISC_QUESTIONMARK"
-#showtooltip cleanse spirit
-/cast [nomod, @mouseover,help,nodead][nomod, @player, help,nodead]healing surge
-/cast [mod:shift, @mouseover,help,nodead][mod:shift,, @player, help,nodead]cleanse spirit
-/cast [mod:alt] Ancestral Spirit
-END
-VER 3 000000000000011A "Tuft" "INV_MISC_QUESTIONMARK"
-#showtooltip Tuft of Smoldering Plumage
-/use [@mouseover,exists,nodead] [] 13
+/use 14
 END
 VER 3 00000000000000D9 "vault" "413587"
 /run LoadAddOn("Blizzard_WeeklyRewards"); WeeklyRewardsFrame:Show()

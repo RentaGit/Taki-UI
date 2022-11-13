@@ -1,5 +1,7 @@
 -- Hide bars --
 hideBars = {
+	MultiBarRight,
+    MultiBarLeft,
 	MultiBar5,
 	MultiBar6,
 	MultiBar7
@@ -30,10 +32,10 @@ local Bars = {
 	_G["MainMenuBar"],
     _G["MultiBarBottomLeft"],
     _G["MultiBarBottomRight"],
-    _G["MultiBarRight"],
-    _G["MultiBarLeft"],
-    _G["MultiBarRight"]
-	--,_G["MultiBar5"],
+    --_G["MultiBarRight"],
+    --_G["MultiBarLeft"],
+    --_G["MultiBarRight"],
+	--_G["MultiBar5"],
 	--_G["MultiBar6"],
 	--_G["MultiBar7"]
   }
@@ -57,12 +59,12 @@ function setBehaviour(Bar, Num)
 	Hotkey:SetAlpha(0)
 	Name:SetAlpha(0)
 
-    Button:SetScript('OnEnter', function()
+    Button:HookScript('OnEnter', function()
       Hotkey:SetAlpha(1)
 	  Name:SetAlpha(1)
     end)
 
-    Button:SetScript('OnLeave', function()
+    Button:HookScript('OnLeave', function()
       Hotkey:SetAlpha(0)
 	  Name:SetAlpha(0)
     end)
@@ -74,7 +76,6 @@ function getBarName(Bar)
 	then
 		return "Action"
 	end
-	local name = (Bar:GetName() == "MainMenuBar" and "ActionButton" or Bar:GetName())
 	return Bar:GetName()
 end
 
