@@ -139,6 +139,23 @@ local function createOptions(id, data)
         OptionsPrivate.ResetMoverSizer()
       end,
     },
+    growOn = {
+      type = "input",
+      width = WeakAuras.doubleWidth,
+      name = L["Run on..."],
+      desc = L["You can add a comma-separated list of state values here that (when changed) WeakAuras should also run the Grow Code on.\n\nWeakAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered."],
+      order = 2 - 0.1,
+      get = function()
+        return data.growOn or ""
+      end,
+      hidden = function() return data.grow ~= "CUSTOM" end,
+      set = function(info, v)
+        data.growOn = v
+        WeakAuras.Add(data)
+        WeakAuras.ClearAndUpdateOptions(data.id)
+        OptionsPrivate.ResetMoverSizer()
+      end
+    },
     useAnchorPerUnit = {
       type = "toggle",
       order = 1.5,
@@ -201,6 +218,20 @@ local function createOptions(id, data)
         OptionsPrivate.ResetMoverSizer()
       end,
     },
+    centerType = {
+      type = "select",
+      width = WeakAuras.normalWidth,
+      name = L["Aura Order"],
+      order = 3,
+      values = function()
+        if data.grow == "HORIZONTAL" then
+         return OptionsPrivate.Private.centered_types_h
+        else
+          return OptionsPrivate.Private.centered_types_v
+        end
+      end,
+      hidden = function() return data.grow ~= "HORIZONTAL" and data.grow ~= "VERTICAL" end,
+    },
     -- circle grow options
     constantFactor = {
       type = "select",
@@ -212,6 +243,7 @@ local function createOptions(id, data)
     },
     rotation = {
       type = "range",
+      control = "WeakAurasSpinBox",
       width = WeakAuras.normalWidth,
       name = L["Start Angle"],
       order = 5,
@@ -229,6 +261,7 @@ local function createOptions(id, data)
     },
     arcLength = {
       type = "range",
+      control = "WeakAurasSpinBox",
       width = WeakAuras.normalWidth,
       name = L["Total Angle"],
       order = 8,
@@ -240,6 +273,7 @@ local function createOptions(id, data)
     },
     radius = {
       type = "range",
+      control = "WeakAurasSpinBox",
       width = WeakAuras.normalWidth,
       name = L["Radius"],
       order = 9,
@@ -265,6 +299,7 @@ local function createOptions(id, data)
     },
     gridWidth = {
       type = "range",
+      control = "WeakAurasSpinBox",
       width = WeakAuras.normalWidth,
       name = function()
         if not data.gridType then return "" end
@@ -282,6 +317,7 @@ local function createOptions(id, data)
     },
     rowSpace = {
       type = "range",
+      control = "WeakAurasSpinBox",
       name = L["Row Space"],
       width = WeakAuras.normalWidth,
       order = 10,
@@ -292,6 +328,7 @@ local function createOptions(id, data)
     },
     columnSpace = {
       type = "range",
+      control = "WeakAurasSpinBox",
       name = L["Column Space"],
       width = WeakAuras.normalWidth,
       order = 11,
@@ -303,6 +340,7 @@ local function createOptions(id, data)
     -- generic grow options
     space = {
       type = "range",
+      control = "WeakAurasSpinBox",
       width = WeakAuras.normalWidth,
       name = L["Space"],
       order = 7,
@@ -317,6 +355,7 @@ local function createOptions(id, data)
     },
     stagger = {
       type = "range",
+      control = "WeakAurasSpinBox",
       width = WeakAuras.normalWidth,
       name = L["Stagger"],
       order = 8,
@@ -338,6 +377,23 @@ local function createOptions(id, data)
       name = L["Sort"],
       order = 20,
       values = OptionsPrivate.Private.group_sort_types
+    },
+    sortOn = {
+      type = "input",
+      width = WeakAuras.doubleWidth,
+      name = L["Run on..."],
+      desc = L["You can add a comma-separated list of state values here that (when changed) WeakAuras should also run the sort code on.WeakAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."],
+      order = 21 - 0.1,
+      get = function()
+        return data.sortOn or ""
+      end,
+      hidden = function() return data.sort ~= "custom" end,
+      set = function(info, v)
+        data.sortOn = v
+        WeakAuras.Add(data)
+        WeakAuras.ClearAndUpdateOptions(data.id)
+        OptionsPrivate.ResetMoverSizer()
+      end
     },
     -- custom sort option added below
     hybridPosition = {
@@ -392,6 +448,7 @@ local function createOptions(id, data)
     },
     limit = {
       type = "range",
+      control = "WeakAurasSpinBox",
       order = 26,
       width = WeakAuras.normalWidth,
       name = L["Limit"],
@@ -409,6 +466,7 @@ local function createOptions(id, data)
     },
     scale = {
       type = "range",
+      control = "WeakAurasSpinBox",
       width = WeakAuras.normalWidth,
       name = L["Group Scale"],
       order = 28,

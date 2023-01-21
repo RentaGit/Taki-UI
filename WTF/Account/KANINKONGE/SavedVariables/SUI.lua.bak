@@ -3,87 +3,91 @@ SUIDB = {
 	["profileKeys"] = {
 		["Rentaki - Kazzak"] = "Default",
 		["Takidin - Kazzak"] = "Default",
-		["Takil - Kazzak"] = "Default",
+		["Thaaeyn - Argent Dawn"] = "Default",
+		["Renqqø - Kazzak"] = "Default",
+		["Takidemon - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
+		["Rendudu - Kazzak"] = "Default",
+		["Takided - Kazzak"] = "Default",
+		["Felenia - Doomhammer"] = "Default",
+		["Arcataki - Doomhammer"] = "Default",
+		["Takosa - Kazzak"] = "Default",
+		["Takidari - Kazzak"] = "Default",
+		["Taaku - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
 			["general"] = {
-				["color"] = {
-					["b"] = 1,
-					["g"] = 1,
-					["r"] = 1,
+				["cosmetic"] = {
+					["afkscreen"] = false,
+					["talkinghead"] = true,
+				},
+				["automation"] = {
+					["repair"] = "Player",
 				},
 				["display"] = {
 					["ms"] = false,
-					["avgilvl"] = true,
 					["fps"] = false,
 				},
-				["texture"] = "Interface\\AddOns\\SUI\\Media\\Textures\\Status\\Flat",
+				["texture"] = "Interface\\AddOns\\Details\\images\\bar_background",
 			},
 			["edit"] = {
-				["StatsFrame"] = {
+				["queueicon"] = {
+					["y"] = -265.4571007948661,
+					["x"] = -166.1462621444295,
 				},
-				["DebuffDragFrame"] = {
-				},
-				["MenuFrame"] = {
-					["y"] = 0,
-					["x"] = -5.409698486328125,
+				["bagbar"] = {
+					["y"] = 40.97347640991211,
+					["x"] = -425.8584289550781,
 					["point"] = "BOTTOM",
-					["scale"] = 1,
 				},
-				["BuffDragFrame"] = {
-				},
-				["CastingBarFrame"] = {
-					["y"] = 189.1093878999345,
-					["x"] = 0.000114064707304351,
+				["micromenu"] = {
+					["y"] = 3.280181407928467,
+					["x"] = -434.1787414550781,
 					["point"] = "BOTTOM",
-					["scale"] = 1.299999952316284,
 				},
-				["TargetFrameDragFrame"] = {
-					["y"] = -129.1408538818359,
-					["x"] = 339.6917724609375,
-					["point"] = "CENTER",
-					["scale"] = 1,
-				},
-				["FocusFrame"] = {
-				},
-				["TooltipFrame"] = {
-					["y"] = 275.8977355957031,
-					["x"] = -100.8724365234375,
-					["point"] = "BOTTOMRIGHT",
-					["scale"] = 1,
-				},
-				["TargetFrame"] = {
-				},
-				["PlayerFrame"] = {
-				},
+			},
+			["castbars"] = {
+				["playerSize"] = 1.2,
+				["focusOnTop"] = true,
+				["targetSize"] = 1.3,
+				["focusSize"] = 1.3,
+				["targetOnTop"] = true,
 			},
 			["install"] = true,
 			["chat"] = {
 				["quickjoin"] = false,
+				["friendlist"] = false,
+			},
+			["maps"] = {
+				["tracking"] = true,
 			},
 			["actionbar"] = {
-				["gryphones"] = false,
+				["DetailsNewsWindow"] = {
+					["scale"] = 1,
+				},
+				["bars"] = {
+					["bar6"] = true,
+					["bar1"] = true,
+					["bar8"] = true,
+					["bar5"] = true,
+					["bar7"] = true,
+				},
 				["menu"] = {
-					["hidebag"] = true,
-					["style"] = "Custom",
-					["mouseover"] = true,
+					["bagbar"] = "mouse_over",
+					["micromenu"] = "mouse_over",
 				},
 				["buttons"] = {
 					["key"] = false,
+					["macro"] = false,
 					["flash"] = true,
-				},
-			},
-			["unitframes"] = {
-				["combaticon"] = true,
-				["buffs"] = {
-					["size"] = 20,
+					["size"] = 15,
 				},
 			},
 			["raidframes"] = {
 				["texture"] = "Interface\\AddOns\\Details\\images\\bar_background",
 			},
+			["reset"] = true,
 		},
 	},
 }

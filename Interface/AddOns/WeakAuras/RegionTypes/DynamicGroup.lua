@@ -37,6 +37,7 @@ local default = {
   useLimit = false,
   limit = 5,
   gridType = "RD",
+  centerType = "LR",
   gridWidth = 5,
   rowSpace = 1,
   columnSpace = 1
@@ -113,6 +114,8 @@ local function create(parent)
   region.sortedChildren = {}
   region.controlledChildren = {}
   region.updatedChildren = {}
+  region.sortStates = {}
+  region.growStates = {}
   local background = CreateFrame("Frame", nil, region, "BackdropTemplate")
   region.background = background
   region.selfPoint = "TOPLEFT"
@@ -273,7 +276,7 @@ local sorters = {
     return WeakAuras.ComposeSorts(
       WeakAuras.SortAscending({"dataIndex"}),
       WeakAuras.SortAscending({"region", "state", "index"})
-    )
+    ), { index = true }
   end,
   hybrid = function(data)
     local sortHybridTable = data.sortHybridTable or {}
@@ -304,23 +307,31 @@ local sorters = {
       sortHybridStatus,
       sortExpirationTime,
       WeakAuras.SortAscending({"dataIndex"})
-    )
+    ), {expirationTime = true}
   end,
   ascending = function(data)
     return WeakAuras.ComposeSorts(
       WeakAuras.SortAscending({"region", "state", "expirationTime"}),
       WeakAuras.SortAscending({"dataIndex"})
-    )
+    ), {expirationTime = true}
   end,
   descending = function(data)
     return WeakAuras.ComposeSorts(
       WeakAuras.SortDescending({"region", "state", "expirationTime"}),
       WeakAuras.SortAscending({"dataIndex"})
-    )
+    ), {expirationTime = true}
   end,
   custom = function(data)
     local sortStr = data.customSort or ""
     local sortFunc = WeakAuras.LoadFunction("return " .. sortStr) or noop
+    local sortOn = nil
+    local events = WeakAuras.split(data.sortOn or "")
+    if #events > 0 then
+      sortOn = {}
+      for _, event in ipairs(events) do
+        sortOn[event] = true
+      end
+    end
     return function(a, b)
       Private.ActivateAuraEnvironment(data.id)
       local ok, result = xpcall(sortFunc, Private.GetErrorHandlerId(data.id, L["Custom Sort"]), a, b)
@@ -328,7 +339,7 @@ local sorters = {
       if ok then
         return result
       end
-    end
+    end, sortOn
   end
 }
 WeakAuras.SortFunctions = sorters
@@ -374,7 +385,7 @@ local anchorers = {
             found = true
           end
         end
-        if not found and WeakAuras.IsOptionsOpen() then
+        if not found and WeakAuras.IsOptionsOpen() and regionData.region.state then
           Private.ensurePRDFrame()
           Private.personalRessourceDisplayFrame:anchorFrame(regionData.region.state.id, "NAMEPLATE")
           frames[Private.personalRessourceDisplayFrame] = frames[Private.personalRessourceDisplayFrame] or {}
@@ -406,6 +417,76 @@ local anchorers = {
       Private.ActivateAuraEnvironment()
     end
   end
+}
+
+-- Names are based on the Left->Right layout,
+local centeredIndexerStart = {
+  -- Left to right, e.g: 1 2 3 4
+  ["LR"] = function(maxIndex)
+    return maxIndex > 0 and 1 or nil
+  end,
+  ["RL"] = function(maxIndex)
+    return maxIndex > 0 and maxIndex or nil
+  end,
+  -- Center -> Left -> Right, e.g: 4 2 1 3
+  ["CLR"] = function(maxIndex)
+    if maxIndex >= 3 then
+      return maxIndex - maxIndex % 2
+    else
+      return maxIndex
+    end
+  end,
+  -- Center -> Right -> Left, e.g: 3 1 2 4
+  ["CRL"] = function(maxIndex)
+    if maxIndex % 2 == 1 then
+      return maxIndex
+    else
+     return maxIndex - 1
+    end
+  end
+}
+
+local centeredIndexerNext = {
+  ["LR"] = function(index, maxIndex)
+    index = index + 1
+    return index <= maxIndex and index or nil
+  end,
+  ["RL"] = function(index, maxIndex)
+    index = index - 1
+    return index > 0 and index or nil
+  end,
+  ["CLR"] = function(index, maxIndex)
+    -- Center -> Left -> Right
+    -- So even -> odd
+    if index % 2 == 0 then
+      index = index - 2
+      if index == 0 then
+        index = 1
+      end
+    else
+      index = index + 2
+    end
+    if index > maxIndex then
+      return nil
+    end
+    return index
+  end,
+  ["CRL"] = function(index, maxIndex)
+    -- Center -> Right -> Left
+    -- So odd -> even
+    if index % 2 == 1 then
+      index = index - 2
+      if index == -1 then
+        index = 2
+      end
+    else
+      index = index + 2
+    end
+    if index > maxIndex then
+      return nil
+    end
+    return index
+  end,
 }
 
 local function createAnchorPerUnitFunc(data)
@@ -536,6 +617,8 @@ local growers = {
     local limit = data.useLimit and data.limit or math.huge
     local midX, midY = 0, 0
     local anchorPerUnitFunc = data.useAnchorPerUnit and createAnchorPerUnitFunc(data)
+    local FirstIndex = centeredIndexerStart[data.centerType]
+    local NextIndex = centeredIndexerNext[data.centerType]
     return function(newPositions, activeRegions)
       local frames = {}
       if anchorPerUnitFunc then
@@ -552,13 +635,16 @@ local growers = {
         end
         local x, y = midX - totalWidth/2, midY - (stagger * (numVisible - 1)/2)
         newPositions[frame] = {}
-        for i, regionData in ipairs(regionDatas) do
-          if i <= numVisible then
-            x = x + (regionData.dimensions.width) / 2
-            newPositions[frame][regionData] = { x, y, true }
-            x = x + (regionData.dimensions.width) / 2 + space
-            y = y + stagger
-          end
+
+        --- @type integer?
+        local i = FirstIndex(numVisible)
+        while i do
+          local regionData = regionDatas[i]
+          x = x + (regionData.dimensions.width) / 2
+          newPositions[frame][regionData] = { x, y, true }
+          x = x + (regionData.dimensions.width) / 2 + space
+          y = y + stagger
+          i = NextIndex(i, numVisible)
         end
       end
     end
@@ -569,6 +655,8 @@ local growers = {
     local limit = data.useLimit and data.limit or math.huge
     local midX, midY = 0, 0
     local anchorPerUnitFunc = data.useAnchorPerUnit and createAnchorPerUnitFunc(data)
+    local FirstIndex = centeredIndexerStart[data.centerType]
+    local NextIndex = centeredIndexerNext[data.centerType]
     return function(newPositions, activeRegions)
       local frames = {}
       if anchorPerUnitFunc then
@@ -585,13 +673,14 @@ local growers = {
         end
         local x, y = midX - (stagger * (numVisible - 1)/2), midY - totalHeight/2
         newPositions[frame] = {}
-        for i, regionData in ipairs(regionDatas) do
-          if i <= numVisible then
-            y = y + (regionData.dimensions.height) / 2
-            newPositions[frame][regionData] = { x, y, true }
-            x = x + stagger
-            y = y + (regionData.dimensions.height) / 2 + space
-          end
+        local i = FirstIndex(numVisible)
+        while i do
+          local regionData = regionDatas[i]
+          y = y + (regionData.dimensions.height) / 2
+          newPositions[frame][regionData] = { x, y, true }
+          x = x + stagger
+          y = y + (regionData.dimensions.height) / 2 + space
+          i = NextIndex(i, numVisible)
         end
       end
     end
@@ -834,6 +923,14 @@ local growers = {
   CUSTOM = function(data)
     local growStr = data.customGrow or ""
     local growFunc = WeakAuras.LoadFunction("return " .. growStr) or noop
+    local growOn = nil
+    local events = WeakAuras.split(data.growOn or "")
+    if #events > 0 then
+      growOn = {}
+      for _, event in ipairs(events) do
+        growOn[event] = true
+      end
+    end
     return function(newPositions, activeRegions)
       Private.ActivateAuraEnvironment(data.id)
       local ok = xpcall(growFunc, Private.GetErrorHandlerId(data.id, L["Custom Grow"]), newPositions, activeRegions)
@@ -841,7 +938,7 @@ local growers = {
       if not ok then
         wipe(newPositions)
       end
-    end
+    end, growOn
   end
 }
 WeakAuras.GrowFunctions = growers
@@ -858,6 +955,50 @@ local function SafeGetPos(region, func)
   local ok, value1, value2 = xpcall(func, nullErrorHandler, region)
   if ok then
     return value1, value2
+  end
+end
+
+local function isDifferent(regionData, cache, events)
+  local id = regionData.id
+  local cloneId = regionData.cloneId or ""
+  local state = regionData.region.state
+  if not events then
+    return false
+  elseif events.changed then
+    return true -- escape hatch, not super recommended
+  else
+    local isDifferent = false
+    if not cache[id] then
+      isDifferent = true
+      local cachedState = {}
+      cache[id] = {[cloneId] = cachedState}
+      for event in pairs(events) do
+        cachedState[event] = state[event]
+      end
+    elseif not cache[id][cloneId] then
+      isDifferent = true
+      local cachedState = {}
+      cache[id][cloneId] = cachedState
+      for event in pairs(events) do
+        cachedState[event] = state[event]
+      end
+    else
+      local cachedState = cache[id][cloneId]
+      for event in pairs(events) do
+        if regionData.region.state[event] ~= cachedState[event] then
+          cachedState[event] = state[event]
+          isDifferent = true
+        end
+      end
+    end
+    return isDifferent
+  end
+end
+
+local function clearCache(cache, id, cloneId)
+  cloneId = cloneId or ""
+  if cache[id] then
+    cache[id][cloneId] = nil
   end
 end
 
@@ -988,6 +1129,8 @@ local function modify(parent, region, data)
       Private.StartProfileAura(data.id)
       self.needToReload = false
       self.sortedChildren = {}
+      self.sortStates = {}
+      self.growStates = {}
       self.controlledChildren = {}
       self.updatedChildren = {}
       self.controlPoints:ReleaseAll()
@@ -1051,9 +1194,14 @@ local function modify(parent, region, data)
     -- if it has been, then don't insert it again
     if not regionData.active and self.updatedChildren[regionData] == nil then
       tinsert(self.sortedChildren, regionData)
+      self.updatedChildren[regionData] = true
+      self:SortUpdatedChildren()
+    elseif isDifferent(regionData, self.sortStates, self.sortOn) then
+      self.updatedChildren[regionData] = true
+      self:SortUpdatedChildren()
+    elseif isDifferent(regionData, self.growStates, self.growOn) then
+      self:PositionChildren()
     end
-    self.updatedChildren[regionData] = true
-    self:SortUpdatedChildren()
   end
 
   function region:RemoveChild(childID, cloneID)
@@ -1063,6 +1211,8 @@ local function modify(parent, region, data)
     if not regionData then return end
     releaseRegionData(regionData)
     self.updatedChildren[regionData] = false
+    clearCache(self.sortStates, childID, cloneID)
+    clearCache(self.growStates, childID, cloneID)
     self:SortUpdatedChildren()
   end
 
@@ -1073,10 +1223,12 @@ local function modify(parent, region, data)
     if regionData and not regionData.region.toShow then
       self.updatedChildren[regionData] = false
     end
+    clearCache(self.sortStates, childID, cloneID)
+    clearCache(self.growStates, childID, cloneID)
     self:SortUpdatedChildren()
   end
 
-  region.sortFunc = createSortFunc(data)
+  region.sortFunc, region.sortOn = createSortFunc(data)
 
   function region:SortUpdatedChildren()
     -- iterates through cache to insert all updated children in the right spot
@@ -1121,7 +1273,7 @@ local function modify(parent, region, data)
     end
   end
 
-  region.growFunc = createGrowFunc(data)
+  region.growFunc, region.growOn = createGrowFunc(data)
   region.anchorPerUnit = data.useAnchorPerUnit and data.anchorPerUnit
 
   local animate = data.animate

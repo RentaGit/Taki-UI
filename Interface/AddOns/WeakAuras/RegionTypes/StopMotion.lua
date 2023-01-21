@@ -16,10 +16,7 @@ local default = {
     foregroundColor = {1, 1, 1, 1},
     backgroundColor = {0.5, 0.5, 0.5, 0.5},
     blendMode = "BLEND",
-    rotation = 0,
-    discrete_rotation = 0,
     mirror = false,
-    rotate = true,
     selfPoint = "CENTER",
     anchorPoint = "CENTER",
     anchorFrameType = "SCREEN",
@@ -455,6 +452,9 @@ local function modify(parent, region, data)
     end;
 
     region.FrameTick = onUpdate;
+    if region.FrameTick then
+      region.subRegionEvents:AddSubscriber("FrameTick", region, true)
+    end
 
     function region:Update()
       if region.state.paused then

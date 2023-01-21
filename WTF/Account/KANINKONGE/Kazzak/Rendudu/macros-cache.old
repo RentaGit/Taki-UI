@@ -1,3 +1,7 @@
+VER 3 0100000000000006 "bark" "INV_MISC_QUESTIONMARK"
+#showtooltip ironbark
+/cast [@mouseover] ironbark
+END
 VER 3 0100000000000001 "lifebloom" "INV_MISC_QUESTIONMARK"
 #showtooltip Lifebloom
 /cast [@mouseover] Lifebloom

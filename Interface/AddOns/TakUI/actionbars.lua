@@ -1,5 +1,6 @@
 -- Hide bars --
 hideBars = {
+	MainMenuBar,
 	MultiBarRight,
     MultiBarLeft,
 	MultiBar5,

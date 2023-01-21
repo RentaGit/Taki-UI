@@ -109,6 +109,8 @@ local auraBarAnchorInverse = {
 local function create()
   local subRegion = CreateFrame("Frame", nil, UIParent)
   subRegion.texture = subRegion:CreateTexture()
+  subRegion.texture:SetSnapToPixelGrid(false)
+  subRegion.texture:SetTexelSnappingBias(0)
   subRegion.texture:SetDrawLayer("ARTWORK", 3)
   subRegion.texture:SetAllPoints(subRegion)
   return subRegion
@@ -197,13 +199,11 @@ local funcs = {
     then
       if not self.TimerTick then
         self.TimerTick = self.UpdateTickPlacement
-        self.parent:UpdateRegionHasTimerTick()
         self.parent.subRegionEvents:AddSubscriber("TimerTick", self)
       end
     else
       if self.TimerTick then
         self.TimerTick = nil
-        self.parent:UpdateRegionHasTimerTick()
         self.parent.subRegionEvents:RemoveSubscriber("TimerTick", self)
       end
     end

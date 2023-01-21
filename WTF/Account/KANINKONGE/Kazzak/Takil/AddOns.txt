@@ -6,3 +6,12 @@ LortiUI: disabled
 UberUI: disabled
 WeakAurasCompanion: enabled
 WeakAurasArchive: enabled
+RulezItemLevel: disabled
+OmniCD: disabled
+LibStub: disabled
+AngryKeystones: disabled
+MacroToolkit: disabled
+MacroToolkitIcons: disabled
+BigDebuffs: disabled
+AdvancedInterfaceOptions: disabled
+TakUI: disabled

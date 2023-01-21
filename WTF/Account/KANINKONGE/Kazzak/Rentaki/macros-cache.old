@@ -2,8 +2,8 @@ VER 3 0100000000000008 "chainheal" "INV_MISC_QUESTIONMARK"
 #showtooltip chain heal
 /cast [@mouseover] chain heal
 END
-VER 3 0100000000000027 "cleanse spirit" "INV_MISC_QUESTIONMARK"
-#showtooltip cleanse spirit
+VER 3 0100000000000027 "cleanse spirit" "236288"
+#showtooltip
 /cast [@mouseover,help,nodead][help,nodead][@player] cleanse spirit
 END
 VER 3 010000000000000D "dispell" "INV_MISC_QUESTIONMARK"
@@ -20,11 +20,14 @@ VER 3 010000000000000B "earthshield" "INV_MISC_QUESTIONMARK"
 END
 VER 3 0100000000000024 "es/downpour" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/cast [@cursor] [talent:6/2] Downpour
-/cast [@mouseover,help,nodead][help,nodead][@player] [talent:2/3] Earth Shield
+/cast [@cursor] Downpour
+END
+VER 3 010000000000002F "EWT" "134400"
+#showtooltip
+/cast [@cursor] earthen wall totem
 END
 VER 3 010000000000001D "focus wind shear" "INV_MISC_QUESTIONMARK"
-#showtooltip wind shear
+#showtooltip
 /cast [@focus] wind shear
 END
 VER 3 010000000000000A "healingsurge" "INV_MISC_QUESTIONMARK"
@@ -35,6 +38,10 @@ VER 3 0100000000000009 "healingwave" "INV_MISC_QUESTIONMARK"
 #showtooltip healing wave
 /cast [@mouseover] healing wave
 END
+VER 3 010000000000002D "LMT mo" "134400"
+#showtooltip
+/cast [@cursor] liquid magma totem
+END
 VER 3 0100000000000029 "lvb" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /cqs
@@ -43,6 +50,26 @@ END
 VER 3 0100000000000023 "mo eb" "INV_MISC_QUESTIONMARK"
 #showtooltip earthbind totem
 /cast [nomod, @cursor] earthbind totem
+END
+VER 3 010000000000002E "mount" "132249"
+#showtooltip
+/cast water walking
+/run C_MountJournal.SummonByID(0)
+END
+VER 3 0100000000000030 "raza" "4640492"
+/tar boss1
+/targetenemy
+/focus
+/tar player
+/tar focus
+/tar boss1
+/targetlasttarget
+/castsequence [harm,nodead] reset=20 wind shear, purge, purge, purge, purge, purge
+/tar boss1
+END
+VER 3 010000000000002C "resto PW" "134400"
+#showtooltip
+/cast [@mouseover] primordial wave
 END
 VER 3 010000000000000C "riptide" "INV_MISC_QUESTIONMARK"
 #showtooltip riptide

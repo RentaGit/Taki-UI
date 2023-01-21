@@ -1,15 +1,11 @@
 @cont1nuity:
-- Fixing CVar restore (again, for real).
-- Several updates for Dragonflight compatibility.
-- Adding shadow priest execute for WotLK.
-- Retail toc bump for Dragonflight pre-patch.
-- Hide target glow on personal bar if the healthbar is disabled.
-- Quest info cache now holds 'groupAmount' and uses lowest amount from group for the top level default, while 'amount' in the quest-data contains the players value.
-- Fixing CVar restore not working properly in some cases.
-- Fixing an issue with mod/script options not working properly.
-- Fixing aura types auto tracking for Dragonflight.
+- Fixing spec icon indicators for evoker.
+- More fixes for invisible nameplates.
+- Better hide blizzard resources on the personal bar if necessary.
+- Fixing aura tracking lists not working properly after importing profiles.
+- Adding more 'forced in combat' units for Dragonflight dungeon boss adds.
+- Adding additional arrow target indicators.
 
 @Terciob:
-- Updates to hit animations.
-- Use Plater internal class colors.
+- Multiple Script bug fixes.
 

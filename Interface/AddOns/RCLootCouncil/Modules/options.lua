@@ -279,7 +279,7 @@ function addon:OptionsTable()
 											if not self.enabled and self.isMasterLooter then -- If we disable while being ML
 												self.isMasterLooter = false
 												self.masterLooter = nil
-												self:GetActiveModule("masterlooter"):Disable()
+												self:StopHandleLoot()
 											else
 												self:NewMLCheck()
 											end
@@ -310,7 +310,7 @@ function addon:OptionsTable()
 										desc = L["test_desc"],
 										type = "execute",
 										func = function()
-											SettingsPanel:ExitWithoutCommit() -- close all option frames before testing
+											HideUIPanel(SettingsPanel) -- close all option frames before testing
 											self:Test(3)
 										end,
 									},
@@ -320,7 +320,7 @@ function addon:OptionsTable()
 										type = "execute",
 										order = 9,
 										func = function()
-											SettingsPanel:ExitWithoutCommit()
+											HideUIPanel(SettingsPanel)
 											LibStub("AceConfigDialog-3.0"):CloseAll()
 											addon:CallModule("version")
 										end,
@@ -331,7 +331,7 @@ function addon:OptionsTable()
 										desc = L["Opens the synchronizer"],
 										type = "execute",
 										func = function()
-											SettingsPanel:ExitWithoutCommit()
+											HideUIPanel(SettingsPanel)
 											LibStub("AceConfigDialog-3.0"):CloseAll()
 											self.Sync:Enable()
 										end,
@@ -374,6 +374,12 @@ function addon:OptionsTable()
 										desc = L["print_response_desc"],
 										type = "toggle",
 									},
+									autoGroupLootGuildGroupOnly = {
+										order = 6,
+										name = L.opt_autoGroupLootGuildGroupOnly_name,
+										desc = L.opt_autoGroupLootGuildGroupOnly_name,
+									    type = "toggle"
+									}
 								},
 							},
 							frameOptions = {
@@ -412,8 +418,14 @@ function addon:OptionsTable()
 										desc = L["show_spec_icon_desc"],
 										type = "toggle",
 									},
-									chatFrameName = {
+									closeWithEscape = {
 										order = 6,
+										name = L.opt_closeWithEscape_name,
+										desc = L.opt_closeWithEscape_desc,
+										type = "toggle"
+									},
+									chatFrameName = {
+										order = 7,
 										name = L["opt_chatFrameName_name"],
 										desc = L["opt_chatFrameName_desc"],
 										type = "select",
@@ -472,7 +484,7 @@ function addon:OptionsTable()
 										name = L["Open the Loot History"],
 										desc = L["open_the_loot_history_desc"],
 										type = "execute",
-										func = function() self:CallModule("history");	SettingsPanel:ExitWithoutCommit();end,
+										func = function() self:CallModule("history");	HideUIPanel(SettingsPanel);end,
 									},
 									clearLootDB = {
 										order = 6,
@@ -540,14 +552,14 @@ function addon:OptionsTable()
 										type = "select",
 										width = "double",
 										values = {
-											[time() - 604800] = format(L["x days"], 7),
-											[time() - 1209600] = format(L["x days"], 14),
-											[time() -2592000] = format(L["x days"], 30),
-											[time() -5184000] = format(L["x days"], 60),
-											[time() -7776000] = format(L["x days"], 90),
-											[time() -10368000] = format(L["x days"], 120),
-											[time() -15552000] = format(L["x days"], 180),
-											[time() -31536000] = format(L["x days"], 365),
+											[7] = format(L["x days"], 7),
+											[14] = format(L["x days"], 14),
+											[30] = format(L["x days"], 30),
+											[60] = format(L["x days"], 60),
+											[90] = format(L["x days"], 90),
+											[120] = format(L["x days"], 120),
+											[180] = format(L["x days"], 180),
+											[365] = format(L["x days"], 365),
 										},
 										get = function(info)
 											return selections[info[#info]] or ""
@@ -566,7 +578,12 @@ function addon:OptionsTable()
 												addon:Print(L["Invalid selection"])
 												return
 											end
-											self:GetActiveModule("history"):DeleteEntriesOlderThanEpoch(selections.deleteDate)
+											local DaysToSeconds = function (days)
+												return tonumber(days or 0)  * 86400
+											end
+
+											local deleteOlderThan = time() - DaysToSeconds(selections.deleteDate)
+											self:GetActiveModule("history"):DeleteEntriesOlderThanEpoch(deleteOlderThan)
 											selections.deleteDate = "" -- Barrow: Needs to be reset.
 										end,
 									},
@@ -889,9 +906,11 @@ function addon:OptionsTable()
 										--	ask_ml		= L["Ask me every time I become Master Looter"],
 										--	leader 		= "Always use RCLootCouncil when I'm the group leader and enter a raid",
 										--	ask_leader	= "Ask me every time I'm the group leader and enter a raid",
-											pl				= L["Always use RCLootCouncil with Personal Loot"],
-											ask_pl		= L["Ask me every time Personal Loot is enabled"],
+											-- pl				= L["Always use RCLootCouncil with Personal Loot"],
+											-- ask_pl		= L["Ask me every time Personal Loot is enabled"],
 											never			= L["Never use RCLootCouncil"],
+											gl     = L.opt_usage_GroupLoot,
+											ask_gl = L.opt_usage_AskGroupLoot,
 										},
 										set = function(_, key)
 											for k in pairs(self.db.profile.usage) do
@@ -996,6 +1015,12 @@ function addon:OptionsTable()
 										desc = L["opt_award_later_desc"],
 										type = "toggle"
 									},
+									autoGroupLoot = {
+										order = 10,
+										name = L.opt_autoGroupLoot_name,
+										desc = L.opt_autoGroupLoot_desc,
+										type = "toggle"
+									}
 								},
 							},
 							voteOptions = {

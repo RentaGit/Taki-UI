@@ -42,4 +42,13 @@ BigWigs:AddSounds("Chrono-Lord Deios", {
 })
 
 BigWigs:AddSounds("Uldaman: Legacy of Tyr Trash", {
+	[369337] = "underyou",
+	[369365] = {"alert","warning"},
+	[369366] = "warning",
+	[369400] = {"alert","warning"},
+	[369411] = "alarm",
+	[369465] = "alarm",
+	[369811] = "alarm",
+	[369823] = {"alert","warning"},
+	[381593] = "alert",
 })

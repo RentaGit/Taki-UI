@@ -2,45 +2,72 @@
 OmniCDDB = {
 	["profileKeys"] = {
 		["Hunteraki - Frostmane"] = "Default",
+		["Ivelea - Argent Dawn"] = "Default",
+		["Takided - Kazzak"] = "Default",
+		["Arcataki - Doomhammer"] = "Default",
+		["Takii - Argent Dawn"] = "Default",
 		["Takidari - Kazzak"] = "Default",
 		["Taaku - Kazzak"] = "Default",
 		["Rentaki - Kazzak"] = "Default",
-		["Huntaki - Ravencrest"] = "Default",
-		["Takil - Kazzak"] = "Default",
+		["Takidin - Kazzak"] = "Default",
+		["Takiwar - Kazzak"] = "Default",
+		["Rentaco - Kazzak"] = "Default",
 		["Rentakisham - EU Mythic Dungeons"] = "Default",
 		["Renqqø - Kazzak"] = "Default",
-		["Takiwar - Kazzak"] = "Default",
-		["Takeera - Kazzak"] = "Default",
+		["Takidemon - Kazzak"] = "Default",
+		["Felenia - Doomhammer"] = "Default",
 		["Renwarri - Kazzak"] = "Default",
 		["Takiscoper - Kazzak"] = "Default",
+		["Takeera - Kazzak"] = "Default",
 		["Takibank - Argent Dawn"] = "Default",
-		["Rentaco - Kazzak"] = "Default",
 		["Takitest - Kazzak"] = "Default",
-		["Takii - Argent Dawn"] = "Default",
-		["Takidin - Kazzak"] = "Default",
-		["Ivelea - Argent Dawn"] = "Default",
+		["Takosa - Kazzak"] = "Default",
+		["Huntaki - Ravencrest"] = "Default",
+		["Takil - Kazzak"] = "Default",
 	},
 	["global"] = {
-		["oodVer"] = 9272722,
-		["oodChk"] = 221017,
-		["oodMsg"] = "|cfff16436 A new update is available. |cff99cdff(Major update)",
 		["disableElvMsg"] = true,
+		["oodChk"] = 221017,
+		["oodVer"] = 9272722,
 	},
 	["namespaces"] = {
 		["LibDualSpec-1.0"] = {
 		},
 	},
-	["version"] = 2.51,
 	["cooldowns"] = {
 	},
+	["version"] = 3,
 	["profiles"] = {
 		["Default"] = {
 			["Party"] = {
 				["party"] = {
 					["extraBars"] = {
+						["raidBar0"] = {
+							["scale"] = 0.71,
+							["statusBarWidth"] = 233,
+							["growUpward"] = true,
+							["manualPos"] = {
+								["raidBar0"] = {
+									["y"] = 348.0533906579003,
+									["x"] = 829.5467002081859,
+								},
+							},
+							["locked"] = true,
+						},
 						["interruptBar"] = {
 							["enabled"] = false,
 						},
+					},
+					["spells"] = {
+						["102560"] = true,
+						["55233"] = true,
+						["124974"] = true,
+						["187650"] = false,
+						["360194"] = false,
+						["50334"] = true,
+						["264735"] = true,
+						["102558"] = true,
+						["194223"] = true,
 					},
 					["icons"] = {
 						["scale"] = 1.1,
@@ -55,13 +82,13 @@ OmniCDDB = {
 						["anchor"] = "TOPRIGHT",
 					},
 					["manualPos"] = {
-						["interruptBar"] = {
-							["y"] = 356.2665016823303,
-							["x"] = 834.1351764480714,
-						},
 						["raidCDBar"] = {
 							["y"] = 255.6443638291603,
 							["x"] = 201.0665630284257,
+						},
+						["interruptBar"] = {
+							["y"] = 356.2665016823303,
+							["x"] = 834.1351764480714,
 						},
 					},
 				},
@@ -80,6 +107,12 @@ OmniCDDB = {
 				},
 			},
 			["General"] = {
+				["textures"] = {
+					["statusBar"] = {
+						["BG"] = "Details Flat",
+						["bar"] = "Details Flat",
+					},
+				},
 				["fonts"] = {
 					["statusBar"] = {
 						["font"] = "Gotham Narrow Black",
@@ -92,12 +125,6 @@ OmniCDDB = {
 					["icon"] = {
 						["font"] = "Gotham Narrow Black",
 						["size"] = 12,
-					},
-				},
-				["textures"] = {
-					["statusBar"] = {
-						["BG"] = "Tukui",
-						["bar"] = "Tukui",
 					},
 				},
 			},

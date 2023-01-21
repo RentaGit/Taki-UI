@@ -117,3 +117,4 @@ BigDebuffs: disabled
 RulezItemLevel: disabled
 TakUI: disabled
 SUI: disabled
+LibStub: disabled

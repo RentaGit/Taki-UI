@@ -31,6 +31,8 @@ L["|cFFFF0000Not|r Item Bonus Id Equipped"] = "|cFFFF0000Not|r Item Bonus Id Equ
 --[[Translation missing --]]
 L["|cFFFF0000Not|r Player Name/Realm"] = "|cFFFF0000Not|r Player Name/Realm"
 --[[Translation missing --]]
+L["|cFFFF0000Not|r Spell Known"] = "|cFFFF0000Not|r Spell Known"
+--[[Translation missing --]]
 L["|cFFffcc00Extra Options:|r %s"] = "|cFFffcc00Extra Options:|r %s"
 --[[Translation missing --]]
 L["|cFFffcc00Extra Options:|r None"] = "|cFFffcc00Extra Options:|r None"
@@ -48,6 +50,12 @@ L[ [=[• |cff00ff00Player|r, |cff00ff00Target|r, |cff00ff00Focus|r, and |cff00f
 • |cffffff00Smart Group|r adjusts to your current group type, matching just the "player" when solo, "party" units (including "player") in a party or "raid" units in a raid.
 
 |cffffff00*|r Yellow Unit settings will create clones for each matching unit while this trigger is providing Dynamic Info to the Aura.]=]
+--[[Translation missing --]]
+L["1. Profession 1. Accessory"] = "1. Profession 1. Accessory"
+--[[Translation missing --]]
+L["1. Profession 2. Accessory"] = "1. Profession 2. Accessory"
+--[[Translation missing --]]
+L["1. Professsion Tool"] = "1. Professsion Tool"
 L["10 Man Raid"] = "Banda de 10 Jugadores"
 --[[Translation missing --]]
 L["10 Player Raid"] = "10 Player Raid"
@@ -55,6 +63,12 @@ L["10 Player Raid"] = "10 Player Raid"
 L["10 Player Raid (Heroic)"] = "10 Player Raid (Heroic)"
 --[[Translation missing --]]
 L["10 Player Raid (Normal)"] = "10 Player Raid (Normal)"
+--[[Translation missing --]]
+L["2. Profession 1. Accessory"] = "2. Profession 1. Accessory"
+--[[Translation missing --]]
+L["2. Profession 2. Accessory"] = "2. Profession 2. Accessory"
+--[[Translation missing --]]
+L["2. Professsion Tool"] = "2. Professsion Tool"
 L["20 Man Raid"] = "Banda de 20 jugadores"
 --[[Translation missing --]]
 L["20 Player Raid"] = "20 Player Raid"
@@ -318,6 +332,8 @@ L["Burning Crusade"] = "Burning Crusade"
 --[[Translation missing --]]
 L["Buru the Gorger"] = "Buru the Gorger"
 --[[Translation missing --]]
+L["Callback function"] = "Callback function"
+--[[Translation missing --]]
 L["Can be used for e.g. checking if \"boss1target\" is the same as \"player\"."] = "Can be used for e.g. checking if \"boss1target\" is the same as \"player\"."
 --[[Translation missing --]]
 L["Cancel"] = "Cancel"
@@ -349,6 +365,14 @@ L["Cataclysm"] = "Cataclysm"
 --[[Translation missing --]]
 L["Ceil"] = "Ceil"
 L["Center"] = "Centro"
+--[[Translation missing --]]
+L["Center, then alternating bottom and top"] = "Center, then alternating bottom and top"
+--[[Translation missing --]]
+L["Center, then alternating left and right"] = "Center, then alternating left and right"
+--[[Translation missing --]]
+L["Center, then alternating right and left"] = "Center, then alternating right and left"
+--[[Translation missing --]]
+L["Center, then alternating top and bottom"] = "Center, then alternating top and bottom"
 L["Centered Horizontal"] = "Centrado Horizontal"
 --[[Translation missing --]]
 L["Centered Horizontal, then Centered Vertical"] = "Centered Horizontal, then Centered Vertical"
@@ -503,6 +527,8 @@ L["Custom Text Function"] = "Custom Text Function"
 --[[Translation missing --]]
 L["Custom Trigger Combination"] = "Custom Trigger Combination"
 --[[Translation missing --]]
+L["Custom Variables"] = "Custom Variables"
+--[[Translation missing --]]
 L["Daakara"] = "Daakara"
 L["Damage"] = "Daño"
 L["Damage Shield"] = "Escudo Dañino"
@@ -584,6 +610,8 @@ L["Down, then Left"] = "Down, then Left"
 L["Down, then Right"] = "Down, then Right"
 --[[Translation missing --]]
 L["Dragonflight"] = "Dragonflight"
+--[[Translation missing --]]
+L["Dragonriding"] = "Dragonriding"
 L["Drain"] = "Drenar"
 --[[Translation missing --]]
 L["Dropdown Menu"] = "Dropdown Menu"
@@ -783,6 +811,8 @@ L["Flip"] = "Voltear"
 L["Floor"] = "Floor"
 L["Focus"] = "Foco"
 --[[Translation missing --]]
+L["Font"] = "Font"
+--[[Translation missing --]]
 L["Font Size"] = "Font Size"
 --[[Translation missing --]]
 L["Forbidden function or table: %s"] = "Forbidden function or table: %s"
@@ -852,6 +882,12 @@ L["Golemagg the Incinerator"] = "Golemagg the Incinerator"
 --[[Translation missing --]]
 L["Gothik the Harvester"] = "Gothik the Harvester"
 L["Gradient"] = "Degradado"
+--[[Translation missing --]]
+L["Gradient Color"] = "Gradient Color"
+--[[Translation missing --]]
+L["Gradient Enabled"] = "Gradient Enabled"
+--[[Translation missing --]]
+L["Gradient Orientation"] = "Gradient Orientation"
 L["Gradient Pulse"] = "Degradado Pulsante"
 --[[Translation missing --]]
 L["Grand Widow Faerlina"] = "Grand Widow Faerlina"
@@ -959,6 +995,8 @@ L["Hodir"] = "Hodir"
 --[[Translation missing --]]
 L["Holy Resistance"] = "Holy Resistance"
 L["Horde"] = "Horda"
+--[[Translation missing --]]
+L["Horizontal"] = "Horizontal"
 L["Hostile"] = "Hostil"
 L["Hostility"] = "Holstilidad"
 L["Humanoid"] = "Humanoide"
@@ -1232,9 +1270,15 @@ L["Max Char "] = "Max Char "
 --[[Translation missing --]]
 L["Max Charges"] = "Max Charges"
 --[[Translation missing --]]
+L["Max Health"] = "Max Health"
+--[[Translation missing --]]
+L["Max Power"] = "Max Power"
+--[[Translation missing --]]
 L["Maximum"] = "Maximum"
 --[[Translation missing --]]
 L["Maximum Estimate"] = "Maximum Estimate"
+--[[Translation missing --]]
+L["Media"] = "Media"
 --[[Translation missing --]]
 L["Medium"] = "Medium"
 --[[Translation missing --]]
@@ -1896,6 +1940,8 @@ L["Star Shake"] = "Star Shake"
 --[[Translation missing --]]
 L["Start Now"] = "Start Now"
 L["Status"] = "Estado"
+--[[Translation missing --]]
+L["Status Bar"] = "Status Bar"
 L["Stolen"] = "Robado"
 --[[Translation missing --]]
 L["Stop"] = "Stop"
@@ -1968,6 +2014,8 @@ L["Texture Function"] = "Texture Function"
 --[[Translation missing --]]
 L["Texture Function (fallback state)"] = "Texture Function (fallback state)"
 --[[Translation missing --]]
+L["Texture Rotation"] = "Texture Rotation"
+--[[Translation missing --]]
 L["Thaddius"] = "Thaddius"
 --[[Translation missing --]]
 L["The aura has overwritten the global '%s', this might affect other auras."] = "The aura has overwritten the global '%s', this might affect other auras."
@@ -2016,8 +2064,6 @@ L["This aura is saving %s KB of data"] = "This aura is saving %s KB of data"
 L["This aura plays a sound via a condition."] = "This aura plays a sound via a condition."
 --[[Translation missing --]]
 L["This aura plays a sound via an action."] = "This aura plays a sound via an action."
---[[Translation missing --]]
-L["This aura tried to show a tooltip on a anchoring restricted region"] = "This aura tried to show a tooltip on a anchoring restricted region"
 --[[Translation missing --]]
 L["Thorim"] = "Thorim"
 --[[Translation missing --]]
@@ -2188,6 +2234,8 @@ L["Vault of Archavon"] = "Vault of Archavon"
 L["Versatility (%)"] = "Versatility (%)"
 --[[Translation missing --]]
 L["Versatility Rating"] = "Versatility Rating"
+--[[Translation missing --]]
+L["Vertical"] = "Vertical"
 --[[Translation missing --]]
 L["Vesperon"] = "Vesperon"
 --[[Translation missing --]]

@@ -82,12 +82,12 @@ g_auctionHouseSortsBySearchContext = {
 	}, -- [8]
 	{
 		{
-			["reverseSort"] = false,
+			["reverseSort"] = true,
 			["sortOrder"] = 0,
 		}, -- [1]
 		{
-			["reverseSort"] = false,
-			["sortOrder"] = 1,
+			["reverseSort"] = true,
+			["sortOrder"] = 2,
 		}, -- [2]
 	}, -- [9]
 	{

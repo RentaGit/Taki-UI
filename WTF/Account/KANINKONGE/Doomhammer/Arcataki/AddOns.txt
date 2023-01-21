@@ -88,3 +88,7 @@ OPie: disabled
 ElvUI_SLE: disabled
 ElvUI_Config: disabled
 ElvUI: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled

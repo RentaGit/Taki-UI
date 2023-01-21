@@ -4,165 +4,195 @@ OPie_SavedData = {
 	["CharProfiles"] = {
 		["Ravencrest-Rentaki"] = "default",
 	},
-	["_GameVersion"] = "10.0.0",
-	["_OPieVersion"] = "Yuzu 1 (4.110)",
+	["_GameVersion"] = "10.0.2",
+	["_OPieVersion"] = "Yuzu 5b (4.114)",
 	["ProfileStorage"] = {
 		["default"] = {
 			["Bindings"] = {
-				["Toys"] = false,
+				["nTeleports"] = "8",
 				["OPieAutoQuest"] = false,
-				["Mstuff"] = false,
 				["rtantStuff"] = "6",
 				["OPieTracking"] = false,
 				["consumes"] = "7",
+			},
+			["RotationTokens"] = {
+				["ABuevVY=FLre"] = "ABuevVY=FLeG",
+				["ABuevVY=FLry"] = "ABuevVY=FL9",
+				["ABuevVY=FLrr"] = "ABuevVY=FLea",
+				["ABuevVY=FLrt"] = "ABuevVY=FLJ",
+				["ABuevVY=FLr1"] = "ABuevVY=FLwQ",
 			},
 		},
 	},
 	["PersistentStorage"] = {
 		["RingKeeper"] = {
-			["Toys"] = {
+			["OPieDeletedRings"] = {
+				["CommonTrades"] = true,
+				["TrinketSlots"] = true,
+				["SpecMenu"] = true,
+			},
+			["leportsWoD"] = {
 				{
-					"toy", -- [1]
-					90067, -- [2]
-					["sliceToken"] = "ABuedrLpaztY",
+					["sliceToken"] = "ABuevVY=FLe0",
+					["id"] = 159895,
 				}, -- [1]
 				{
-					"toy", -- [1]
-					86589, -- [2]
-					["sliceToken"] = "ABuedrLpaztT",
+					["sliceToken"] = "ABuevVY=FLeG",
+					["id"] = 159897,
 				}, -- [2]
 				{
-					"toy", -- [1]
-					163750, -- [2]
-					["sliceToken"] = "ABuedfiG/re",
+					["sliceToken"] = "ABuevVY=FLeF",
+					["id"] = 159898,
 				}, -- [3]
 				{
-					"toy", -- [1]
-					113096, -- [2]
-					["sliceToken"] = "ABuedrLpaztR",
+					["sliceToken"] = "ABuevVY=FLeD",
+					["id"] = 159901,
 				}, -- [4]
 				{
-					"toy", -- [1]
-					128807, -- [2]
-					["sliceToken"] = "ABuedrLpazt7",
+					["sliceToken"] = "ABuevVY=FLeS",
+					["id"] = 159899,
 				}, -- [5]
 				{
-					"toy", -- [1]
-					116440, -- [2]
-					["sliceToken"] = "ABuedrLpaztE",
+					["sliceToken"] = "ABuevVY=FLe9",
+					["id"] = 159902,
 				}, -- [6]
 				{
-					"toy", -- [1]
-					129113, -- [2]
-					["sliceToken"] = "ABuedrLpaztW",
+					["sliceToken"] = "ABuevVY=FLeA",
+					["id"] = 159900,
 				}, -- [7]
 				{
-					"toy", -- [1]
-					43499, -- [2]
-					["sliceToken"] = "ABuedrLpaztQ",
+					["sliceToken"] = "ABuevVY=FLeP",
+					["id"] = 159896,
 				}, -- [8]
-				{
-					"toy", -- [1]
-					127668, -- [2]
-					["sliceToken"] = "ABuedrLpaztm",
-				}, -- [9]
-				{
-					"toy", -- [1]
-					68806, -- [2]
-					["sliceToken"] = "ABuedrLpaztn",
-				}, -- [10]
-				{
-					"toy", -- [1]
-					128462, -- [2]
-					["sliceToken"] = "ABuedrLpazt6",
-				}, -- [11]
-				{
-					"toy", -- [1]
-					88566, -- [2]
-					["sliceToken"] = "ABuedrLpaztb",
-				}, -- [12]
-				{
-					"toy", -- [1]
-					129926, -- [2]
-					["sliceToken"] = "ABuedrLpaztv",
-				}, -- [13]
-				{
-					"toy", -- [1]
-					119092, -- [2]
-					["sliceToken"] = "ABuedrLpaztc",
-				}, -- [14]
-				{
-					"toy", -- [1]
-					66888, -- [2]
-					["sliceToken"] = "ABuedrLpaztx",
-				}, -- [15]
-				{
-					"toy", -- [1]
-					98132, -- [2]
-					["sliceToken"] = "ABuedrLpazt5",
-				}, -- [16]
-				{
-					"toy", -- [1]
-					119134, -- [2]
-					["sliceToken"] = "ABuedrLpaztz",
-				}, -- [17]
-				{
-					"toy", -- [1]
-					119421, -- [2]
-					["sliceToken"] = "ABuedrLpaztl",
-				}, -- [18]
-				{
-					"toy", -- [1]
-					128310, -- [2]
-					["sliceToken"] = "ABuedrLpaztk",
-				}, -- [19]
-				{
-					"toy", -- [1]
-					116067, -- [2]
-					["sliceToken"] = "ABuedrLpaztj",
-				}, -- [20]
-				{
-					"toy", -- [1]
-					35275, -- [2]
-					["sliceToken"] = "ABuedrLpazt4",
-				}, -- [21]
-				{
-					"toy", -- [1]
-					119215, -- [2]
-					["sliceToken"] = "ABuedrLpazth",
-				}, -- [22]
-				{
-					"toy", -- [1]
-					104294, -- [2]
-					["sliceToken"] = "ABuedrLpaztg",
-				}, -- [23]
-				{
-					"toy", -- [1]
-					1973, -- [2]
-					["sliceToken"] = "ABuedrLpaztf",
-				}, -- [24]
-				{
-					"toy", -- [1]
-					141862, -- [2]
-					["sliceToken"] = "ABuedrLpaztd",
-				}, -- [25]
-				["name"] = "Toys",
+				["name"] = "Dungeon Teleports (WoD)",
 				["save"] = true,
 			},
-			["Mstuff"] = {
+			["ortsLegion"] = {
 				{
-					"toy", -- [1]
-					117569, -- [2]
-					["sliceToken"] = "ABue5Fkwtg1",
+					["sliceToken"] = "ABuevVY=FLJ",
+					["id"] = 373262,
 				}, -- [1]
 				{
-					"toy", -- [1]
-					23767, -- [2]
-					["sliceToken"] = "ABue5Fkwtgr",
+					["sliceToken"] = "ABuevVY=FLH",
+					["id"] = 393766,
 				}, -- [2]
-				["limit"] = "Rentaki-Kazzak",
+				{
+					["sliceToken"] = "ABuevVY=FL0",
+					["id"] = 393764,
+				}, -- [3]
+				["name"] = "Dungeon Teleports (Legion)",
 				["save"] = true,
-				["name"] = "M+ stuff",
+			},
+			["leportsBFA"] = {
+				{
+					["sliceToken"] = "ABuevVY=FLR",
+					["id"] = 373274,
+				}, -- [1]
+				["name"] = "Dungeon Teleports (BFA)",
+				["save"] = true,
+			},
+			["leportsMoP"] = {
+				{
+					["sliceToken"] = "ABuevVY=FLwW",
+					["id"] = 131204,
+				}, -- [1]
+				{
+					["sliceToken"] = "ABuevVY=FLwQ",
+					["id"] = 131205,
+				}, -- [2]
+				{
+					["sliceToken"] = "ABuevVY=FLwm",
+					["id"] = 131206,
+				}, -- [3]
+				{
+					["sliceToken"] = "ABuevVY=FLwn",
+					["id"] = 131222,
+				}, -- [4]
+				{
+					["sliceToken"] = "ABuevVY=FLw6",
+					["id"] = 131225,
+				}, -- [5]
+				{
+					["sliceToken"] = "ABuevVY=FLwb",
+					["id"] = 131231,
+				}, -- [6]
+				{
+					["sliceToken"] = "ABuevVY=FLwv",
+					["id"] = 131229,
+				}, -- [7]
+				{
+					["sliceToken"] = "ABuevVY=FLwc",
+					["id"] = 131232,
+				}, -- [8]
+				{
+					["sliceToken"] = "ABuevVY=FLwx",
+					["id"] = 131228,
+				}, -- [9]
+				["name"] = "Dungeon Teleports (MoP)",
+				["save"] = true,
+			},
+			["eleportsSL"] = {
+				{
+					["sliceToken"] = "ABuevVY=FLe3",
+					["id"] = 354462,
+				}, -- [1]
+				{
+					["sliceToken"] = "ABuevVY=FLes",
+					["id"] = 354463,
+				}, -- [2]
+				{
+					["sliceToken"] = "ABuevVY=FLea",
+					["id"] = 354464,
+				}, -- [3]
+				{
+					["sliceToken"] = "ABuevVY=FLep",
+					["id"] = 354465,
+				}, -- [4]
+				{
+					["sliceToken"] = "ABuevVY=FLeo",
+					["id"] = 354466,
+				}, -- [5]
+				{
+					["sliceToken"] = "ABuevVY=FLe2",
+					["id"] = 354467,
+				}, -- [6]
+				{
+					["sliceToken"] = "ABuevVY=FLei",
+					["id"] = 354468,
+				}, -- [7]
+				{
+					["sliceToken"] = "ABuevVY=FLeu",
+					["id"] = 354469,
+				}, -- [8]
+				{
+					["sliceToken"] = "ABuevVY=FLey",
+					["id"] = 367416,
+				}, -- [9]
+				["name"] = "Dungeon Teleports (SL)",
+				["save"] = true,
+			},
+			["eleportsDF"] = {
+				{
+					["sliceToken"] = "ABuevVY=FLS",
+					["id"] = 393256,
+				}, -- [1]
+				{
+					["sliceToken"] = "ABuevVY=FL9",
+					["id"] = 393262,
+				}, -- [2]
+				{
+					["sliceToken"] = "ABuevVY=FLA",
+					["id"] = 393273,
+				}, -- [3]
+				{
+					["sliceToken"] = "ABuevVY=FLP",
+					["id"] = 393279,
+				}, -- [4]
+				["name"] = "Dungeon Teleports (DF)",
+				["save"] = true,
+			},
+			["OPieFlagStore"] = {
+				["StoreVersion"] = 2,
 			},
 			["rtantStuff"] = {
 				{
@@ -170,17 +200,17 @@ OPie_SavedData = {
 					["id"] = 195128,
 				}, -- [1]
 				{
+					"macro", -- [1]
+					"vault", -- [2]
+					["sliceToken"] = "ABuevVY=FL7",
+				}, -- [2]
+				{
 					["sliceToken"] = "ABuedrLpazL",
 					["id"] = 818,
-				}, -- [2]
+				}, -- [3]
 				{
 					["sliceToken"] = "ABuedrLpazK",
 					["id"] = 556,
-				}, -- [3]
-				{
-					"toy", -- [1]
-					172924, -- [2]
-					["sliceToken"] = "ABuek9oOYKe",
 				}, -- [4]
 				{
 					"toy", -- [1]
@@ -222,87 +252,98 @@ OPie_SavedData = {
 					["id"] = 122708,
 				}, -- [12]
 				{
-					"macro", -- [1]
-					"ShowVault", -- [2]
-					["sliceToken"] = "ABuexmP8vte",
-				}, -- [13]
-				{
 					["id"] = 69046,
 					["sliceToken"] = "ABuejA9FANs",
-				}, -- [14]
+				}, -- [13]
 				{
 					"item", -- [1]
 					49040, -- [2]
 					["sliceToken"] = "ABuejA9FANa",
-				}, -- [15]
+				}, -- [14]
 				{
 					"toy", -- [1]
 					40768, -- [2]
 					["sliceToken"] = "ABuejA9FANp",
-				}, -- [16]
+				}, -- [15]
 				{
 					"toy", -- [1]
 					156833, -- [2]
 					["sliceToken"] = "ABuedrLpazt8",
-				}, -- [17]
+				}, -- [16]
 				["name"] = "Important Stuff",
 				["save"] = true,
 				["hotkey"] = "F1",
 			},
-			["OPieFlagStore"] = {
-				["StoreVersion"] = 2,
+			["nTeleports"] = {
+				{
+					"ring", -- [1]
+					"leportsBFA", -- [2]
+					["sliceToken"] = "ABuevVY=FLru",
+				}, -- [1]
+				{
+					"ring", -- [1]
+					"eleportsDF", -- [2]
+					["sliceToken"] = "ABuevVY=FLry",
+				}, -- [2]
+				{
+					"ring", -- [1]
+					"ortsLegion", -- [2]
+					["sliceToken"] = "ABuevVY=FLrt",
+				}, -- [3]
+				{
+					"ring", -- [1]
+					"leportsMoP", -- [2]
+					["sliceToken"] = "ABuevVY=FLr1",
+				}, -- [4]
+				{
+					"ring", -- [1]
+					"eleportsSL", -- [2]
+					["sliceToken"] = "ABuevVY=FLrr",
+				}, -- [5]
+				{
+					"ring", -- [1]
+					"leportsWoD", -- [2]
+					["sliceToken"] = "ABuevVY=FLre",
+				}, -- [6]
+				["name"] = "Dungeon Teleports",
+				["save"] = true,
 			},
 			["consumes"] = {
 				{
 					"item", -- [1]
-					171276, -- [2]
-					["sliceToken"] = "ABue5KEG6BT",
+					197792, -- [2]
+					["sliceToken"] = "ABuevVY=FLQ",
 				}, -- [1]
 				{
 					"item", -- [1]
-					171285, -- [2]
-					["sliceToken"] = "ABue5KEG6BR",
+					191341, -- [2]
+					["sliceToken"] = "ABuevVY=FLm",
 				}, -- [2]
 				{
 					"item", -- [1]
-					173049, -- [2]
-					["sliceToken"] = "ABue5KEG6BE",
+					194823, -- [2]
+					["sliceToken"] = "ABuevVY=FLn",
 				}, -- [3]
-				{
-					"item", -- [1]
-					172045, -- [2]
-					["sliceToken"] = "ABue5KEG6BW",
-				}, -- [4]
-				{
-					"item", -- [1]
-					172041, -- [2]
-					["sliceToken"] = "ABuecgoE7He",
-				}, -- [5]
 				{
 					"item", -- [1]
 					6657, -- [2]
 					["sliceToken"] = "ABue5KEG6BQ",
+				}, -- [4]
+				{
+					"item", -- [1]
+					197767, -- [2]
+					["sliceToken"] = "ABuevVY=FL6",
+				}, -- [5]
+				{
+					"item", -- [1]
+					181468, -- [2]
+					["sliceToken"] = "ABuevVY=FLb",
 				}, -- [6]
 				{
 					"item", -- [1]
-					171266, -- [2]
-					["sliceToken"] = "ABue5KEG6Bm",
+					201325, -- [2]
+					["sliceToken"] = "ABuevVY=FLv",
 				}, -- [7]
-				{
-					"item", -- [1]
-					172347, -- [2]
-					["sliceToken"] = "ABue5KEG6Bn",
-				}, -- [8]
-				{
-					"item", -- [1]
-					171437, -- [2]
-					["sliceToken"] = "ABue5KV5nYe",
-				}, -- [9]
-				{
-					"item", -- [1]
-					190384, -- [2]
-					["sliceToken"] = "ABuexAeLEar",
-				}, -- [10]
 				["name"] = "consumes",
 				["save"] = true,
 			},

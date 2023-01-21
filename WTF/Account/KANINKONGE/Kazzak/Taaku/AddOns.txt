@@ -3,7 +3,7 @@ AAP-EasternKingdoms: disabled
 AAP-Shadowlands: disabled
 AceGUI-3.0_SFX-Widgets: enabled
 AngryAssignments: disabled
-AngryKeystones: enabled
+AngryKeystones: disabled
 Auctionator: disabled
 BattlePetBreedID: disabled
 BigWigs: enabled
@@ -100,3 +100,15 @@ BetterWardrobe_Tooltips: disabled
 Tukui: disabled
 GladiusEx: disabled
 AutoRole: disabled
+RulezItemLevel: disabled
+OmniCD: disabled
+LibStub: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled
+MacroToolkit: disabled
+MacroToolkitIcons: disabled
+BigDebuffs: disabled
+AdvancedInterfaceOptions: disabled
+TakUI: disabled

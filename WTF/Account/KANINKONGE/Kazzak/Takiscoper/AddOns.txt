@@ -101,3 +101,10 @@ VenturePlan: disabled
 ProjectAzilroka: disabled
 ElvUI_BenikUI: disabled
 Tukui: disabled
+RulezItemLevel: disabled
+LibStub: disabled
+MacroToolkit: disabled
+MacroToolkitIcons: disabled
+BigDebuffs: disabled
+AdvancedInterfaceOptions: disabled
+TakUI: disabled

@@ -5,11 +5,19 @@ BigDebuffsDB = {
 		},
 	},
 	["profileKeys"] = {
-		["Rentaki - Kazzak"] = "Default",
-		["Takidin - Kazzak"] = "Default",
-		["Rentakisham - EU Mythic Dungeons"] = "Default",
 		["Takil - Kazzak"] = "Default",
+		["Takidin - Kazzak"] = "Default",
+		["Thaaeyn - Argent Dawn"] = "Default",
+		["Rentakisham - EU Mythic Dungeons"] = "Default",
+		["Takidemon - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
+		["Takided - Kazzak"] = "Default",
+		["Rentaki - Kazzak"] = "Default",
+		["Felenia - Doomhammer"] = "Default",
+		["Arcataki - Doomhammer"] = "Default",
+		["Takosa - Kazzak"] = "Default",
+		["Takidari - Kazzak"] = "Default",
+		["Taaku - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {

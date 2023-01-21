@@ -50,6 +50,13 @@ local myGroupGUIDs, myGroupRolePositions = {}, {}
 local solo = false
 local classColorMessages = true
 local debugFunc = nil
+do -- Update some data that may be called at the top of modules (prior to initialization)
+	local _, _, diff = GetInstanceInfo()
+	difficulty = diff
+	myGUID = UnitGUID("player")
+	local _, role, position = LibSpec:MySpecialization()
+	myRole, myRolePosition = role, position
+end
 local updateData = function(module)
 	myGUID = UnitGUID("player")
 	hasVoice = BigWigsAPI:HasVoicePack()
@@ -114,17 +121,15 @@ local icons = setmetatable({}, {__index =
 			if key > 8 then
 				value = GetSpellTexture(key)
 				if not value then
-					core:Print(format("An invalid spell id (%d) is being used in a boss module.", key))
+					core:Error(format("An invalid spell id (%d) is being used as a texture in a boss module.", key))
 				end
 			elseif key > 0 then
 				-- Texture id list for raid icons 1-8 is 137001-137008. Base texture path is Interface\\TARGETINGFRAME\\UI-RaidTargetingIcon_%d
 				value = key + 137000
 			else
 				local tbl = C_EncounterJournal_GetSectionInfo(-key)
-				if not tbl then
-					core:Print(format("An invalid journal id (%d) is being used in a boss module.", key))
-				else
-					value = tbl.abilityIcon or false
+				if not tbl or not tbl.abilityIcon then
+					core:Error(format("An invalid journal id (%d) is being used as a texture in a boss module.", key))
 				end
 			end
 		else
@@ -1328,7 +1333,7 @@ do
 				if name == spell then
 					if not blacklist[spellId] then
 						blacklist[spellId] = true
-						BigWigs:Error(format("Found spell '%s' using id %d on %d, tell the authors!", name, spellId, self:Difficulty()))
+						core:Error(format("Found spell '%s' using id %d on %d, tell the authors!", name, spellId, self:Difficulty()))
 					end
 					t1, t2, t3, t4, t5 = name, stack, duration, expirationTime, value
 				end
@@ -1374,7 +1379,7 @@ do
 				if name == spell then
 					if not blacklist[spellId] then
 						blacklist[spellId] = true
-						BigWigs:Error(format("Found spell '%s' using id %d on %d, tell the authors!", name, spellId, self:Difficulty()))
+						core:Error(format("Found spell '%s' using id %d on %d, tell the authors!", name, spellId, self:Difficulty()))
 					end
 					t1, t2, t3, t4, t5 = name, stack, duration, expirationTime, value
 				end
@@ -2262,9 +2267,16 @@ do
 						local name = playerTable[i]
 						local hasMarker = playerTable[name]
 						if hasMarker then
-							tbl[#tbl+1] = markerIcons[hasMarker] .. self:ColorName(name)
+							local markerFromTable = markerIcons[hasMarker]
+							if markerFromTable then
+								tbl[#tbl+1] = markerFromTable .. self:ColorName(name)
+							else
+								tbl[#tbl+1] = self:ColorName(name)
+								core:Error(format("Option %q is trying to set invalid marker %q on a player table.", key, tostring(hasMarker)))
+							end
+
 						else
-							tbl[#tbl+1] = self:ColorName(playerTable[i])
+							tbl[#tbl+1] = self:ColorName(name)
 						end
 					end
 					local list = tconcat(tbl, comma, 1, #tbl)

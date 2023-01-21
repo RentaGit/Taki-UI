@@ -5,8 +5,15 @@ VER 3 000000000000009B ".sh CAP" "136013"
 #showtooltip capacitor totem
 /cast [@cursor] capacitor totem
 END
-VER 3 0000000000000123 ".sh ELE" "2065626"
+VER 3 0000000000000129 ".sh DW/PW" "1035054"
 #showtooltip
+/cast [known:Doom Winds] Doom Winds
+/cast [mod:alt,@mouseover,known:375982] Primordial Wave
+/cast [known:375982] Primordial Wave
+END
+VER 3 0000000000000123 ".sh ELE" "796636"
+#showtooltip
+/cast meteor
 /cast [known:Fire Elemental] Fire Elemental;
 /cast [known:Storm Elemental] Storm Elemental;
 END
@@ -19,6 +26,13 @@ VER 3 0000000000000121 ".sh F Purge" "451166"
 /cast [known:Greater Purge, @focus] Greater Purge;
 /cast [known:Purge, @focus] Purge;
 END
+VER 3 0000000000000130 ".sh feral spirit" "134400"
+#showtooltip feral spirit
+/use Prismatic Bauble
+/use Fire-Eater's Vial
+/use Sparkle Wings
+/cast feral spirit
+END
 VER 3 0000000000000104 ".sh FS" "135813"
 #showtooltip
 /cast [nomod] flame shock
@@ -29,7 +43,7 @@ VER 3 0000000000000126 ".sh GoW/SW" "1029585"
 /cast [known:Gust of Wind] Gust of Wind;
 /cast [known:Spirit Walk] Spirit Walk;
 END
-VER 3 00000000000000DF ".sh HEX" "132193"
+VER 3 00000000000000DF ".sh HEX" "237579"
 #showtooltip hex
 /cast [nomod] hex
 /cast [mod:ctrl, @focus] hex
@@ -38,6 +52,11 @@ VER 3 00000000000000B9 ".sh HR" "134400"
 #showtooltip Healing Rain
 /cast [@cursor] Healing Rain
 END
+VER 3 0000000000000128 ".sh IS/FN" "135845"
+#showtooltip
+/cast [known:Ice Strike] Ice Strike
+/cast [known:Fire Nova] Fire Nova
+END
 VER 3 00000000000000B2 ".sh LMT/IF" "135855"
 #showtooltip
 /cast [known:Icefury] Icefury;
@@ -45,8 +64,8 @@ VER 3 00000000000000B2 ".sh LMT/IF" "135855"
 END
 VER 3 000000000000011D ".sh PE/PW" "3578231"
 #showtooltip
-/cast [known:known:117013, known:198067] Meteor; 
-/cast [known:117013, known:192249] Tempest;
+/cast [known:known:117013, known:198067] Meteor
+/cast [known:117013, known:192249] Tempest
 /cast [mod:alt,@mouseover,known:375982] Primordial Wave
 /cast [known:375982] Primordial Wave
 END
@@ -69,16 +88,27 @@ VER 3 0000000000000127 ".sh SST/TAT" "4667425"
 /cast [known:Stoneskin Totem] Stoneskin Totem;
 /cast [known:Tranquil Air Totem] Tranquil Air Totem;
 END
+VER 3 000000000000012B ".sh TP" "538574"
+#showtooltip
+/cast [@cursor] Totemic Projection
+END
 VER 3 0000000000000112 ".sh WR" "538576"
 #showtooltip wind rush totem
 /cast [@cursor] Wind Rush Totem
+END
+VER 3 000000000000012D "cancelaura" "132220"
+/cancelaura gunshoes
+/cancelaura rampaging yak
+/cancelaura riding the radinax
+/cancelaura unruly behemoth
+/cancelaura goblin glider
+/cancelaura parachute
 END
 VER 3 00000000000000E8 "EOL .cov dmg" "134331"
 #showtooltip
 /use [@cursor]Vesper Totem
 /use [@cursor]Fae Transfusion
 /use Chain harvest
-/run local G=GetSpellInfo SetMacroSpell(GetRunningMacro(), G"Primordial Wave" or G"Vesper Totem" or G"Fae Transfusion")
 END
 VER 3 00000000000000EE "EOL .cov-sig" "134331"
 #showtooltip
@@ -93,11 +123,33 @@ VER 3 00000000000000F5 "EOL necro mo" "134331"
 /cast [nomod] Primordial Wave(Necrolord)
 /cast [mod:alt, @mouseover] Primordial Wave(Necrolord)
 END
-VER 3 00000000000000ED "use belt" "3048002"
+VER 3 0000000000000131 "focus mouseover" "134400"
+/focus [@mouseover,harm,nodead] [harm]
+END
+VER 3 000000000000012E "kill cinderfall" "524305"
+/target cinderfall
+/cast frost shock
+END
+VER 3 000000000000012A "NS/ASC" "134400"
+#showtooltip
+/cast [known:Nature's Swiftness] Nature's Swiftness
+/cast [known:Ascendance] Ascendance
+END
+VER 3 000000000000012F "RXPTargeting" "Ability_eyeoftheowl"
+//RestedXP Guides - current step has no configured targets
+END
+VER 3 000000000000012C "skyfury exp" "135829"
+#showtooltip
+/cast skyfury totem
+/use Battle Standard of Coordination
+/use Standard of Unity
+/use Banner of Cooperation
+END
+VER 3 00000000000000ED "use belt" "605237"
 #showtooltip
 /use 6
 END
-VER 3 00000000000000DE "use cloak" "3048005"
+VER 3 00000000000000DE "use cloak" "852263"
 #showtooltip
 /use 15
 END

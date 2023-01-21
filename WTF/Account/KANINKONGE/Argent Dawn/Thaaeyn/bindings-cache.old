@@ -1,4 +1,3 @@
-BINDINGMODE 0
 bind BUTTON3 CLICK BT4Button72:LeftButton
 bind UP TOGGLESHEATH
 bind S CLICK BT4Button87:LeftButton
@@ -96,7 +95,7 @@ bind ALT-½ CLICK DominosClassButton6:LeftButton
 bind SHIFT-F CLICK BT4Button88:LeftButton
 bind SHIFT-END NONE
 bind ALT-HOME NONE
-bind < CLICK BT4Button93:LeftButton
+bind < MULTIACTIONBAR1BUTTON8
 bind SHIFT-S MOVEBACKWARD
 bind CTRL-END SHAPESHIFTBUTTON2
 bind [ PAWN_COMPARE_LEFT

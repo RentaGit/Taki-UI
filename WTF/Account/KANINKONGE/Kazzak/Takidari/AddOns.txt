@@ -31,7 +31,7 @@ TomCats-HallowsEnd: disabled
 TomCats-LoveIsInTheAir: disabled
 TomCats-LunarFestival: disabled
 TomCats-Noblegarden: disabled
-AngryKeystones: enabled
+AngryKeystones: disabled
 AutoRole: disabled
 BigWigs: enabled
 BigWigs_CastleNathria: enabled
@@ -66,7 +66,7 @@ MythicDungeonTools: enabled
 OmniBar: enabled
 OmniCC: enabled
 OmniCC_Config: enabled
-OmniCD: enabled
+OmniCD: disabled
 OPie: enabled
 Plater: enabled
 RCLootCouncil: enabled
@@ -85,3 +85,14 @@ ProjectAzilroka: enabled
 ElvUI: enabled
 ElvUI_BenikUI: enabled
 ElvUI_SLE: enabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled
+RulezItemLevel: disabled
+LibStub: disabled
+AdvancedInterfaceOptions: disabled
+BigDebuffs: disabled
+MacroToolkit: disabled
+MacroToolkitIcons: disabled
+TakUI: disabled

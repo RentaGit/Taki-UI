@@ -1,21 +1,18 @@
-# [5.1.1](https://github.com/WeakAuras/WeakAuras2/tree/5.1.1) (2022-11-08)
+# [5.3.6](https://github.com/WeakAuras/WeakAuras2/tree/5.3.6) (2023-01-18)
 
-[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/5.1.0...5.1.1)
+[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/5.3.5...5.3.6)
 
 ## Highlights
 
- - Bug Fixes 
+ - Bug fixes 
 
 ## Commits
 
-InfusOnWoW (3):
+emptyrivers (1):
 
-- MoverSizer: Skip regions that are anchoring restricted
-- Remove useless debug prints
-- Change how z-scale is interpreted
+- fix custom sort (#4252)
 
-mrbuds (2):
+mrbuds (1):
 
-- Fix talent trigger active when wrong choice node is selected
-- Fix error with dynamic group background/border positioning
+- Fix potential error when importing an aura
 

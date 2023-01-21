@@ -74,7 +74,7 @@ MythicDungeonTools: disabled
 OmniBar: disabled
 OmniCC: enabled
 OmniCC_Config: enabled
-OmniCD: enabled
+OmniCD: disabled
 OPie: enabled
 Plater: enabled
 RCLootCouncil: disabled
@@ -93,3 +93,10 @@ ProjectAzilroka: enabled
 ElvUI: enabled
 ElvUI_BenikUI: enabled
 ElvUI_SLE: enabled
+RulezItemLevel: disabled
+LibStub: disabled
+MacroToolkit: disabled
+MacroToolkitIcons: disabled
+BigDebuffs: disabled
+AdvancedInterfaceOptions: disabled
+TakUI: disabled

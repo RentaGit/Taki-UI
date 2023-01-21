@@ -84,7 +84,7 @@ MRT: disabled
 MythicDungeonTools: disabled
 OmniCC: enabled
 OmniCC_Config: enabled
-OmniCD: enabled
+OmniCD: disabled
 OPie: enabled
 Plater: enabled
 SharedMedia: enabled
@@ -101,3 +101,14 @@ ProjectAzilroka: enabled
 ElvUI: enabled
 ElvUI_BenikUI: enabled
 ElvUI_SLE: enabled
+RulezItemLevel: disabled
+LibStub: disabled
+MacroToolkit: disabled
+MacroToolkitIcons: disabled
+BigDebuffs: disabled
+AdvancedInterfaceOptions: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled
+TakUI: disabled

@@ -85,3 +85,11 @@ ElvUI_SLE: disabled
 Narcissus: disabled
 Narcissus_Barbershop: disabled
 Narcissus_Database: disabled
+RulezItemLevel: disabled
+OmniCD: disabled
+LibStub: disabled
+MacroToolkit: disabled
+MacroToolkitIcons: disabled
+BigDebuffs: disabled
+AdvancedInterfaceOptions: disabled
+TakUI: disabled

@@ -93,6 +93,8 @@ L["auto_open_desc"] = "自動開啟分配界面。不勾也可輸入/rc open 手
 L["auto_pass_boe_desc"] = "自動放棄裝備綁定物品"
 L["auto_pass_desc"] = "自動放棄你不能用的物品"
 L["auto_pass_trinket_desc"] = "選中以自動放棄地下城手冊中不屬於你的職業的飾品"
+--[[Translation missing --]]
+--[[ L["autoGroupLoot_warning"] = ""--]] 
 L["autoloot_others_item_combat"] = "%s 拾取了%s。此物品將會在戰斗結束后加入分配。"
 L["Autopass"] = "自動放棄"
 L["Autopassed on 'item'"] = "自動放棄%s"
@@ -359,6 +361,12 @@ L["opt_addButton_desc"] = "對選擇部位增加新的按鈕群組"
 --[[Translation missing --]]
 --[[ L["opt_autoAwardPrioList_desc"] = ""--]] 
 --[[Translation missing --]]
+--[[ L["opt_autoGroupLoot_desc"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_autoGroupLoot_name"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_autoGroupLootGuildGroupOnly_name"] = ""--]] 
+--[[Translation missing --]]
 --[[ L["opt_autoTrade_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_award_later_desc"] = ""--]] 
@@ -368,6 +376,10 @@ L["opt_addButton_desc"] = "對選擇部位增加新的按鈕群組"
 --[[ L["opt_chatFrameName_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_chatFrameName_name"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_closeWithEscape_desc"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_closeWithEscape_name"] = ""--]] 
 L["opt_deleteDate_confirm"] = "你確定你要將比選項舊的紀錄刪除嗎? 刪除後無法復原。"
 L["opt_deleteDate_desc"] = "刪除所有比選項中的天數舊的紀錄。"
 L["opt_deleteName_confirm"] = "你確定你要刪除所有 %s 的紀錄嗎? 刪除後無法復原。"
@@ -394,6 +406,10 @@ L["opt_rejectTrade_Name"] = "允許保留裝備"
 --[[ L["opt_skipSessionFrame_desc"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_skipSessionFrame_name"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_usage_AskGroupLoot"] = ""--]] 
+--[[Translation missing --]]
+--[[ L["opt_usage_GroupLoot"] = ""--]] 
 --[[Translation missing --]]
 --[[ L["opt_useSlashRC_desc"] = ""--]] 
 --[[Translation missing --]]

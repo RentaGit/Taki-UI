@@ -41,3 +41,14 @@ LittleWigs: enabled
 TomCats: disabled
 LortiUI: disabled
 UberUI: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+RulezItemLevel: disabled
+OmniCD: disabled
+LibStub: disabled
+AngryKeystones: disabled
+AdvancedInterfaceOptions: disabled
+BigDebuffs: disabled
+MacroToolkit: disabled
+MacroToolkitIcons: disabled
+TakUI: disabled

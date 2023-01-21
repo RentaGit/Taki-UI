@@ -1603,5 +1603,59 @@ function Private.Modernize(data)
       end
     end
   end
+
+  if data.internalVersion < 60 then
+    -- convert texture rotation
+    if data.regionType == "texture" then
+      if data.rotate then
+        -- Full Rotate is enabled
+        data.legacyZoomOut = true
+      else
+        -- Discreete Rotation
+        data.rotation = data.discrete_rotation
+      end
+      data.discrete_rotation = nil
+    end
+  end
+
+  if data.internalVersion < 61 then
+    -- convert texture rotation
+    if data.regionType == "texture" then
+      if data.legacyZoomOut then
+        data.rotate = true
+      else
+        data.rotate = false
+        data.discrete_rotation = data.rotation
+      end
+      data.legacyZoomOut = nil
+    end
+  end
+
+  -- version 62 became 64 to fix a broken modernize
+
+  if data.internalVersion < 63 then
+    if data.regionType == "texture" then
+      local GetAtlasInfo = C_Texture and C_Texture.GetAtlasInfo or GetAtlasInfo
+      local function IsAtlas(input)
+        return type(input) == "string" and GetAtlasInfo(input) ~= nil
+      end
+
+      if not data.rotate or IsAtlas(data.texture) then
+        data.rotation = data.discrete_rotation
+      end
+    end
+  end
+
+  if data.internalVersion < 64 then
+    if data.regionType == "dynamicgroup" then
+      if data.sort == "custom" and type(data.sortOn) ~= "string" or data.sortOn == "" then
+        data.sortOn = "changed"
+      end
+      if data.grow == "CUSTOM" and type(data.growOn) ~= "string" then
+        data.growOn = "changed"
+      end
+    end
+  end
+
   data.internalVersion = max(data.internalVersion or 0, WeakAuras.InternalVersion())
 end

@@ -65,3 +65,5 @@ ElvUI_OptionsUI: disabled
 ElvUI_BenikUI: disabled
 ElvUI_SLE: disabled
 !KMediaTags: disabled
+RulezItemLevel: disabled
+LibStub: disabled

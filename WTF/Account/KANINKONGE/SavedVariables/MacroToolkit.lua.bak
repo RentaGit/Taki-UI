@@ -1,0 +1,34 @@
+
+MacroToolkitDB = {
+	["char"] = {
+		["Rentaki - Kazzak"] = {
+			["backups"] = {
+			},
+		},
+	},
+	["profileKeys"] = {
+		["Rentaki - Kazzak"] = "profile",
+		["Takidin - Kazzak"] = "profile",
+		["Thaaeyn - Argent Dawn"] = "profile",
+		["Takidemon - Kazzak"] = "profile",
+		["Takeera - Kazzak"] = "profile",
+		["Takided - Kazzak"] = "profile",
+		["Felenia - Doomhammer"] = "profile",
+		["Arcataki - Doomhammer"] = "profile",
+		["Takosa - Kazzak"] = "profile",
+		["Takidari - Kazzak"] = "profile",
+		["Taaku - Kazzak"] = "profile",
+	},
+	["global"] = {
+		["ebackups"] = {
+		},
+		["backups"] = {
+		},
+	},
+	["profiles"] = {
+		["profile"] = {
+			["y"] = 585.5383911132812,
+			["x"] = 422.7439880371094,
+		},
+	},
+}

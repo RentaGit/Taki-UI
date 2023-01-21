@@ -11,7 +11,7 @@ ElvUI_CustomTweaks: disabled
 WeakAurasCompanion: enabled
 WeakAurasArchive: enabled
 AngryAssignments: disabled
-AngryKeystones: enabled
+AngryKeystones: disabled
 Auctionator: disabled
 BattlePetBreedID: disabled
 BigWigs: enabled
@@ -77,3 +77,11 @@ ElvUI_OptionsUI: enabled
 ElvUI: enabled
 CorruptionTooltips: disabled
 ElvUI_DTBars2: disabled
+RulezItemLevel: disabled
+OmniCD: disabled
+LibStub: disabled
+MacroToolkit: disabled
+MacroToolkitIcons: disabled
+BigDebuffs: disabled
+AdvancedInterfaceOptions: disabled
+TakUI: disabled
