@@ -1,2 +1,1 @@
-- Spell updates
 - Bug fix

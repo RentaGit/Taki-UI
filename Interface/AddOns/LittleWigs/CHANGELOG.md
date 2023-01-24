@@ -1,15 +1,9 @@
 # LittleWigs
 
-## [v10.0.25](https://github.com/BigWigsMods/LittleWigs/tree/v10.0.25) (2023-01-16)
-[Full Changelog](https://github.com/BigWigsMods/LittleWigs/compare/v10.0.24...v10.0.25) [Previous Releases](https://github.com/BigWigsMods/LittleWigs/releases)
+## [v10.0.27](https://github.com/BigWigsMods/LittleWigs/tree/v10.0.27) (2023-01-22)
+[Full Changelog](https://github.com/BigWigsMods/LittleWigs/compare/v10.0.26...v10.0.27) [Previous Releases](https://github.com/BigWigsMods/LittleWigs/releases)
 
-- MoP/TempleOfTheJadeSerpent/Trash: Haunting Gaze  
-- MoP/TempleOfTheJadeSerpent/LorewalkerStonestep: Fix options  
-- Dragonflight/RubyLifePools/KyrakkaAndErkhartStormvein: Flamespit, Winds of Change direction, Flamespit, timer update  
-- Dragonflight/RubyLifePools/MelidrussaChillworn: Timer update, Ice Bulwark/Frost Overload updates  
-- Dragonflight/RubyLifePools/Trash: Blaze of Glory, Molten Blood update  
-- MoP/TempleOfTheJadeSerpent/WiseMari: Corrupted Geyser timers  
-- WoD/ShadowmoonBurialGrounds/Trash: Void Slash, throttle Death Blast  
-- Dragonflight/AlgetharAcademy/Trash: Fix Astral Bomb countdown  
-- MoP\TempleOfTheJadeSerpent\ShaOfDoubt: Bounds of Reality updates  
-- Legion/CourtOfStars/AdvisorMelandrus: Timer update  
+- Legion/HallsOfValor/God-KingSkovald: Savage Blade scoping, Aegis of Aggramar, timer update  
+- Legion/HallsOfValor/Odyn: Throttle warmup message  
+- WoD/ShadowmoonBurialGrounds/Trash: Throttle Necrotic Burst  
+- WoD/ShadowmoonBurialGrounds/Nerzhul: Fix Ritual of Bones icon  

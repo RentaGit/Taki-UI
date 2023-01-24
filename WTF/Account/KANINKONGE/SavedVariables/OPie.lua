@@ -9,17 +9,17 @@ OPie_SavedData = {
 	["ProfileStorage"] = {
 		["default"] = {
 			["Bindings"] = {
-				["nTeleports"] = "8",
 				["OPieAutoQuest"] = false,
+				["nTeleports"] = "8",
 				["rtantStuff"] = "6",
 				["OPieTracking"] = false,
 				["consumes"] = "7",
 			},
 			["RotationTokens"] = {
-				["ABuevVY=FLre"] = "ABuevVY=FLeG",
-				["ABuevVY=FLry"] = "ABuevVY=FL9",
+				["ABuevVY=FLre"] = "ABuevVY=FLeS",
+				["ABuevVY=FLry"] = "ABuevVY=FLP",
 				["ABuevVY=FLrr"] = "ABuevVY=FLea",
-				["ABuevVY=FLrt"] = "ABuevVY=FLJ",
+				["ABuevVY=FLrt"] = "ABuevVY=FLH",
 				["ABuevVY=FLr1"] = "ABuevVY=FLwQ",
 			},
 		},
@@ -30,6 +30,17 @@ OPie_SavedData = {
 				["CommonTrades"] = true,
 				["TrinketSlots"] = true,
 				["SpecMenu"] = true,
+			},
+			["OPieFlagStore"] = {
+				["StoreVersion"] = 2,
+			},
+			["leportsBFA"] = {
+				{
+					["sliceToken"] = "ABuevVY=FLR",
+					["id"] = 373274,
+				}, -- [1]
+				["name"] = "Dungeon Teleports (BFA)",
+				["save"] = true,
 			},
 			["leportsWoD"] = {
 				{
@@ -83,12 +94,43 @@ OPie_SavedData = {
 				["name"] = "Dungeon Teleports (Legion)",
 				["save"] = true,
 			},
-			["leportsBFA"] = {
+			["consumes"] = {
 				{
-					["sliceToken"] = "ABuevVY=FLR",
-					["id"] = 373274,
+					"item", -- [1]
+					197792, -- [2]
+					["sliceToken"] = "ABuevVY=FLQ",
 				}, -- [1]
-				["name"] = "Dungeon Teleports (BFA)",
+				{
+					"item", -- [1]
+					191341, -- [2]
+					["sliceToken"] = "ABuevVY=FLm",
+				}, -- [2]
+				{
+					"item", -- [1]
+					194823, -- [2]
+					["sliceToken"] = "ABuevVY=FLn",
+				}, -- [3]
+				{
+					"item", -- [1]
+					6657, -- [2]
+					["sliceToken"] = "ABue5KEG6BQ",
+				}, -- [4]
+				{
+					"item", -- [1]
+					197767, -- [2]
+					["sliceToken"] = "ABuevVY=FL6",
+				}, -- [5]
+				{
+					"item", -- [1]
+					181468, -- [2]
+					["sliceToken"] = "ABuevVY=FLb",
+				}, -- [6]
+				{
+					"item", -- [1]
+					201325, -- [2]
+					["sliceToken"] = "ABuevVY=FLv",
+				}, -- [7]
+				["name"] = "consumes",
 				["save"] = true,
 			},
 			["leportsMoP"] = {
@@ -191,8 +233,39 @@ OPie_SavedData = {
 				["name"] = "Dungeon Teleports (DF)",
 				["save"] = true,
 			},
-			["OPieFlagStore"] = {
-				["StoreVersion"] = 2,
+			["nTeleports"] = {
+				{
+					"ring", -- [1]
+					"leportsBFA", -- [2]
+					["sliceToken"] = "ABuevVY=FLru",
+				}, -- [1]
+				{
+					"ring", -- [1]
+					"eleportsDF", -- [2]
+					["sliceToken"] = "ABuevVY=FLry",
+				}, -- [2]
+				{
+					"ring", -- [1]
+					"ortsLegion", -- [2]
+					["sliceToken"] = "ABuevVY=FLrt",
+				}, -- [3]
+				{
+					"ring", -- [1]
+					"leportsMoP", -- [2]
+					["sliceToken"] = "ABuevVY=FLr1",
+				}, -- [4]
+				{
+					"ring", -- [1]
+					"eleportsSL", -- [2]
+					["sliceToken"] = "ABuevVY=FLrr",
+				}, -- [5]
+				{
+					"ring", -- [1]
+					"leportsWoD", -- [2]
+					["sliceToken"] = "ABuevVY=FLre",
+				}, -- [6]
+				["name"] = "Dungeon Teleports",
+				["save"] = true,
 			},
 			["rtantStuff"] = {
 				{
@@ -273,79 +346,6 @@ OPie_SavedData = {
 				["name"] = "Important Stuff",
 				["save"] = true,
 				["hotkey"] = "F1",
-			},
-			["nTeleports"] = {
-				{
-					"ring", -- [1]
-					"leportsBFA", -- [2]
-					["sliceToken"] = "ABuevVY=FLru",
-				}, -- [1]
-				{
-					"ring", -- [1]
-					"eleportsDF", -- [2]
-					["sliceToken"] = "ABuevVY=FLry",
-				}, -- [2]
-				{
-					"ring", -- [1]
-					"ortsLegion", -- [2]
-					["sliceToken"] = "ABuevVY=FLrt",
-				}, -- [3]
-				{
-					"ring", -- [1]
-					"leportsMoP", -- [2]
-					["sliceToken"] = "ABuevVY=FLr1",
-				}, -- [4]
-				{
-					"ring", -- [1]
-					"eleportsSL", -- [2]
-					["sliceToken"] = "ABuevVY=FLrr",
-				}, -- [5]
-				{
-					"ring", -- [1]
-					"leportsWoD", -- [2]
-					["sliceToken"] = "ABuevVY=FLre",
-				}, -- [6]
-				["name"] = "Dungeon Teleports",
-				["save"] = true,
-			},
-			["consumes"] = {
-				{
-					"item", -- [1]
-					197792, -- [2]
-					["sliceToken"] = "ABuevVY=FLQ",
-				}, -- [1]
-				{
-					"item", -- [1]
-					191341, -- [2]
-					["sliceToken"] = "ABuevVY=FLm",
-				}, -- [2]
-				{
-					"item", -- [1]
-					194823, -- [2]
-					["sliceToken"] = "ABuevVY=FLn",
-				}, -- [3]
-				{
-					"item", -- [1]
-					6657, -- [2]
-					["sliceToken"] = "ABue5KEG6BQ",
-				}, -- [4]
-				{
-					"item", -- [1]
-					197767, -- [2]
-					["sliceToken"] = "ABuevVY=FL6",
-				}, -- [5]
-				{
-					"item", -- [1]
-					181468, -- [2]
-					["sliceToken"] = "ABuevVY=FLb",
-				}, -- [6]
-				{
-					"item", -- [1]
-					201325, -- [2]
-					["sliceToken"] = "ABuevVY=FLv",
-				}, -- [7]
-				["name"] = "consumes",
-				["save"] = true,
 			},
 		},
 	},

@@ -2,13 +2,13 @@
 OmniCDDB = {
 	["profileKeys"] = {
 		["Hunteraki - Frostmane"] = "Default",
-		["Ivelea - Argent Dawn"] = "Default",
+		["Rentaki - Kazzak"] = "Default",
 		["Takided - Kazzak"] = "Default",
 		["Arcataki - Doomhammer"] = "Default",
 		["Takii - Argent Dawn"] = "Default",
 		["Takidari - Kazzak"] = "Default",
 		["Taaku - Kazzak"] = "Default",
-		["Rentaki - Kazzak"] = "Default",
+		["Ivelea - Argent Dawn"] = "Default",
 		["Takidin - Kazzak"] = "Default",
 		["Takiwar - Kazzak"] = "Default",
 		["Rentaco - Kazzak"] = "Default",
@@ -59,14 +59,14 @@ OmniCDDB = {
 						},
 					},
 					["spells"] = {
-						["102560"] = true,
-						["55233"] = true,
 						["124974"] = true,
-						["187650"] = false,
 						["360194"] = false,
+						["187650"] = false,
 						["50334"] = true,
+						["55233"] = true,
 						["264735"] = true,
 						["102558"] = true,
+						["102560"] = true,
 						["194223"] = true,
 					},
 					["icons"] = {

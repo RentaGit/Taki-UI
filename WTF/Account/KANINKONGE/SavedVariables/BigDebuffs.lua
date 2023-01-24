@@ -47,13 +47,17 @@ BigDebuffsDB = {
 				},
 				["arena4"] = {
 				},
-				["arena1"] = {
-				},
-				["party2"] = {
+				["player"] = {
+					["enabled"] = false,
+					["size"] = 35,
 				},
 				["party1"] = {
 				},
+				["party2"] = {
+				},
 				["arena3"] = {
+				},
+				["arena1"] = {
 				},
 			},
 		},

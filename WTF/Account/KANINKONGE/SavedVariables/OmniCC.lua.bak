@@ -2,7 +2,7 @@
 OmniCCDB = {
 	["global"] = {
 		["dbVersion"] = 6,
-		["addonVersion"] = "10.0.2",
+		["addonVersion"] = "10.0.3",
 	},
 	["profileKeys"] = {
 		["Rentamdi - Kazzak"] = "Default",
@@ -24,7 +24,7 @@ OmniCCDB = {
 		["Takidari - Kazzak"] = "Default",
 		["Rintake - Argent Dawn"] = "Default",
 		["Rentaki - Kazzak"] = "Default",
-		["Takided - Kazzak"] = "Default",
+		["Takidin - Kazzak"] = "Default",
 		["Takosa - Kazzak"] = "Default",
 		["Thaaeyn - Argent Dawn"] = "Default",
 		["Ivelea - Argent Dawn"] = "Default",
@@ -38,7 +38,7 @@ OmniCCDB = {
 		["Rentaco - Kazzak"] = "Default",
 		["Takiworra - Kazzak"] = "Default",
 		["Rentaco - Ravencrest"] = "Default",
-		["Takidin - Kazzak"] = "Default",
+		["Takided - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -91,6 +91,7 @@ OmniCCDB = {
 					["mmSSDuration"] = 600,
 					["spiralOpacity"] = 1.00999997742474,
 					["yOff"] = -1,
+					["fontFace"] = "Interface\\Addons\\SUI\\Media\\Fonts\\Prototype.ttf",
 				},
 				["Plater Nameplates Theme"] = {
 					["textStyles"] = {
@@ -101,6 +102,7 @@ OmniCCDB = {
 						["minutes"] = {
 						},
 					},
+					["fontFace"] = "Interface\\Addons\\SUI\\Media\\Fonts\\Prototype.ttf",
 				},
 			},
 		},
@@ -151,15 +153,15 @@ OmniCC4Config = {
 				},
 			},
 			["fontFace"] = "Interface\\Addons\\SharedMedia\\fonts\\vixar\\vixar.ttf",
-			["yOff"] = -1,
-			["spiralOpacity"] = 1.00999997742474,
 			["minDuration"] = 2,
+			["spiralOpacity"] = 1.00999997742474,
+			["yOff"] = -1,
 			["xOff"] = 0,
 			["tenthsDuration"] = 0,
 			["fontOutline"] = "OUTLINE",
 			["minSize"] = 0.5,
-			["mmSSDuration"] = 600,
 			["minEffectDuration"] = 30,
+			["mmSSDuration"] = 600,
 			["fontSize"] = 16,
 		},
 	},

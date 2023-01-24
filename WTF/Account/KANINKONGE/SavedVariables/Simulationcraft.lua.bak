@@ -49,18 +49,18 @@ SimulationCraftDB = {
 		["Takimage - Kazzak"] = "Takimage - Kazzak",
 		["Asdfasfdas - Kazzak"] = "Asdfasfdas - Kazzak",
 		["Takii - Frostmane"] = "Takii - Frostmane",
-		["Takidin - Kazzak"] = "Takidin - Kazzak",
+		["Takided - Kazzak"] = "Takided - Kazzak",
 		["Rentakidh - Argent Dawn"] = "Rentakidh - Argent Dawn",
 		["Ivelea - Argent Dawn"] = "Ivelea - Argent Dawn",
-		["Takided - Kazzak"] = "Takided - Kazzak",
+		["Takidin - Kazzak"] = "Takidin - Kazzak",
 		["Rentaki - Kazzak"] = "Rentaki - Kazzak",
-		["Nyumi - Argent Dawn"] = "Nyumi - Argent Dawn",
+		["Huntaki - Ravencrest"] = "Huntaki - Ravencrest",
 		["Takigalywix - Aegwynn"] = "Takigalywix - Aegwynn",
 		["Takimogaa - Ravencrest"] = "Takimogaa - Ravencrest",
 		["Thaaeyn - Argent Dawn"] = "Thaaeyn - Argent Dawn",
 		["Rentakigold - Blackmoore"] = "Rentakigold - Blackmoore",
 		["Rendudu - Kazzak"] = "Rendudu - Kazzak",
-		["Huntaki - Ravencrest"] = "Huntaki - Ravencrest",
+		["Nyumi - Argent Dawn"] = "Nyumi - Argent Dawn",
 		["Takidk - Kazzak"] = "Takidk - Kazzak",
 		["Takiragtwo - Kazzak"] = "Takiragtwo - Kazzak",
 		["Takioblivion - Medivh"] = "Takioblivion - Medivh",
@@ -170,13 +170,13 @@ SimulationCraftDB = {
 		},
 		["Takii - Frostmane"] = {
 		},
-		["Takidin - Kazzak"] = {
+		["Takided - Kazzak"] = {
 		},
 		["Rentakidh - Argent Dawn"] = {
 		},
 		["Ivelea - Argent Dawn"] = {
 		},
-		["Takided - Kazzak"] = {
+		["Takidin - Kazzak"] = {
 		},
 		["Rentaki - Kazzak"] = {
 			["frame"] = {
@@ -188,7 +188,7 @@ SimulationCraftDB = {
 				["hide"] = true,
 			},
 		},
-		["Nyumi - Argent Dawn"] = {
+		["Huntaki - Ravencrest"] = {
 		},
 		["Takigalywix - Aegwynn"] = {
 		},
@@ -200,7 +200,7 @@ SimulationCraftDB = {
 		},
 		["Rendudu - Kazzak"] = {
 		},
-		["Huntaki - Ravencrest"] = {
+		["Nyumi - Argent Dawn"] = {
 		},
 		["Takidk - Kazzak"] = {
 		},

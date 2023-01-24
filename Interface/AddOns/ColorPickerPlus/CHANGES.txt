@@ -1,0 +1,52 @@
+tag 8cf2bf9246e851c26b076976694364e2a716e9eb r51
+Author:	Benjamin Staneck <staneck@gmail.com>
+Date:	Thu Jan 19 21:47:38 2023 +0100
+
+commit 33271e10c3061bc1398d447c4dabab2cbee79920
+Author: Benjamin Staneck <staneck@gmail.com>
+Date:   Thu Jan 19 05:06:05 2023 +0100
+
+    Update feature guards for Wrath classic
+
+commit bc0baae69cef303095473ecd30dbd49305778b4b
+Author: Benjamin Staneck <staneck@gmail.com>
+Date:   Fri Nov 18 01:56:35 2022 +0100
+
+    Update Retail TOC for Patch 10.0.2
+
+commit f6f1c66645180db069d188c76173721b154e9024
+Author: Jesus Diaz <contact@jesusdiaz.dev>
+Date:   Mon Oct 31 20:49:54 2022 -0500
+
+    Quick Wrath Fix
+
+commit 3f71a5774853c52010d81fdbcd5b4c66fd91c90a
+Author: Benjamin Staneck <staneck@gmail.com>
+Date:   Thu Oct 27 12:45:55 2022 +0200
+
+    Update for Dragonflight
+
+commit bff707ae35c34db65c279be92a0009682924d76d
+Author: anzz1 <anzz1@live.com>
+Date:   Sat Sep 3 04:23:56 2022 +0300
+
+    TOC for WOTLK Classic
+
+commit fa771b95a4bbec09ab5074b402e86593967f759d
+Author: anzz1 <anzz1@live.com>
+Date:   Sat Sep 3 04:22:56 2022 +0300
+
+    Add support for WOTLK Classic
+
+commit 1228bce3b61ac77b8c8981a32e3853e97b59dc80
+Author: Timmy Willison <4timmywil@gmail.com>
+Date:   Mon May 16 16:41:20 2022 -0400
+
+    Create LICENSE
+
+commit 1228bce3b61ac77b8c8981a32e3853e97b59dc80
+Author: Timmy Willison <4timmywil@gmail.com>
+Date:   Mon May 16 16:41:20 2022 -0400
+
+    Create LICENSE
+

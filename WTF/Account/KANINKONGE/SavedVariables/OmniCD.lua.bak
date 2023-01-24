@@ -8,7 +8,7 @@ OmniCDDB = {
 		["Rentakisham - EU Mythic Dungeons"] = "Default",
 		["Takidari - Kazzak"] = "Default",
 		["Taaku - Kazzak"] = "Default",
-		["Rentaki - Kazzak"] = "Default",
+		["Ivelea - Argent Dawn"] = "Default",
 		["Huntaki - Ravencrest"] = "Default",
 		["Takidemon - Kazzak"] = "Default",
 		["Takibank - Argent Dawn"] = "Default",
@@ -23,7 +23,7 @@ OmniCDDB = {
 		["Takitest - Kazzak"] = "Default",
 		["Takosa - Kazzak"] = "Default",
 		["Takided - Kazzak"] = "Default",
-		["Ivelea - Argent Dawn"] = "Default",
+		["Rentaki - Kazzak"] = "Default",
 	},
 	["global"] = {
 		["oodVer"] = 9272722,
@@ -43,16 +43,31 @@ OmniCDDB = {
 				["party"] = {
 					["extraBars"] = {
 						["raidBar0"] = {
+							["scale"] = 0.71,
+							["statusBarWidth"] = 233,
+							["growUpward"] = true,
 							["manualPos"] = {
 								["raidBar0"] = {
-									["y"] = 93.11991979360755,
-									["x"] = 913.280213961596,
+									["y"] = 348.0533906579003,
+									["x"] = 829.5467002081859,
 								},
 							},
+							["locked"] = true,
 						},
 						["interruptBar"] = {
 							["enabled"] = false,
 						},
+					},
+					["spells"] = {
+						["124974"] = true,
+						["360194"] = false,
+						["187650"] = false,
+						["50334"] = true,
+						["55233"] = true,
+						["264735"] = true,
+						["102558"] = true,
+						["102560"] = true,
+						["194223"] = true,
 					},
 					["icons"] = {
 						["scale"] = 1.1,
@@ -108,8 +123,8 @@ OmniCDDB = {
 				},
 				["textures"] = {
 					["statusBar"] = {
-						["BG"] = "Tukui",
-						["bar"] = "Tukui",
+						["BG"] = "Details Flat",
+						["bar"] = "Details Flat",
 					},
 				},
 			},
