@@ -94,6 +94,7 @@ L["Authors"] = "Autores"
 L["Click for details."] = "Haz clic para más detalles."
 L["Compatible"] = "Compatible"
 L["Description"] = "Descripción"
+-- L["Discord"] = "Discord"
 L["Incompatible"] = "Incompatible"
 L["Installed Skins"] = "Apariencias instaladas"
 L["No description available."] = "Descripción no disponible."
@@ -112,12 +113,15 @@ L["Websites"] = "Sitios web"
 -- Interface Settings
 ---
 
--- L["Alternate Sorting"] = "Alternate Sorting"
--- L["Causes the skins included with Masque to be listed above third-party skins."] = "Causes the skins included with Masque to be listed above third-party skins."
-L["Enable the Minimap icon."] = "Mostrar un icono en el minimapa."
+-- L["Add-On Compartment"] = "Add-On Compartment"
+L["Alternate Sorting"] = "Ordenación alternativa"
+L["Causes the skins included with Masque to be listed above third-party skins."] = "Hace que las skins incluidas con Masque aparezcan por encima de las skins de terceros."
 L["Interface"] = "Interfaz"
 L["Interface Settings"] = "Ajustes de interfaz"
-L["Minimap Icon"] = "Icono en minimapa"
+-- L["Menu Icon"] = "Menu Icon"
+-- L["Minimap"] = "Minimap"
+-- L["None"] = "None"
+-- L["Select where Masque's menu icon is displayed."] = "Select where Masque's menu icon is displayed."
 -- L["Stand-Alone GUI"] = "Stand-Alone GUI"
 -- L["This section will allow you to adjust settings that affect Masque's interface."] = "This section will allow you to adjust settings that affect Masque's interface."
 -- L["Use a resizable, stand-alone options window."] = "Use a resizable, stand-alone options window."
@@ -127,6 +131,12 @@ L["Minimap Icon"] = "Icono en minimapa"
 ---
 
 L["Click to open Masque's settings."] = "Haz clic para abrir los ajustes de Masque."
+
+----------------------------------------
+-- Modern Enhanced Skin
+---
+
+L["An enhanced version of the Dragonflight button style."] = "Una versión mejorada del estilo de los botones de Dragonflight."
 
 ----------------------------------------
 -- Performance Settings

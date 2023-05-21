@@ -4,7 +4,7 @@ local COMPAT = select(4,GetBuildInfo())
 local MODERN, CF_WRATH = COMPAT >= 10e4, COMPAT < 10e4 and COMPAT >= 3e4
 local MODERN_CONTAINERS = MODERN or C_Container and C_Container.GetContainerNumSlots
 
-local exclude, questItems, IsQuestItem = PC:RegisterPVar("AutoQuestExclude", {}), {}
+local exclude, questItems, IsQuestItem, disItems = PC:RegisterPVar("AutoQuestExclude", {}), {}
 local function GetContainerItemQuestInfo(bag, slot)
 	if MODERN_CONTAINERS then
 		local iqi = C_Container.GetContainerItemQuestInfo(bag, slot)
@@ -14,28 +14,62 @@ local function GetContainerItemQuestInfo(bag, slot)
 end
 if MODERN then
 	questItems[30148] = {72986, 72985}
+	local function isInPrimalistFutureScenario()
+		return C_TaskQuest.IsActive(74378) and C_Scenario.IsInScenario() and select(8, GetInstanceInfo()) == 2512
+	end
+	local function isOnKeysOfLoyalty()
+		local q = C_QuestLog.IsOnQuest
+		return q(66805) or q(66133)
+	end
+	local function have15(iid)
+		return GetItemCount(iid) >= 15
+	end
 	local include = {
 		[33634]=true, [35797]=true, [37888]=true, [37860]=true, [37859]=true, [37815]=true, [46847]=true, [47030]=true, [39213]=true, [42986]=true, [49278]=true,
 		[86425]={31332, 31333, 31334, 31335, 31336, 31337}, [90006]=true, [86536]=true, [86534]=true,
 		[180008]=-60609, [180009]=-60609, [180170]=-60649,
 		[174464]=true, [168035]=true,
-		[191251]=-66805,
+		[191251]=isOnKeysOfLoyalty, [202096]=isInPrimalistFutureScenario, [203478]=isInPrimalistFutureScenario,
+		[202670]=true, [202171]=true, [204075]=have15, [204076]=have15, [204078]=have15, [204077]=have15, [205254]=true, [202668]=true,
 	}
+	local includeSpell = {
+		[GetSpellInfo(375806) or 0]=true,
+		[GetSpellInfo(411602) or 0]=true,
+		[GetSpellInfo(409074) or 0]=true,
+		[GetSpellInfo(409490) or 0]=true,
+		[GetSpellInfo(409643) or 0]=true,
+	}
+	includeSpell[0] = nil
+	disItems = {
+		[198798]=1, [198800]=1, [201359]=1, [198675]=1, [198694]=1, [198689]=1, [198799]=1, [201358]=1,
+		[201356]=1, [201357]=1, [201360]=1, [204990]=1, [205001]=1, [204999]=1,
+	}
+	local hexclude = {
+		[204561]=1,
+	}
+	setmetatable(exclude, {__index=hexclude})
 	function IsQuestItem(iid, bag, slot)
 		if exclude[iid] then return false end
+		if disItems[iid] then return true, false end
 		local inc, isQuest, startQuestId, isQuestActive = include[iid], GetContainerItemQuestInfo(bag, slot)
 		isQuest = iid and ((isQuest and GetItemSpell(iid)) or (inc == true) or (startQuestId and not isQuestActive and not C_QuestLog.IsQuestFlaggedCompleted(startQuestId)))
-		if not isQuest and inc then
+		local tinc = inc and not isQuest and type(inc)
+		if tinc == "function" then
+			isQuest, startQuestId, isQuestActive = inc(iid)
+		elseif tinc then
 			isQuest = true
-			local bare = type(inc) == "number"
-			for i=bare and 1 or #inc, 1, -1 do
-				local qid, wq = bare and inc or inc[i]
+			for i=tinc == "number" and 1 or #inc, 1, -1 do
+				local qid, wq = tinc == "number" and inc or inc[i]
 				wq, qid = qid < 0, qid < 0 and -qid or qid
 				if C_QuestLog.IsQuestFlaggedCompleted(qid) or
 				   wq and not C_QuestLog.IsOnQuest(qid) then
 					return false
 				end
 			end
+		end
+		if inc == nil and not isQuest then
+			local isn, isid = GetItemSpell(iid)
+			isQuest, startQuestId = isid and includeSpell[isn] and IsUsableSpell(isid), false
 		end
 		return isQuest, startQuestId and not isQuestActive
 	end
@@ -91,6 +125,17 @@ end
 
 local colId, current, changed
 local collection, inring, ctok = MODERN and {"EB", EB=AB:GetActionSlot("extrabutton", 1)} or {}, {}, 0
+local function addSlice(tok, ...)
+	if inring[tok] then
+		inring[tok] = current
+	else
+		local slot = AB:GetActionSlot(...)
+		if slot then
+			collection[#collection+1], collection[tok], inring[tok], changed = tok, slot, current, true
+		end
+	end
+	return tok
+end
 local function scanQuests(i)
 	for i=i or 1, (MODERN and C_QuestLog.GetNumQuestLogEntries or GetNumQuestLogEntries)() do
 		local _, _, _, isHeader, isCollapsed, isComplete, _, qid = GetQuestLogTitle(i)
@@ -101,11 +146,7 @@ local function scanQuests(i)
 			for _, iid in ipairs(questItems[qid]) do
 				local act = not exclude[iid] and AB:GetActionSlot("item", iid)
 				if act then
-					local tok = "OpieBundleQuest" .. iid
-					if not inring[tok] then
-						collection[#collection+1], collection[tok], changed = tok, act, true
-					end
-					inring[tok] = current
+					addSlice("OPieBundleQuest" .. iid, "item", iid)
 					break
 				end
 			end
@@ -114,11 +155,7 @@ local function scanQuests(i)
 			if link and (showWhenComplete or not isComplete) then
 				local iid = tonumber(link:match("item:(%d+)"))
 				if not exclude[iid] then
-					local tok = "OPieBundleQuest" .. iid
-					if not inring[tok] then
-						collection[#collection+1], collection[tok], changed = tok, AB:GetActionSlot("item", iid), true
-					end
-					inring[tok] = current
+					addSlice("OPieBundleQuest" .. iid, "item", iid)
 				end
 			end
 		end
@@ -128,19 +165,24 @@ local function syncRing(_, _, upId)
 	if upId ~= colId then return end
 	changed, current = false, (ctok + 1) % 2
 	
+	local za = C_ZoneAbility and C_ZoneAbility.GetActiveAbilities()
+	for i=1, za and #za or 0 do
+		local ai = za[i]
+		local asid = ai and ai.spellID
+		if asid and not IsPassiveSpell(asid) then
+			addSlice("OPieBundleQuestZA" .. asid, "spell", asid)
+		end
+	end
+
 	local ns = MODERN_CONTAINERS and C_Container.GetContainerNumSlots or GetContainerNumSlots
 	local giid = MODERN_CONTAINERS and C_Container.GetContainerItemID or GetContainerItemID
-	for bag=0,4 do
-		for slot=1, ns(bag) do
+	for bag=0,MODERN and 5 or 4 do
+		for slot=1, ns(bag) or 0 do
 			local iid = giid(bag, slot)
-			local isQuest, startsQuestMark = IsQuestItem(iid, bag, slot)
-			if isQuest then
-				local tok = "OPieBundleQuest" .. iid
-				if not inring[tok] then
-					collection[#collection+1], collection[tok], changed = tok, AB:GetActionSlot("item", iid), true
-				end
+			local include, startsQuestMark = IsQuestItem(iid, bag, slot)
+			if include then
+				local tok = addSlice("OPieBundleQuest" .. iid, disItems and disItems[iid] and "disenchant" or "item", iid)
 				ORI:SetQuestHint(tok, startsQuestMark)
-				inring[tok] = current
 			end
 		end
 	end

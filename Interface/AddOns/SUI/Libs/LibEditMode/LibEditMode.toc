@@ -1,6 +1,6 @@
-## Interface: 100002
+## Interface: 100100
 ## Author: p3lim
-## Version: 3
+## Version: ac37713
 ## Title: Lib: EditMode
 ## Notes: Library that allows easy frame integration with Edit Mode
 ## OptionalDeps: LibStub, LibDropDown

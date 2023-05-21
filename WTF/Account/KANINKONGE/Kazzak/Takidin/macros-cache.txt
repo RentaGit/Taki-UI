@@ -8,8 +8,8 @@ VER 3 0100000000000018 "cancel bop" "INV_MISC_QUESTIONMARK"
 END
 VER 3 0100000000000007 "CDs" "INV_MISC_QUESTIONMARK"
 #showtooltip
+/use 13
 /cast Avenging Wrath
-/cast Holy Avenger
 END
 VER 3 0100000000000010 "cleanse" "INV_MISC_QUESTIONMARK"
 #showtooltip Cleanse Toxins

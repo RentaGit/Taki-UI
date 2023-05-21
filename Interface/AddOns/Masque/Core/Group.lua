@@ -16,7 +16,7 @@ local MASQUE, Core = ...
 -- Lua API
 ---
 
-local error, pairs, type = error, pairs, type
+local error, pairs, select, type = error, pairs, select, type
 
 ----------------------------------------
 -- Internal
@@ -29,13 +29,13 @@ local Skins = Core.Skins
 local DEFAULT_SKIN = Core.DEFAULT_SKIN
 
 -- @ Skins\Regions
-local ActionTypes, BaseTypes, RegTypes = Core.ActionTypes, Core.BaseTypes, Core.RegTypes
+local ActionTypes, RegTypes = Core.ActionTypes, Core.RegTypes
 
 -- @ Core\Utility
 local GetColor, GetScale, NoOp = Core.GetColor, Core.GetScale, Core.NoOp
 
 -- @ Core\Core
-local GetRegion, GetSubType, GetType = Core.GetRegion, Core.GetSubType, Core.GetType
+local GetRegion, GetType = Core.GetRegion, Core.GetType
 
 -- @ Core\Button
 local SkinButton = Core.SkinButton
@@ -67,54 +67,20 @@ local C_Layers = {
 }
 
 ----------------------------------------
--- Functions
----
-
--- Fires the callback for the add-on or group.
-local function FireCB(self)
-	local db = self.db
-
-	if self.Callback then
-		Callback(self.Callback, self.Group, db.SkinID, db.Backdrop, db.Shadow, db.Gloss, db.Colors, db.Disabled)
-	elseif self.Addon then
-		Callback(self.Addon, self.Group, db.SkinID, db.Backdrop, db.Shadow, db.Gloss, db.Colors, db.Disabled)
-	end
-end
-
-----------------------------------------
 -- Group Metatable
 ---
 
 -- Adds or reassigns a button to the group.
 function GMT:AddButton(Button, Regions, Type, Strict)
-	local oType = GetType(Button)
+	local oType, bType = GetType(Button, Type)
 
 	if not oType then
 		if Core.Debug then
-			error("Bad argument to group method 'AddButton'. 'Button' must be a button object.", 2)
+			error("Bad argument to group method 'AddButton'. 'Button' must be a Button, CheckButton or Frame object.", 2)
 		end
 		return
 	elseif oType == "Frame" then
 		Strict = true
-	end
-
-	Type = Type or Button.__MSQ_bType
-
-	local Checked
-
-	if not Type or not RegTypes[Type] then
-		Type = GetType(Button, oType)
-		Checked = true
-	end
-
-	if BaseTypes[Type] and not Checked then
-		Type = GetSubType(Button, Type)
-	end
-
-	Button.__MSQ_bType = Type
-
-	if ActionTypes[Type] then
-		self.ActionButtons = true
 	end
 
 	Regions = Regions or Button.__Regions
@@ -132,12 +98,16 @@ function GMT:AddButton(Button, Regions, Type, Strict)
 
 	Group[Button] = self
 
+	if ActionTypes[bType] then
+		self.ActionButtons = true
+	end
+
 	if type(Regions) ~= "table" then
 		Regions = {}
 	end
 
 	if not Strict then
-		local Layers = RegTypes[Type]
+		local Layers = RegTypes[bType]
 
 		for Layer, Info in pairs(Layers) do
 			local Region = Regions[Layer]
@@ -162,8 +132,12 @@ function GMT:AddButton(Button, Regions, Type, Strict)
 
 	local db = self.db
 
-	if not db.Disabled and not self.Queued then
-		SkinButton(Button, Regions, db.SkinID, db.Backdrop, db.Shadow, db.Gloss, db.Colors, db.Scale, db.Pulse)
+	if not self.Queued then
+		if Parent and not Parent.db.Disabled and db.Disabled then
+			SkinButton(Button, Regions, false)
+		elseif not db.Disabled then
+			SkinButton(Button, Regions, db.SkinID, db.Backdrop, db.Shadow, db.Gloss, db.Colors, db.Scale, db.Pulse)
+		end
 	end
 end
 
@@ -215,6 +189,40 @@ function GMT:GetOptions(Order)
 	return Core.GetOptions(self, Order)
 end
 
+-- Registers a group-specific callback.
+function GMT:RegisterCallback(func, ...)
+	if self.ID == MASQUE then return end
+
+	if type(func) ~= "function" then
+		if Core.Debug then
+			error("Bad argument to Group method 'RegisterCallback'. 'func' must be a function.", 2)
+		end
+		return
+	end
+
+	local Count = select("#", ...)
+
+	if Count > 0 then
+		local cbs = self.Callbacks
+
+		for i = 1, Count do
+			local arg = select(i, ...)
+
+			if i == 1 and type(arg) == "table" then
+				self.__arg = arg
+
+				if Count == 1 then
+					self.__func = func
+				end
+			elseif type(arg) == "string" then
+				cbs[arg] = func
+			end
+		end
+	else
+		self.__func = func
+	end
+end
+
 -- Removes a button from the group and applies the default skin.
 function GMT:RemoveButton(Button)
 	if Button then
@@ -230,15 +238,15 @@ function GMT:RemoveButton(Button)
 end
 
 -- Reskins the group with its current settings.
-function GMT:ReSkin(arg)
+function GMT:ReSkin(Button)
 	local db = self.db
 
 	if not db.Disabled then
-		if type(arg) == "table" then
-			local Regions = self.Buttons[arg]
+		if type(Button) == "table" then
+			local Regions = self.Buttons[Button]
 
 			if Regions then
-				SkinButton(arg, Regions, db.SkinID, db.Backdrop, db.Shadow, db.Gloss, db.Colors, db.Scale, db.Pulse)
+				SkinButton(Button, Regions, db.SkinID, db.Backdrop, db.Shadow, db.Gloss, db.Colors, db.Scale, db.Pulse)
 			end
 		else
 			local SkinID, Backdrop, Shadow = db.SkinID, db.Backdrop, db.Shadow
@@ -247,32 +255,8 @@ function GMT:ReSkin(arg)
 			for Button, Regions in pairs(self.Buttons) do
 				SkinButton(Button, Regions, SkinID, Backdrop, Shadow, Gloss, Colors, db.Scale, Pulse)
 			end
-
-			if not arg then
-				FireCB(self)
-			end
 		end
 	end
-end
-
--- Registers a group-specific callback.
-function GMT:SetCallback(func, arg, selfCB)
-	if self.ID == MASQUE then return end
-
-	if type(func) ~= "function" then
-		if Core.Debug then
-			error("Bad argument to Group method 'SetCallback'. 'func' must be a function.", 2)
-		end
-		return
-	elseif arg and type(arg) ~= "table" then
-		if Core.Debug then
-			error("Bad argument to Group method 'SetCallback'. 'arg' must be a table or nil.", 2)
-		end
-		return
-	end
-
-	Callback:Register(self.ID, func, arg or false)
-	self.Callback = (selfCB and self) or self.ID
 end
 
 -- Renames the group.
@@ -306,7 +290,7 @@ function GMT:__Disable(Silent)
 	end
 
 	if not Silent then
-		FireCB(self)
+		self:__FireCB("Disabled", true)
 	end
 
 	local Subs = self.SubList
@@ -323,12 +307,28 @@ end
 function GMT:__Enable()
 	self.db.Disabled = false
 	self:ReSkin()
+	self:__FireCB("Disabled", false)
 
 	local Subs = self.SubList
 
 	if Subs then
 		for _, Sub in pairs(Subs) do
 			Sub:__Enable()
+		end
+	end
+end
+
+-- Fires the callback.
+-- * This methods is intended for internal use only.
+function GMT:__FireCB(Option, Value)
+	local arg = self.__arg
+	local func = self.Callbacks[Option] or self.__func
+
+	if func then
+		if arg then
+			func(arg, self, Option, Value)
+		else
+			func(self, Option, Value)
 		end
 	end
 end
@@ -348,6 +348,7 @@ function GMT:__Reset()
 	end
 
 	self:ReSkin()
+	self:__FireCB("Reset", true)
 
 	local Subs = self.SubList
 
@@ -406,7 +407,8 @@ function GMT:__Set(Option, Value)
 		return
 	end
 
-	-- SubGroups
+	self:__FireCB(Option, Value)
+
 	local Subs = self.SubList
 
 	if Subs then
@@ -547,9 +549,18 @@ end
 -- Deprecated
 ---
 
-GMT.Disable = NoOp
-GMT.Enable = NoOp
-GMT.SetColor = NoOp
+-- Temporary function to catch add-ons using deprecated API.
+function GMT:SetCallback(...)
+	if self.ID == MASQUE then return end
+
+	local Warn = Core.db.profile.CB_Warn
+	local Addon = self.Addon
+
+	if Addon and Warn[Addon] then
+		print("|cffff8800Masque Warning:|r", Addon, "called the deprecated API method, |cff000099'SetCallback'|r.  Please notify the author or post in the relevant issue on the Masque project page.")
+		Warn[Addon] = false
+	end
+end
 
 ----------------------------------------
 -- Core

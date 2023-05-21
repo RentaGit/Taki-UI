@@ -1,5 +1,13 @@
 
 NarciBarberShopDB = {
+	["ToggleRandomAppearance"] = false,
+	["ToggleNotification"] = true,
+	["Hotkeys"] = {
+		["RotateRight"] = "D",
+		["RotateLeft"] = "A",
+		["ZoomOut"] = "S",
+		["ZoomIn"] = "W",
+	},
 	["PlayerData"] = {
 		["0B0683B1"] = {
 			["playerName"] = "Takidin",
@@ -18,11 +26,17 @@ NarciBarberShopDB = {
 			["playerName"] = "Rentaki",
 			["realmID"] = "1305",
 			["SavedLooks"] = {
+				["chrModel129"] = {
+				},
+				["chrModel123"] = {
+				},
+				["chrModel126"] = {
+				},
+				["chrModel124"] = {
+				},
 				[2] = {
 					["male"] = {
 						{
-							["name"] = "Bleeding Hollow",
-							["description"] = "Topknot Hair Style, Tusk Beard, Full Sideburns, Eyes Grime, Spikes Earrings, Bone Nose Ring, Natural Tusks, Brutality Tattoo, Upright Upright",
 							["data"] = {
 								{
 									20, -- [1]
@@ -30,11 +44,11 @@ NarciBarberShopDB = {
 								}, -- [1]
 								{
 									19, -- [1]
-									9350, -- [2]
+									353, -- [2]
 								}, -- [2]
 								{
 									21, -- [1]
-									403, -- [2]
+									9338, -- [2]
 								}, -- [3]
 								{
 									22, -- [1]
@@ -46,23 +60,23 @@ NarciBarberShopDB = {
 								}, -- [5]
 								{
 									876, -- [1]
-									9819, -- [2]
+									9818, -- [2]
 								}, -- [6]
 								{
 									824, -- [1]
-									9266, -- [2]
+									9276, -- [2]
 								}, -- [7]
 								{
 									826, -- [1]
-									9359, -- [2]
+									9360, -- [2]
 								}, -- [8]
 								{
 									877, -- [1]
-									9827, -- [2]
+									9825, -- [2]
 								}, -- [9]
 								{
 									836, -- [1]
-									9430, -- [2]
+									9428, -- [2]
 								}, -- [10]
 								{
 									875, -- [1]
@@ -82,19 +96,20 @@ NarciBarberShopDB = {
 								}, -- [14]
 								{
 									829, -- [1]
-									9376, -- [2]
+									9375, -- [2]
 								}, -- [15]
 								{
 									24, -- [1]
-									439, -- [2]
+									438, -- [2]
 								}, -- [16]
 							},
-							["timeCreated"] = 1602703513,
+							["name"] = "Bones",
+							["description"] = "Bladefist Hair Style, Tusk Beard, Hanging Sideburns, Swipe Scars, Bone Nose Ring, Natural Tusks, Brutality Tattoo, Hunched Upright",
+							["timeCreated"] = 1675834625,
 						}, -- [1]
 					},
 					["female"] = {
 						{
-							["description"] = "Thick Hair Style, Spikes Earrings, Bone Pincher Nose Ring, Bones Necklace, Brutality Tattoo",
 							["data"] = {
 								{
 									26, -- [1]
@@ -102,7 +117,7 @@ NarciBarberShopDB = {
 								}, -- [1]
 								{
 									25, -- [1]
-									9358, -- [2]
+									440, -- [2]
 								}, -- [2]
 								{
 									27, -- [1]
@@ -110,46 +125,50 @@ NarciBarberShopDB = {
 								}, -- [3]
 								{
 									28, -- [1]
-									512, -- [2]
+									507, -- [2]
 								}, -- [4]
 								{
 									825, -- [1]
-									9302, -- [2]
+									9298, -- [2]
 								}, -- [5]
 								{
 									830, -- [1]
-									9377, -- [2]
+									9379, -- [2]
 								}, -- [6]
+								{
+									6341, -- [1]
+									45098, -- [2]
+								}, -- [7]
 								{
 									29, -- [1]
 									9456, -- [2]
-								}, -- [7]
+								}, -- [8]
 								{
 									847, -- [1]
-									9812, -- [2]
-								}, -- [8]
+									9491, -- [2]
+								}, -- [9]
 								{
 									841, -- [1]
 									9472, -- [2]
-								}, -- [9]
+								}, -- [10]
 								{
 									831, -- [1]
-									9384, -- [2]
-								}, -- [10]
+									9383, -- [2]
+								}, -- [11]
 								{
 									832, -- [1]
 									9390, -- [2]
-								}, -- [11]
+								}, -- [12]
 								{
 									833, -- [1]
 									9386, -- [2]
-								}, -- [12]
+								}, -- [13]
 							},
-							["name"] = "Bleeding Hollow #2",
-							["timeCreated"] = 1603128049,
+							["name"] = "New Look #2",
+							["description"] = "Thick Hair Style, Swipe Scars, Both Eyesight, Spikes Earrings, Bones Necklace, Ferocity Tattoo",
+							["timeCreated"] = 1683495428,
 						}, -- [1]
 						{
-							["description"] = "Thick Hair Style, Spikes Earrings, Bone Pincher Nose Ring, Bones Necklace, Ferocity Tattoo",
 							["data"] = {
 								{
 									26, -- [1]
@@ -157,7 +176,7 @@ NarciBarberShopDB = {
 								}, -- [1]
 								{
 									25, -- [1]
-									441, -- [2]
+									440, -- [2]
 								}, -- [2]
 								{
 									27, -- [1]
@@ -173,7 +192,7 @@ NarciBarberShopDB = {
 								}, -- [5]
 								{
 									830, -- [1]
-									9377, -- [2]
+									9379, -- [2]
 								}, -- [6]
 								{
 									29, -- [1]
@@ -181,7 +200,7 @@ NarciBarberShopDB = {
 								}, -- [7]
 								{
 									847, -- [1]
-									9812, -- [2]
+									9491, -- [2]
 								}, -- [8]
 								{
 									841, -- [1]
@@ -200,119 +219,10 @@ NarciBarberShopDB = {
 									9386, -- [2]
 								}, -- [12]
 							},
-							["name"] = "Bleeding Hollow",
-							["timeCreated"] = 1602697004,
+							["name"] = "Bones",
+							["description"] = "Thick Hair Style, Swipe Scars, Spikes Earrings, Bones Necklace, Ferocity Tattoo",
+							["timeCreated"] = 1675834418,
 						}, -- [2]
-						{
-							["description"] = "Thick Hair Style, Gold Stack Earrings, Gold Ring Nose Ring, Bones Necklace",
-							["data"] = {
-								{
-									26, -- [1]
-									476, -- [2]
-								}, -- [1]
-								{
-									25, -- [1]
-									441, -- [2]
-								}, -- [2]
-								{
-									27, -- [1]
-									9346, -- [2]
-								}, -- [3]
-								{
-									28, -- [1]
-									507, -- [2]
-								}, -- [4]
-								{
-									825, -- [1]
-									9293, -- [2]
-								}, -- [5]
-								{
-									830, -- [1]
-									9377, -- [2]
-								}, -- [6]
-								{
-									29, -- [1]
-									521, -- [2]
-								}, -- [7]
-								{
-									847, -- [1]
-									9492, -- [2]
-								}, -- [8]
-								{
-									841, -- [1]
-									9472, -- [2]
-								}, -- [9]
-								{
-									831, -- [1]
-									9382, -- [2]
-								}, -- [10]
-								{
-									832, -- [1]
-									9390, -- [2]
-								}, -- [11]
-								{
-									833, -- [1]
-									9386, -- [2]
-								}, -- [12]
-							},
-							["name"] = "Earthshatter #1",
-							["timeCreated"] = 1602696913,
-						}, -- [3]
-						{
-							["description"] = "Thick Hair Style, Spikes Earrings, Bone Pincher Nose Ring, Bones Necklace",
-							["data"] = {
-								{
-									26, -- [1]
-									476, -- [2]
-								}, -- [1]
-								{
-									25, -- [1]
-									441, -- [2]
-								}, -- [2]
-								{
-									27, -- [1]
-									9346, -- [2]
-								}, -- [3]
-								{
-									28, -- [1]
-									507, -- [2]
-								}, -- [4]
-								{
-									825, -- [1]
-									9293, -- [2]
-								}, -- [5]
-								{
-									830, -- [1]
-									9377, -- [2]
-								}, -- [6]
-								{
-									29, -- [1]
-									9456, -- [2]
-								}, -- [7]
-								{
-									847, -- [1]
-									9812, -- [2]
-								}, -- [8]
-								{
-									841, -- [1]
-									9472, -- [2]
-								}, -- [9]
-								{
-									831, -- [1]
-									9382, -- [2]
-								}, -- [10]
-								{
-									832, -- [1]
-									9390, -- [2]
-								}, -- [11]
-								{
-									833, -- [1]
-									9386, -- [2]
-								}, -- [12]
-							},
-							["name"] = "Earthshatter #2",
-							["timeCreated"] = 1602696874,
-						}, -- [4]
 					},
 				},
 			},
@@ -331,13 +241,5 @@ NarciBarberShopDB = {
 			},
 			["realmName"] = "Kazzak",
 		},
-	},
-	["ToggleNotification"] = true,
-	["ToggleRandomAppearance"] = false,
-	["Hotkeys"] = {
-		["RotateRight"] = "D",
-		["RotateLeft"] = "A",
-		["ZoomOut"] = "S",
-		["ZoomIn"] = "W",
 	},
 }

@@ -1,12 +1,13 @@
 local configCache, _, T = {}, ...
 local PC, api, iapi, MODERN = T.OPieCore, {}, {}, select(4, GetBuildInfo()) >= 10e4
+local GameTooltip = T.NotGameTooltip or GameTooltip
 local max, min, abs, floor, sin, cos = math.max, math.min, math.abs, math.floor, sin, cos
 local function cc(m, f, ...)
 	f[m](f, ...)
 	return f
 end
 local function assert(condition, text, level)
-	return (not condition) and error(text, level or 2) or condition
+	return condition or error(text, level or 2)
 end
 
 local gfxBase = ([[Interface\AddOns\%s\gfx\]]):format((...))
@@ -136,7 +137,7 @@ end
 
 local IndicatorFactories, ActiveIndicatorFactory, LastRegisteredIndicatorFactory = {}
 local SwitchIndicatorFactory, ValidateIndicator do
-	local CURRENT_API_LEVEL = 1
+	local CURRENT_API_LEVEL, CURRENT_API_LEVEL_OOD = 2, MODERN and 2 or 1
 	local RequiredIndicatorMethods = {
 		SetPoint=0, SetScale=0, GetScale=0, SetShown=0, SetParent=0,
 		SetIcon=0, SetIconTexCoord=0, SetIconVertexColor=0, SetDominantColor=0,
@@ -144,6 +145,7 @@ local SwitchIndicatorFactory, ValidateIndicator do
 		SetUsable=0, SetCount=0, SetBinding=0,
 		SetCooldown=0, SetCooldownTextShown="supportsCooldownNumbers", SetShortLabel="supportsShortLabels",
 		SetEquipState=0, SetHighlighted=0, SetActive=0, SetOuterGlow=0,
+		SetQualityOverlay=2,
 	}
 	function ValidateIndicator(apiLevel, reqAPILevel, info, errorLevel)
 		if apiLevel < 0 or (reqAPILevel or apiLevel) > CURRENT_API_LEVEL then
@@ -176,7 +178,7 @@ local SwitchIndicatorFactory, ValidateIndicator do
 		if key == "_" then return end
 		local nk, nv = next(IndicatorFactories, key)
 		if nk then
-			return nk, nv.name, nv.apiLevel < CURRENT_API_LEVEL
+			return nk, nv.name, nv.apiLevel < CURRENT_API_LEVEL_OOD
 		end
 		return "_", IndicatorFactories[LastRegisteredIndicatorFactory].name, false
 	end
@@ -199,6 +201,12 @@ local SwitchIndicatorFactory, ValidateIndicator do
 end
 
 local tokenR, tokenG, tokenB, tokenIcon, tokenQuest = {}, {}, {}, {}, {}
+local qualMap, qualMod, qualModLow = {}, 131072, 16384 do
+	for v=qualModLow, qualMod-1, qualModLow do
+		qualMap[v] = v/qualModLow
+	end
+end
+
 local getSliceColor do
 	local col, pal = T.Niji._tex, T.Niji._palette
 	function getSliceColor(token, icon, token2)
@@ -228,9 +236,9 @@ local function SetDefaultAnchor(tt, owner)
 		GameTooltip_SetDefaultAnchor(tt, owner)
 	end
 end
-local function updateCentralElements(self, si)
-	local osi, tok, usable, state, icon, caption, _, _, _, tipFunc, tipArg, _, stext = self.oldSlice, PC:GetOpenRingSliceAction(si)
-		
+local function updateCentralElements(self, si, _, tok, usable, state, icon, caption, _, _, _, tipFunc, tipArg, _, stext)
+	local osi = self.oldSlice
+
 	if tok then
 		local r,g,b = getSliceColor(tok, tokenIcon[tok] or icon or "Interface/Icons/INV_Misc_QuestionMark")
 		centerPointer:SetVertexColor(r,g,b, 0.9)
@@ -290,13 +298,17 @@ local function updateSlice(self, originAngle, selected, tok, usable, state, icon
 	end
 	icon = tokenIcon[tok] or icon or "Interface/Icons/INV_Misc_QuestionMark"
 	local active, overlay, faded, usableCharge, r,g,b = state % 2 >= 1, state % 4 >= 2, not usable, usable or (state % 128 >= 64)
+	local isInContainer, isInInventory, isQuestStartItem = state % 256 >= 128, state % 512 >= 256, tokenQuest[tok] or (state % 64 >= 32)
+	local isDisenchanting = state % 262144 >= 131072
+	local onCooldown, noMana, noRange, qual = cd and cd > 0, state % 16 >= 8, state % 32 >= 16, state % qualMod
+	qual = qual >= qualModLow and qualMap[qual - qual % qualModLow] or 0
 	self:SetIcon(icon)
 	if ext then
 		self:SetIconTexCoord(securecall(extractAux, ext, "coord"))
 		r, g, b = securecall(extractAux, ext, "color")
 	end
 	local dr, dg, db = getSliceColor(tok, isJump and icon == 188515 and origJumpIcon or icon, jumpOtherTok)
-	self:SetUsable(usable, usableCharge, cd and cd > 0, state % 16 >= 8, state % 32 >= 16)
+	self:SetUsable(usable, usableCharge, onCooldown, noMana, noRange)
 	self:SetIconVertexColor(r or 1, g or 1, b or 1)
 	self:SetDominantColor(dr, dg, db)
 	self:SetOuterGlow(overlay)
@@ -311,18 +323,26 @@ local function updateSlice(self, originAngle, selected, tok, usable, state, icon
 		if ActiveIndicatorFactory.apiLevel >= 1 then
 			self:SetOverlayIconVertexColor(dr, dg, db)
 		end
+	elseif isDisenchanting then
+		self:SetOverlayIcon("Interface/Buttons/UI-GroupLoot-DE-Up", 20, 20)
 	else
-		self:SetOverlayIcon((tokenQuest[tok] or ((state or 0) % 64 >= 32)) and "Interface\\MINIMAP\\TRACKING\\OBJECTICONS", 21, 28, 40/256, 64/256, 32/64, 1)
+		self:SetOverlayIcon(isQuestStartItem and "Interface\\MINIMAP\\TRACKING\\OBJECTICONS", 21, 28, 40/256, 64/256, 32/64, 1)
 	end
 	if ActiveIndicatorFactory.supportsShortLabels then
 		self:SetShortLabel(configCache.ShowShortLabels and stext or "")
 	end
+	if ActiveIndicatorFactory.apiLevel >= 2 then
+		self:SetQualityOverlay(qual)
+	end
 	self:SetCooldown(cd, cd2, usableCharge)
-	self:SetEquipState(state % 256 >= 128, state % 512 >= 256)
+	self:SetEquipState(isInContainer, isInInventory)
 	local ct = configCache.ShowOneCount and 0 or 1
 	self:SetCount((count or 0) > ct and count)
 	self:SetActive(active)
 	self:SetHighlighted(selected and not faded)
+end
+local function callElementUpdate(self, f, si, ni, a1, a2)
+	return true, f(self, a1, a2, PC:GetOpenRingSliceAction(si, ni))
 end
 
 local lastConAngle = nil
@@ -353,7 +373,7 @@ local function OnUpdate_Main(self, elapsed)
 
 	local si = qaid or (count <= 0 and 0) or isActiveRadius and
 		(floor(((90-angle - offset) * count/360 + 0.5) % count) + 1) or 0
-	updateCentralElements(self, si)
+	securecall(callElementUpdate, self, updateCentralElements, si, nil, si)
 
 	if count == 0 then
 		return
@@ -365,7 +385,8 @@ local function OnUpdate_Main(self, elapsed)
 	else
 		self.omState, self.schedMultiUpdate = cmState, -0.05
 		for i=1,count do
-			updateSlice(Slices[i], 90 - (i-1)*360/count - offset, si == i, PC:GetOpenRingSliceAction(i))
+			local originAngle = 90 - (i-1)*360/count - offset
+			securecall(callElementUpdate, Slices[i], updateSlice, i, nil, originAngle, si == i)
 		end
 		if configCache.GhostMIRings then
 			local _, _, _, nestedCount, atype = PC:GetOpenRingSlice(si or 0)
@@ -376,7 +397,7 @@ local function OnUpdate_Main(self, elapsed)
 				local originAngle = 90 - 360/count*(si-1) - offset
 				local group = GhostIndication:ActivateGroup(si, nestedCount + jump1, originAngle, self.radius*(configCache.MIScale and 1.10 or 1), 1.10)
 				for i=2-jump1, nestedCount do
-					updateSlice(group[i+jump1], 90, false, PC:GetOpenRingSliceAction(si, i))
+					securecall(callElementUpdate, group[i+jump1], updateSlice, si, i, 90, false)
 				end
 			end
 		end

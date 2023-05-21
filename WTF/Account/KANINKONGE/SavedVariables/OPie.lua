@@ -4,43 +4,31 @@ OPie_SavedData = {
 	["CharProfiles"] = {
 		["Ravencrest-Rentaki"] = "default",
 	},
-	["_GameVersion"] = "10.0.2",
-	["_OPieVersion"] = "Yuzu 5b (4.114)",
+	["_GameVersion"] = "10.1.0",
+	["_OPieVersion"] = "Yuzu 9+1.0 (4.114)",
 	["ProfileStorage"] = {
 		["default"] = {
+			["RotationTokens"] = {
+				["ABuevVY=FLry"] = "ABuevVY=FLP",
+			},
 			["Bindings"] = {
 				["OPieAutoQuest"] = false,
-				["nTeleports"] = "8",
 				["rtantStuff"] = "6",
+				["nTeleports"] = "8",
 				["OPieTracking"] = false,
 				["consumes"] = "7",
-			},
-			["RotationTokens"] = {
-				["ABuevVY=FLre"] = "ABuevVY=FLeS",
-				["ABuevVY=FLry"] = "ABuevVY=FLP",
-				["ABuevVY=FLrr"] = "ABuevVY=FLea",
-				["ABuevVY=FLrt"] = "ABuevVY=FLH",
-				["ABuevVY=FLr1"] = "ABuevVY=FLwQ",
 			},
 		},
 	},
 	["PersistentStorage"] = {
 		["RingKeeper"] = {
+			["OPieFlagStore"] = {
+				["StoreVersion"] = 2,
+			},
 			["OPieDeletedRings"] = {
 				["CommonTrades"] = true,
 				["TrinketSlots"] = true,
 				["SpecMenu"] = true,
-			},
-			["OPieFlagStore"] = {
-				["StoreVersion"] = 2,
-			},
-			["leportsBFA"] = {
-				{
-					["sliceToken"] = "ABuevVY=FLR",
-					["id"] = 373274,
-				}, -- [1]
-				["name"] = "Dungeon Teleports (BFA)",
-				["save"] = true,
 			},
 			["leportsWoD"] = {
 				{
@@ -94,43 +82,12 @@ OPie_SavedData = {
 				["name"] = "Dungeon Teleports (Legion)",
 				["save"] = true,
 			},
-			["consumes"] = {
+			["leportsBFA"] = {
 				{
-					"item", -- [1]
-					197792, -- [2]
-					["sliceToken"] = "ABuevVY=FLQ",
+					["sliceToken"] = "ABuevVY=FLR",
+					["id"] = 373274,
 				}, -- [1]
-				{
-					"item", -- [1]
-					191341, -- [2]
-					["sliceToken"] = "ABuevVY=FLm",
-				}, -- [2]
-				{
-					"item", -- [1]
-					194823, -- [2]
-					["sliceToken"] = "ABuevVY=FLn",
-				}, -- [3]
-				{
-					"item", -- [1]
-					6657, -- [2]
-					["sliceToken"] = "ABue5KEG6BQ",
-				}, -- [4]
-				{
-					"item", -- [1]
-					197767, -- [2]
-					["sliceToken"] = "ABuevVY=FL6",
-				}, -- [5]
-				{
-					"item", -- [1]
-					181468, -- [2]
-					["sliceToken"] = "ABuevVY=FLb",
-				}, -- [6]
-				{
-					"item", -- [1]
-					201325, -- [2]
-					["sliceToken"] = "ABuevVY=FLv",
-				}, -- [7]
-				["name"] = "consumes",
+				["name"] = "Dungeon Teleports (BFA)",
 				["save"] = true,
 			},
 			["leportsMoP"] = {
@@ -265,6 +222,45 @@ OPie_SavedData = {
 					["sliceToken"] = "ABuevVY=FLre",
 				}, -- [6]
 				["name"] = "Dungeon Teleports",
+				["save"] = true,
+			},
+			["consumes"] = {
+				{
+					"item", -- [1]
+					197792, -- [2]
+					["sliceToken"] = "ABuevVY=FLQ",
+				}, -- [1]
+				{
+					"item", -- [1]
+					191341, -- [2]
+					["sliceToken"] = "ABuevVY=FLm",
+				}, -- [2]
+				{
+					"item", -- [1]
+					194823, -- [2]
+					["sliceToken"] = "ABuevVY=FLn",
+				}, -- [3]
+				{
+					"item", -- [1]
+					6657, -- [2]
+					["sliceToken"] = "ABue5KEG6BQ",
+				}, -- [4]
+				{
+					"item", -- [1]
+					197767, -- [2]
+					["sliceToken"] = "ABuevVY=FL6",
+				}, -- [5]
+				{
+					"item", -- [1]
+					181468, -- [2]
+					["sliceToken"] = "ABuevVY=FLb",
+				}, -- [6]
+				{
+					"item", -- [1]
+					201325, -- [2]
+					["sliceToken"] = "ABuevVY=FLv",
+				}, -- [7]
+				["name"] = "consumes",
 				["save"] = true,
 			},
 			["rtantStuff"] = {

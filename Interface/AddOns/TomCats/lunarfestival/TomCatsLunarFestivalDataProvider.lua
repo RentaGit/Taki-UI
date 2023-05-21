@@ -341,7 +341,7 @@ function TomCatsLunarFestivalPinMixin:OnAcquired(pinInfo)
     if (pinInfo.entrance) then
         if (pinInfo.entrance["Type"] == 1) then
             self.iconEntrance:Show();
-        elseif (pinInfo.entrance["Type"] == 2) then
+        elseif (pinInfo.entrance["Type"] == 2 or pinInfo.entrance["Type"] == 5) then
             self.iconDungeon:Show();
         elseif (pinInfo.entrance["Type"] == 3) then
             self.iconPortalAlliance:Show();
@@ -366,7 +366,7 @@ end
 function TomCatsLunarFestivalPinMixin:OnCanvasScaleChanged()
     local scaleBase = 0.425
     local uiMapID = self:GetMap():GetMapID()
-    if (uiMapID == 12 or uiMapID == 13 or uiMapID == 113) then scaleBase = 0.35 end
+    if (uiMapID == 12 or uiMapID == 13 or uiMapID == 113 or uiMapID == 1978) then scaleBase = 0.35 end
     self:SetScale(scaleBase * self:GetMap():GetGlobalPinScale() / self:GetParent():GetScale())
     self:SetPosition(self.pinInfo.location.x, self.pinInfo.location.y)
 end
@@ -418,6 +418,9 @@ function TomCatsLunarFestivalPinMixin:ShowTooltip()
         elseif (self.pinInfo.entrance["Type"] == 2) then
             GameTooltip_AddBlankLinesToTooltip(tooltip, 1);
             GameTooltip_AddColoredLine(tooltip, "(Dungeon Entrance)", GREY_COLOR, true)
+        elseif (self.pinInfo.entrance["Type"] == 5) then
+            GameTooltip_AddBlankLinesToTooltip(tooltip, 1);
+            GameTooltip_AddColoredLine(tooltip, "(Venthyr Only)", GREY_COLOR, true)
         end
     end
     if (self.pinInfo.phasedZone) then
@@ -431,7 +434,7 @@ function TomCatsLunarFestivalPinMixin:ShowTooltip()
     if (TomTom) then
         GameTooltip_AddBlankLinesToTooltip(tooltip, 1)
         GameTooltip_AddColoredLine(tooltip, "Click to add a TomTom Waypoint", WHITE_COLOR, true)
-        GameTooltip_AddColoredLine(tooltip, "Right-Click to add all visible waypoints from this map", WHITE_COLOR, true)
+        GameTooltip_AddColoredLine(tooltip, "Shift-Click to add all visible waypoints from this map", WHITE_COLOR, true)
     end
     WorldMapTooltip:Show()
     WorldMapTooltip.recalculatePadding = true
@@ -466,22 +469,23 @@ end
 function TomCatsLunarFestivalPinMixin:OnMouseUp(button)
     if (TomTom) then
         if (button == "LeftButton") then
-            if (self.pinInfo.quest) then
-                addQuestToTomTom(self.pinInfo.quest, true)
-            end
-            if (self.pinInfo.entrance) then
-                addEntranceToTomTom(self.pinInfo.entrance, true)
-            end
-        end
-        if (button == "RightButton") then
-            for _, pin in pairs(self.pinInfo.provider.activePins) do
-                addQuestToTomTom(pin.pinInfo.quest, false)
-            end
-            for _, pin in pairs(self.pinInfo.provider.activeEntrancePins) do
-                addEntranceToTomTom(pin.pinInfo.entrance, false)
-            end
-            if (not IsInInstance()) then
-                TomTom:SetClosestWaypoint()
+            if (IsShiftKeyDown()) then
+                for _, pin in pairs(self.pinInfo.provider.activePins) do
+                    addQuestToTomTom(pin.pinInfo.quest, false)
+                end
+                for _, pin in pairs(self.pinInfo.provider.activeEntrancePins) do
+                    addEntranceToTomTom(pin.pinInfo.entrance, false)
+                end
+                if (not IsInInstance()) then
+                    TomTom:SetClosestWaypoint()
+                end
+            else
+                if (self.pinInfo.quest) then
+                    addQuestToTomTom(self.pinInfo.quest, true)
+                end
+                if (self.pinInfo.entrance) then
+                    addEntranceToTomTom(self.pinInfo.entrance, true)
+                end
             end
         end
     end

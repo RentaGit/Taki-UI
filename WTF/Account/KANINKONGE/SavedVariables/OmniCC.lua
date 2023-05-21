@@ -1,5 +1,9 @@
 
 OmniCCDB = {
+	["global"] = {
+		["dbVersion"] = 6,
+		["addonVersion"] = "10.1.0",
+	},
 	["profileKeys"] = {
 		["Rentamdi - Kazzak"] = "Default",
 		["Takikin - Kazzak"] = "Default",
@@ -15,30 +19,26 @@ OmniCCDB = {
 		["Takil - Kazzak"] = "Default",
 		["Rintake - Ragnaros"] = "Default",
 		["Takidin - Ravencrest"] = "Default",
-		["Takided - Kazzak"] = "Default",
+		["Takidari - Ravencrest"] = "Default",
 		["Rentakidh - Argent Dawn"] = "Default",
 		["Takidari - Kazzak"] = "Default",
 		["Takosa - Kazzak"] = "Default",
 		["Rentaki - Kazzak"] = "Default",
-		["Takidin - Kazzak"] = "Default",
+		["Takided - Kazzak"] = "Default",
 		["Takiworra - Kazzak"] = "Default",
 		["Thaaeyn - Argent Dawn"] = "Default",
-		["Rentaco - Kazzak"] = "Default",
-		["Rentaki - Ravencrest"] = "Default",
+		["Ivelea - Argent Dawn"] = "Default",
+		["Takitalon - Arathi"] = "Default",
 		["Takidemon - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
 		["Takidk - Kazzak"] = "Default",
-		["Huntaki - Ravencrest"] = "Default",
 		["Rendudu - Kazzak"] = "Default",
-		["Takitalon - Arathi"] = "Default",
-		["Ivelea - Argent Dawn"] = "Default",
+		["Huntaki - Ravencrest"] = "Default",
+		["Rentaki - Ravencrest"] = "Default",
+		["Rentaco - Kazzak"] = "Default",
 		["Rintake - Argent Dawn"] = "Default",
 		["Rentaco - Ravencrest"] = "Default",
-		["Takidari - Ravencrest"] = "Default",
-	},
-	["global"] = {
-		["dbVersion"] = 6,
-		["addonVersion"] = "10.0.3",
+		["Takidin - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -70,16 +70,16 @@ OmniCCDB = {
 						["minutes"] = {
 						},
 						["hours"] = {
-							["r"] = 1,
+							["b"] = 1,
 							["scale"] = 1,
 							["g"] = 1,
-							["b"] = 1,
+							["r"] = 1,
 						},
 						["charging"] = {
 							["a"] = 1,
-							["b"] = 1,
-							["scale"] = 1,
 							["r"] = 1,
+							["scale"] = 1,
+							["b"] = 1,
 						},
 						["controlled"] = {
 							["b"] = 1,
@@ -95,11 +95,11 @@ OmniCCDB = {
 				},
 				["Plater Nameplates Theme"] = {
 					["textStyles"] = {
-						["soon"] = {
+						["minutes"] = {
 						},
 						["seconds"] = {
 						},
-						["minutes"] = {
+						["soon"] = {
 						},
 					},
 					["fontFace"] = "Interface\\Addons\\SUI\\Media\\Fonts\\Prototype.ttf",
@@ -154,17 +154,17 @@ OmniCC4Config = {
 					["r"] = 1,
 				},
 			},
-			["fontSize"] = 16,
-			["mmSSDuration"] = 600,
+			["fontFace"] = "Interface\\Addons\\SharedMedia\\fonts\\vixar\\vixar.ttf",
+			["yOff"] = -1,
 			["spiralOpacity"] = 1.00999997742474,
 			["minDuration"] = 2,
 			["xOff"] = 0,
 			["tenthsDuration"] = 0,
 			["fontOutline"] = "OUTLINE",
 			["minSize"] = 0.5,
+			["mmSSDuration"] = 600,
 			["minEffectDuration"] = 30,
-			["yOff"] = -1,
-			["fontFace"] = "Interface\\Addons\\SharedMedia\\fonts\\vixar\\vixar.ttf",
+			["fontSize"] = 16,
 		},
 	},
 }

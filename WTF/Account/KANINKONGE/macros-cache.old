@@ -26,7 +26,7 @@ VER 3 0000000000000121 ".sh F Purge" "451166"
 /cast [known:Greater Purge, @focus] Greater Purge;
 /cast [known:Purge, @focus] Purge;
 END
-VER 3 0000000000000130 ".sh feral spirit" "134400"
+VER 3 0000000000000130 ".sh feral spirit" "237577"
 #showtooltip feral spirit
 /use Prismatic Bauble
 /use Fire-Eater's Vial
@@ -48,7 +48,7 @@ VER 3 00000000000000DF ".sh HEX" "237579"
 /cast [nomod] hex
 /cast [mod:ctrl, @focus] hex
 END
-VER 3 00000000000000B9 ".sh HR" "134400"
+VER 3 00000000000000B9 ".sh HR" "136037"
 #showtooltip Healing Rain
 /cast [@cursor] Healing Rain
 END
@@ -56,6 +56,11 @@ VER 3 0000000000000128 ".sh IS/FN" "135845"
 #showtooltip
 /cast [known:Ice Strike] Ice Strike
 /cast [known:Fire Nova] Fire Nova
+END
+VER 3 0000000000000132 ".sh LL" "134400"
+#showtooltip lava lash
+/use [@player] Totemic Projection
+/cast lava lash
 END
 VER 3 00000000000000B2 ".sh LMT/IF" "135855"
 #showtooltip
@@ -104,26 +109,7 @@ VER 3 000000000000012D "cancelaura" "132220"
 /cancelaura goblin glider
 /cancelaura parachute
 END
-VER 3 00000000000000E8 "EOL .cov dmg" "134331"
-#showtooltip
-/use [@cursor]Vesper Totem
-/use [@cursor]Fae Transfusion
-/use Chain harvest
-END
-VER 3 00000000000000EE "EOL .cov-sig" "134331"
-#showtooltip
-/cast Door of Shadows
-/cast Soulshape
-/cast Fleshcraft
-/cast Summon Steward
-/run local G=GetSpellInfo SetMacroSpell(GetRunningMacro(), G"Door of Shadows" or G"Soulshape" or G"Fleshcraft"or G"Summon Steward")
-END
-VER 3 00000000000000F5 "EOL necro mo" "134331"
-#showtooltip Primordial Wave(Necrolord)
-/cast [nomod] Primordial Wave(Necrolord)
-/cast [mod:alt, @mouseover] Primordial Wave(Necrolord)
-END
-VER 3 0000000000000131 "focus mouseover" "134400"
+VER 3 0000000000000131 "focus mouseover" "1033497"
 /focus [@mouseover,harm,nodead] [harm]
 END
 VER 3 000000000000012E "kill cinderfall" "524305"
@@ -134,9 +120,6 @@ VER 3 000000000000012A "NS/ASC" "134400"
 #showtooltip
 /cast [known:Nature's Swiftness] Nature's Swiftness
 /cast [known:Ascendance] Ascendance
-END
-VER 3 000000000000012F "RXPTargeting" "Ability_eyeoftheowl"
-//RestedXP Guides - current step has no configured targets
 END
 VER 3 000000000000012C "skyfury exp" "135829"
 #showtooltip
@@ -149,12 +132,17 @@ VER 3 00000000000000ED "use belt" "605237"
 #showtooltip
 /use 6
 END
+VER 3 0000000000000133 "use bracer" "134400"
+#showtooltip
+/use 9
+END
 VER 3 00000000000000DE "use cloak" "852263"
 #showtooltip
 /use 15
 END
 VER 3 00000000000000E0 "use trinket 1" "134490"
 #showtooltip
+/target frostforged zealot
 /use 13
 END
 VER 3 0000000000000107 "use trinket 2" "134491"

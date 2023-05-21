@@ -21,8 +21,8 @@ if L then
 	L.concussive_slam = "射線"
 	L.infused_fallout = "落塵"
 
-	--L.custom_on_repeating_fallout = "Repeating Infused Fallout"
-	--L.custom_on_repeating_fallout_desc = "Repeating Infused Fallout say messages with icon {rt7} to find a partner."
+	L.custom_on_repeating_fallout = "重覆落塵喊話"
+	L.custom_on_repeating_fallout_desc = "以 {rt7} 持續喊話，方便你找人消除落塵。"
 end
 
 L = BigWigs:NewBossLocale("The Primal Council", "zhTW")
@@ -36,9 +36,6 @@ if L then
 	L.conductive_marks = "導電印記" -- Conductive Marks
 	L.conductive_mark = "導電印記" -- Singular
 
-	L.custom_on_stop_timers = "總是顯示計時器"
-	L.custom_on_stop_timers_desc = "啟用此選項後，導電印記的計時條會保持顯示。"
-
 	-- L.skipped_cast = "Skipped %s (%d)"
 end
 
@@ -51,8 +48,8 @@ if L then
 	L.webs = "蛛網"
 	L.web = "蛛網"
 	L.gossamer_burst = "拉人"
-	-- L.gossamer_burst_castbar = "Gossamer Burst Cast Bar / Countdown"
-	-- L.gossamer_burst_castbar_desc = "A Cast Bar for Gossamer Burst with Countdown enabled by default."
+	L.gossamer_burst_castbar = "拉人計時器"
+	L.gossamer_burst_castbar_desc = "輕絲爆發的冷卻與施法計時器，預設開啟。"
 	L.repelling_burst = "擊退"
 end
 

@@ -9,8 +9,12 @@ NarciStatisticsDB_PC = {
 	["Barbershop"] = {
 		["Locations"] = {
 			[85] = {
-				["visit"] = 52,
-				["time"] = 1973,
+				["visit"] = 54,
+				["time"] = 2006,
+			},
+			[2112] = {
+				["visit"] = 20,
+				["time"] = 396,
 			},
 		},
 		["CoinSpentBeforeShadowlands"] = 160322888,

@@ -8,110 +8,99 @@ _detalhes_database = {
 			{
 				{
 					["tipo"] = 2,
-					["combatId"] = 461,
+					["combatId"] = 463,
 					["_ActorTable"] = {
 						{
 							["flag_original"] = 1297,
-							["totalabsorbed"] = 0.007307,
-							["damage_from"] = {
-							},
-							["targets"] = {
-								["Valiant's Humility"] = 606722,
-							},
+							["totalabsorbed"] = 0.004974,
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
 							["pets"] = {
 							},
+							["aID"] = "1305-0C1FD7FB",
+							["total_without_pet"] = 30178.004974,
+							["dps_started"] = false,
+							["total"] = 30178.004974,
+							["spec"] = 71,
+							["colocacao"] = 1,
+							["friendlyfire"] = {
+							},
+							["serial"] = "Player-1305-0C1FD7FB",
+							["damage_from"] = {
+								["Forsworn Acolyte"] = true,
+							},
+							["targets"] = {
+								["Forsworn Acolyte"] = 30178,
+							},
 							["friendlyfire_total"] = 0,
-							["last_dps"] = 4308.15663673466,
-							["classe"] = "WARRIOR",
 							["raid_targets"] = {
 							},
-							["total_without_pet"] = 606722.007307,
-							["last_event"] = 1668812653,
-							["delay"] = 1668812653,
-							["dps_started"] = true,
-							["total"] = 606722.007307,
-							["aID"] = "1305-0C1FD7FB",
-							["damage_taken"] = 0.007307,
-							["timeMachine"] = 1,
+							["end_time"] = 1678169019,
+							["damage_taken"] = 5546.004974,
+							["classe"] = "WARRIOR",
+							["nome"] = "Takeera",
 							["spells"] = {
 								["_ActorTable"] = {
 									{
-										["c_amt"] = 11,
+										["c_amt"] = 0,
 										["b_amt"] = 0,
-										["c_dmg"] = 23782,
+										["c_dmg"] = 0,
 										["g_amt"] = 0,
-										["n_max"] = 2027,
+										["n_max"] = 850,
 										["targets"] = {
-											["Valiant's Humility"] = 76098,
+											["Forsworn Acolyte"] = 4582,
 										},
-										["n_dmg"] = 52316,
-										["n_min"] = 888,
+										["n_dmg"] = 4582,
+										["n_min"] = 653,
 										["g_dmg"] = 0,
-										["counter"] = 53,
-										["total"] = 76098,
-										["c_max"] = 2804,
+										["counter"] = 6,
+										["ChartData"] = {
+											[8] = 2290,
+											[5] = 2290,
+											[11] = 2986,
+											[14] = 3767,
+										},
+										["total"] = 4582,
+										["c_max"] = 0,
 										["id"] = 1,
 										["r_dmg"] = 0,
 										["r_amt"] = 0,
 										["b_dmg"] = 0,
 										["a_dmg"] = 0,
-										["c_min"] = 1833,
+										["c_min"] = 0,
 										["successful_casted"] = 0,
 										["a_amt"] = 0,
-										["n_amt"] = 42,
+										["n_amt"] = 6,
 										["extra"] = {
 										},
 										["spellschool"] = 1,
 									}, -- [1]
-									[7384] = {
-										["c_amt"] = 7,
+									[12294] = {
+										["c_amt"] = 0,
 										["b_amt"] = 0,
-										["c_dmg"] = 30312,
+										["c_dmg"] = 0,
 										["g_amt"] = 0,
-										["n_max"] = 3878,
+										["n_max"] = 4590,
 										["targets"] = {
-											["Valiant's Humility"] = 61269,
+											["Forsworn Acolyte"] = 11021,
 										},
-										["n_dmg"] = 30957,
-										["n_min"] = 1884,
+										["n_dmg"] = 11021,
+										["n_min"] = 2959,
 										["g_dmg"] = 0,
-										["counter"] = 18,
-										["total"] = 61269,
-										["c_max"] = 5272,
-										["id"] = 7384,
+										["counter"] = 3,
+										["ChartData"] = {
+											[8] = 3472,
+											[5] = 3472,
+											[11] = 6431,
+											[14] = 6431,
+										},
+										["total"] = 11021,
+										["c_max"] = 0,
+										["id"] = 12294,
 										["r_dmg"] = 0,
 										["r_amt"] = 0,
 										["b_dmg"] = 0,
 										["a_dmg"] = 0,
-										["c_min"] = 3797,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 11,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									},
-									[262161] = {
-										["c_amt"] = 1,
-										["b_amt"] = 0,
-										["c_dmg"] = 11946,
-										["g_amt"] = 0,
-										["n_max"] = 4015,
-										["targets"] = {
-											["Valiant's Humility"] = 23527,
-										},
-										["n_dmg"] = 11581,
-										["n_min"] = 3744,
-										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 23527,
-										["c_max"] = 11946,
-										["id"] = 262161,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 11946,
+										["c_min"] = 0,
 										["successful_casted"] = 0,
 										["a_amt"] = 0,
 										["n_amt"] = 3,
@@ -119,282 +108,233 @@ _detalhes_database = {
 										},
 										["spellschool"] = 1,
 									},
-									[1464] = {
-										["c_amt"] = 6,
+									[845] = {
+										["c_amt"] = 0,
 										["b_amt"] = 0,
-										["c_dmg"] = 29232,
+										["c_dmg"] = 0,
 										["g_amt"] = 0,
-										["n_max"] = 4135,
+										["n_max"] = 1110,
 										["targets"] = {
-											["Valiant's Humility"] = 64834,
+											["Forsworn Acolyte"] = 1110,
 										},
-										["n_dmg"] = 35602,
-										["n_min"] = 2140,
+										["n_dmg"] = 1110,
+										["n_min"] = 1110,
 										["g_dmg"] = 0,
-										["counter"] = 18,
-										["total"] = 64834,
-										["c_max"] = 6957,
-										["id"] = 1464,
+										["counter"] = 1,
+										["ChartData"] = {
+											[8] = 1110,
+											[5] = 1110,
+											[11] = 1110,
+											[14] = 1110,
+										},
+										["total"] = 1110,
+										["c_max"] = 0,
+										["id"] = 845,
 										["r_dmg"] = 0,
 										["r_amt"] = 0,
 										["b_dmg"] = 0,
 										["a_dmg"] = 0,
-										["c_min"] = 4323,
+										["c_min"] = 0,
 										["successful_casted"] = 0,
 										["a_amt"] = 0,
-										["n_amt"] = 12,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									},
-									[772] = {
-										["c_amt"] = 2,
-										["b_amt"] = 0,
-										["c_dmg"] = 7035,
-										["g_amt"] = 0,
-										["n_max"] = 2716,
-										["targets"] = {
-											["Valiant's Humility"] = 16292,
-										},
-										["n_dmg"] = 9257,
-										["n_min"] = 1375,
-										["g_dmg"] = 0,
-										["counter"] = 7,
-										["total"] = 16292,
-										["c_max"] = 4225,
-										["id"] = 772,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 2810,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 5,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									},
-									[260798] = {
-										["c_amt"] = 1,
-										["b_amt"] = 0,
-										["c_dmg"] = 8212,
-										["g_amt"] = 0,
-										["n_max"] = 8870,
-										["targets"] = {
-											["Valiant's Humility"] = 59270,
-										},
-										["n_dmg"] = 51058,
-										["n_min"] = 4007,
-										["g_dmg"] = 0,
-										["counter"] = 10,
-										["total"] = 59270,
-										["c_max"] = 8212,
-										["id"] = 260798,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 8212,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 9,
+										["n_amt"] = 1,
 										["extra"] = {
 										},
 										["spellschool"] = 1,
 									},
 									[384391] = {
-										["c_amt"] = 2,
+										["c_amt"] = 0,
 										["b_amt"] = 0,
-										["c_dmg"] = 3228,
+										["c_dmg"] = 0,
 										["g_amt"] = 0,
-										["n_max"] = 1144,
+										["n_max"] = 458,
 										["targets"] = {
-											["Valiant's Humility"] = 10015,
+											["Forsworn Acolyte"] = 458,
 										},
-										["n_dmg"] = 6787,
-										["n_min"] = 524,
+										["n_dmg"] = 458,
+										["n_min"] = 458,
 										["g_dmg"] = 0,
-										["counter"] = 11,
-										["total"] = 10015,
-										["c_max"] = 1644,
+										["counter"] = 1,
+										["ChartData"] = {
+											[8] = 458,
+											[5] = 458,
+											[11] = 458,
+											[14] = 458,
+										},
+										["total"] = 458,
+										["c_max"] = 0,
 										["id"] = 384391,
 										["r_dmg"] = 0,
 										["r_amt"] = 0,
 										["b_dmg"] = 0,
 										["a_dmg"] = 0,
-										["c_min"] = 1584,
+										["c_min"] = 0,
 										["successful_casted"] = 0,
 										["a_amt"] = 0,
-										["n_amt"] = 9,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									},
-									[50622] = {
-										["c_amt"] = 3,
-										["b_amt"] = 0,
-										["c_dmg"] = 8466,
-										["g_amt"] = 0,
-										["n_max"] = 2137,
-										["targets"] = {
-											["Valiant's Humility"] = 43159,
-										},
-										["n_dmg"] = 34693,
-										["n_min"] = 1029,
-										["g_dmg"] = 0,
-										["counter"] = 26,
-										["total"] = 43159,
-										["c_max"] = 3083,
-										["id"] = 50622,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 2673,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 23,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									},
-									[388539] = {
-										["c_amt"] = 4,
-										["b_amt"] = 0,
-										["c_dmg"] = 8465,
-										["g_amt"] = 0,
-										["n_max"] = 1428,
-										["targets"] = {
-											["Valiant's Humility"] = 42053,
-										},
-										["n_dmg"] = 33588,
-										["n_min"] = 69,
-										["g_dmg"] = 0,
-										["counter"] = 46,
-										["total"] = 42053,
-										["c_max"] = 2216,
-										["id"] = 388539,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 2083,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 42,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									},
-									[12294] = {
-										["c_amt"] = 4,
-										["b_amt"] = 0,
-										["c_dmg"] = 45863,
-										["g_amt"] = 0,
-										["n_max"] = 9446,
-										["targets"] = {
-											["Valiant's Humility"] = 146815,
-										},
-										["n_dmg"] = 100952,
-										["n_min"] = 3765,
-										["g_dmg"] = 0,
-										["counter"] = 22,
-										["total"] = 146815,
-										["c_max"] = 13566,
-										["id"] = 12294,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 9733,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 18,
+										["n_amt"] = 1,
 										["extra"] = {
 										},
 										["spellschool"] = 1,
 									},
 									[323889] = {
-										["c_amt"] = 4,
+										["c_amt"] = 2,
 										["b_amt"] = 0,
-										["c_dmg"] = 5317,
+										["c_dmg"] = 2614,
 										["g_amt"] = 0,
-										["n_max"] = 665,
+										["n_max"] = 653,
 										["targets"] = {
-											["Valiant's Humility"] = 10630,
+											["Forsworn Acolyte"] = 3267,
 										},
-										["n_dmg"] = 5313,
-										["n_min"] = 664,
+										["n_dmg"] = 653,
+										["n_min"] = 653,
 										["g_dmg"] = 0,
-										["counter"] = 12,
-										["total"] = 10630,
-										["c_max"] = 1330,
+										["counter"] = 3,
+										["ChartData"] = {
+											[8] = 2614,
+											[5] = 2614,
+											[11] = 3267,
+											[14] = 3267,
+										},
+										["total"] = 3267,
+										["c_max"] = 1307,
 										["id"] = 323889,
 										["r_dmg"] = 0,
 										["r_amt"] = 0,
 										["b_dmg"] = 0,
 										["a_dmg"] = 0,
-										["c_min"] = 1329,
+										["c_min"] = 1307,
 										["successful_casted"] = 0,
 										["a_amt"] = 0,
-										["n_amt"] = 8,
+										["n_amt"] = 1,
 										["extra"] = {
 										},
 										["spellschool"] = 32,
 									},
-									[262115] = {
-										["c_amt"] = 11,
+									[260798] = {
+										["c_amt"] = 0,
 										["b_amt"] = 0,
-										["c_dmg"] = 17170,
+										["c_dmg"] = 0,
 										["g_amt"] = 0,
-										["n_max"] = 1130,
+										["n_max"] = 3836,
 										["targets"] = {
-											["Valiant's Humility"] = 52032,
+											["Forsworn Acolyte"] = 3836,
 										},
-										["n_dmg"] = 34862,
-										["n_min"] = 330,
+										["n_dmg"] = 3836,
+										["n_min"] = 3836,
 										["g_dmg"] = 0,
-										["counter"] = 63,
-										["total"] = 52032,
-										["c_max"] = 2372,
+										["counter"] = 1,
+										["ChartData"] = {
+											[11] = 3836,
+											[8] = 3836,
+											[14] = 3836,
+										},
+										["total"] = 3836,
+										["c_max"] = 0,
+										["id"] = 260798,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 1,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									},
+									[262115] = {
+										["c_amt"] = 1,
+										["b_amt"] = 0,
+										["c_dmg"] = 991,
+										["g_amt"] = 0,
+										["n_max"] = 473,
+										["targets"] = {
+											["Forsworn Acolyte"] = 2410,
+										},
+										["n_dmg"] = 1419,
+										["n_min"] = 473,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["ChartData"] = {
+											[8] = 1464,
+											[5] = 991,
+											[11] = 1464,
+											[14] = 1937,
+										},
+										["total"] = 2410,
+										["c_max"] = 991,
 										["id"] = 262115,
 										["r_dmg"] = 0,
 										["r_amt"] = 0,
 										["b_dmg"] = 0,
 										["a_dmg"] = 0,
-										["c_min"] = 1123,
+										["c_min"] = 991,
 										["successful_casted"] = 0,
 										["a_amt"] = 0,
-										["n_amt"] = 52,
+										["n_amt"] = 3,
 										["extra"] = {
 										},
 										["spellschool"] = 1,
 									},
-									[126664] = {
-										["c_amt"] = 1,
+									[7384] = {
+										["c_amt"] = 0,
 										["b_amt"] = 0,
-										["c_dmg"] = 728,
+										["c_dmg"] = 0,
 										["g_amt"] = 0,
-										["n_max"] = 0,
+										["n_max"] = 1608,
 										["targets"] = {
-											["Valiant's Humility"] = 728,
+											["Forsworn Acolyte"] = 1608,
 										},
-										["n_dmg"] = 0,
-										["n_min"] = 0,
+										["n_dmg"] = 1608,
+										["n_min"] = 1608,
 										["g_dmg"] = 0,
 										["counter"] = 1,
-										["total"] = 728,
-										["c_max"] = 728,
-										["id"] = 126664,
+										["ChartData"] = {
+											[14] = 1608,
+										},
+										["total"] = 1608,
+										["c_max"] = 0,
+										["id"] = 7384,
 										["r_dmg"] = 0,
 										["r_amt"] = 0,
 										["b_dmg"] = 0,
 										["a_dmg"] = 0,
-										["c_min"] = 728,
+										["c_min"] = 0,
 										["successful_casted"] = 0,
 										["a_amt"] = 0,
-										["n_amt"] = 0,
+										["n_amt"] = 1,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									},
+									[1464] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1886,
+										["targets"] = {
+											["Forsworn Acolyte"] = 1886,
+										},
+										["n_dmg"] = 1886,
+										["n_min"] = 1886,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["ChartData"] = {
+											[14] = 1886,
+										},
+										["total"] = 1886,
+										["c_max"] = 0,
+										["id"] = 1464,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 1,
 										["extra"] = {
 										},
 										["spellschool"] = 1,
@@ -403,119 +343,302 @@ _detalhes_database = {
 								["tipo"] = 2,
 							},
 							["grupo"] = true,
-							["nome"] = "Takeera",
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["last_event"] = 1678169019,
 							["custom"] = 0,
-							["spec"] = 71,
-							["colocacao"] = 1,
 							["tipo"] = 1,
-							["friendlyfire"] = {
-							},
-							["start_time"] = 1668812506,
-							["serial"] = "Player-1305-0C1FD7FB",
-							["on_hold"] = true,
+							["last_dps"] = 0.1164128352192829,
+							["start_time"] = 1678169019,
+							["delay"] = 0,
+							["on_hold"] = false,
 						}, -- [1]
 						{
-							["flag_original"] = 68136,
-							["totalabsorbed"] = 0.005945,
+							["flag_original"] = 68168,
+							["totalabsorbed"] = 0.005752,
 							["damage_from"] = {
 								["Takeera"] = true,
 							},
 							["targets"] = {
+								["Takeera"] = 5546,
 							},
+							["damage_taken"] = 30178.005752,
 							["pets"] = {
 							},
-							["tipo"] = 1,
-							["aID"] = "154564",
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["monster"] = true,
 							["classe"] = "UNKNOW",
 							["raid_targets"] = {
 							},
-							["total_without_pet"] = 0.005945,
+							["total_without_pet"] = 5546.005752,
 							["delay"] = 0,
-							["fight_component"] = true,
-							["total"] = 0.005945,
-							["on_hold"] = false,
-							["damage_taken"] = 606722.005945,
-							["nome"] = "Valiant's Humility",
+							["friendlyfire_total"] = 0,
+							["dps_started"] = false,
+							["end_time"] = 1678169019,
+							["aID"] = "157599",
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["nome"] = "Forsworn Acolyte",
 							["spells"] = {
 								["_ActorTable"] = {
+									{
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 603,
+										["targets"] = {
+											["Takeera"] = 1093,
+										},
+										["n_dmg"] = 1093,
+										["n_min"] = 490,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["total"] = 1093,
+										["c_max"] = 0,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["extra"] = {
+										},
+										["PARRY"] = 1,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 2,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+									}, -- [1]
+									[315454] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1535,
+										["targets"] = {
+											["Takeera"] = 4453,
+										},
+										["n_dmg"] = 4453,
+										["n_min"] = 1383,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["total"] = 4453,
+										["c_max"] = 0,
+										["id"] = 315454,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 3,
+										["a_amt"] = 0,
+										["n_amt"] = 3,
+										["a_dmg"] = 0,
+										["extra"] = {
+										},
+									},
 								},
 								["tipo"] = 2,
 							},
-							["friendlyfire_total"] = 0,
+							["fight_component"] = true,
+							["total"] = 5546.005752,
 							["last_dps"] = 0,
-							["end_time"] = 1668812646,
+							["last_event"] = 1678169017,
 							["custom"] = 0,
-							["last_event"] = 0,
+							["tipo"] = 1,
+							["on_hold"] = false,
+							["start_time"] = 1678169019,
+							["serial"] = "Creature-0-1469-2222-110-157599-000006D31E",
 							["friendlyfire"] = {
 							},
-							["start_time"] = 1668812646,
-							["serial"] = "Creature-0-3102-2222-1049-154564-00007795CC",
-							["dps_started"] = false,
 						}, -- [2]
 					},
 				}, -- [1]
 				{
 					["tipo"] = 3,
-					["combatId"] = 461,
+					["combatId"] = 463,
 					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["targets_overheal"] = {
+								["Takeera"] = 1541,
+							},
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["pets"] = {
+							},
+							["iniciar_hps"] = false,
+							["heal_enemy_amt"] = 0,
+							["totalover"] = 1541.008561,
+							["total_without_pet"] = 4689.008561000001,
+							["total"] = 4689.008561000001,
+							["targets_absorbs"] = {
+							},
+							["heal_enemy"] = {
+							},
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["on_hold"] = false,
+							["serial"] = "Player-1305-0C1FD7FB",
+							["totalabsorb"] = 0.008561,
+							["last_hps"] = 0,
+							["targets"] = {
+								["Takeera"] = 4689,
+							},
+							["totalover_without_pet"] = 0.008561,
+							["healing_taken"] = 4689.008561000001,
+							["fight_component"] = true,
+							["end_time"] = 1678169019,
+							["healing_from"] = {
+								["Takeera"] = true,
+							},
+							["spec"] = 71,
+							["nome"] = "Takeera",
+							["spells"] = {
+								["_ActorTable"] = {
+									[383104] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+										},
+										["n_max"] = 402,
+										["targets"] = {
+											["Takeera"] = 1206,
+										},
+										["n_min"] = 402,
+										["counter"] = 3,
+										["overheal"] = 0,
+										["total"] = 1206,
+										["c_max"] = 0,
+										["id"] = 383104,
+										["targets_absorbs"] = {
+										},
+										["c_min"] = 0,
+										["c_curado"] = 0,
+										["n_curado"] = 1206,
+										["totaldenied"] = 0,
+										["n_amt"] = 3,
+										["absorbed"] = 0,
+									},
+									[143924] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+										},
+										["n_max"] = 294,
+										["targets"] = {
+											["Takeera"] = 963,
+										},
+										["n_min"] = 24,
+										["counter"] = 8,
+										["overheal"] = 0,
+										["total"] = 963,
+										["c_max"] = 0,
+										["id"] = 143924,
+										["targets_absorbs"] = {
+										},
+										["c_min"] = 0,
+										["c_curado"] = 0,
+										["n_curado"] = 963,
+										["totaldenied"] = 0,
+										["n_amt"] = 8,
+										["absorbed"] = 0,
+									},
+									[357945] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+											["Takeera"] = 1541,
+										},
+										["n_max"] = 2030,
+										["targets"] = {
+											["Takeera"] = 2520,
+										},
+										["n_min"] = 490,
+										["counter"] = 2,
+										["overheal"] = 1541,
+										["total"] = 2520,
+										["c_max"] = 0,
+										["id"] = 357945,
+										["targets_absorbs"] = {
+										},
+										["c_min"] = 0,
+										["c_curado"] = 0,
+										["n_curado"] = 2520,
+										["totaldenied"] = 0,
+										["n_amt"] = 2,
+										["absorbed"] = 0,
+									},
+								},
+								["tipo"] = 3,
+							},
+							["grupo"] = true,
+							["totaldenied"] = 0.008561,
+							["tipo"] = 2,
+							["custom"] = 0,
+							["last_event"] = 1678169019,
+							["aID"] = "1305-0C1FD7FB",
+							["start_time"] = 1678169019,
+							["delay"] = 0,
+							["classe"] = "WARRIOR",
+						}, -- [1]
 					},
 				}, -- [2]
 				{
 					["tipo"] = 7,
-					["combatId"] = 461,
+					["combatId"] = 463,
 					["_ActorTable"] = {
 						{
-							["received"] = 95.30757419073487,
-							["resource"] = 0.007574,
+							["flag_original"] = 1297,
+							["resource"] = 0.007701,
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
 							["targets"] = {
-								["Takeera"] = 95.30000019073486,
+								["Takeera"] = 22,
 							},
 							["pets"] = {
 							},
 							["powertype"] = 1,
 							["classe"] = "WARRIOR",
-							["passiveover"] = 0.007574,
-							["total"] = 95.30757419073487,
+							["totalover"] = 0.007701,
+							["fight_component"] = true,
+							["alternatepower"] = 0.007701,
+							["aID"] = "1305-0C1FD7FB",
 							["nome"] = "Takeera",
 							["spells"] = {
 								["_ActorTable"] = {
-									[107574] = {
-										["total"] = 25.30000019073486,
-										["id"] = 107574,
-										["totalover"] = 4.700000286102295,
-										["targets"] = {
-											["Takeera"] = 25.30000019073486,
-										},
-										["counter"] = 3,
-									},
-									[389774] = {
-										["total"] = 60,
-										["id"] = 389774,
-										["totalover"] = 20,
-										["targets"] = {
-											["Takeera"] = 60,
-										},
-										["counter"] = 4,
-									},
-									[384362] = {
+									[262232] = {
 										["total"] = 10,
-										["id"] = 384362,
-										["totalover"] = 5,
+										["id"] = 262232,
+										["totalover"] = 0,
 										["targets"] = {
 											["Takeera"] = 10,
 										},
-										["counter"] = 3,
+										["counter"] = 2,
+									},
+									[392793] = {
+										["total"] = 6,
+										["id"] = 392793,
+										["totalover"] = 0,
+										["targets"] = {
+											["Takeera"] = 6,
+										},
+										["counter"] = 1,
+									},
+									[195707] = {
+										["total"] = 6,
+										["id"] = 195707,
+										["totalover"] = 0,
+										["targets"] = {
+											["Takeera"] = 6,
+										},
+										["counter"] = 2,
 									},
 								},
 								["tipo"] = 7,
 							},
 							["grupo"] = true,
-							["totalover"] = 29.70757428610229,
-							["flag_original"] = 1297,
+							["passiveover"] = 0.007701,
 							["tipo"] = 3,
-							["last_event"] = 1668812639,
-							["aID"] = "1305-0C1FD7FB",
-							["alternatepower"] = 0.007574,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["last_event"] = 1678169019,
+							["total"] = 22.007701,
+							["received"] = 22.007701,
 							["serial"] = "Player-1305-0C1FD7FB",
 							["spec"] = 71,
 						}, -- [1]
@@ -523,967 +646,236 @@ _detalhes_database = {
 				}, -- [3]
 				{
 					["tipo"] = 9,
-					["combatId"] = 461,
+					["combatId"] = 463,
 					["_ActorTable"] = {
 						{
 							["flag_original"] = 1047,
 							["debuff_uptime_spells"] = {
 								["_ActorTable"] = {
-									[115804] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 1,
-										["refreshamt"] = 21,
-										["id"] = 115804,
-										["uptime"] = 134,
-										["targets"] = {
-										},
-										["appliedamt"] = 1,
-									},
-									[208086] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 0,
-										["refreshamt"] = 0,
-										["id"] = 208086,
-										["uptime"] = 40,
-										["targets"] = {
-										},
-										["appliedamt"] = 4,
-									},
-									[388539] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 0,
-										["refreshamt"] = 4,
-										["id"] = 388539,
-										["uptime"] = 106,
-										["targets"] = {
-										},
-										["appliedamt"] = 3,
-									},
 									[262115] = {
 										["counter"] = 0,
 										["actived"] = false,
-										["activedamt"] = 1,
-										["refreshamt"] = 51,
+										["activedamt"] = 0,
+										["refreshamt"] = 1,
 										["id"] = 262115,
-										["uptime"] = 140,
+										["uptime"] = 11,
+										["targets"] = {
+										},
+										["appliedamt"] = 2,
+									},
+									[115804] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 0,
+										["refreshamt"] = 1,
+										["id"] = 115804,
+										["uptime"] = 9,
+										["targets"] = {
+										},
+										["appliedamt"] = 2,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["pets"] = {
+							},
+							["aID"] = "1305-0C1FD7FB",
+							["buff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[345535] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 345535,
+										["uptime"] = 8,
 										["targets"] = {
 										},
 										["appliedamt"] = 1,
 									},
-									[358404] = {
+									[317103] = {
+										["activedamt"] = 1,
+										["id"] = 317103,
+										["targets"] = {
+										},
+										["uptime"] = 17,
+										["counter"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["appliedamt"] = 1,
+									},
+									[7384] = {
 										["counter"] = 0,
 										["actived"] = false,
-										["activedamt"] = 0,
+										["activedamt"] = 1,
 										["refreshamt"] = 0,
-										["id"] = 358404,
+										["id"] = 7384,
+										["uptime"] = 4,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[386164] = {
+										["activedamt"] = 1,
+										["id"] = 386164,
+										["targets"] = {
+										},
+										["uptime"] = 17,
+										["counter"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["appliedamt"] = 1,
+									},
+									[225788] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 225788,
+										["uptime"] = 17,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[335149] = {
+										["activedamt"] = 0,
+										["id"] = 335149,
+										["targets"] = {
+										},
+										["uptime"] = 0,
+										["appliedamt"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[289083] = {
+										["activedamt"] = 0,
+										["id"] = 289083,
+										["targets"] = {
+										},
+										["uptime"] = 0,
+										["appliedamt"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[328900] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 7,
+										["id"] = 328900,
+										["uptime"] = 15,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[186406] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 186406,
+										["uptime"] = 17,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[262232] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 2,
+										["refreshamt"] = 0,
+										["id"] = 262232,
 										["uptime"] = 8,
 										["targets"] = {
 										},
 										["appliedamt"] = 2,
 									},
-								},
-								["tipo"] = 9,
-							},
-							["buff_uptime"] = 950,
-							["aID"] = "1305-0C1FD7FB",
-							["buff_uptime_spells"] = {
-								["_ActorTable"] = {
-									[328900] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 2,
-										["refreshamt"] = 78,
-										["id"] = 328900,
-										["uptime"] = 140,
-										["targets"] = {
-										},
-										["appliedamt"] = 2,
-									},
-									[389774] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 4,
-										["refreshamt"] = 0,
-										["id"] = 389774,
-										["uptime"] = 18,
-										["targets"] = {
-										},
-										["appliedamt"] = 4,
-									},
-									[392778] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 5,
-										["refreshamt"] = 1,
-										["id"] = 392778,
-										["uptime"] = 60,
-										["targets"] = {
-										},
-										["appliedamt"] = 5,
-									},
-									[7384] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 15,
-										["refreshamt"] = 3,
-										["id"] = 7384,
-										["uptime"] = 53,
-										["targets"] = {
-										},
-										["appliedamt"] = 15,
-									},
-									[390581] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 4,
-										["refreshamt"] = 40,
-										["id"] = 390581,
-										["uptime"] = 44,
-										["targets"] = {
-										},
-										["appliedamt"] = 4,
-									},
-									[324748] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 5,
-										["refreshamt"] = 4,
-										["id"] = 324748,
-										["uptime"] = 78,
-										["targets"] = {
-										},
-										["appliedamt"] = 5,
-									},
-									[386164] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 1,
-										["refreshamt"] = 0,
-										["id"] = 386164,
-										["uptime"] = 140,
-										["targets"] = {
-										},
-										["appliedamt"] = 1,
-									},
-									[208086] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 4,
-										["refreshamt"] = 0,
-										["id"] = 208086,
-										["uptime"] = 40,
-										["targets"] = {
-										},
-										["appliedamt"] = 4,
-									},
-									[352917] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 2,
-										["refreshamt"] = 0,
-										["id"] = 352917,
-										["uptime"] = 27,
-										["targets"] = {
-										},
-										["appliedamt"] = 2,
-									},
-									[199854] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 19,
-										["refreshamt"] = 1,
-										["id"] = 199854,
-										["uptime"] = 27,
-										["targets"] = {
-										},
-										["appliedamt"] = 19,
-									},
-									[248622] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 4,
-										["refreshamt"] = 0,
-										["id"] = 248622,
-										["uptime"] = 39,
-										["targets"] = {
-										},
-										["appliedamt"] = 4,
-									},
-									[52437] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 10,
-										["refreshamt"] = 0,
-										["id"] = 52437,
-										["uptime"] = 23,
-										["targets"] = {
-										},
-										["appliedamt"] = 10,
-									},
-									[107574] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 3,
-										["refreshamt"] = 0,
-										["id"] = 107574,
-										["uptime"] = 48,
-										["targets"] = {
-										},
-										["appliedamt"] = 3,
-									},
 									[6673] = {
+										["activedamt"] = 1,
+										["id"] = 6673,
+										["targets"] = {
+										},
+										["uptime"] = 17,
+										["counter"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["appliedamt"] = 1,
+									},
+									[32216] = {
 										["counter"] = 0,
 										["actived"] = false,
 										["activedamt"] = 1,
-										["refreshamt"] = 0,
-										["id"] = 6673,
-										["uptime"] = 140,
+										["refreshamt"] = 1,
+										["id"] = 32216,
+										["uptime"] = 10,
 										["targets"] = {
 										},
 										["appliedamt"] = 1,
 									},
-									[383316] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 4,
-										["refreshamt"] = 0,
-										["id"] = 383316,
-										["uptime"] = 36,
-										["targets"] = {
-										},
-										["appliedamt"] = 4,
-									},
-									[345535] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 5,
-										["refreshamt"] = 0,
-										["id"] = 345535,
-										["uptime"] = 37,
-										["targets"] = {
-										},
-										["appliedamt"] = 5,
-									},
 								},
 								["tipo"] = 9,
 							},
-							["debuff_uptime"] = 428,
+							["fight_component"] = true,
+							["debuff_uptime"] = 20,
+							["buff_uptime_targets"] = {
+							},
 							["nome"] = "Takeera",
 							["spec"] = 71,
 							["grupo"] = true,
 							["spell_cast"] = {
-								[345535] = 5,
-								[389774] = 2,
-								[1464] = 18,
-								[772] = 7,
-								[324748] = 9,
-								[107574] = 2,
-								[12294] = 22,
-								[7384] = 18,
-								[262161] = 4,
-								[163201] = 10,
+								[845] = 1,
+								[163201] = 1,
+								[7384] = 1,
+								[12294] = 3,
+								[345535] = 1,
+								[1464] = 1,
 							},
 							["tipo"] = 4,
-							["buff_uptime_targets"] = {
-							},
-							["last_event"] = 1668812646,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["last_event"] = 1678428228,
+							["buff_uptime"] = 130,
 							["classe"] = "WARRIOR",
-							["pets"] = {
-							},
 							["serial"] = "Player-1305-0C1FD7FB",
 							["debuff_uptime_targets"] = {
 							},
 						}, -- [1]
-					},
-				}, -- [4]
-				{
-					["tipo"] = 2,
-					["combatId"] = 461,
-					["_ActorTable"] = {
-					},
-				}, -- [5]
-				["raid_roster"] = {
-					["Takeera"] = true,
-				},
-				["raid_roster_indexed"] = {
-					"Takeera", -- [1]
-				},
-				["tempo_start"] = 1668812506,
-				["last_events_tables"] = {
-				},
-				["alternate_power"] = {
-				},
-				["cleu_events"] = {
-					["n"] = 1,
-				},
-				["playing_solo"] = true,
-				["totals"] = {
-					606721.9309439999, -- [1]
-					-0.033655, -- [2]
-					{
-						95.28724919073487, -- [1]
-						[0] = -0.018245,
-						["alternatepower"] = 0,
-						[6] = 0,
-						[3] = 0,
-					}, -- [3]
-					{
-						["buff_uptime"] = 0,
-						["ress"] = 0,
-						["dead"] = 0,
-						["cc_break"] = 0,
-						["interrupt"] = 0,
-						["debuff_uptime"] = 0,
-						["dispell"] = 0,
-						["cooldowns_defensive"] = 0,
-					}, -- [4]
-					["voidzone_damage"] = 0,
-					["frags_total"] = 0,
-				},
-				["player_last_events"] = {
-				},
-				["frags_need_refresh"] = false,
-				["instance_type"] = "none",
-				["hasSaved"] = true,
-				["data_fim"] = "00:04:07",
-				["pvp"] = true,
-				["cleu_timeline"] = {
-				},
-				["enemy"] = "Valiant's Humility",
-				["TotalElapsedCombatTime"] = 2937559.178,
-				["CombatEndedAt"] = 2937559.178,
-				["aura_timeline"] = {
-				},
-				["__call"] = {
-				},
-				["data_inicio"] = "00:01:46",
-				["end_time"] = 2937559.178,
-				["combat_id"] = 461,
-				["overall_added"] = true,
-				["spells_cast_timeline"] = {
-				},
-				["frags"] = {
-				},
-				["combat_counter"] = 1370,
-				["CombatSkillCache"] = {
-				},
-				["totals_grupo"] = {
-					606722, -- [1]
-					0, -- [2]
-					{
-						95.30000019073486, -- [1]
-						[0] = 0,
-						["alternatepower"] = 0,
-						[6] = 0,
-						[3] = 0,
-					}, -- [3]
-					{
-						["buff_uptime"] = 0,
-						["ress"] = 0,
-						["dead"] = 0,
-						["cc_break"] = 0,
-						["interrupt"] = 0,
-						["debuff_uptime"] = 0,
-						["dispell"] = 0,
-						["cooldowns_defensive"] = 0,
-					}, -- [4]
-				},
-				["start_time"] = 2937418.347,
-				["TimeData"] = {
-				},
-				["PhaseData"] = {
-					{
-						1, -- [1]
-						1, -- [2]
-					}, -- [1]
-					["damage"] = {
 						{
-							["Takeera"] = 605323.007307,
-						}, -- [1]
-					},
-					["heal_section"] = {
-					},
-					["heal"] = {
-						{
-						}, -- [1]
-					},
-					["damage_section"] = {
-					},
-				},
-			}, -- [1]
-			{
-				{
-					["tipo"] = 2,
-					["combatId"] = 460,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1297,
-							["totalabsorbed"] = 0.003325,
-							["damage_from"] = {
-							},
-							["targets"] = {
-								["Sha of Anger"] = 13610,
-							},
-							["pets"] = {
-							},
-							["end_time"] = 1668804871,
-							["on_hold"] = false,
-							["friendlyfire_total"] = 0,
-							["raid_targets"] = {
-							},
-							["total_without_pet"] = 13610.003325,
-							["last_dps"] = 3103.0559336947,
-							["delay"] = 0,
-							["dps_started"] = false,
-							["total"] = 13610.003325,
-							["aID"] = "1305-0C1FD7FB",
-							["damage_taken"] = 0.003325,
-							["nome"] = "Takeera",
-							["spells"] = {
-								["_ActorTable"] = {
-									{
-										["c_amt"] = 0,
-										["b_amt"] = 0,
-										["c_dmg"] = 0,
-										["g_amt"] = 0,
-										["n_max"] = 1597,
-										["targets"] = {
-											["Sha of Anger"] = 2404,
-										},
-										["n_dmg"] = 2404,
-										["n_min"] = 807,
-										["g_dmg"] = 0,
-										["counter"] = 2,
-										["total"] = 2404,
-										["c_max"] = 0,
-										["id"] = 1,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 0,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 2,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									}, -- [1]
-									[105771] = {
-										["c_amt"] = 0,
-										["b_amt"] = 0,
-										["c_dmg"] = 0,
-										["g_amt"] = 0,
-										["n_max"] = 0,
-										["targets"] = {
-											["Valiant's Humility"] = 0,
-										},
-										["n_dmg"] = 0,
-										["n_min"] = 0,
-										["g_dmg"] = 0,
-										["counter"] = 1,
-										["total"] = 0,
-										["c_max"] = 0,
-										["id"] = 105771,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["extra"] = {
-										},
-										["a_amt"] = 0,
-										["c_min"] = 0,
-										["successful_casted"] = 0,
-										["a_dmg"] = 0,
-										["n_amt"] = 0,
-										["spellschool"] = 1,
-										["IMMUNE"] = 1,
-									},
-									[199658] = {
-										["c_amt"] = 1,
-										["b_amt"] = 0,
-										["c_dmg"] = 613,
-										["g_amt"] = 0,
-										["n_max"] = 567,
-										["targets"] = {
-											["Sha of Anger"] = 5382,
-										},
-										["n_dmg"] = 4769,
-										["n_min"] = 274,
-										["g_dmg"] = 0,
-										["counter"] = 12,
-										["total"] = 5382,
-										["c_max"] = 613,
-										["id"] = 199658,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 613,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 11,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									},
-									[323889] = {
-										["c_amt"] = 0,
-										["b_amt"] = 0,
-										["c_dmg"] = 0,
-										["g_amt"] = 0,
-										["n_max"] = 1484,
-										["targets"] = {
-											["Sha of Anger"] = 1484,
-										},
-										["n_dmg"] = 1484,
-										["n_min"] = 1484,
-										["g_dmg"] = 0,
-										["counter"] = 1,
-										["total"] = 1484,
-										["c_max"] = 0,
-										["id"] = 323889,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 0,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 1,
-										["extra"] = {
-										},
-										["spellschool"] = 32,
-									},
-									[23881] = {
-										["c_amt"] = 0,
-										["b_amt"] = 0,
-										["c_dmg"] = 0,
-										["g_amt"] = 0,
-										["n_max"] = 4340,
-										["targets"] = {
-											["Sha of Anger"] = 4340,
-										},
-										["n_dmg"] = 4340,
-										["n_min"] = 4340,
-										["g_dmg"] = 0,
-										["counter"] = 1,
-										["total"] = 4340,
-										["c_max"] = 0,
-										["id"] = 23881,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 0,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 1,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									},
-								},
-								["tipo"] = 2,
-							},
-							["grupo"] = true,
-							["last_event"] = 1668812505,
-							["custom"] = 0,
-							["spec"] = 72,
-							["colocacao"] = 1,
-							["tipo"] = 1,
-							["friendlyfire"] = {
-							},
-							["start_time"] = 1668804867,
-							["serial"] = "Player-1305-0C1FD7FB",
-							["classe"] = "WARRIOR",
-						}, -- [1]
-						{
-							["flag_original"] = 68168,
-							["totalabsorbed"] = 3.001524,
-							["damage_from"] = {
-								["Jácksòn-TarrenMill"] = true,
-								["Army of the Dead|T1392565:0|t <Detknájt>"] = true,
-								["Alshgrde"] = true,
-								["Zephraxdh"] = true,
-								["Dirtchewer"] = true,
-								["Doomwave"] = true,
-								["Loadruid"] = true,
-								["Ivánna"] = true,
-								["Detknájt"] = true,
-								["Fnxseven"] = true,
-								["Trololc"] = true,
-								["Yuumi"] = true,
-								["Mircarla"] = true,
-								["Daniora"] = true,
-								["Stormraje"] = true,
-								["Gubbi"] = true,
-								["Mogshot"] = true,
-								["Pyrotusk"] = true,
-								["Magikerberra"] = true,
-								["Darkhidden"] = true,
-								["Diust"] = true,
-								["Owrangdemon"] = true,
-								["Sloperino"] = true,
-								["Dakari"] = true,
-								["Stabbytime"] = true,
-								["Zurkatel"] = true,
-								["Evoyw"] = true,
-								["Waldstein"] = true,
-								["Hawckyy"] = true,
-								["Augustymcio"] = true,
-								["Coconutcider"] = true,
-								["Tellas"] = true,
-								["Bomoth"] = true,
-								["Mäfre"] = true,
-								["Testopump"] = true,
-								["Wolf"] = true,
-								["Hawtdamn"] = true,
-								["Xfightmaster"] = true,
-								["Scheisseamk"] = true,
-								["Dutchtouch"] = true,
-								["Devilsaur"] = true,
-								["Bloodycry"] = true,
-								["Torgahl"] = true,
-								["Mazíkéen"] = true,
-								["Ukllen"] = true,
-								["Domnica"] = true,
-								["Jookitfel"] = true,
-								["Zauior"] = true,
-								["Baetra"] = true,
-								["Pîmpmyimp"] = true,
-								["Zillydh"] = true,
-								["Mastaka"] = true,
-								["Sugababy"] = true,
-								["Onlyfly"] = true,
-								["Depleteren"] = true,
-								["Xyndra"] = true,
-								["Dthun"] = true,
-								["Actionbob"] = true,
-								["Brorbisp"] = true,
-								["Irønfists"] = true,
-								["Dragonhawk"] = true,
-								["Shaanixx"] = true,
-								["Zanini"] = true,
-								["Neptoonz"] = true,
-								["Jarkhi"] = true,
-								["Nerixisys"] = true,
-								["Dralchar"] = true,
-								["Shøh"] = true,
-								["Aspectsz"] = true,
-								["Zig"] = true,
-								["Hati"] = true,
-								["Sruudom"] = true,
-								["Hipolita"] = true,
-								["Stoutstrike"] = true,
-								["Wakapakamaka"] = true,
-								["Frostimatoum"] = true,
-								["Vea"] = true,
-								["Luunhym"] = true,
-								["Gnaw"] = true,
-								["Cat"] = true,
-								["Courser"] = true,
-								["Takeera"] = true,
-								["Bollekh"] = true,
-								["Xö"] = true,
-								["Kylinkani"] = true,
-								["Darkathras"] = true,
-								["Gastard"] = true,
-								["Infernal <Phenlock>"] = true,
-								["Morandia"] = true,
-								["Llndeberg"] = true,
-								["Peargrip"] = true,
-								["Ronjambo"] = true,
-								["Darkboii"] = true,
-								["Pratlock"] = true,
-								["Tyrrae"] = true,
-								["Ðrúid"] = true,
-								["Castcastboom"] = true,
-								["Fenryr"] = true,
-								["Cyrq"] = true,
-								["Skurikkorill"] = true,
-								["Kevinkokos"] = true,
-								["Carrion Bird"] = true,
-								["Phenlock"] = true,
-								["Agricolax"] = true,
-								["Vittorio"] = true,
-								["Graveflayer <Detknájt>"] = true,
-								["Npk"] = true,
-								["Mcmilky"] = true,
-								["Kms"] = true,
-								["Citronlime"] = true,
-								["Sunrenshau"] = true,
-								["Jukesidwalkr"] = true,
-								["Sukeni"] = true,
-								["Heavytank"] = true,
-								["Skyran"] = true,
-								["Frozenhead"] = true,
-								["Slamaca"] = true,
-								["Komodozmaj"] = true,
-							},
-							["targets"] = {
-								["Mazíkéen"] = 9,
-								["Heavytank"] = 3,
-							},
-							["delay"] = 0,
-							["pets"] = {
-							},
-							["friendlyfire"] = {
-							},
-							["on_hold"] = false,
-							["classe"] = "UNKNOW",
-							["raid_targets"] = {
-							},
-							["total_without_pet"] = 12.001524,
 							["fight_component"] = true,
-							["monster"] = true,
-							["end_time"] = 1668804871,
-							["last_dps"] = 0,
-							["tipo"] = 1,
-							["nome"] = "Sha of Anger",
-							["spells"] = {
-								["_ActorTable"] = {
-									{
-										["c_amt"] = 0,
-										["b_amt"] = 0,
-										["c_dmg"] = 0,
-										["g_amt"] = 0,
-										["n_max"] = 9,
-										["targets"] = {
-											["Mazíkéen"] = 9,
-											["Heavytank"] = 3,
-										},
-										["n_dmg"] = 12,
-										["n_min"] = 3,
-										["g_dmg"] = 0,
-										["counter"] = 2,
-										["total"] = 12,
-										["c_max"] = 0,
-										["id"] = 1,
-										["r_dmg"] = 0,
-										["r_amt"] = 0,
-										["b_dmg"] = 0,
-										["a_dmg"] = 0,
-										["c_min"] = 0,
-										["successful_casted"] = 0,
-										["a_amt"] = 0,
-										["n_amt"] = 2,
-										["extra"] = {
-										},
-										["spellschool"] = 1,
-									}, -- [1]
-								},
-								["tipo"] = 2,
+							["classe"] = "UNKNOW",
+							["nome"] = "Forsworn Acolyte",
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["flag_original"] = 68168,
+							["pets"] = {
 							},
-							["total"] = 12.001524,
-							["dps_started"] = false,
-							["friendlyfire_total"] = 0,
-							["custom"] = 0,
-							["last_event"] = 1668804870,
-							["damage_taken"] = 1768536.001524,
-							["start_time"] = 1668804868,
-							["serial"] = "Vehicle-0-1631-870-17532-60491-000077F103",
-							["aID"] = "",
+							["spell_cast"] = {
+								[315454] = 3,
+							},
+							["monster"] = true,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["tipo"] = 4,
+							["last_event"] = 0,
+							["serial"] = "Creature-0-1469-2222-110-157599-000006D31E",
+							["aID"] = "157599",
 						}, -- [2]
 					},
-				}, -- [1]
-				{
-					["tipo"] = 3,
-					["combatId"] = 460,
-					["_ActorTable"] = {
-					},
-				}, -- [2]
-				{
-					["tipo"] = 7,
-					["combatId"] = 460,
-					["_ActorTable"] = {
-						{
-							["received"] = 62.008633,
-							["resource"] = 0.008633,
-							["targets"] = {
-								["Takeera"] = 62,
-							},
-							["pets"] = {
-							},
-							["powertype"] = 1,
-							["classe"] = "WARRIOR",
-							["passiveover"] = 0.008633,
-							["total"] = 62.008633,
-							["nome"] = "Takeera",
-							["spells"] = {
-								["_ActorTable"] = {
-									[389774] = {
-										["total"] = 20,
-										["id"] = 389774,
-										["totalover"] = 0,
-										["targets"] = {
-											["Takeera"] = 20,
-										},
-										["counter"] = 1,
-									},
-									[23881] = {
-										["total"] = 8,
-										["id"] = 23881,
-										["totalover"] = 0,
-										["targets"] = {
-											["Takeera"] = 8,
-										},
-										["counter"] = 1,
-									},
-									[107574] = {
-										["total"] = 10,
-										["id"] = 107574,
-										["totalover"] = 0,
-										["targets"] = {
-											["Takeera"] = 10,
-										},
-										["counter"] = 1,
-									},
-									[280715] = {
-										["total"] = 4,
-										["id"] = 280715,
-										["totalover"] = 0,
-										["targets"] = {
-											["Takeera"] = 4,
-										},
-										["counter"] = 1,
-									},
-									[100] = {
-										["total"] = 20,
-										["id"] = 100,
-										["totalover"] = 0,
-										["targets"] = {
-											["Takeera"] = 20,
-										},
-										["counter"] = 1,
-									},
-								},
-								["tipo"] = 7,
-							},
-							["grupo"] = true,
-							["totalover"] = 0.008633,
-							["flag_original"] = 1297,
-							["tipo"] = 3,
-							["last_event"] = 1668812505,
-							["aID"] = "1305-0C1FD7FB",
-							["alternatepower"] = 0.008633,
-							["serial"] = "Player-1305-0C1FD7FB",
-							["spec"] = 72,
-						}, -- [1]
-					},
-				}, -- [3]
-				{
-					["tipo"] = 9,
-					["combatId"] = 460,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1047,
-							["debuff_uptime_spells"] = {
-								["_ActorTable"] = {
-									[324260] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 0,
-										["refreshamt"] = 0,
-										["id"] = 324260,
-										["uptime"] = 3,
-										["targets"] = {
-										},
-										["appliedamt"] = 1,
-									},
-								},
-								["tipo"] = 9,
-							},
-							["buff_uptime"] = 16,
-							["aID"] = "1305-0C1FD7FB",
-							["buff_uptime_spells"] = {
-								["_ActorTable"] = {
-									[6673] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 1,
-										["refreshamt"] = 0,
-										["id"] = 6673,
-										["uptime"] = 4,
-										["targets"] = {
-										},
-										["appliedamt"] = 1,
-									},
-									[85739] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 1,
-										["refreshamt"] = 1,
-										["id"] = 85739,
-										["uptime"] = 4,
-										["targets"] = {
-										},
-										["appliedamt"] = 1,
-									},
-									[386208] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 1,
-										["refreshamt"] = 0,
-										["id"] = 386208,
-										["uptime"] = 4,
-										["targets"] = {
-										},
-										["appliedamt"] = 1,
-									},
-									[324748] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 1,
-										["refreshamt"] = 0,
-										["id"] = 324748,
-										["uptime"] = 4,
-										["targets"] = {
-										},
-										["appliedamt"] = 1,
-									},
-								},
-								["tipo"] = 9,
-							},
-							["debuff_uptime"] = 3,
-							["nome"] = "Takeera",
-							["spec"] = 72,
-							["grupo"] = true,
-							["spell_cast"] = {
-								[324748] = 1,
-								[324260] = 1,
-								[23881] = 1,
-								[190411] = 1,
-							},
-							["buff_uptime_targets"] = {
-							},
-							["tipo"] = 4,
-							["last_event"] = 1668804871,
-							["classe"] = "WARRIOR",
-							["pets"] = {
-							},
-							["serial"] = "Player-1305-0C1FD7FB",
-							["debuff_uptime_targets"] = {
-							},
-						}, -- [1]
-					},
 				}, -- [4]
 				{
 					["tipo"] = 2,
-					["combatId"] = 460,
+					["combatId"] = 463,
 					["_ActorTable"] = {
 					},
 				}, -- [5]
 				["raid_roster"] = {
-					["Takeera"] = true,
+					["Takeera"] = "Player-1305-0C1FD7FB",
 				},
 				["raid_roster_indexed"] = {
 					"Takeera", -- [1]
 				},
-				["CombatStartedAt"] = 2937417.589,
-				["tempo_start"] = 1668804867,
+				["CombatStartedAt"] = 348271.374,
+				["tempo_start"] = 1678169002,
 				["last_events_tables"] = {
 				},
 				["alternate_power"] = {
@@ -1493,14 +885,14 @@ _detalhes_database = {
 				},
 				["playing_solo"] = true,
 				["totals"] = {
-					13621.32566700025, -- [1]
-					-0.4820430000000001, -- [2]
+					35723.92169100003, -- [1]
+					4688.9898, -- [2]
 					{
-						61.89683299999996, -- [1]
-						[0] = -0.1459979999999961,
+						21.992872, -- [1]
+						[0] = -0.005817,
 						["alternatepower"] = 0,
-						[6] = -0.03517099999996987,
-						[3] = -0.03435999999999595,
+						[6] = -0.004480000000000928,
+						[3] = 0,
 					}, -- [3]
 					{
 						["buff_uptime"] = 0,
@@ -1516,10 +908,10 @@ _detalhes_database = {
 					["frags_total"] = 0,
 				},
 				["totals_grupo"] = {
-					13610, -- [1]
-					0, -- [2]
+					30178, -- [1]
+					4689, -- [2]
 					{
-						62, -- [1]
+						22, -- [1]
 						[0] = 0,
 						["alternatepower"] = 0,
 						[6] = 0,
@@ -1539,12 +931,12 @@ _detalhes_database = {
 				["frags_need_refresh"] = true,
 				["instance_type"] = "none",
 				["hasSaved"] = true,
-				["data_fim"] = "21:54:32",
+				["data_fim"] = "07:03:49",
 				["cleu_timeline"] = {
 				},
-				["enemy"] = "Sha of Anger",
-				["TotalElapsedCombatTime"] = 4.385999999940395,
-				["CombatEndedAt"] = 2929784.546,
+				["enemy"] = "Forsworn Acolyte",
+				["TotalElapsedCombatTime"] = 6.01400000002468,
+				["CombatEndedAt"] = 348277.388,
 				["aura_timeline"] = {
 				},
 				["__call"] = {
@@ -1556,174 +948,926 @@ _detalhes_database = {
 					}, -- [1]
 					["damage"] = {
 						{
-							["Takeera"] = 13610.003325,
+							["Takeera"] = 30178.004974,
 						}, -- [1]
 					},
 					["heal_section"] = {
 					},
 					["heal"] = {
 						{
+							["Takeera"] = 4689.008561000001,
 						}, -- [1]
 					},
 					["damage_section"] = {
 					},
 				},
-				["end_time"] = 2929784.546,
-				["combat_id"] = 460,
+				["end_time"] = 348277.388,
+				["combat_id"] = 463,
 				["overall_added"] = true,
 				["TimeData"] = {
 				},
-				["frags"] = {
-					["Sha of Anger"] = 1,
+				["spells_cast_timeline"] = {
 				},
-				["combat_counter"] = 1365,
+				["combat_counter"] = 1389,
 				["player_last_events"] = {
 				},
 				["CombatSkillCache"] = {
 				},
-				["data_inicio"] = "21:54:28",
-				["start_time"] = 2929780.16,
-				["contra"] = "Sha of Anger",
-				["spells_cast_timeline"] = {
+				["data_inicio"] = "07:03:23",
+				["start_time"] = 89044.762,
+				["contra"] = "Forsworn Acolyte",
+				["frags"] = {
+					["Forsworn Recruit"] = 2,
+					["Forsworn Acolyte"] = 2,
 				},
-			}, -- [2]
+			}, -- [1]
 			{
 				{
 					["tipo"] = 2,
+					["combatId"] = 463,
 					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["totalabsorbed"] = 0.004974,
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["pets"] = {
+							},
+							["aID"] = "1305-0C1FD7FB",
+							["total_without_pet"] = 30178.004974,
+							["dps_started"] = false,
+							["total"] = 30178.004974,
+							["spec"] = 71,
+							["colocacao"] = 1,
+							["friendlyfire"] = {
+							},
+							["serial"] = "Player-1305-0C1FD7FB",
+							["damage_from"] = {
+								["Forsworn Acolyte"] = true,
+							},
+							["targets"] = {
+								["Forsworn Acolyte"] = 30178,
+							},
+							["friendlyfire_total"] = 0,
+							["raid_targets"] = {
+							},
+							["end_time"] = 1678169019,
+							["damage_taken"] = 5546.004974,
+							["classe"] = "WARRIOR",
+							["nome"] = "Takeera",
+							["spells"] = {
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 850,
+										["targets"] = {
+											["Forsworn Acolyte"] = 4582,
+										},
+										["n_dmg"] = 4582,
+										["n_min"] = 653,
+										["g_dmg"] = 0,
+										["counter"] = 6,
+										["ChartData"] = {
+											[8] = 2290,
+											[5] = 2290,
+											[11] = 2986,
+											[14] = 3767,
+										},
+										["total"] = 4582,
+										["c_max"] = 0,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 6,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									}, -- [1]
+									[12294] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 4590,
+										["targets"] = {
+											["Forsworn Acolyte"] = 11021,
+										},
+										["n_dmg"] = 11021,
+										["n_min"] = 2959,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["ChartData"] = {
+											[8] = 3472,
+											[5] = 3472,
+											[11] = 6431,
+											[14] = 6431,
+										},
+										["total"] = 11021,
+										["c_max"] = 0,
+										["id"] = 12294,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 3,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									},
+									[845] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1110,
+										["targets"] = {
+											["Forsworn Acolyte"] = 1110,
+										},
+										["n_dmg"] = 1110,
+										["n_min"] = 1110,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["ChartData"] = {
+											[8] = 1110,
+											[5] = 1110,
+											[11] = 1110,
+											[14] = 1110,
+										},
+										["total"] = 1110,
+										["c_max"] = 0,
+										["id"] = 845,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 1,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									},
+									[384391] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 458,
+										["targets"] = {
+											["Forsworn Acolyte"] = 458,
+										},
+										["n_dmg"] = 458,
+										["n_min"] = 458,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["ChartData"] = {
+											[8] = 458,
+											[5] = 458,
+											[11] = 458,
+											[14] = 458,
+										},
+										["total"] = 458,
+										["c_max"] = 0,
+										["id"] = 384391,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 1,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									},
+									[323889] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 2614,
+										["g_amt"] = 0,
+										["n_max"] = 653,
+										["targets"] = {
+											["Forsworn Acolyte"] = 3267,
+										},
+										["n_dmg"] = 653,
+										["n_min"] = 653,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["ChartData"] = {
+											[8] = 2614,
+											[5] = 2614,
+											[11] = 3267,
+											[14] = 3267,
+										},
+										["total"] = 3267,
+										["c_max"] = 1307,
+										["id"] = 323889,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 1307,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 1,
+										["extra"] = {
+										},
+										["spellschool"] = 32,
+									},
+									[260798] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 3836,
+										["targets"] = {
+											["Forsworn Acolyte"] = 3836,
+										},
+										["n_dmg"] = 3836,
+										["n_min"] = 3836,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["ChartData"] = {
+											[11] = 3836,
+											[8] = 3836,
+											[14] = 3836,
+										},
+										["total"] = 3836,
+										["c_max"] = 0,
+										["id"] = 260798,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 1,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									},
+									[262115] = {
+										["c_amt"] = 1,
+										["b_amt"] = 0,
+										["c_dmg"] = 991,
+										["g_amt"] = 0,
+										["n_max"] = 473,
+										["targets"] = {
+											["Forsworn Acolyte"] = 2410,
+										},
+										["n_dmg"] = 1419,
+										["n_min"] = 473,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["ChartData"] = {
+											[8] = 1464,
+											[5] = 991,
+											[11] = 1464,
+											[14] = 1937,
+										},
+										["total"] = 2410,
+										["c_max"] = 991,
+										["id"] = 262115,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 991,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 3,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									},
+									[7384] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1608,
+										["targets"] = {
+											["Forsworn Acolyte"] = 1608,
+										},
+										["n_dmg"] = 1608,
+										["n_min"] = 1608,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["ChartData"] = {
+											[14] = 1608,
+										},
+										["total"] = 1608,
+										["c_max"] = 0,
+										["id"] = 7384,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 1,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									},
+									[1464] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1886,
+										["targets"] = {
+											["Forsworn Acolyte"] = 1886,
+										},
+										["n_dmg"] = 1886,
+										["n_min"] = 1886,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["ChartData"] = {
+											[14] = 1886,
+										},
+										["total"] = 1886,
+										["c_max"] = 0,
+										["id"] = 1464,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 1,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["grupo"] = true,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["last_event"] = 1678169019,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["last_dps"] = 0.1164128352192829,
+							["start_time"] = 1678169019,
+							["delay"] = 0,
+							["on_hold"] = false,
+						}, -- [1]
+						{
+							["flag_original"] = 68168,
+							["totalabsorbed"] = 0.005752,
+							["damage_from"] = {
+								["Takeera"] = true,
+							},
+							["targets"] = {
+								["Takeera"] = 5546,
+							},
+							["damage_taken"] = 30178.005752,
+							["pets"] = {
+							},
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["monster"] = true,
+							["classe"] = "UNKNOW",
+							["raid_targets"] = {
+							},
+							["total_without_pet"] = 5546.005752,
+							["delay"] = 0,
+							["friendlyfire_total"] = 0,
+							["dps_started"] = false,
+							["end_time"] = 1678169019,
+							["aID"] = "157599",
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["nome"] = "Forsworn Acolyte",
+							["spells"] = {
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 603,
+										["targets"] = {
+											["Takeera"] = 1093,
+										},
+										["n_dmg"] = 1093,
+										["n_min"] = 490,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["total"] = 1093,
+										["c_max"] = 0,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["extra"] = {
+										},
+										["PARRY"] = 1,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 2,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+									}, -- [1]
+									[315454] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1535,
+										["targets"] = {
+											["Takeera"] = 4453,
+										},
+										["n_dmg"] = 4453,
+										["n_min"] = 1383,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["total"] = 4453,
+										["c_max"] = 0,
+										["id"] = 315454,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 3,
+										["a_amt"] = 0,
+										["n_amt"] = 3,
+										["a_dmg"] = 0,
+										["extra"] = {
+										},
+									},
+								},
+								["tipo"] = 2,
+							},
+							["fight_component"] = true,
+							["total"] = 5546.005752,
+							["last_dps"] = 0,
+							["last_event"] = 1678169017,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["on_hold"] = false,
+							["start_time"] = 1678169019,
+							["serial"] = "Creature-0-1469-2222-110-157599-000006D31E",
+							["friendlyfire"] = {
+							},
+						}, -- [2]
 					},
 				}, -- [1]
 				{
 					["tipo"] = 3,
+					["combatId"] = 463,
 					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["targets_overheal"] = {
+								["Takeera"] = 1541,
+							},
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["pets"] = {
+							},
+							["iniciar_hps"] = false,
+							["heal_enemy_amt"] = 0,
+							["totalover"] = 1541.008561,
+							["total_without_pet"] = 4689.008561000001,
+							["total"] = 4689.008561000001,
+							["targets_absorbs"] = {
+							},
+							["heal_enemy"] = {
+							},
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["on_hold"] = false,
+							["serial"] = "Player-1305-0C1FD7FB",
+							["totalabsorb"] = 0.008561,
+							["last_hps"] = 0,
+							["targets"] = {
+								["Takeera"] = 4689,
+							},
+							["totalover_without_pet"] = 0.008561,
+							["healing_taken"] = 4689.008561000001,
+							["fight_component"] = true,
+							["end_time"] = 1678169019,
+							["healing_from"] = {
+								["Takeera"] = true,
+							},
+							["spec"] = 71,
+							["nome"] = "Takeera",
+							["spells"] = {
+								["_ActorTable"] = {
+									[383104] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+										},
+										["n_max"] = 402,
+										["targets"] = {
+											["Takeera"] = 1206,
+										},
+										["n_min"] = 402,
+										["counter"] = 3,
+										["overheal"] = 0,
+										["total"] = 1206,
+										["c_max"] = 0,
+										["id"] = 383104,
+										["targets_absorbs"] = {
+										},
+										["c_min"] = 0,
+										["c_curado"] = 0,
+										["n_curado"] = 1206,
+										["totaldenied"] = 0,
+										["n_amt"] = 3,
+										["absorbed"] = 0,
+									},
+									[143924] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+										},
+										["n_max"] = 294,
+										["targets"] = {
+											["Takeera"] = 963,
+										},
+										["n_min"] = 24,
+										["counter"] = 8,
+										["overheal"] = 0,
+										["total"] = 963,
+										["c_max"] = 0,
+										["id"] = 143924,
+										["targets_absorbs"] = {
+										},
+										["c_min"] = 0,
+										["c_curado"] = 0,
+										["n_curado"] = 963,
+										["totaldenied"] = 0,
+										["n_amt"] = 8,
+										["absorbed"] = 0,
+									},
+									[357945] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+											["Takeera"] = 1541,
+										},
+										["n_max"] = 2030,
+										["targets"] = {
+											["Takeera"] = 2520,
+										},
+										["n_min"] = 490,
+										["counter"] = 2,
+										["overheal"] = 1541,
+										["total"] = 2520,
+										["c_max"] = 0,
+										["id"] = 357945,
+										["targets_absorbs"] = {
+										},
+										["c_min"] = 0,
+										["c_curado"] = 0,
+										["n_curado"] = 2520,
+										["totaldenied"] = 0,
+										["n_amt"] = 2,
+										["absorbed"] = 0,
+									},
+								},
+								["tipo"] = 3,
+							},
+							["grupo"] = true,
+							["totaldenied"] = 0.008561,
+							["tipo"] = 2,
+							["custom"] = 0,
+							["last_event"] = 1678169019,
+							["aID"] = "1305-0C1FD7FB",
+							["start_time"] = 1678169019,
+							["delay"] = 0,
+							["classe"] = "WARRIOR",
+						}, -- [1]
 					},
 				}, -- [2]
 				{
 					["tipo"] = 7,
+					["combatId"] = 463,
 					["_ActorTable"] = {
 						{
-							["received"] = 4.002852,
-							["resource"] = 0.002852,
+							["flag_original"] = 1297,
+							["resource"] = 0.007701,
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
 							["targets"] = {
-								["Takeera"] = 4,
+								["Takeera"] = 22,
 							},
 							["pets"] = {
 							},
 							["powertype"] = 1,
 							["classe"] = "WARRIOR",
-							["passiveover"] = 0.002852,
-							["total"] = 4.002852,
+							["totalover"] = 0.007701,
+							["fight_component"] = true,
+							["alternatepower"] = 0.007701,
+							["aID"] = "1305-0C1FD7FB",
 							["nome"] = "Takeera",
 							["spells"] = {
 								["_ActorTable"] = {
-									[280715] = {
-										["total"] = 4,
-										["id"] = 280715,
+									[262232] = {
+										["total"] = 10,
+										["id"] = 262232,
 										["totalover"] = 0,
 										["targets"] = {
-											["Takeera"] = 4,
+											["Takeera"] = 10,
+										},
+										["counter"] = 2,
+									},
+									[392793] = {
+										["total"] = 6,
+										["id"] = 392793,
+										["totalover"] = 0,
+										["targets"] = {
+											["Takeera"] = 6,
 										},
 										["counter"] = 1,
+									},
+									[195707] = {
+										["total"] = 6,
+										["id"] = 195707,
+										["totalover"] = 0,
+										["targets"] = {
+											["Takeera"] = 6,
+										},
+										["counter"] = 2,
 									},
 								},
 								["tipo"] = 7,
 							},
 							["grupo"] = true,
-							["totalover"] = 0.002852,
-							["flag_original"] = 1297,
+							["passiveover"] = 0.007701,
 							["tipo"] = 3,
-							["last_event"] = 1668804867,
-							["aID"] = "1305-0C1FD7FB",
-							["alternatepower"] = 0.002852,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["last_event"] = 1678169019,
+							["total"] = 22.007701,
+							["received"] = 22.007701,
 							["serial"] = "Player-1305-0C1FD7FB",
-							["spec"] = 72,
+							["spec"] = 71,
 						}, -- [1]
 					},
 				}, -- [3]
 				{
 					["tipo"] = 9,
+					["combatId"] = 463,
 					["_ActorTable"] = {
 						{
 							["flag_original"] = 1047,
-							["buff_uptime_targets"] = {
-							},
-							["spec"] = 72,
-							["grupo"] = true,
-							["aID"] = "1305-0C1FD7FB",
-							["pets"] = {
-							},
-							["nome"] = "Takeera",
-							["buff_uptime"] = 0,
-							["tipo"] = 4,
-							["last_event"] = 1668804656,
-							["buff_uptime_spells"] = {
+							["debuff_uptime_spells"] = {
 								["_ActorTable"] = {
-									[6673] = {
+									[262115] = {
 										["counter"] = 0,
 										["actived"] = false,
 										["activedamt"] = 0,
-										["refreshamt"] = 0,
-										["id"] = 6673,
-										["uptime"] = 0,
+										["refreshamt"] = 1,
+										["id"] = 262115,
+										["uptime"] = 11,
 										["targets"] = {
 										},
-										["appliedamt"] = 0,
+										["appliedamt"] = 2,
 									},
-									[386208] = {
+									[115804] = {
 										["counter"] = 0,
 										["actived"] = false,
 										["activedamt"] = 0,
-										["refreshamt"] = 0,
-										["id"] = 386208,
-										["uptime"] = 0,
+										["refreshamt"] = 1,
+										["id"] = 115804,
+										["uptime"] = 9,
 										["targets"] = {
 										},
-										["appliedamt"] = 0,
-									},
-									[289555] = {
-										["counter"] = 0,
-										["actived"] = false,
-										["activedamt"] = 0,
-										["refreshamt"] = 0,
-										["id"] = 289555,
-										["uptime"] = 0,
-										["targets"] = {
-										},
-										["appliedamt"] = 0,
+										["appliedamt"] = 2,
 									},
 								},
 								["tipo"] = 9,
 							},
-							["serial"] = "Player-1305-0C1FD7FB",
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["pets"] = {
+							},
+							["aID"] = "1305-0C1FD7FB",
+							["buff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[345535] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 345535,
+										["uptime"] = 8,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[317103] = {
+										["activedamt"] = 1,
+										["id"] = 317103,
+										["targets"] = {
+										},
+										["uptime"] = 17,
+										["counter"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["appliedamt"] = 1,
+									},
+									[7384] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 7384,
+										["uptime"] = 4,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[386164] = {
+										["activedamt"] = 1,
+										["id"] = 386164,
+										["targets"] = {
+										},
+										["uptime"] = 17,
+										["counter"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["appliedamt"] = 1,
+									},
+									[225788] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 225788,
+										["uptime"] = 17,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[335149] = {
+										["activedamt"] = 0,
+										["id"] = 335149,
+										["targets"] = {
+										},
+										["uptime"] = 0,
+										["appliedamt"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[289083] = {
+										["activedamt"] = 0,
+										["id"] = 289083,
+										["targets"] = {
+										},
+										["uptime"] = 0,
+										["appliedamt"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[328900] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 7,
+										["id"] = 328900,
+										["uptime"] = 15,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[186406] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 186406,
+										["uptime"] = 17,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[262232] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 2,
+										["refreshamt"] = 0,
+										["id"] = 262232,
+										["uptime"] = 8,
+										["targets"] = {
+										},
+										["appliedamt"] = 2,
+									},
+									[6673] = {
+										["activedamt"] = 1,
+										["id"] = 6673,
+										["targets"] = {
+										},
+										["uptime"] = 17,
+										["counter"] = 0,
+										["refreshamt"] = 0,
+										["actived"] = false,
+										["appliedamt"] = 1,
+									},
+									[32216] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 1,
+										["id"] = 32216,
+										["uptime"] = 10,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["fight_component"] = true,
+							["debuff_uptime"] = 20,
+							["buff_uptime_targets"] = {
+							},
+							["nome"] = "Takeera",
+							["spec"] = 71,
+							["grupo"] = true,
+							["spell_cast"] = {
+								[845] = 1,
+								[163201] = 1,
+								[7384] = 1,
+								[12294] = 3,
+								[345535] = 1,
+								[1464] = 1,
+							},
+							["tipo"] = 4,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["last_event"] = 1678428228,
+							["buff_uptime"] = 130,
 							["classe"] = "WARRIOR",
+							["serial"] = "Player-1305-0C1FD7FB",
+							["debuff_uptime_targets"] = {
+							},
 						}, -- [1]
+						{
+							["fight_component"] = true,
+							["classe"] = "UNKNOW",
+							["nome"] = "Forsworn Acolyte",
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["flag_original"] = 68168,
+							["pets"] = {
+							},
+							["spell_cast"] = {
+								[315454] = 3,
+							},
+							["monster"] = true,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["tipo"] = 4,
+							["last_event"] = 0,
+							["serial"] = "Creature-0-1469-2222-110-157599-000006D31E",
+							["aID"] = "157599",
+						}, -- [2]
 					},
 				}, -- [4]
 				{
 					["tipo"] = 2,
+					["combatId"] = 463,
 					["_ActorTable"] = {
 					},
 				}, -- [5]
 				["raid_roster"] = {
+					["Takeera"] = "Player-1305-0C1FD7FB",
 				},
 				["raid_roster_indexed"] = {
+					"Takeera", -- [1]
 				},
-				["CombatStartedAt"] = 2929566.763,
-				["tempo_start"] = 2928707.084,
+				["CombatStartedAt"] = 348271.374,
+				["tempo_start"] = 1678169002,
 				["last_events_tables"] = {
 				},
 				["alternate_power"] = {
 				},
-				["combat_counter"] = 1364,
+				["cleu_events"] = {
+					["n"] = 1,
+				},
 				["playing_solo"] = true,
 				["totals"] = {
-					-0.298666002500795, -- [1]
-					-0.018957, -- [2]
+					35723.92169100003, -- [1]
+					4688.9898, -- [2]
 					{
-						3.916248000000009, -- [1]
-						[0] = -0.06161399999998557,
+						21.992872, -- [1]
+						[0] = -0.005817,
 						["alternatepower"] = 0,
-						[6] = -0.01976199999999118,
+						[6] = -0.004480000000000928,
 						[3] = 0,
 					}, -- [3]
 					{
@@ -1739,34 +1883,11 @@ _detalhes_database = {
 					["voidzone_damage"] = 0,
 					["frags_total"] = 0,
 				},
-				["player_last_events"] = {
-				},
-				["frags_need_refresh"] = false,
-				["instance_type"] = "none",
-				["hasSaved"] = true,
-				["data_fim"] = "21:50:57",
-				["cleu_timeline"] = {
-				},
-				["enemy"] = "Unknown",
-				["TotalElapsedCombatTime"] = 2.433999999891967,
-				["CombatEndedAt"] = 2929569.197,
-				["aura_timeline"] = {
-				},
-				["__call"] = {
-				},
-				["data_inicio"] = 0,
-				["end_time"] = 2929569.197,
-				["overall_added"] = true,
-				["frags"] = {
-				},
-				["cleu_events"] = {
-					["n"] = 1,
-				},
 				["totals_grupo"] = {
-					0, -- [1]
-					0, -- [2]
+					30178, -- [1]
+					4689, -- [2]
 					{
-						4, -- [1]
+						22, -- [1]
 						[0] = 0,
 						["alternatepower"] = 0,
 						[6] = 0,
@@ -1783,7 +1904,18 @@ _detalhes_database = {
 						["cooldowns_defensive"] = 0,
 					}, -- [4]
 				},
-				["CombatSkillCache"] = {
+				["frags_need_refresh"] = true,
+				["instance_type"] = "none",
+				["hasSaved"] = true,
+				["data_fim"] = "07:03:49",
+				["cleu_timeline"] = {
+				},
+				["enemy"] = "Forsworn Acolyte",
+				["TotalElapsedCombatTime"] = 6.01400000002468,
+				["CombatEndedAt"] = 348277.388,
+				["aura_timeline"] = {
+				},
+				["__call"] = {
 				},
 				["PhaseData"] = {
 					{
@@ -1792,21 +1924,924 @@ _detalhes_database = {
 					}, -- [1]
 					["damage"] = {
 						{
+							["Takeera"] = 30178.004974,
 						}, -- [1]
 					},
 					["heal_section"] = {
 					},
 					["heal"] = {
 						{
+							["Takeera"] = 4689.008561000001,
 						}, -- [1]
 					},
 					["damage_section"] = {
 					},
 				},
-				["start_time"] = 0,
+				["end_time"] = 348277.388,
+				["combat_id"] = 463,
+				["overall_added"] = true,
 				["TimeData"] = {
 				},
 				["spells_cast_timeline"] = {
+				},
+				["combat_counter"] = 1389,
+				["player_last_events"] = {
+				},
+				["CombatSkillCache"] = {
+				},
+				["data_inicio"] = "07:03:23",
+				["start_time"] = 89044.762,
+				["contra"] = "Forsworn Acolyte",
+				["frags"] = {
+					["Forsworn Recruit"] = 2,
+					["Forsworn Acolyte"] = 2,
+				},
+			}, -- [2]
+			{
+				{
+					["tipo"] = 2,
+					["combatId"] = 462,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["totalabsorbed"] = 0.003304,
+							["damage_from"] = {
+								["Rising Despair"] = true,
+							},
+							["targets"] = {
+							},
+							["on_hold"] = false,
+							["pets"] = {
+							},
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["aID"] = "1305-0C1FD7FB",
+							["friendlyfire_total"] = 0,
+							["raid_targets"] = {
+							},
+							["total_without_pet"] = 0.003304,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["classe"] = "WARRIOR",
+							["dps_started"] = false,
+							["end_time"] = 1677877443,
+							["spec"] = 71,
+							["damage_taken"] = 3148.003304,
+							["nome"] = "Takeera",
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 2,
+							},
+							["grupo"] = true,
+							["total"] = 0.003304,
+							["delay"] = 0,
+							["last_event"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["last_dps"] = 0,
+							["start_time"] = 1677877443,
+							["serial"] = "Player-1305-0C1FD7FB",
+							["friendlyfire"] = {
+							},
+						}, -- [1]
+						{
+							["flag_original"] = 68168,
+							["totalabsorbed"] = 0.006453,
+							["damage_from"] = {
+								["Ataraxía-Aggramar"] = true,
+								["Tohunga-Arathor"] = true,
+								["Wind Serpent"] = true,
+								["Mpompolass-Silvermoon"] = true,
+							},
+							["targets"] = {
+								["Tohunga-Arathor"] = 932,
+								["Ataraxía-Aggramar"] = 760,
+								["Takeera"] = 3148,
+							},
+							["dps_started"] = false,
+							["pets"] = {
+							},
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["aID"] = "157558",
+							["friendlyfire_total"] = 0,
+							["raid_targets"] = {
+							},
+							["total_without_pet"] = 4840.006453,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["classe"] = "UNKNOW",
+							["monster"] = true,
+							["end_time"] = 1677877443,
+							["total"] = 4840.006453,
+							["tipo"] = 1,
+							["nome"] = "Rising Despair",
+							["spells"] = {
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 932,
+										["targets"] = {
+											["Tohunga-Arathor"] = 932,
+											["Ataraxía-Aggramar"] = 760,
+											["Takeera"] = 1783,
+										},
+										["n_dmg"] = 3475,
+										["n_min"] = 558,
+										["g_dmg"] = 0,
+										["counter"] = 8,
+										["total"] = 3475,
+										["c_max"] = 0,
+										["MISS"] = 1,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["DODGE"] = 2,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["a_dmg"] = 760,
+										["c_min"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 1,
+										["n_amt"] = 5,
+										["extra"] = {
+										},
+										["spellschool"] = 1,
+									}, -- [1]
+									[326146] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1365,
+										["targets"] = {
+											["Takeera"] = 1365,
+										},
+										["n_dmg"] = 1365,
+										["n_min"] = 1365,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 1365,
+										["c_max"] = 0,
+										["id"] = 326146,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["b_dmg"] = 0,
+										["c_min"] = 0,
+										["successful_casted"] = 1,
+										["a_amt"] = 0,
+										["n_amt"] = 1,
+										["a_dmg"] = 0,
+										["extra"] = {
+										},
+									},
+								},
+								["tipo"] = 2,
+							},
+							["fight_component"] = true,
+							["delay"] = 0,
+							["damage_taken"] = 44745.006453,
+							["on_hold"] = false,
+							["custom"] = 0,
+							["last_event"] = 1677925703,
+							["friendlyfire"] = {
+							},
+							["start_time"] = 1677877443,
+							["serial"] = "Creature-0-3061-2222-79-157558-000002607F",
+							["last_dps"] = 0,
+						}, -- [2]
+					},
+				}, -- [1]
+				{
+					["tipo"] = 3,
+					["combatId"] = 462,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["targets_overheal"] = {
+								["Takeera"] = 1472,
+							},
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["pets"] = {
+							},
+							["iniciar_hps"] = false,
+							["heal_enemy_amt"] = 0,
+							["totalover"] = 1472.004212,
+							["total_without_pet"] = 558.004212,
+							["total"] = 558.004212,
+							["targets_absorbs"] = {
+							},
+							["heal_enemy"] = {
+							},
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["on_hold"] = false,
+							["serial"] = "Player-1305-0C1FD7FB",
+							["totalabsorb"] = 0.004212,
+							["last_hps"] = 0,
+							["targets"] = {
+								["Takeera"] = 558,
+							},
+							["totalover_without_pet"] = 0.004212,
+							["healing_taken"] = 558.004212,
+							["fight_component"] = true,
+							["end_time"] = 1677877443,
+							["spec"] = 71,
+							["classe"] = "WARRIOR",
+							["nome"] = "Takeera",
+							["spells"] = {
+								["_ActorTable"] = {
+									[357945] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+											["Takeera"] = 1472,
+										},
+										["n_max"] = 558,
+										["targets"] = {
+											["Takeera"] = 558,
+										},
+										["n_min"] = 558,
+										["counter"] = 1,
+										["overheal"] = 1472,
+										["total"] = 558,
+										["c_max"] = 0,
+										["id"] = 357945,
+										["targets_absorbs"] = {
+										},
+										["c_min"] = 0,
+										["c_curado"] = 0,
+										["n_amt"] = 1,
+										["n_curado"] = 558,
+										["totaldenied"] = 0,
+										["absorbed"] = 0,
+									},
+								},
+								["tipo"] = 3,
+							},
+							["grupo"] = true,
+							["totaldenied"] = 0.004212,
+							["tipo"] = 2,
+							["custom"] = 0,
+							["last_event"] = 1677877424,
+							["aID"] = "1305-0C1FD7FB",
+							["start_time"] = 1677877443,
+							["delay"] = 0,
+							["healing_from"] = {
+								["Takeera"] = true,
+							},
+						}, -- [1]
+					},
+				}, -- [2]
+				{
+					["tipo"] = 7,
+					["combatId"] = 462,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["resource"] = 0.004034,
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["targets"] = {
+								["Takeera"] = 9,
+							},
+							["pets"] = {
+							},
+							["powertype"] = 1,
+							["classe"] = "WARRIOR",
+							["totalover"] = 0.004034,
+							["fight_component"] = true,
+							["alternatepower"] = 0.004034,
+							["aID"] = "1305-0C1FD7FB",
+							["nome"] = "Takeera",
+							["spells"] = {
+								["_ActorTable"] = {
+									[195707] = {
+										["total"] = 9,
+										["id"] = 195707,
+										["totalover"] = 0,
+										["targets"] = {
+											["Takeera"] = 9,
+										},
+										["counter"] = 3,
+									},
+								},
+								["tipo"] = 7,
+							},
+							["grupo"] = true,
+							["passiveover"] = 0.004034,
+							["tipo"] = 3,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["last_event"] = 1677877429,
+							["total"] = 9.004034,
+							["received"] = 9.004034,
+							["serial"] = "Player-1305-0C1FD7FB",
+							["spec"] = 71,
+						}, -- [1]
+					},
+				}, -- [3]
+				{
+					["tipo"] = 9,
+					["combatId"] = 462,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["pets"] = {
+							},
+							["aID"] = "1305-0C1FD7FB",
+							["buff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[6673] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 6673,
+										["uptime"] = 19,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[225788] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 225788,
+										["uptime"] = 19,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[386164] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 386164,
+										["uptime"] = 19,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[186406] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 186406,
+										["uptime"] = 19,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+									[317103] = {
+										["counter"] = 0,
+										["actived"] = false,
+										["activedamt"] = 1,
+										["refreshamt"] = 0,
+										["id"] = 317103,
+										["uptime"] = 19,
+										["targets"] = {
+										},
+										["appliedamt"] = 1,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["fight_component"] = true,
+							["nome"] = "Takeera",
+							["spec"] = 71,
+							["grupo"] = true,
+							["buff_uptime"] = 95,
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["last_event"] = 1677877443,
+							["tipo"] = 4,
+							["buff_uptime_targets"] = {
+							},
+							["serial"] = "Player-1305-0C1FD7FB",
+							["classe"] = "WARRIOR",
+						}, -- [1]
+						{
+							["flag_original"] = 68168,
+							["nome"] = "Rising Despair",
+							["GetSpellContainer"] = nil --[[ skipped inline function ]],
+							["monster"] = true,
+							["pets"] = {
+							},
+							["spell_cast"] = {
+								[326146] = 1,
+							},
+							["aID"] = "157558",
+							["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+							["tipo"] = 4,
+							["fight_component"] = true,
+							["last_event"] = 0,
+							["serial"] = "Creature-0-3061-2222-79-157558-000002607F",
+							["classe"] = "UNKNOW",
+						}, -- [2]
+					},
+				}, -- [4]
+				{
+					["tipo"] = 2,
+					["combatId"] = 462,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Takeera"] = "Player-1305-0C1FD7FB",
+				},
+				["raid_roster_indexed"] = {
+					"Takeera", -- [1]
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["alternate_power"] = {
+				},
+				["cleu_events"] = {
+					["n"] = 1,
+				},
+				["playing_solo"] = true,
+				["totals"] = {
+					4839.761767000018, -- [1]
+					557.9522440000011, -- [2]
+					{
+						8.976802999999997, -- [1]
+						[0] = -0.003221,
+						["alternatepower"] = 0,
+						[6] = -0.00172200000000089,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = -0.005830000000000002,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
+					}, -- [4]
+					["voidzone_damage"] = 0,
+					["frags_total"] = 0,
+				},
+				["player_last_events"] = {
+					["Ataraxía-Aggramar"] = {
+						{
+							true, -- [1]
+							124255, -- [2]
+							15, -- [3]
+							1677925675.969, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [1]
+						{
+							true, -- [1]
+							124255, -- [2]
+							15, -- [3]
+							1677925676.469, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [2]
+						{
+							true, -- [1]
+							124255, -- [2]
+							15, -- [3]
+							1677925677.036, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [3]
+						{
+							true, -- [1]
+							124255, -- [2]
+							15, -- [3]
+							1677925677.503, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [4]
+						{
+							true, -- [1]
+							124255, -- [2]
+							29, -- [3]
+							1677925678.036, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [5]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925678.503, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [6]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925679.003, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [7]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925679.536, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [8]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925679.969, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [9]
+						{
+							true, -- [1]
+							124255, -- [2]
+							37, -- [3]
+							1677925680.503, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [10]
+						{
+							true, -- [1]
+							124255, -- [2]
+							37, -- [3]
+							1677925681.003, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [11]
+						{
+							true, -- [1]
+							124255, -- [2]
+							37, -- [3]
+							1677925681.503, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [12]
+						{
+							true, -- [1]
+							124255, -- [2]
+							37, -- [3]
+							1677925681.936, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [13]
+						{
+							true, -- [1]
+							124255, -- [2]
+							37, -- [3]
+							1677925682.503, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [14]
+						{
+							true, -- [1]
+							124255, -- [2]
+							37, -- [3]
+							1677925683.003, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [15]
+						{
+							true, -- [1]
+							124255, -- [2]
+							37, -- [3]
+							1677925683.536, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [16]
+						{
+							true, -- [1]
+							124255, -- [2]
+							34, -- [3]
+							1677925683.969, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [17]
+						{
+							true, -- [1]
+							124255, -- [2]
+							34, -- [3]
+							1677925684.503, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [18]
+						{
+							true, -- [1]
+							124255, -- [2]
+							34, -- [3]
+							1677925685.036, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [19]
+						{
+							true, -- [1]
+							124255, -- [2]
+							34, -- [3]
+							1677925685.503, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [20]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925686.036, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [21]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925686.503, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [22]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925686.929, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [23]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925687.419, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [24]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925688.01, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [25]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925688.453, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [26]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925688.922, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [27]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925689.46, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [28]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925690.003, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [29]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925690.457, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [30]
+						{
+							true, -- [1]
+							124255, -- [2]
+							36, -- [3]
+							1677925690.963, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [31]
+						{
+							true, -- [1]
+							124255, -- [2]
+							6, -- [3]
+							1677925696.732, -- [4]
+							0, -- [5]
+							"Ataraxía-Aggramar", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [32]
+						["n"] = 1,
+					},
+				},
+				["frags_need_refresh"] = true,
+				["instance_type"] = "none",
+				["hasSaved"] = true,
+				["data_fim"] = "22:04:03",
+				["cleu_timeline"] = {
+				},
+				["enemy"] = "Rising Despair",
+				["TotalElapsedCombatTime"] = 501513.784,
+				["CombatEndedAt"] = 501513.784,
+				["aura_timeline"] = {
+				},
+				["__call"] = {
+				},
+				["data_inicio"] = "22:03:45",
+				["end_time"] = 501513.784,
+				["combat_id"] = 462,
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["damage"] = {
+						{
+							["Takeera"] = 0.003304,
+						}, -- [1]
+					},
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+							["Takeera"] = 558.004212,
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+				},
+				["tempo_start"] = 1677877424,
+				["spells_cast_timeline"] = {
+				},
+				["contra"] = "Rising Despair",
+				["combat_counter"] = 1384,
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					0, -- [1]
+					558, -- [2]
+					{
+						9, -- [1]
+						[0] = 0,
+						["alternatepower"] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 501495.121,
+				["TimeData"] = {
+				},
+				["frags"] = {
+					["Forsworn Ascended"] = 1,
 				},
 			}, -- [3]
 		},
@@ -1815,19 +2850,42 @@ _detalhes_database = {
 		["enabled"] = false,
 		["current_cooldowns"] = {
 		},
-		["lines_per_column"] = 12,
-		["show_options"] = false,
 		["pos"] = {
 		},
-		["height"] = 18,
-		["cooldowns"] = {
+		["group_frames"] = true,
+		["lines_per_column"] = 12,
+		["frames"] = {
+			["defensive-raid"] = {
+			},
+			["main"] = {
+			},
+			["ofensive"] = {
+			},
+			["defensive-target"] = {
+			},
+			["utility"] = {
+			},
+			["defensive-personal"] = {
+			},
+		},
+		["show_options"] = false,
+		["own_frame"] = {
+			["defensive-raid"] = false,
+			["ofensive"] = false,
+			["defensive-target"] = false,
+			["utility"] = false,
+			["defensive-personal"] = false,
 		},
 		["framme_locked"] = false,
+		["height"] = 18,
+		["width"] = 120,
+		["cooldowns"] = {
+		},
 		["show_conditions"] = {
 			["only_inside_instance"] = true,
 			["only_in_group"] = true,
 		},
-		["width"] = 120,
+		["show_title"] = true,
 		["filters"] = {
 			["defensive-raid"] = false,
 			["ofensive"] = true,
@@ -1836,7 +2894,7 @@ _detalhes_database = {
 			["defensive-personal"] = false,
 		},
 	},
-	["last_version"] = "10.0.2 10259",
+	["last_version"] = "10.0.5 10661",
 	["SoloTablesSaved"] = {
 		["Mode"] = 1,
 	},
@@ -1852,6 +2910,23 @@ _detalhes_database = {
 	["cached_talents"] = {
 	},
 	["last_instance_id"] = 1530,
+	["data_harvest_for_charsts"] = {
+		["players"] = {
+			{
+				["name"] = "Damage of Each Individual Player",
+				["playerOnly"] = true,
+				["playerKey"] = "total",
+				["combatObjectContainer"] = 1,
+			}, -- [1]
+		},
+		["totals"] = {
+			{
+				["combatObjectSubTableKey"] = 1,
+				["name"] = "Damage of All Player Combined",
+				["combatObjectSubTableName"] = "totals",
+			}, -- [1]
+		},
+	},
 	["announce_interrupts"] = {
 		["enabled"] = false,
 		["whisper"] = "",
@@ -1865,10 +2940,82 @@ _detalhes_database = {
 		["reverse"] = false,
 	},
 	["active_profile"] = "TakUI 4.0",
-	["last_realversion"] = 146,
+	["last_realversion"] = 148,
 	["benchmark_db"] = {
 		["frame"] = {
 		},
+	},
+	["force_font_outline"] = "",
+	["local_instances_config"] = {
+		{
+			["modo"] = 2,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["isLocked"] = true,
+			["is_open"] = true,
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+				1, -- [5]
+			},
+			["snap"] = {
+			},
+			["segment"] = 0,
+			["mode"] = 2,
+			["attribute"] = 1,
+			["pos"] = {
+				["normal"] = {
+					["y"] = -465.0799407958984,
+					["x"] = 883.436279296875,
+					["w"] = 298.6331787109375,
+					["h"] = 184.4126892089844,
+				},
+				["solo"] = {
+					["y"] = 2,
+					["x"] = 1,
+					["w"] = 300,
+					["h"] = 200,
+				},
+			},
+		}, -- [1]
+		{
+			["modo"] = 2,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["isLocked"] = true,
+			["is_open"] = true,
+			["snap"] = {
+				1, -- [1]
+			},
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				5, -- [4]
+				1, -- [5]
+			},
+			["segment"] = 0,
+			["mode"] = 2,
+			["attribute"] = 2,
+			["pos"] = {
+				["normal"] = {
+					["y"] = -414.7499618530273,
+					["x"] = 849.75,
+					["w"] = 207.4999694824219,
+					["h"] = 188.5000152587891,
+				},
+				["solo"] = {
+					["y"] = 2,
+					["x"] = 1,
+					["w"] = 300,
+					["h"] = 200,
+				},
+			},
+		}, -- [2]
 	},
 	["plugin_database"] = {
 		["DETAILS_PLUGIN_TINY_THREAT"] = {
@@ -1940,6 +3087,10 @@ _detalhes_database = {
 			["encounter_timers_dbm"] = {
 			},
 		},
+		["DETAILS_PLUGIN_COMPARETWO_WINDOW"] = {
+			["enabled"] = true,
+			["author"] = "Terciob",
+		},
 		["DETAILS_PLUGIN_STREAM_OVERLAY"] = {
 			["use_square_mode"] = false,
 			["is_first_run"] = false,
@@ -1955,7 +3106,7 @@ _detalhes_database = {
 			["minimap"] = {
 				["minimapPos"] = 353.2204949741532,
 				["radius"] = 160,
-				["hide"] = false,
+				["hide"] = true,
 			},
 			["row_height"] = 20,
 			["arrow_anchor_x"] = 0,
@@ -1972,7 +3123,7 @@ _detalhes_database = {
 			["square_amount"] = 5,
 			["enabled"] = false,
 			["arrow_size"] = 10,
-			["y"] = 4.57763671875e-05,
+			["font_size"] = 10,
 			["row_spacement"] = 21,
 			["main_frame_color"] = {
 				0, -- [1]
@@ -1987,7 +3138,6 @@ _detalhes_database = {
 				0.4, -- [4]
 			},
 			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
-			["use_spark"] = true,
 			["per_second"] = {
 				["enabled"] = false,
 				["point"] = "CENTER",
@@ -1999,10 +3149,11 @@ _detalhes_database = {
 				["update_speed"] = 0.05,
 				["attribute_type"] = 1,
 			},
+			["use_spark"] = true,
 			["x"] = 0,
 			["font_face"] = "Friz Quadrata TT",
 			["square_size"] = 32,
-			["font_size"] = 10,
+			["y"] = 4.57763671875e-05,
 			["author"] = "Details! Team",
 			["main_frame_locked"] = false,
 			["main_frame_size"] = {
@@ -2011,104 +3162,29 @@ _detalhes_database = {
 			},
 		},
 	},
-	["last_instance_time"] = 1641412520,
-	["last_day"] = "19",
 	["cached_roles"] = {
 	},
-	["mythic_dungeon_currentsaved"] = {
-		["dungeon_name"] = "Mists of Tirna Scithe",
-		["started"] = false,
-		["segment_id"] = 4,
-		["ej_id"] = 1184,
-		["started_at"] = 1641333699.7,
-		["run_id"] = 16,
-		["level"] = 15,
-		["dungeon_zone_id"] = 2290,
-		["previous_boss_killed_at"] = 1641335143,
+	["data_harvested_for_charts"] = {
 	},
-	["local_instances_config"] = {
-		{
-			["modo"] = 2,
-			["sub_attribute"] = 1,
-			["horizontalSnap"] = false,
-			["verticalSnap"] = false,
-			["isLocked"] = true,
-			["is_open"] = true,
-			["sub_atributo_last"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-				1, -- [5]
-			},
-			["snap"] = {
-			},
-			["segment"] = 0,
-			["mode"] = 2,
-			["attribute"] = 1,
-			["pos"] = {
-				["normal"] = {
-					["y"] = -455.8491668701172,
-					["x"] = 867.026123046875,
-					["w"] = 298.6329956054688,
-					["h"] = 184.4126892089844,
-				},
-				["solo"] = {
-					["y"] = 2,
-					["x"] = 1,
-					["w"] = 300,
-					["h"] = 200,
-				},
-			},
-		}, -- [1]
-		{
-			["modo"] = 2,
-			["sub_attribute"] = 1,
-			["horizontalSnap"] = false,
-			["verticalSnap"] = false,
-			["isLocked"] = true,
-			["is_open"] = true,
-			["snap"] = {
-				1, -- [1]
-			},
-			["sub_atributo_last"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				5, -- [4]
-				1, -- [5]
-			},
-			["segment"] = 0,
-			["mode"] = 2,
-			["attribute"] = 2,
-			["pos"] = {
-				["normal"] = {
-					["y"] = -414.7499618530273,
-					["x"] = 849.75,
-					["w"] = 207.4999694824219,
-					["h"] = 188.5000152587891,
-				},
-				["solo"] = {
-					["y"] = 2,
-					["x"] = 1,
-					["w"] = 300,
-					["h"] = 200,
-				},
-			},
-		}, -- [2]
+	["last_encounter"] = "Star Augur Etraeus",
+	["mythic_plus_log"] = {
+	},
+	["announce_firsthit"] = {
+		["enabled"] = true,
+		["channel"] = "SELF",
 	},
 	["ignore_nicktag"] = false,
 	["nick_tag_cache"] = {
-		["nextreset"] = 1670004712,
+		["nextreset"] = 1678773335,
 		["last_version"] = 15,
 	},
-	["combat_id"] = 461,
+	["combat_id"] = 463,
 	["savedStyles"] = {
 	},
 	["character_data"] = {
-		["logons"] = 65,
+		["logons"] = 77,
 	},
-	["combat_counter"] = 1371,
+	["combat_counter"] = 1392,
 	["announce_deaths"] = {
 		["enabled"] = false,
 		["last_hits"] = 1,
@@ -2120,50 +3196,148 @@ _detalhes_database = {
 			["tipo"] = 2,
 			["_ActorTable"] = {
 				{
-					["flag_original"] = 1297,
-					["totalabsorbed"] = 0.013389,
-					["damage_from"] = {
-					},
+					["flag_original"] = 68168,
+					["totalabsorbed"] = 0.011575,
+					["GetSpellContainer"] = nil --[[ skipped inline function ]],
 					["targets"] = {
-						["Sha of Anger"] = 13610,
-						["Valiant's Humility"] = 605323,
+						["Zzyzx-Ravencrest"] = 674,
+						["Tohunga-Arathor"] = 0,
+						["Ataraxía-Aggramar"] = 0,
+						["Takeera"] = 3148,
 					},
-					["delay"] = 0,
+					["total"] = 3822.011575,
 					["pets"] = {
 					},
-					["end_time"] = 1668804872,
-					["friendlyfire"] = {
+					["damage_from"] = {
+						["Zzyzx-Ravencrest"] = true,
 					},
-					["classe"] = "WARRIOR",
+					["delay"] = 0,
+					["classe"] = "UNKNOW",
 					["raid_targets"] = {
 					},
-					["total_without_pet"] = 618933.013389,
-					["friendlyfire_total"] = 0,
+					["total_without_pet"] = 3822.011575,
+					["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+					["aID"] = "157558",
 					["dps_started"] = false,
-					["total"] = 618933.013389,
-					["damage_taken"] = 0.013389,
-					["tipo"] = 1,
-					["nome"] = "Takeera",
-					["spec"] = 72,
-					["grupo"] = true,
+					["end_time"] = 1677877443,
+					["friendlyfire_total"] = 0,
+					["friendlyfire"] = {
+					},
+					["nome"] = "Rising Despair",
 					["spells"] = {
 						["_ActorTable"] = {
 							{
-								["c_amt"] = 11,
+								["c_amt"] = 0,
 								["b_amt"] = 0,
-								["c_dmg"] = 23782,
+								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 2027,
+								["n_max"] = 674,
 								["targets"] = {
-									["Sha of Anger"] = 2404,
-									["Valiant's Humility"] = 76098,
+									["Zzyzx-Ravencrest"] = 674,
+									["Tohunga-Arathor"] = 0,
+									["Ataraxía-Aggramar"] = 0,
+									["Takeera"] = 1783,
 								},
-								["n_dmg"] = 54720,
+								["n_dmg"] = 2457,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 55,
-								["total"] = 78502,
-								["c_max"] = 2804,
+								["counter"] = 5,
+								["total"] = 2457,
+								["c_max"] = 0,
+								["id"] = 1,
+								["r_dmg"] = 0,
+								["r_amt"] = 0,
+								["b_dmg"] = 0,
+								["a_dmg"] = 674,
+								["c_min"] = 0,
+								["successful_casted"] = 0,
+								["a_amt"] = 1,
+								["n_amt"] = 4,
+								["extra"] = {
+								},
+								["DODGE"] = 1,
+							}, -- [1]
+							[326146] = {
+								["c_amt"] = 0,
+								["b_amt"] = 0,
+								["c_dmg"] = 0,
+								["g_amt"] = 0,
+								["n_max"] = 1365,
+								["targets"] = {
+									["Takeera"] = 1365,
+								},
+								["n_dmg"] = 1365,
+								["n_min"] = 0,
+								["g_dmg"] = 0,
+								["counter"] = 1,
+								["total"] = 1365,
+								["c_max"] = 0,
+								["id"] = 326146,
+								["r_dmg"] = 0,
+								["r_amt"] = 0,
+								["b_dmg"] = 0,
+								["c_min"] = 0,
+								["successful_casted"] = 1,
+								["a_amt"] = 0,
+								["n_amt"] = 1,
+								["a_dmg"] = 0,
+								["extra"] = {
+								},
+							},
+						},
+						["tipo"] = 2,
+					},
+					["fight_component"] = true,
+					["monster"] = true,
+					["on_hold"] = false,
+					["tipo"] = 1,
+					["custom"] = 0,
+					["last_event"] = 0,
+					["damage_taken"] = 1778.011575,
+					["start_time"] = 1677877440,
+					["serial"] = "Creature-0-3061-2222-79-157558-000002607F",
+					["last_dps"] = 0,
+				}, -- [1]
+				{
+					["flag_original"] = 1297,
+					["totalabsorbed"] = 0.013326,
+					["GetSpellContainer"] = nil --[[ skipped inline function ]],
+					["targets"] = {
+						["Forsworn Acolyte"] = 30178,
+					},
+					["end_time"] = 1677877443,
+					["pets"] = {
+					},
+					["damage_from"] = {
+						["Rising Despair"] = true,
+						["Forsworn Acolyte"] = true,
+					},
+					["delay"] = 0,
+					["friendlyfire_total"] = 0,
+					["raid_targets"] = {
+					},
+					["total_without_pet"] = 30178.013326,
+					["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+					["aID"] = "1305-0C1FD7FB",
+					["dps_started"] = false,
+					["total"] = 30178.013326,
+					["spells"] = {
+						["_ActorTable"] = {
+							{
+								["c_amt"] = 0,
+								["b_amt"] = 0,
+								["c_dmg"] = 0,
+								["g_amt"] = 0,
+								["n_max"] = 850,
+								["targets"] = {
+									["Forsworn Acolyte"] = 4582,
+								},
+								["n_dmg"] = 4582,
+								["n_min"] = 0,
+								["g_dmg"] = 0,
+								["counter"] = 6,
+								["total"] = 4582,
+								["c_max"] = 0,
 								["id"] = 1,
 								["r_dmg"] = 0,
 								["r_amt"] = 0,
@@ -2171,80 +3345,80 @@ _detalhes_database = {
 								["c_min"] = 0,
 								["successful_casted"] = 0,
 								["a_amt"] = 0,
-								["n_amt"] = 44,
+								["n_amt"] = 6,
 								["a_dmg"] = 0,
 								["extra"] = {
 								},
 							}, -- [1]
-							[105771] = {
+							[12294] = {
 								["c_amt"] = 0,
 								["b_amt"] = 0,
 								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 0,
+								["n_max"] = 4590,
 								["targets"] = {
-									["Valiant's Humility"] = 0,
+									["Forsworn Acolyte"] = 11021,
 								},
-								["n_dmg"] = 0,
+								["n_dmg"] = 11021,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 0,
-								["total"] = 0,
+								["counter"] = 3,
+								["total"] = 11021,
 								["c_max"] = 0,
-								["id"] = 105771,
+								["id"] = 12294,
 								["r_dmg"] = 0,
+								["r_amt"] = 0,
+								["b_dmg"] = 0,
+								["c_min"] = 0,
+								["successful_casted"] = 0,
+								["a_amt"] = 0,
+								["n_amt"] = 3,
+								["a_dmg"] = 0,
 								["extra"] = {
 								},
-								["a_dmg"] = 0,
-								["c_min"] = 0,
-								["successful_casted"] = 0,
-								["a_amt"] = 0,
-								["n_amt"] = 0,
-								["b_dmg"] = 0,
-								["r_amt"] = 0,
 							},
-							[772] = {
-								["c_amt"] = 2,
+							[384391] = {
+								["c_amt"] = 0,
 								["b_amt"] = 0,
-								["c_dmg"] = 7035,
+								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 2716,
+								["n_max"] = 458,
 								["targets"] = {
-									["Valiant's Humility"] = 16292,
+									["Forsworn Acolyte"] = 458,
 								},
-								["n_dmg"] = 9257,
+								["n_dmg"] = 458,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 7,
-								["total"] = 16292,
-								["c_max"] = 4225,
-								["id"] = 772,
+								["counter"] = 1,
+								["total"] = 458,
+								["c_max"] = 0,
+								["id"] = 384391,
 								["r_dmg"] = 0,
 								["r_amt"] = 0,
 								["b_dmg"] = 0,
 								["c_min"] = 0,
 								["successful_casted"] = 0,
 								["a_amt"] = 0,
-								["n_amt"] = 5,
+								["n_amt"] = 1,
 								["a_dmg"] = 0,
 								["extra"] = {
 								},
 							},
 							[7384] = {
-								["c_amt"] = 7,
+								["c_amt"] = 0,
 								["b_amt"] = 0,
-								["c_dmg"] = 30312,
+								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 3878,
+								["n_max"] = 1608,
 								["targets"] = {
-									["Valiant's Humility"] = 61269,
+									["Forsworn Acolyte"] = 1608,
 								},
-								["n_dmg"] = 30957,
+								["n_dmg"] = 1608,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 18,
-								["total"] = 61269,
-								["c_max"] = 5272,
+								["counter"] = 1,
+								["total"] = 1608,
+								["c_max"] = 0,
 								["id"] = 7384,
 								["r_dmg"] = 0,
 								["r_amt"] = 0,
@@ -2252,54 +3426,27 @@ _detalhes_database = {
 								["c_min"] = 0,
 								["successful_casted"] = 0,
 								["a_amt"] = 0,
-								["n_amt"] = 11,
+								["n_amt"] = 1,
 								["a_dmg"] = 0,
 								["extra"] = {
 								},
 							},
-							[262115] = {
-								["c_amt"] = 11,
-								["b_amt"] = 0,
-								["c_dmg"] = 17170,
-								["g_amt"] = 0,
-								["n_max"] = 1130,
-								["targets"] = {
-									["Valiant's Humility"] = 50633,
-								},
-								["n_dmg"] = 33463,
-								["n_min"] = 0,
-								["g_dmg"] = 0,
-								["counter"] = 60,
-								["total"] = 50633,
-								["c_max"] = 2372,
-								["id"] = 262115,
-								["r_dmg"] = 0,
-								["r_amt"] = 0,
-								["b_dmg"] = 0,
-								["c_min"] = 0,
-								["successful_casted"] = 0,
-								["a_amt"] = 0,
-								["n_amt"] = 49,
-								["a_dmg"] = 0,
-								["extra"] = {
-								},
-							},
-							[23881] = {
+							[1464] = {
 								["c_amt"] = 0,
 								["b_amt"] = 0,
 								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 4340,
+								["n_max"] = 1886,
 								["targets"] = {
-									["Sha of Anger"] = 4340,
+									["Forsworn Acolyte"] = 1886,
 								},
-								["n_dmg"] = 4340,
+								["n_dmg"] = 1886,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
 								["counter"] = 1,
-								["total"] = 4340,
+								["total"] = 1886,
 								["c_max"] = 0,
-								["id"] = 23881,
+								["id"] = 1464,
 								["r_dmg"] = 0,
 								["r_amt"] = 0,
 								["b_dmg"] = 0,
@@ -2312,20 +3459,20 @@ _detalhes_database = {
 								},
 							},
 							[260798] = {
-								["c_amt"] = 1,
+								["c_amt"] = 0,
 								["b_amt"] = 0,
-								["c_dmg"] = 8212,
+								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 8870,
+								["n_max"] = 3836,
 								["targets"] = {
-									["Valiant's Humility"] = 59270,
+									["Forsworn Acolyte"] = 3836,
 								},
-								["n_dmg"] = 51058,
+								["n_dmg"] = 3836,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 10,
-								["total"] = 59270,
-								["c_max"] = 8212,
+								["counter"] = 1,
+								["total"] = 3836,
+								["c_max"] = 0,
 								["id"] = 260798,
 								["r_dmg"] = 0,
 								["r_amt"] = 0,
@@ -2333,108 +3480,26 @@ _detalhes_database = {
 								["c_min"] = 0,
 								["successful_casted"] = 0,
 								["a_amt"] = 0,
-								["n_amt"] = 9,
-								["a_dmg"] = 0,
-								["extra"] = {
-								},
-							},
-							[126664] = {
-								["c_amt"] = 1,
-								["b_amt"] = 0,
-								["c_dmg"] = 728,
-								["g_amt"] = 0,
-								["n_max"] = 0,
-								["targets"] = {
-									["Valiant's Humility"] = 728,
-								},
-								["n_dmg"] = 0,
-								["n_min"] = 0,
-								["g_dmg"] = 0,
-								["counter"] = 1,
-								["total"] = 728,
-								["c_max"] = 728,
-								["id"] = 126664,
-								["r_dmg"] = 0,
-								["r_amt"] = 0,
-								["b_dmg"] = 0,
-								["c_min"] = 0,
-								["successful_casted"] = 0,
-								["a_amt"] = 0,
-								["n_amt"] = 0,
-								["a_dmg"] = 0,
-								["extra"] = {
-								},
-							},
-							[199658] = {
-								["c_amt"] = 1,
-								["b_amt"] = 0,
-								["c_dmg"] = 613,
-								["g_amt"] = 0,
-								["n_max"] = 567,
-								["targets"] = {
-									["Sha of Anger"] = 5382,
-								},
-								["n_dmg"] = 4769,
-								["n_min"] = 0,
-								["g_dmg"] = 0,
-								["counter"] = 12,
-								["total"] = 5382,
-								["c_max"] = 613,
-								["id"] = 199658,
-								["r_dmg"] = 0,
-								["r_amt"] = 0,
-								["b_dmg"] = 0,
-								["c_min"] = 0,
-								["successful_casted"] = 0,
-								["a_amt"] = 0,
-								["n_amt"] = 11,
-								["a_dmg"] = 0,
-								["extra"] = {
-								},
-							},
-							[384391] = {
-								["c_amt"] = 2,
-								["b_amt"] = 0,
-								["c_dmg"] = 3228,
-								["g_amt"] = 0,
-								["n_max"] = 1144,
-								["targets"] = {
-									["Valiant's Humility"] = 10015,
-								},
-								["n_dmg"] = 6787,
-								["n_min"] = 0,
-								["g_dmg"] = 0,
-								["counter"] = 11,
-								["total"] = 10015,
-								["c_max"] = 1644,
-								["id"] = 384391,
-								["r_dmg"] = 0,
-								["r_amt"] = 0,
-								["b_dmg"] = 0,
-								["c_min"] = 0,
-								["successful_casted"] = 0,
-								["a_amt"] = 0,
-								["n_amt"] = 9,
+								["n_amt"] = 1,
 								["a_dmg"] = 0,
 								["extra"] = {
 								},
 							},
 							[323889] = {
-								["c_amt"] = 4,
+								["c_amt"] = 2,
 								["b_amt"] = 0,
-								["c_dmg"] = 5317,
+								["c_dmg"] = 2614,
 								["g_amt"] = 0,
-								["n_max"] = 1484,
+								["n_max"] = 653,
 								["targets"] = {
-									["Sha of Anger"] = 1484,
-									["Valiant's Humility"] = 10630,
+									["Forsworn Acolyte"] = 3267,
 								},
-								["n_dmg"] = 6797,
+								["n_dmg"] = 653,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 13,
-								["total"] = 12114,
-								["c_max"] = 1330,
+								["counter"] = 3,
+								["total"] = 3267,
+								["c_max"] = 1307,
 								["id"] = 323889,
 								["r_dmg"] = 0,
 								["r_amt"] = 0,
@@ -2442,108 +3507,27 @@ _detalhes_database = {
 								["c_min"] = 0,
 								["successful_casted"] = 0,
 								["a_amt"] = 0,
-								["n_amt"] = 9,
+								["n_amt"] = 1,
 								["a_dmg"] = 0,
 								["extra"] = {
 								},
 							},
-							[388539] = {
-								["c_amt"] = 4,
-								["b_amt"] = 0,
-								["c_dmg"] = 8465,
-								["g_amt"] = 0,
-								["n_max"] = 1428,
-								["targets"] = {
-									["Valiant's Humility"] = 42053,
-								},
-								["n_dmg"] = 33588,
-								["n_min"] = 0,
-								["g_dmg"] = 0,
-								["counter"] = 46,
-								["total"] = 42053,
-								["c_max"] = 2216,
-								["id"] = 388539,
-								["r_dmg"] = 0,
-								["r_amt"] = 0,
-								["b_dmg"] = 0,
-								["c_min"] = 0,
-								["successful_casted"] = 0,
-								["a_amt"] = 0,
-								["n_amt"] = 42,
-								["a_dmg"] = 0,
-								["extra"] = {
-								},
-							},
-							[12294] = {
-								["c_amt"] = 4,
-								["b_amt"] = 0,
-								["c_dmg"] = 45863,
-								["g_amt"] = 0,
-								["n_max"] = 9446,
-								["targets"] = {
-									["Valiant's Humility"] = 146815,
-								},
-								["n_dmg"] = 100952,
-								["n_min"] = 0,
-								["g_dmg"] = 0,
-								["counter"] = 22,
-								["total"] = 146815,
-								["c_max"] = 13566,
-								["id"] = 12294,
-								["r_dmg"] = 0,
-								["r_amt"] = 0,
-								["b_dmg"] = 0,
-								["c_min"] = 0,
-								["successful_casted"] = 0,
-								["a_amt"] = 0,
-								["n_amt"] = 18,
-								["a_dmg"] = 0,
-								["extra"] = {
-								},
-							},
-							[1464] = {
-								["c_amt"] = 6,
-								["b_amt"] = 0,
-								["c_dmg"] = 29232,
-								["g_amt"] = 0,
-								["n_max"] = 4135,
-								["targets"] = {
-									["Valiant's Humility"] = 64834,
-								},
-								["n_dmg"] = 35602,
-								["n_min"] = 0,
-								["g_dmg"] = 0,
-								["counter"] = 18,
-								["total"] = 64834,
-								["c_max"] = 6957,
-								["id"] = 1464,
-								["r_dmg"] = 0,
-								["r_amt"] = 0,
-								["b_dmg"] = 0,
-								["c_min"] = 0,
-								["successful_casted"] = 0,
-								["a_amt"] = 0,
-								["n_amt"] = 12,
-								["a_dmg"] = 0,
-								["extra"] = {
-								},
-							},
-							[262161] = {
+							[262115] = {
 								["c_amt"] = 1,
 								["b_amt"] = 0,
-								["c_dmg"] = 11946,
+								["c_dmg"] = 991,
 								["g_amt"] = 0,
-								["n_max"] = 4015,
+								["n_max"] = 473,
 								["targets"] = {
-									["Valiant's Humility"] = 23527,
+									["Forsworn Acolyte"] = 2410,
 								},
-								["n_dmg"] = 11581,
+								["n_dmg"] = 1419,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
 								["counter"] = 4,
-								["total"] = 23527,
-								["c_max"] = 11946,
-								["id"] = 262161,
+								["total"] = 2410,
+								["c_max"] = 991,
+								["id"] = 262115,
 								["r_dmg"] = 0,
 								["r_amt"] = 0,
 								["b_dmg"] = 0,
@@ -2555,29 +3539,29 @@ _detalhes_database = {
 								["extra"] = {
 								},
 							},
-							[50622] = {
-								["c_amt"] = 3,
+							[845] = {
+								["c_amt"] = 0,
 								["b_amt"] = 0,
-								["c_dmg"] = 8466,
+								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 2137,
+								["n_max"] = 1110,
 								["targets"] = {
-									["Valiant's Humility"] = 43159,
+									["Forsworn Acolyte"] = 1110,
 								},
-								["n_dmg"] = 34693,
+								["n_dmg"] = 1110,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 26,
-								["total"] = 43159,
-								["c_max"] = 3083,
-								["id"] = 50622,
+								["counter"] = 1,
+								["total"] = 1110,
+								["c_max"] = 0,
+								["id"] = 845,
 								["r_dmg"] = 0,
 								["r_amt"] = 0,
 								["b_dmg"] = 0,
 								["c_min"] = 0,
 								["successful_casted"] = 0,
 								["a_amt"] = 0,
-								["n_amt"] = 23,
+								["n_amt"] = 1,
 								["a_dmg"] = 0,
 								["extra"] = {
 								},
@@ -2585,156 +3569,46 @@ _detalhes_database = {
 						},
 						["tipo"] = 2,
 					},
-					["aID"] = "1305-0C1FD7FB",
-					["custom"] = 0,
-					["last_event"] = 0,
+					["damage_taken"] = 8694.013326,
+					["nome"] = "Takeera",
+					["spec"] = 71,
+					["grupo"] = true,
+					["classe"] = "WARRIOR",
 					["last_dps"] = 0,
-					["start_time"] = 1668804725,
-					["serial"] = "Player-1305-0C1FD7FB",
 					["on_hold"] = false,
-				}, -- [1]
+					["custom"] = 0,
+					["tipo"] = 1,
+					["friendlyfire"] = {
+					},
+					["start_time"] = 1677877440,
+					["serial"] = "Player-1305-0C1FD7FB",
+					["last_event"] = 0,
+				}, -- [2]
 				{
 					["flag_original"] = 68168,
-					["totalabsorbed"] = 3.003803,
+					["totalabsorbed"] = 0.012629,
 					["damage_from"] = {
-						["Jácksòn-TarrenMill"] = true,
-						["Domnica"] = true,
-						["Npk"] = true,
-						["Zephraxdh"] = true,
-						["Dirtchewer"] = true,
-						["Komodozmaj"] = true,
-						["Loadruid"] = true,
-						["Ivánna"] = true,
-						["Detknájt"] = true,
-						["Fnxseven"] = true,
-						["Trololc"] = true,
-						["Yuumi"] = true,
-						["Mircarla"] = true,
-						["Daniora"] = true,
-						["Stormraje"] = true,
-						["Gubbi"] = true,
-						["Mogshot"] = true,
-						["Pyrotusk"] = true,
-						["Magikerberra"] = true,
-						["Darkhidden"] = true,
-						["Diust"] = true,
-						["Owrangdemon"] = true,
-						["Sloperino"] = true,
-						["Dakari"] = true,
-						["Stabbytime"] = true,
-						["Zurkatel"] = true,
-						["Evoyw"] = true,
-						["Mäfre"] = true,
-						["Slamaca"] = true,
-						["Torgahl"] = true,
-						["Coconutcider"] = true,
-						["Tellas"] = true,
-						["Skyran"] = true,
-						["Hawckyy"] = true,
-						["Testopump"] = true,
-						["Wolf"] = true,
-						["Augustymcio"] = true,
-						["Xfightmaster"] = true,
-						["Scheisseamk"] = true,
-						["Dutchtouch"] = true,
-						["Devilsaur"] = true,
-						["Bloodycry"] = true,
-						["Doomwave"] = true,
-						["Mazíkéen"] = true,
-						["Ukllen"] = true,
-						["Alshgrde"] = true,
-						["Jukesidwalkr"] = true,
-						["Zauior"] = true,
-						["Baetra"] = true,
-						["Sunrenshau"] = true,
-						["Citronlime"] = true,
-						["Kms"] = true,
-						["Sugababy"] = true,
-						["Onlyfly"] = true,
-						["Depleteren"] = true,
-						["Army of the Dead|T1392565:0|t <Detknájt>"] = true,
-						["Dthun"] = true,
-						["Actionbob"] = true,
-						["Graveflayer <Detknájt>"] = true,
-						["Irønfists"] = true,
-						["Vittorio"] = true,
-						["Agricolax"] = true,
-						["Zanini"] = true,
-						["Neptoonz"] = true,
-						["Jarkhi"] = true,
-						["Nerixisys"] = true,
-						["Phenlock"] = true,
-						["Shøh"] = true,
-						["Aspectsz"] = true,
-						["Zig"] = true,
-						["Hati"] = true,
-						["Stoutstrike"] = true,
-						["Hipolita"] = true,
-						["Sruudom"] = true,
-						["Wakapakamaka"] = true,
-						["Frostimatoum"] = true,
-						["Vea"] = true,
-						["Cyrq"] = true,
-						["Bollekh"] = true,
-						["Castcastboom"] = true,
-						["Courser"] = true,
 						["Takeera"] = true,
-						["Gnaw"] = true,
-						["Xö"] = true,
-						["Kylinkani"] = true,
-						["Infernal <Phenlock>"] = true,
-						["Gastard"] = true,
-						["Darkathras"] = true,
-						["Morandia"] = true,
-						["Llndeberg"] = true,
-						["Peargrip"] = true,
-						["Ronjambo"] = true,
-						["Darkboii"] = true,
-						["Pratlock"] = true,
-						["Tyrrae"] = true,
-						["Ðrúid"] = true,
-						["Cat"] = true,
-						["Fenryr"] = true,
-						["Luunhym"] = true,
-						["Skurikkorill"] = true,
-						["Kevinkokos"] = true,
-						["Carrion Bird"] = true,
-						["Dralchar"] = true,
-						["Shaanixx"] = true,
-						["Dragonhawk"] = true,
-						["Brorbisp"] = true,
-						["Xyndra"] = true,
-						["Mcmilky"] = true,
-						["Mastaka"] = true,
-						["Zillydh"] = true,
-						["Pîmpmyimp"] = true,
-						["Jookitfel"] = true,
-						["Sukeni"] = true,
-						["Heavytank"] = true,
-						["Waldstein"] = true,
-						["Frozenhead"] = true,
-						["Hawtdamn"] = true,
-						["Bomoth"] = true,
 					},
 					["targets"] = {
-						["Heavytank"] = 3,
-						["Mazíkéen"] = 9,
+						["Takeera"] = 5546,
 					},
-					["delay"] = 0,
+					["dps_started"] = false,
 					["pets"] = {
 					},
-					["on_hold"] = false,
-					["aID"] = "",
+					["GetSpellContainer"] = nil --[[ skipped inline function ]],
+					["friendlyfire_total"] = 0,
 					["classe"] = "UNKNOW",
 					["raid_targets"] = {
 					},
-					["total_without_pet"] = 12.003803,
-					["dps_started"] = false,
+					["total_without_pet"] = 5546.012629,
+					["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+					["aID"] = "157599",
 					["fight_component"] = true,
-					["total"] = 12.003803,
-					["damage_taken"] = 1768536.003803,
-					["tipo"] = 1,
-					["nome"] = "Sha of Anger",
+					["end_time"] = 1678169020,
+					["total"] = 5546.012629,
+					["last_event"] = 0,
+					["nome"] = "Forsworn Acolyte",
 					["spells"] = {
 						["_ActorTable"] = {
 							{
@@ -2742,94 +3616,207 @@ _detalhes_database = {
 								["b_amt"] = 0,
 								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 9,
+								["n_max"] = 603,
 								["targets"] = {
-									["Heavytank"] = 3,
-									["Mazíkéen"] = 9,
+									["Takeera"] = 1093,
 								},
-								["n_dmg"] = 12,
+								["n_dmg"] = 1093,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 2,
-								["total"] = 12,
+								["counter"] = 3,
+								["total"] = 1093,
 								["c_max"] = 0,
 								["id"] = 1,
 								["r_dmg"] = 0,
 								["r_amt"] = 0,
 								["b_dmg"] = 0,
+								["PARRY"] = 1,
 								["c_min"] = 0,
 								["successful_casted"] = 0,
 								["a_amt"] = 0,
 								["n_amt"] = 2,
+								["extra"] = {
+								},
+								["a_dmg"] = 0,
+							}, -- [1]
+							[315454] = {
+								["c_amt"] = 0,
+								["b_amt"] = 0,
+								["c_dmg"] = 0,
+								["g_amt"] = 0,
+								["n_max"] = 1535,
+								["targets"] = {
+									["Takeera"] = 4453,
+								},
+								["n_dmg"] = 4453,
+								["n_min"] = 0,
+								["g_dmg"] = 0,
+								["counter"] = 3,
+								["total"] = 4453,
+								["c_max"] = 0,
+								["id"] = 315454,
+								["r_dmg"] = 0,
+								["r_amt"] = 0,
+								["b_dmg"] = 0,
+								["c_min"] = 0,
+								["successful_casted"] = 3,
+								["a_amt"] = 0,
+								["n_amt"] = 3,
 								["a_dmg"] = 0,
 								["extra"] = {
 								},
-							}, -- [1]
+							},
 						},
 						["tipo"] = 2,
 					},
-					["friendlyfire"] = {
-					},
-					["friendlyfire_total"] = 0,
-					["end_time"] = 1668804872,
-					["custom"] = 0,
-					["last_event"] = 0,
-					["last_dps"] = 0,
-					["start_time"] = 1668804866,
-					["serial"] = "Vehicle-0-1631-870-17532-60491-000077F103",
 					["monster"] = true,
-				}, -- [2]
-				{
-					["flag_original"] = 68136,
-					["totalabsorbed"] = 0.011863,
-					["damage_from"] = {
-						["Takeera"] = true,
-					},
-					["targets"] = {
-					},
-					["pets"] = {
-					},
-					["last_dps"] = 0,
+					["delay"] = 0,
+					["damage_taken"] = 30178.012629,
 					["friendlyfire"] = {
 					},
-					["aID"] = "154564",
-					["raid_targets"] = {
-					},
-					["total_without_pet"] = 0.011863,
-					["delay"] = 0,
-					["fight_component"] = true,
-					["end_time"] = 1668812647,
-					["friendlyfire_total"] = 0,
-					["damage_taken"] = 605323.011863,
-					["nome"] = "Valiant's Humility",
-					["spells"] = {
-						["_ActorTable"] = {
-						},
-						["tipo"] = 2,
-					},
-					["tipo"] = 1,
-					["dps_started"] = false,
-					["total"] = 0.011863,
 					["custom"] = 0,
-					["last_event"] = 0,
+					["tipo"] = 1,
 					["on_hold"] = false,
-					["start_time"] = 1668812644,
-					["serial"] = "Creature-0-3102-2222-1049-154564-00007795CC",
-					["classe"] = "UNKNOW",
+					["start_time"] = 1678169017,
+					["serial"] = "Creature-0-1469-2222-110-157599-000006D31E",
+					["last_dps"] = 0,
 				}, -- [3]
 			},
 		}, -- [1]
 		{
 			["tipo"] = 3,
 			["_ActorTable"] = {
+				{
+					["flag_original"] = 1297,
+					["targets_overheal"] = {
+						["Takeera"] = 0,
+					},
+					["GetSpellContainer"] = nil --[[ skipped inline function ]],
+					["pets"] = {
+					},
+					["iniciar_hps"] = false,
+					["heal_enemy_amt"] = 0,
+					["totalover"] = 3013.01832,
+					["total_without_pet"] = 5247.018320000001,
+					["total"] = 5247.018320000001,
+					["targets_absorbs"] = {
+					},
+					["heal_enemy"] = {
+					},
+					["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+					["on_hold"] = false,
+					["serial"] = "Player-1305-0C1FD7FB",
+					["totalabsorb"] = 0.01832,
+					["last_hps"] = 0,
+					["targets"] = {
+						["Takeera"] = 0,
+					},
+					["totalover_without_pet"] = 0.01832,
+					["healing_taken"] = 5247.018320000001,
+					["fight_component"] = true,
+					["end_time"] = 1677877443,
+					["spec"] = 71,
+					["classe"] = "WARRIOR",
+					["nome"] = "Takeera",
+					["spells"] = {
+						["_ActorTable"] = {
+							[383104] = {
+								["c_amt"] = 0,
+								["totalabsorb"] = 0,
+								["targets_overheal"] = {
+								},
+								["n_max"] = 402,
+								["targets"] = {
+									["Takeera"] = 1206,
+								},
+								["n_min"] = 0,
+								["counter"] = 3,
+								["overheal"] = 0,
+								["total"] = 1206,
+								["c_max"] = 0,
+								["id"] = 383104,
+								["targets_absorbs"] = {
+								},
+								["c_min"] = 0,
+								["c_curado"] = 0,
+								["n_curado"] = 1206,
+								["totaldenied"] = 0,
+								["n_amt"] = 3,
+								["absorbed"] = 0,
+							},
+							[357945] = {
+								["c_amt"] = 0,
+								["totalabsorb"] = 0,
+								["targets_overheal"] = {
+									["Takeera"] = 3013,
+								},
+								["n_max"] = 2030,
+								["targets"] = {
+									["Takeera"] = 3078,
+								},
+								["n_min"] = 0,
+								["counter"] = 3,
+								["overheal"] = 3013,
+								["total"] = 3078,
+								["c_max"] = 0,
+								["id"] = 357945,
+								["targets_absorbs"] = {
+								},
+								["c_min"] = 0,
+								["c_curado"] = 0,
+								["n_amt"] = 3,
+								["n_curado"] = 3078,
+								["totaldenied"] = 0,
+								["absorbed"] = 0,
+							},
+							[143924] = {
+								["c_amt"] = 0,
+								["totalabsorb"] = 0,
+								["targets_overheal"] = {
+								},
+								["n_max"] = 294,
+								["targets"] = {
+									["Takeera"] = 963,
+								},
+								["n_min"] = 0,
+								["counter"] = 8,
+								["overheal"] = 0,
+								["total"] = 963,
+								["c_max"] = 0,
+								["id"] = 143924,
+								["targets_absorbs"] = {
+								},
+								["c_min"] = 0,
+								["c_curado"] = 0,
+								["n_curado"] = 963,
+								["totaldenied"] = 0,
+								["n_amt"] = 8,
+								["absorbed"] = 0,
+							},
+						},
+						["tipo"] = 3,
+					},
+					["grupo"] = true,
+					["totaldenied"] = 0.01832,
+					["tipo"] = 2,
+					["custom"] = 0,
+					["last_event"] = 0,
+					["aID"] = "1305-0C1FD7FB",
+					["start_time"] = 1677877440,
+					["delay"] = 0,
+					["healing_from"] = {
+						["Takeera"] = true,
+					},
+				}, -- [1]
 			},
 		}, -- [2]
 		{
 			["tipo"] = 7,
 			["_ActorTable"] = {
 				{
-					["received"] = 107.3232481907349,
-					["resource"] = 0.08824699999999999,
+					["flag_original"] = 1297,
+					["resource"] = 0.07060000000000002,
+					["GetSpellContainer"] = nil --[[ skipped inline function ]],
 					["targets"] = {
 						["Takeera"] = 0,
 					},
@@ -2837,77 +3824,52 @@ _detalhes_database = {
 					},
 					["powertype"] = 1,
 					["classe"] = "WARRIOR",
-					["passiveover"] = 0.007041,
-					["total"] = 107.3232481907349,
+					["passiveover"] = 0.007524,
+					["fight_component"] = true,
+					["alternatepower"] = 0.019259,
+					["spec"] = 71,
 					["nome"] = "Takeera",
 					["spells"] = {
 						["_ActorTable"] = {
-							[389774] = {
-								["total"] = 60,
-								["id"] = 389774,
-								["totalover"] = 0,
-								["targets"] = {
-									["Takeera"] = 0,
-								},
-								["counter"] = 4,
-							},
-							[100] = {
-								["total"] = 0,
-								["id"] = 100,
-								["totalover"] = 0,
-								["targets"] = {
-									["Takeera"] = 0,
-								},
-								["counter"] = 0,
-							},
-							[23881] = {
-								["total"] = 8,
-								["id"] = 23881,
-								["totalover"] = 0,
-								["targets"] = {
-									["Takeera"] = 0,
-								},
-								["counter"] = 1,
-							},
-							[384362] = {
+							[262232] = {
 								["total"] = 10,
-								["id"] = 384362,
+								["id"] = 262232,
 								["totalover"] = 0,
 								["targets"] = {
 									["Takeera"] = 0,
 								},
-								["counter"] = 3,
+								["counter"] = 2,
 							},
-							[280715] = {
-								["total"] = 4,
-								["id"] = 280715,
+							[195707] = {
+								["total"] = 15,
+								["id"] = 195707,
+								["totalover"] = 0,
+								["targets"] = {
+									["Takeera"] = 0,
+								},
+								["counter"] = 5,
+							},
+							[392793] = {
+								["total"] = 6,
+								["id"] = 392793,
 								["totalover"] = 0,
 								["targets"] = {
 									["Takeera"] = 0,
 								},
 								["counter"] = 1,
-							},
-							[107574] = {
-								["total"] = 25.30000019073486,
-								["id"] = 107574,
-								["totalover"] = 0,
-								["targets"] = {
-									["Takeera"] = 0,
-								},
-								["counter"] = 3,
 							},
 						},
 						["tipo"] = 7,
 					},
 					["grupo"] = true,
-					["spec"] = 72,
-					["aID"] = "1305-0C1FD7FB",
+					["total"] = 31.019259,
 					["last_event"] = 0,
+					["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
 					["tipo"] = 3,
-					["alternatepower"] = 0.023248,
-					["flag_original"] = 1297,
+					["received"] = 31.019259,
+					["aID"] = "1305-0C1FD7FB",
 					["serial"] = "Player-1305-0C1FD7FB",
-					["totalover"] = 0.007041,
+					["totalover"] = 0.007524,
 				}, -- [1]
 			},
 		}, -- [3]
@@ -2918,296 +3880,198 @@ _detalhes_database = {
 					["flag_original"] = 1047,
 					["debuff_uptime_spells"] = {
 						["_ActorTable"] = {
-							[115804] = {
-								["counter"] = 0,
-								["activedamt"] = 1,
-								["appliedamt"] = 1,
-								["id"] = 115804,
-								["uptime"] = 134,
-								["targets"] = {
-								},
-								["refreshamt"] = 21,
-							},
-							[208086] = {
-								["counter"] = 0,
-								["activedamt"] = 0,
-								["appliedamt"] = 4,
-								["id"] = 208086,
-								["uptime"] = 40,
-								["targets"] = {
-								},
-								["refreshamt"] = 0,
-							},
-							[388539] = {
-								["counter"] = 0,
-								["activedamt"] = 0,
-								["appliedamt"] = 3,
-								["id"] = 388539,
-								["uptime"] = 106,
-								["targets"] = {
-								},
-								["refreshamt"] = 4,
-							},
-							[324260] = {
-								["counter"] = 0,
-								["activedamt"] = 0,
-								["appliedamt"] = 1,
-								["id"] = 324260,
-								["uptime"] = 3,
-								["targets"] = {
-								},
-								["refreshamt"] = 0,
-							},
 							[262115] = {
-								["counter"] = 0,
-								["activedamt"] = 1,
-								["appliedamt"] = 1,
-								["id"] = 262115,
-								["uptime"] = 140,
-								["targets"] = {
-								},
-								["refreshamt"] = 51,
-							},
-							[358404] = {
 								["counter"] = 0,
 								["activedamt"] = 0,
 								["appliedamt"] = 2,
-								["id"] = 358404,
-								["uptime"] = 8,
+								["id"] = 262115,
+								["uptime"] = 11,
 								["targets"] = {
 								},
-								["refreshamt"] = 0,
+								["refreshamt"] = 1,
+							},
+							[115804] = {
+								["counter"] = 0,
+								["activedamt"] = 0,
+								["appliedamt"] = 2,
+								["id"] = 115804,
+								["uptime"] = 9,
+								["targets"] = {
+								},
+								["refreshamt"] = 1,
 							},
 						},
 						["tipo"] = 9,
 					},
+					["GetSpellContainer"] = nil --[[ skipped inline function ]],
 					["pets"] = {
 					},
 					["classe"] = "WARRIOR",
 					["buff_uptime_spells"] = {
 						["_ActorTable"] = {
-							[248622] = {
+							[345535] = {
 								["counter"] = 0,
-								["activedamt"] = 4,
-								["appliedamt"] = 4,
-								["id"] = 248622,
-								["uptime"] = 39,
+								["activedamt"] = 1,
+								["appliedamt"] = 1,
+								["id"] = 345535,
+								["uptime"] = 8,
 								["targets"] = {
 								},
 								["refreshamt"] = 0,
 							},
-							[390581] = {
+							[317103] = {
 								["counter"] = 0,
-								["activedamt"] = 4,
-								["appliedamt"] = 4,
-								["id"] = 390581,
-								["uptime"] = 44,
+								["activedamt"] = 2,
+								["appliedamt"] = 2,
+								["id"] = 317103,
+								["uptime"] = 36,
 								["targets"] = {
 								},
-								["refreshamt"] = 40,
+								["refreshamt"] = 0,
 							},
-							[208086] = {
+							[7384] = {
 								["counter"] = 0,
-								["activedamt"] = 4,
-								["appliedamt"] = 4,
-								["id"] = 208086,
-								["uptime"] = 40,
+								["activedamt"] = 1,
+								["appliedamt"] = 1,
+								["id"] = 7384,
+								["uptime"] = 4,
 								["targets"] = {
 								},
 								["refreshamt"] = 0,
 							},
 							[386164] = {
 								["counter"] = 0,
-								["activedamt"] = 1,
-								["appliedamt"] = 1,
+								["activedamt"] = 2,
+								["appliedamt"] = 2,
 								["id"] = 386164,
-								["uptime"] = 140,
+								["uptime"] = 36,
 								["targets"] = {
 								},
 								["refreshamt"] = 0,
 							},
-							[352917] = {
+							[225788] = {
 								["counter"] = 0,
 								["activedamt"] = 2,
 								["appliedamt"] = 2,
-								["id"] = 352917,
-								["uptime"] = 27,
+								["id"] = 225788,
+								["uptime"] = 36,
 								["targets"] = {
 								},
 								["refreshamt"] = 0,
-							},
-							[328900] = {
-								["counter"] = 0,
-								["activedamt"] = 2,
-								["appliedamt"] = 2,
-								["id"] = 328900,
-								["uptime"] = 140,
-								["targets"] = {
-								},
-								["refreshamt"] = 78,
 							},
 							[6673] = {
 								["counter"] = 0,
 								["activedamt"] = 2,
 								["appliedamt"] = 2,
 								["id"] = 6673,
-								["uptime"] = 144,
-								["targets"] = {
-								},
-								["refreshamt"] = 0,
-							},
-							[289555] = {
-								["counter"] = 0,
-								["activedamt"] = 0,
-								["appliedamt"] = 0,
-								["id"] = 289555,
-								["uptime"] = 0,
-								["targets"] = {
-								},
-								["refreshamt"] = 0,
-							},
-							[324748] = {
-								["counter"] = 0,
-								["activedamt"] = 6,
-								["appliedamt"] = 6,
-								["id"] = 324748,
-								["uptime"] = 82,
-								["targets"] = {
-								},
-								["refreshamt"] = 4,
-							},
-							[107574] = {
-								["counter"] = 0,
-								["activedamt"] = 3,
-								["appliedamt"] = 3,
-								["id"] = 107574,
-								["uptime"] = 48,
-								["targets"] = {
-								},
-								["refreshamt"] = 0,
-							},
-							[392778] = {
-								["counter"] = 0,
-								["activedamt"] = 5,
-								["appliedamt"] = 5,
-								["id"] = 392778,
-								["uptime"] = 60,
-								["targets"] = {
-								},
-								["refreshamt"] = 1,
-							},
-							[383316] = {
-								["counter"] = 0,
-								["activedamt"] = 4,
-								["appliedamt"] = 4,
-								["id"] = 383316,
 								["uptime"] = 36,
 								["targets"] = {
 								},
 								["refreshamt"] = 0,
 							},
-							[345535] = {
+							[186406] = {
 								["counter"] = 0,
-								["activedamt"] = 5,
-								["appliedamt"] = 5,
-								["id"] = 345535,
-								["uptime"] = 37,
+								["activedamt"] = 2,
+								["appliedamt"] = 2,
+								["id"] = 186406,
+								["uptime"] = 36,
 								["targets"] = {
 								},
 								["refreshamt"] = 0,
 							},
-							[199854] = {
+							[262232] = {
 								["counter"] = 0,
-								["activedamt"] = 19,
-								["appliedamt"] = 19,
-								["id"] = 199854,
-								["uptime"] = 27,
+								["activedamt"] = 2,
+								["appliedamt"] = 2,
+								["id"] = 262232,
+								["uptime"] = 8,
+								["targets"] = {
+								},
+								["refreshamt"] = 0,
+							},
+							[32216] = {
+								["counter"] = 0,
+								["activedamt"] = 1,
+								["appliedamt"] = 1,
+								["id"] = 32216,
+								["uptime"] = 10,
 								["targets"] = {
 								},
 								["refreshamt"] = 1,
 							},
-							[386208] = {
+							[328900] = {
 								["counter"] = 0,
 								["activedamt"] = 1,
 								["appliedamt"] = 1,
-								["id"] = 386208,
-								["uptime"] = 4,
+								["id"] = 328900,
+								["uptime"] = 15,
 								["targets"] = {
 								},
-								["refreshamt"] = 0,
-							},
-							[85739] = {
-								["counter"] = 0,
-								["activedamt"] = 1,
-								["appliedamt"] = 1,
-								["id"] = 85739,
-								["uptime"] = 4,
-								["targets"] = {
-								},
-								["refreshamt"] = 1,
-							},
-							[7384] = {
-								["counter"] = 0,
-								["activedamt"] = 15,
-								["appliedamt"] = 15,
-								["id"] = 7384,
-								["uptime"] = 53,
-								["targets"] = {
-								},
-								["refreshamt"] = 3,
-							},
-							[389774] = {
-								["counter"] = 0,
-								["activedamt"] = 4,
-								["appliedamt"] = 4,
-								["id"] = 389774,
-								["uptime"] = 18,
-								["targets"] = {
-								},
-								["refreshamt"] = 0,
-							},
-							[52437] = {
-								["counter"] = 0,
-								["activedamt"] = 10,
-								["appliedamt"] = 10,
-								["id"] = 52437,
-								["uptime"] = 23,
-								["targets"] = {
-								},
-								["refreshamt"] = 0,
+								["refreshamt"] = 7,
 							},
 						},
 						["tipo"] = 9,
 					},
-					["debuff_uptime"] = 431,
+					["fight_component"] = true,
+					["debuff_uptime"] = 20,
+					["aID"] = "1305-0C1FD7FB",
 					["nome"] = "Takeera",
-					["spec"] = 72,
+					["spec"] = 71,
 					["grupo"] = true,
 					["spell_cast"] = {
-						[345535] = 5,
-						[389774] = 2,
-						[1464] = 18,
-						[23881] = 1,
-						[772] = 7,
-						[190411] = 1,
-						[107574] = 2,
-						[324260] = 1,
-						[163201] = 10,
-						[12294] = 22,
-						[324748] = 10,
-						[262161] = 4,
-						[7384] = 18,
+						[845] = 1,
+						[163201] = 1,
+						[7384] = 1,
+						[1464] = 1,
+						[345535] = 1,
+						[12294] = 3,
 					},
-					["aID"] = "1305-0C1FD7FB",
-					["tipo"] = 4,
-					["last_event"] = 0,
-					["buff_uptime"] = 966,
 					["buff_uptime_targets"] = {
 					},
+					["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+					["last_event"] = 0,
+					["tipo"] = 4,
+					["buff_uptime"] = 225,
 					["serial"] = "Player-1305-0C1FD7FB",
 					["debuff_uptime_targets"] = {
 					},
 				}, -- [1]
+				{
+					["flag_original"] = 68168,
+					["nome"] = "Rising Despair",
+					["GetSpellContainer"] = nil --[[ skipped inline function ]],
+					["fight_component"] = true,
+					["pets"] = {
+					},
+					["spell_cast"] = {
+						[326146] = 1,
+					},
+					["aID"] = "157558",
+					["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+					["tipo"] = 4,
+					["monster"] = true,
+					["last_event"] = 0,
+					["serial"] = "Creature-0-3061-2222-79-157558-000002607F",
+					["classe"] = "UNKNOW",
+				}, -- [2]
+				{
+					["flag_original"] = 68168,
+					["nome"] = "Forsworn Acolyte",
+					["GetSpellContainer"] = nil --[[ skipped inline function ]],
+					["fight_component"] = true,
+					["pets"] = {
+					},
+					["spell_cast"] = {
+						[315454] = 3,
+					},
+					["last_event"] = 0,
+					["GetSpellTableFromContainer"] = nil --[[ skipped inline function ]],
+					["classe"] = "UNKNOW",
+					["monster"] = true,
+					["aID"] = "157599",
+					["serial"] = "Creature-0-1469-2222-110-157599-000006D31E",
+					["tipo"] = 4,
+				}, -- [3]
 			},
 		}, -- [4]
 		{
@@ -3219,36 +4083,48 @@ _detalhes_database = {
 		},
 		["raid_roster_indexed"] = {
 		},
-		["spells_cast_timeline"] = {
+		["segments_added"] = {
+			{
+				["elapsed"] = 17.07899999999791,
+				["type"] = 0,
+				["name"] = "Forsworn Acolyte",
+				["clock"] = "07:03:23",
+			}, -- [1]
+			{
+				["elapsed"] = 18.66300000000047,
+				["type"] = 0,
+				["name"] = "Rising Despair",
+				["clock"] = "22:03:45",
+			}, -- [2]
 		},
-		["tempo_start"] = 1210742.09,
-		["last_events_tables"] = {
+		["tempo_start"] = 1677877424,
+		["cleu_timeline"] = {
 		},
 		["alternate_power"] = {
 		},
-		["combat_counter"] = 1348,
+		["combat_counter"] = 1383,
 		["totals"] = {
-			27916668.760495, -- [1]
-			0.512202, -- [2]
+			174423.077721, -- [1]
+			5530.021957000001, -- [2]
 			{
-				472.4496561907349, -- [1]
-				[0] = 540.1463860000001,
+				56.018863, -- [1]
+				[0] = 0,
 				["alternatepower"] = 0,
-				[3] = 70.032231,
-				[6] = 319.038123,
+				[6] = 0,
+				[3] = 0,
 			}, -- [3]
 			{
 				["buff_uptime"] = 0,
 				["ress"] = 0,
-				["cooldowns_defensive"] = 0,
-				["dispell"] = 0,
+				["dead"] = 0,
+				["cc_break"] = 0,
 				["interrupt"] = 0,
 				["debuff_uptime"] = 0,
-				["cc_break"] = 0,
-				["dead"] = 0,
+				["dispell"] = 0,
+				["cooldowns_defensive"] = 0,
 			}, -- [4]
-			["frags_total"] = 0,
 			["voidzone_damage"] = 0,
+			["frags_total"] = 0,
 		},
 		["player_last_events"] = {
 		},
@@ -3257,88 +4133,79 @@ _detalhes_database = {
 		},
 		["__call"] = {
 		},
-		["data_inicio"] = "21:54:28",
-		["end_time"] = 2937559.178,
+		["data_inicio"] = "22:03:45",
+		["end_time"] = 89061.841,
+		["last_events_tables"] = {
+		},
 		["totals_grupo"] = {
-			618933.010632, -- [1]
-			0, -- [2]
+			30178.008278, -- [1]
+			5247.012773, -- [2]
 			{
-				107.3162071907349, -- [1]
+				31.011735, -- [1]
 				[0] = 0,
 				["alternatepower"] = 0,
-				[3] = 0,
 				[6] = 0,
+				[3] = 0,
 			}, -- [3]
 			{
 				["buff_uptime"] = 0,
 				["ress"] = 0,
-				["cooldowns_defensive"] = 0,
-				["dispell"] = 0,
+				["dead"] = 0,
+				["cc_break"] = 0,
 				["interrupt"] = 0,
 				["debuff_uptime"] = 0,
-				["cc_break"] = 0,
-				["dead"] = 0,
+				["dispell"] = 0,
+				["cooldowns_defensive"] = 0,
 			}, -- [4]
 		},
-		["segments_added"] = {
-			{
-				["elapsed"] = 140.8309999997728,
-				["type"] = 0,
-				["name"] = "Valiant's Humility",
-				["clock"] = "00:01:46",
-			}, -- [1]
-			{
-				["elapsed"] = 4.385999999940395,
-				["type"] = 0,
-				["name"] = "Sha of Anger",
-				["clock"] = "21:54:28",
-			}, -- [2]
-			{
-				["elapsed"] = 2929569.197,
-				["type"] = 0,
-				["name"] = "Unknown",
-				["clock"] = 0,
-			}, -- [3]
-		},
+		["overall_refreshed"] = true,
 		["PhaseData"] = {
 			{
 				1, -- [1]
 				1, -- [2]
 			}, -- [1]
-			["damage_section"] = {
+			["damage"] = {
 			},
 			["heal_section"] = {
 			},
 			["heal"] = {
 			},
-			["damage"] = {
+			["damage_section"] = {
 			},
 		},
-		["cleu_timeline"] = {
-		},
 		["hasSaved"] = true,
-		["frags"] = {
+		["spells_cast_timeline"] = {
 		},
-		["data_fim"] = "00:04:07",
+		["data_fim"] = "07:03:40",
 		["overall_enemy_name"] = "-- x -- x --",
 		["CombatSkillCache"] = {
 		},
-		["overall_refreshed"] = true,
-		["start_time"] = 7844.663999999873,
+		["frags"] = {
+		},
+		["start_time"] = 89026.099,
 		["TimeData"] = {
 			["Player Damage Done"] = {
+			},
+			["Raid Damage Done"] = {
 			},
 		},
 		["cleu_events"] = {
 			["n"] = 1,
 		},
 	},
-	["force_font_outline"] = "",
-	["announce_firsthit"] = {
-		["enabled"] = true,
-		["channel"] = "SELF",
+	["last_day"] = "10",
+	["last_instance_time"] = 1641412520,
+	["mythic_dungeon_currentsaved"] = {
+		["dungeon_name"] = "Mists of Tirna Scithe",
+		["started"] = false,
+		["segment_id"] = 4,
+		["ej_id"] = 1184,
+		["started_at"] = 1641333699.7,
+		["run_id"] = 16,
+		["level"] = 15,
+		["dungeon_zone_id"] = 2290,
+		["previous_boss_killed_at"] = 1641335143,
 	},
-	["last_encounter"] = "Star Augur Etraeus",
 	["announce_cooldowns"] = {
 		["enabled"] = false,
 		["ignored_cooldowns"] = {

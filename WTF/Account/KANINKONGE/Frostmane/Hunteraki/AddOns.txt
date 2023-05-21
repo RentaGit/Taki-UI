@@ -121,3 +121,7 @@ ProjectAzilroka: disabled
 ElvUI_BenikUI: disabled
 !KMediaTags: disabled
 Tukui: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled

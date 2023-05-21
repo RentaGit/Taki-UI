@@ -28,20 +28,20 @@ L["API"] = "API"
 L["For more information, please visit one of the sites listed below."] = "Для получения подробной информации, пожалуйста посетите один из сайтов расположенных ниже."
 L["Masque is a skinning engine for button-based add-ons."] = "Masque - это аддон для изменения внешнего вида кнопок."
 L["Select to view."] = "Выберите, чтобы посмотреть."
--- L["Supporters"] = "Supporters"
+L["Supporters"] = "Поддержка"
 L["You must have an add-on that supports Masque installed to use it."] = "У Вас должны быть установлены аддоны, поддерживающие Masque"
 
 ----------------------------------------
 -- Blizzard Classic Skin
 ---
 
--- L["The default Classic button style."] = "The default Classic button style."
+L["The default Classic button style."] = "Классический стиль кнопки по умолчанию."
 
 ----------------------------------------
 -- Blizzard Modern Skin
 ---
 
--- L["The default Dragonflight button style."] = "The default Dragonflight button style."
+L["The default Dragonflight button style."] = "Стиль кнопки Dragonflight по умолчанию."
 
 ----------------------------------------
 -- Classic Redux Skin
@@ -93,6 +93,7 @@ L["Authors"] = "Авторы"
 L["Click for details."] = "Нажмите для подробностей."
 L["Compatible"] = "Совместим"
 L["Description"] = "Описание"
+-- L["Discord"] = "Discord"
 L["Incompatible"] = "Несовместим"
 L["Installed Skins"] = "Установленные скины"
 L["No description available."] = "Нет описания."
@@ -111,12 +112,15 @@ L["Websites"] = "Сайты"
 -- Interface Settings
 ---
 
--- L["Alternate Sorting"] = "Alternate Sorting"
--- L["Causes the skins included with Masque to be listed above third-party skins."] = "Causes the skins included with Masque to be listed above third-party skins."
-L["Enable the Minimap icon."] = "Отображать иконку у миникарты."
+-- L["Add-On Compartment"] = "Add-On Compartment"
+L["Alternate Sorting"] = "Альтернативная сортировка"
+L["Causes the skins included with Masque to be listed above third-party skins."] = "Приводит к тому, что скины, включенные в Masque, будут в списке выше сторонних скинов."
 L["Interface"] = "Интерфейс"
 L["Interface Settings"] = "Настройки интерфейса"
-L["Minimap Icon"] = "Иконка у миникарты"
+-- L["Menu Icon"] = "Menu Icon"
+-- L["Minimap"] = "Minimap"
+-- L["None"] = "None"
+-- L["Select where Masque's menu icon is displayed."] = "Select where Masque's menu icon is displayed."
 L["Stand-Alone GUI"] = "Внешний фрейм настроек"
 L["This section will allow you to adjust settings that affect Masque's interface."] = "Этот раздел позволяет настраивать то, как Masque влияет на интерфейс."
 L["Use a resizable, stand-alone options window."] = "Использовать отдельное окно настроек."
@@ -126,6 +130,12 @@ L["Use a resizable, stand-alone options window."] = "Использовать о
 ---
 
 L["Click to open Masque's settings."] = "Нажмите для открытия настроек Masque."
+
+----------------------------------------
+-- Modern Enhanced Skin
+---
+
+-- L["An enhanced version of the Dragonflight button style."] = "An enhanced version of the Dragonflight button style."
 
 ----------------------------------------
 -- Performance Settings
@@ -150,7 +160,7 @@ L["Profile Settings"] = "Настройки профиля"
 -- Skin Settings
 ---
 
--- L["Adjust the scale of this group's skin."] = "Adjust the scale of this group's skin."
+L["Adjust the scale of this group's skin."] = "Отрегулировать масштаб скина этой группы."
 L["Backdrop"] = "Фон"
 L["Checked"] = "При выделении"
 L["Color"] = "Цвет"
@@ -159,7 +169,7 @@ L["Cooldown"] = "Анимация перезарядки способности"
 L["Disable"] = "Отключить"
 L["Disable the skinning of this group."] = "Отключить скины для этой группы."
 L["Enable"] = "Включить"
--- L["Enable skin scaling."] = "Enable skin scaling."
+L["Enable skin scaling."] = "Включить масштабирование скина."
 L["Enable the Backdrop texture."] = "Включить настройки фона текстуры."
 L["Enable the Gloss texture."] = "Включить настройки глянцевой текстуры."
 L["Enable the Shadow texture."] = "Включить настройки текстуры тени."
@@ -169,11 +179,11 @@ L["Global Settings"] = "Настройки"
 L["Gloss"] = "Глянец"
 L["Highlight"] = "При наведении"
 L["Normal"] = "Нормальный"
--- L["Pulse"] = "Pulse"
+L["Pulse"] = "Импульс"
 L["Pushed"] = "При нажатии"
 L["Reset all skin options to the defaults."] = "Установить значения цветов по умолчанию."
 L["Reset Skin"] = "Сбросить цвета"
--- L["Scale"] = "Scale"
+L["Scale"] = "Масштаб"
 L["Set the color of the Backdrop texture."] = "Установить цвет фона текстуры."
 L["Set the color of the Checked texture."] = "Установить цвет текстуры при выделении."
 L["Set the color of the Cooldown animation."] = "Установить цвет анимации перезарядки способностей."

@@ -1,11 +1,23 @@
-@cont1nuity:
-- Fixing spec icon indicators for evoker.
-- More fixes for invisible nameplates.
-- Better hide blizzard resources on the personal bar if necessary.
-- Fixing aura tracking lists not working properly after importing profiles.
-- Adding more 'forced in combat' units for Dragonflight dungeon boss adds.
-- Adding additional arrow target indicators.
+@kitsunekyo:
+- Add addon compartment support
 
 @Terciob:
-- Multiple Script bug fixes.
+- Fixed 'Ultra Important Cast' script showing red color for interruptible casts.
+- Updates to Plater default scripts for season 2.
+- Details Framework updates.
+
+@cont1nuity:
+- Support new evoker spec.
+- Move addon compartment support to LibDBIcon.
+- Additional work on DBM Boss-Mod-Icon-Bars.
+- Do not print usage info by default.
+- Fixing an issue with internal default cast color handling.
+- Fixing an issue internal unit names.
+- Fixing an issue with the Tooltip API.
+- Ensure that no artifacts are shown on soft-interact objects.
+- Further support for DBM Timer Icons.
+- Export/Import of audio cues from the Cast Colors and Names tab.
+- Add options to show soft-interact icons and hide names on soft-interact objects.
+- Allow opt-out of auto-accepting NPC colors sent by raid-leaders.
+- Allow lower scaling range for personal resources, especially targeted at Blizzard Combo Points.
 

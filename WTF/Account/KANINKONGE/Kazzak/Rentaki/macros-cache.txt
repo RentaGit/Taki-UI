@@ -64,7 +64,7 @@ VER 3 0100000000000030 "raza" "4640492"
 /tar focus
 /tar boss1
 /targetlasttarget
-/castsequence [harm,nodead] reset=20 wind shear, purge, purge, purge, purge, purge
+/castsequence [harm,nodead] reset=10 wind shear, purge, purge, purge, purge, purge
 /tar boss1
 END
 VER 3 010000000000002C "resto PW" "134400"

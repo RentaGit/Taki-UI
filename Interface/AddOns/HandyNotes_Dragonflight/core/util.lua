@@ -1,21 +1,13 @@
 local ADDON_NAME, ns = ...
 
+local L = ns.locale
+local Class = ns.Class
+
 -------------------------------------------------------------------------------
 ------------------------------ DATAMINE TOOLTIP -------------------------------
 -------------------------------------------------------------------------------
 
-local function CreateDatamineTooltip(name)
-    local f = CreateFrame('GameTooltip', name, UIParent, 'GameTooltipTemplate')
-    f:SetOwner(UIParent, 'ANCHOR_NONE')
-    return f
-end
-
-local NameResolver = {
-    cache = {},
-    prepared = {},
-    preparer = CreateDatamineTooltip(ADDON_NAME .. '_NamePreparer'),
-    resolver = CreateDatamineTooltip(ADDON_NAME .. '_NameResolver')
-}
+local NameResolver = {cache = {}, prepared = {}}
 
 function NameResolver:IsLink(link)
     if link == nil then return link end
@@ -27,7 +19,7 @@ function NameResolver:Prepare(link)
         -- use a separate tooltip to spam load NPC names, doing this with the
         -- main tooltip can sometimes cause it to become unresponsive and never
         -- update its text until a reload
-        self.preparer:SetHyperlink(link)
+        C_TooltipInfo.GetHyperlink(link)
         self.prepared[link] = true
     end
 end
@@ -43,11 +35,14 @@ function NameResolver:Resolve(link)
 
     local name = self.cache[link]
     if name == nil then
-        self.resolver:SetHyperlink(link)
-        name = _G[self.resolver:GetName() .. 'TextLeft1']:GetText() or UNKNOWN
+        name = UNKNOWN
+        local tooltipData = C_TooltipInfo.GetHyperlink(link)
+        if tooltipData then
+            local line = tooltipData.lines and tooltipData.lines[1]
+            if line then name = line.leftText or UNKNOWN end
+        end
         if name == UNKNOWN then
-            ns.Debug('NameResolver returned UNKNOWN, recreating tooltip ...')
-            self.resolver = CreateDatamineTooltip(ADDON_NAME .. '_NameResolver')
+            ns.Debug('NameResolver returned UNKNOWN')
         else
             self.cache[link] = name
         end
@@ -144,6 +139,7 @@ local function RenderLinks(str, nameOnly)
             if type == 'title' then return ns.color.Yellow(text) end
             if type == 'npc' then return ns.color.NPC(text) end
             if type == 'yell' then return ns.color.Red(text) end
+            if type == 'faction' then return ns.color.NPC(text) end
             if type == 'wq' then
                 local icon = ns.GetIconLink('world_quest', 16, 0, -1)
                 return icon .. ns.color.Yellow('[' .. text .. ']')
@@ -274,6 +270,64 @@ local function HEXtoRGBA(color)
 end
 
 -------------------------------------------------------------------------------
+------------------------------- Interval Class --------------------------------
+-------------------------------------------------------------------------------
+
+local Interval = Class('Interval')
+
+function Interval:Initialize(attrs)
+    if attrs then for k, v in pairs(attrs) do self[k] = v end end
+
+    local region_initial = {
+        [1] = self.initial.us,
+        [2] = self.initial.kr or self.initial.tw,
+        [3] = self.initial.eu,
+        [5] = self.initial.cn
+    } -- https://wowpedia.fandom.com/wiki/API_GetCurrentRegion
+
+    if self.id then
+        self.SpawnTime = self.id * self.offset +
+                             region_initial[GetCurrentRegion()] or
+                             self.initial.us
+    end
+end
+
+function Interval:Next()
+    if not (self.id and self.initial and self.interval) then return false end
+    local CurrentTime = GetServerTime()
+    local SpawnTime = self.SpawnTime
+
+    local NextSpawn = SpawnTime +
+                          math.ceil((CurrentTime - SpawnTime) / self.interval) *
+                          self.interval
+    local TimeLeft = NextSpawn - CurrentTime
+
+    return NextSpawn, TimeLeft
+end
+
+function Interval:GetText()
+    local TimeFormat = ns:GetOpt('use_standard_time') and self.format_12hrs or
+                           self.format_24hrs
+
+    local NextSpawn, TimeLeft = self:Next()
+
+    local SpawnsIn = TimeLeft <= 60 and L['now'] or
+                         SecondsToTime(TimeLeft, true, true)
+
+    if self.yellow and self.green then
+        local color = ns.color.Orange
+        if TimeLeft < self.yellow then color = ns.color.Yellow end
+        if TimeLeft < self.green then color = ns.color.Green end
+        SpawnsIn = color(SpawnsIn)
+    end
+
+    local text = format('%s (%s)', SpawnsIn, date(TimeFormat, NextSpawn))
+    if self.text then text = format(self.text, text) end
+    ns.PrepareLinks(text)
+    return text
+end
+
+-------------------------------------------------------------------------------
 
 ns.AsIDTable = AsIDTable
 ns.AsTable = AsTable
@@ -285,3 +339,4 @@ ns.PlayerHasItem = PlayerHasItem
 ns.PlayerHasProfession = PlayerHasProfession
 ns.PrepareLinks = PrepareLinks
 ns.RenderLinks = RenderLinks
+ns.Interval = Interval

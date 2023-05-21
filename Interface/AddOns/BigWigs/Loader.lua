@@ -22,7 +22,7 @@ local strfind = string.find
 -- Generate our version variables
 --
 
-local BIGWIGS_VERSION = 263
+local BIGWIGS_VERSION = 279
 local BIGWIGS_RELEASE_STRING, BIGWIGS_VERSION_STRING = "", ""
 local versionQueryString, versionResponseString = "Q^%d^%s^%d^%s", "V^%d^%s^%d^%s"
 local customGuildName = false
@@ -37,7 +37,7 @@ do
 	local RELEASE = "RELEASE"
 
 	local releaseType = RELEASE
-	local myGitHash = "23b9968" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "efe70e4" -- The ZIP packager will replace this with the Git hash.
 	local releaseString = ""
 	--[=[@alpha@
 	-- The following code will only be present in alpha ZIPs.
@@ -48,6 +48,7 @@ do
 	if strfind(myGitHash, "@", nil, true) then
 		myGitHash = "repo"
 		releaseType = REPO
+		public.usingBigWigsRepo = true
 	end
 
 	if releaseType == REPO then
@@ -85,13 +86,15 @@ end
 --
 
 local tooltipFunctions = {}
-local next, tonumber, type, strsplit = next, tonumber, type, strsplit
+local next, tonumber, type, strsplit, strsub = next, tonumber, type, strsplit, string.sub
 local SendAddonMessage, Ambiguate, CTimerAfter, CTimerNewTicker = C_ChatInfo.SendAddonMessage, Ambiguate, C_Timer.After, C_Timer.NewTicker
 local GetInstanceInfo, GetBestMapForUnit, GetMapInfo = GetInstanceInfo, C_Map.GetBestMapForUnit, C_Map.GetMapInfo
 local UnitName, UnitGUID = UnitName, UnitGUID
 local debugstack, print = debugstack, print
+local myLocale = GetLocale()
 
 -- Try to grab unhooked copies of critical funcs (hooked by some crappy addons)
+public.Ambiguate = Ambiguate
 public.GetBestMapForUnit = GetBestMapForUnit
 public.GetMapInfo = GetMapInfo
 public.GetInstanceInfo = GetInstanceInfo
@@ -156,6 +159,15 @@ do
 	local lw_bfa = "LittleWigs_BattleForAzeroth"
 	local lw_s = "LittleWigs_Shadowlands"
 	local lw_df = "LittleWigs_Dragonflight"
+
+	public.currentExpansion = { -- Change on new expansion releases
+		name = df,
+		littlewigsName = lw_df,
+		zones = {
+			[2522] = "BigWigs_VaultOfTheIncarnates",
+			[2569] = "BigWigs_Aberrus",
+		}
+	}
 
 	public.zoneTbl = {
 		--[[ BigWigs: Classic ]]--
@@ -225,6 +237,7 @@ do
 		--[[ BigWigs: Dragonflight ]]--
 		[-1978] = df, -- Dragon Isles (Fake Menu)
 		[2522] = df, -- Vault of the Incarnate
+		[2569] = df, -- Aberrus, the Shadowed Crucible
 
 		--[[ LittleWigs: Classic ]]--
 		[33] = lw_c, -- Shadowfang Keep
@@ -359,8 +372,8 @@ end
 -- Utility
 --
 
-local EnableAddOn, GetAddOnEnableState, GetAddOnInfo, IsAddOnLoaded, LoadAddOn = EnableAddOn, GetAddOnEnableState, GetAddOnInfo, IsAddOnLoaded, LoadAddOn
-local GetAddOnMetadata, IsInGroup, IsInRaid, UnitAffectingCombat, UnitGroupRolesAssigned = GetAddOnMetadata, IsInGroup, IsInRaid, UnitAffectingCombat, UnitGroupRolesAssigned
+local EnableAddOn, GetAddOnInfo, IsAddOnLoaded, LoadAddOn = EnableAddOn, GetAddOnInfo, IsAddOnLoaded, LoadAddOn
+local GetAddOnMetadata, IsInGroup, IsInRaid, UnitAffectingCombat, UnitGroupRolesAssigned = C_AddOns.GetAddOnMetadata, IsInGroup, IsInRaid, UnitAffectingCombat, UnitGroupRolesAssigned
 local GetSpecialization, GetSpecializationRole, IsPartyLFG, UnitIsDeadOrGhost, UnitSetRole = GetSpecialization, GetSpecializationRole, IsPartyLFG, UnitIsDeadOrGhost, UnitSetRole
 
 local reqFuncAddons = {
@@ -368,11 +381,6 @@ local reqFuncAddons = {
 	BigWigs_Options = true,
 	BigWigs_Plugins = true,
 }
-
-local function IsAddOnEnabled(addon)
-	local character = UnitName("player")
-	return GetAddOnEnableState(character, addon) > 0
-end
 
 local function sysprint(msg)
 	print("|cFF33FF99BigWigs|r: "..msg)
@@ -523,12 +531,12 @@ do
 	local blockedMenus = {} -- Zones that shouldn't create a menu
 
 	for i = 1, GetNumAddOns() do
-		local name = GetAddOnInfo(i)
+		local name, _, _, _, addonState = GetAddOnInfo(i)
 		if reqFuncAddons[name] then
 			EnableAddOn(i) -- Make sure it wasn't left disabled for whatever reason
 		end
 
-		if IsAddOnEnabled(i) then
+		if addonState ~= "DISABLED" then
 			local meta = GetAddOnMetadata(i, "X-BigWigs-LoadOn-CoreEnabled")
 			if meta then
 				if name == "BigWigs_Plugins" then -- Always first
@@ -544,6 +552,9 @@ do
 			meta = GetAddOnMetadata(i, "X-BigWigs-ExtraMenu")
 			if meta then
 				extraMenus[#extraMenus + 1] = i
+				if name == "LittleWigs" then -- A little yuck to detect if LW is a Git repo
+					public.usingLittleWigsRepo = true
+				end
 			end
 			meta = GetAddOnMetadata(i, "X-BigWigs-NoMenu")
 			if meta then
@@ -590,11 +601,9 @@ do
 				for j = 1, select("#", strsplit(",", meta)) do
 					local rawId = select(j, strsplit(",", meta))
 					local id = tonumber(rawId:trim())
-					if id and id > 0 then
-						if public.zoneTbl[id] then
-							if not disabledZones then disabledZones = {} end
-							disabledZones[id] = name
-						end
+					if id and id > 0 and public.zoneTbl[id] then
+						if not disabledZones then disabledZones = {} end
+						disabledZones[id] = name
 					end
 				end
 			end
@@ -769,12 +778,13 @@ function mod:ADDON_LOADED(addon)
 	bwFrame:RegisterEvent("CHAT_MSG_ADDON")
 	C_ChatInfo.RegisterAddonMessagePrefix("BigWigs")
 	C_ChatInfo.RegisterAddonMessagePrefix("D4") -- DBM
+	C_ChatInfo.RegisterAddonMessagePrefix("D5") -- DBM
 
 	-- LibDBIcon setup
 	if type(BigWigsIconDB) ~= "table" then
 		BigWigsIconDB = {}
 	end
-	ldbi:Register("BigWigs", dataBroker, BigWigsIconDB)
+	ldbi:Register("BigWigs", dataBroker, BigWigsIconDB, "Interface\\AddOns\\BigWigs\\Media\\Icons\\core-enabled")
 
 	if BigWigs3DB then
 		-- Somewhat ugly, but saves loading AceDB with the loader instead of with the core
@@ -933,6 +943,7 @@ do
 		BigWigs_SepulcherOfTheFirstOnes = "BigWigs_Shadowlands",
 	}
 	local delayedMessages = {}
+	local foundReqAddons = {} -- Deciding whether or not we show a warning for core/options/plugins addons not existing
 
 	local warning = "The addon '|cffffff00%s|r' is forcing %s to load prematurely, notify the BigWigs authors!"
 	local dontForceLoadList = {
@@ -962,11 +973,12 @@ do
 		-- Dynamic content
 		BigWigs_DragonIsles = true,
 		BigWigs_VaultOfTheIncarnates = true,
+		BigWigs_Aberrus = true,
 	}
 	-- Try to teach people not to force load our modules.
 	for i = 1, GetNumAddOns() do
-		local name = GetAddOnInfo(i)
-		if IsAddOnEnabled(i) and not IsAddOnLoadOnDemand(i) then
+		local name, _, _, _, addonState = GetAddOnInfo(i)
+		if addonState ~= "DISABLED" and not IsAddOnLoadOnDemand(i) then
 			for j = 1, select("#", GetAddOnOptionalDependencies(i)) do
 				local meta = select(j, GetAddOnOptionalDependencies(i))
 				local addonName = tostring(meta)
@@ -987,32 +999,49 @@ do
 			if name == "BigWigs_Shadowlands" then
 				local meta = GetAddOnMetadata(i, "X-BigWigs-LoadOn-InstanceId")
 				if not meta then
-					delayedMessages[#delayedMessages+1] = L.removeAddOn:format(name, old[name])
+					local msg = L.removeAddOn:format(name, old[name])
+					delayedMessages[#delayedMessages+1] = msg
 					if not BasicMessageDialog:IsShown() then -- Don't overwrite other messages with this as the message is confusing, show it last
-						Popup(L.removeAddOn:format(name, old[name]))
+						Popup(msg)
 					end
 				end
 			else
-				delayedMessages[#delayedMessages+1] = L.removeAddOn:format(name, old[name])
-				Popup(L.removeAddOn:format(name, old[name]))
+				local msg = L.removeAddOn:format(name, old[name])
+				delayedMessages[#delayedMessages+1] = msg
+				Popup(msg)
+			end
+		end
+
+		if reqFuncAddons[name] then
+			foundReqAddons[name] = true -- A required functional addon is found
+		end
+	end
+
+	if not public.usingBigWigsRepo then -- We're not using BigWigs Git, but required functional addons are missing? Show a warning
+		for k in next, reqFuncAddons do -- List of required addons (core/plugins/options)
+			if not foundReqAddons[k] then -- A required functional addon is missing
+				local msg = L.missingAddOn:format(k)
+				delayedMessages[#delayedMessages+1] = msg
+				Popup(msg)
 			end
 		end
 	end
 
-	local myLocale = GetLocale()
 	local locales = {
 		--ruRU = "Russian (ruRU)",
-		--itIT = "Italian (itIT)",
-		--koKR = "Korean (koKR)",
+		--zhCN = "Simplified Chinese (zhCN)",
+		--zhTW = "Traditional Chinese (zhTW)",
+		itIT = "Italian (itIT)",
+		koKR = "Korean (koKR)",
 		esES = "Spanish (esES)",
 		esMX = "Spanish (esMX)",
-		--deDE = "German (deDE)",
-		--ptBR = "Portuguese (ptBR)",
+		deDE = "German (deDE)",
+		ptBR = "Portuguese (ptBR)",
 		--frFR = "French (frFR)",
 	}
 	local language = locales[myLocale]
 	if language then
-		delayedMessages[#delayedMessages+1] = ("BigWigs is missing translations for %s. Can you help? Visit git.io/vpBye or ask us on Discord for more info."):format(language)
+		delayedMessages[#delayedMessages+1] = ("BigWigs is missing translations for %s. Can you help? Ask us on Discord for more info."):format(language)
 	end
 
 	if #delayedMessages > 0 then
@@ -1072,20 +1101,14 @@ do
 		end
 	end
 
-	local pcall, geterrorhandler = pcall, geterrorhandler
+	local securecallfunction = securecallfunction
 	function public:SendMessage(msg, ...)
 		if callbackMap[msg] then
 			for k,v in next, callbackMap[msg] do
 				if type(v) == "function" then
-					local success, errorMsg = pcall(v, msg, ...)
-					if not success then
-						geterrorhandler()(("BigWigs: One of your addons caused an error on the %q callback:\n%s"):format(msg, errorMsg))
-					end
+					securecallfunction(v, msg, ...)
 				else
-					local success, errorMsg = pcall(k[v], k, msg, ...)
-					if not success then
-						geterrorhandler()(("BigWigs: One of your addons caused an error on the %q callback:\n%s"):format(msg, errorMsg))
-					end
+					securecallfunction(k[v], k, msg, ...)
 				end
 			end
 		end
@@ -1110,14 +1133,21 @@ end
 --
 
 do
-	local DBMdotRevision = "20230110214519" -- The changing version of the local client, changes with every new zip using the project-date-integer packager replacement.
-	local DBMdotDisplayVersion = "10.0.19" -- "N.N.N" for a release and "N.N.N alpha" for the alpha duration.
-	local DBMdotReleaseRevision = "20230110000000" -- Hardcoded time, manually changed every release, they use it to track the highest release version, a new DBM release is the only time it will change.
+	local DBMdotRevision = "20230518033743" -- The changing version of the local client, changes with every new zip using the project-date-integer packager replacement.
+	local DBMdotDisplayVersion = "10.1.9" -- "N.N.N" for a release and "N.N.N alpha" for the alpha duration.
+	local DBMdotReleaseRevision = "20230517000000" -- Hardcoded time, manually changed every release, they use it to track the highest release version, a new DBM release is the only time it will change.
+	local protocol = 2
+	local prefix = "V"
+	local PForceDisable = 4
 
 	local timer, prevUpgradedUser = nil, nil
 	local function sendMsg()
 		if IsInGroup() then
-			SendAddonMessage("D4", "V\t"..DBMdotRevision.."\t"..DBMdotReleaseRevision.."\t"..DBMdotDisplayVersion.."\t"..GetLocale().."\t".."true", IsInGroup(2) and "INSTANCE_CHAT" or "RAID") -- LE_PARTY_CATEGORY_INSTANCE = 2
+			local name = UnitName("player")
+			local realm = GetRealmName()
+			local normalizedPlayerRealm = realm:gsub("[%s-]+", "") -- Has to mimic DBM code
+			local msg = name.. "-" ..normalizedPlayerRealm.."\t"..protocol.."\t".. prefix .."\t".. DBMdotRevision.."\t"..DBMdotReleaseRevision.."\t"..DBMdotDisplayVersion.."\t"..myLocale.."\ttrue\t"..PForceDisable
+			SendAddonMessage("D5", msg, IsInGroup(2) and "INSTANCE_CHAT" or "RAID") -- LE_PARTY_CATEGORY_INSTANCE = 2
 		end
 		timer, prevUpgradedUser = nil, nil
 	end
@@ -1145,13 +1175,14 @@ do
 			--end
 		end
 	end
-	function mod:BigWigs_CoreOptionToggled(_, key, value)
-		if key == "fakeDBMVersion" and value and IsInGroup() then
-			self:DBM_VersionCheck("H") -- Send addon message if feature is being turned on inside a raid/group.
-		end
-	end
-	public.RegisterMessage(mod, "BigWigs_CoreOptionToggled")
 end
+
+function mod:BigWigs_CoreOptionToggled(_, key, value)
+	if key == "fakeDBMVersion" and value and IsInGroup() then
+		self:DBM_VersionCheck("H") -- Send addon message if feature is being turned on inside a raid/group.
+	end
+end
+public.RegisterMessage(mod, "BigWigs_CoreOptionToggled")
 
 -----------------------------------------------------------------------
 -- Events
@@ -1301,6 +1332,23 @@ function mod:CHAT_MSG_ADDON(prefix, msg, channel, sender)
 			end
 			public:SendMessage("DBM_AddonMessage", sender, dbmPrefix, arg1, arg2, arg3, arg4)
 		end
+	elseif prefix == "D5" then
+		local player, _, dbmPrefix, arg1, arg2, arg3, arg4 = strsplit("\t", msg)
+		sender = Ambiguate(sender, "none")
+		if dbmPrefix == "V" or dbmPrefix == "H" then
+			self:DBM_VersionCheck(dbmPrefix, sender, arg1, arg2, arg3)
+		elseif dbmPrefix == "U" or dbmPrefix == "PT" or dbmPrefix == "M" or dbmPrefix == "BT" then
+			if dbmPrefix == "PT" then
+				local _, _, _, instanceId = UnitPosition("player")
+				local _, _, _, tarInstanceId = UnitPosition(sender)
+				if instanceId == tarInstanceId then
+					loadAndEnableCore() -- Force enable the core when receiving a pull timer.
+				end
+			elseif dbmPrefix == "BT" then
+				loadAndEnableCore() -- Force enable the core when receiving a break timer.
+			end
+			public:SendMessage("DBM_AddonMessage", sender, dbmPrefix, arg1, arg2, arg3, arg4)
+		end
 	end
 end
 
@@ -1351,7 +1399,7 @@ do
 					local msg = L.warnSeveralReleases:format(diff)
 					sysprint(msg)
 					Popup(msg)
-					RaidNotice_AddMessage(RaidWarningFrame, msg, {r=1,g=1,b=1}, 40)
+					RaidNotice_AddMessage(RaidWarningFrame, msg, {r=1,g=1,b=1}, 60)
 				else
 					sysprint(L.warnOldBase:format(BIGWIGS_GUILD_VERSION, BIGWIGS_VERSION, diff))
 				end
@@ -1445,6 +1493,7 @@ do
 				local msg = L.disabledAddOn:format(disabledZones[id])
 				sysprint(msg)
 				Popup(msg)
+				RaidNotice_AddMessage(RaidWarningFrame, msg, {r=1,g=1,b=1}, 15)
 				-- Only print once
 				warnedThisZone[id] = true
 				disabledZones[id] = nil
@@ -1454,12 +1503,19 @@ do
 		-- Lacking zone modules
 		if (BigWigs and BigWigs.db.profile.showZoneMessages == false) or self.isShowingZoneMessages == false then return end
 		local zoneAddon = public.zoneTbl[id]
-		if zoneAddon and zoneAddon ~= "BigWigs_Dragonflight" then
-			if strfind(zoneAddon, "LittleWigs_", nil, true) then zoneAddon = "LittleWigs" end -- Collapse into one addon
-			if id > 0 and not fakeZones[id] and not warnedThisZone[id] and not IsAddOnEnabled(zoneAddon) then
+		if zoneAddon and id > 0 and not fakeZones[id] and not warnedThisZone[id] then
+			if zoneAddon == public.currentExpansion.name and public.usingBigWigsRepo then return end -- If we are a BW Git user, then current content can't be missing, so return
+			if strfind(zoneAddon, "LittleWigs", nil, true) and public.usingLittleWigsRepo then return end -- If we are a LW Git user, then nothing can be missing, so return
+			if public.currentExpansion.zones[id] then
+				zoneAddon = public.currentExpansion.zones[id] -- Current BigWigs content has individual zone specific addons
+			elseif zoneAddon == public.currentExpansion.littlewigsName then
+				zoneAddon = "LittleWigs" -- Current LittleWigs content is stored in the main addon
+			end
+			if public:GetAddOnState(zoneAddon) == "MISSING" then
 				warnedThisZone[id] = true
-				local msg = L.missingPlugin:format(zoneAddon)
+				local msg = L.missingAddOn:format(zoneAddon)
 				sysprint(msg)
+				Popup(msg)
 				RaidNotice_AddMessage(RaidWarningFrame, msg, {r=1,g=1,b=1}, 15)
 			end
 		end
@@ -1503,7 +1559,11 @@ do
 		if (not grouped and groupType) or (grouped and groupType and grouped ~= groupType) then
 			grouped = groupType
 			SendAddonMessage("BigWigs", versionQueryString, groupType == 3 and "INSTANCE_CHAT" or "RAID")
-			SendAddonMessage("D4", "H\t", groupType == 3 and "INSTANCE_CHAT" or "RAID") -- Also request DBM versions
+			--local name = UnitName("player")
+			--local realm = GetRealmName()
+			--local normalizedPlayerRealm = realm:gsub("[%s-]+", "") -- Has to mimic DBM code
+			--SendAddonMessage("D5", name.. "-" ..normalizedPlayerRealm.."\t1\tH\t", groupType == 3 and "INSTANCE_CHAT" or "RAID") -- Also request DBM versions
+			SendAddonMessage("D4", "H", groupType == 3 and "INSTANCE_CHAT" or "RAID") -- Also request DBM versions
 			self:ACTIVE_TALENT_GROUP_CHANGED() -- Force role check
 		elseif grouped and not groupType then
 			grouped = nil
@@ -1536,7 +1596,11 @@ function mod:BigWigs_CoreEnabled()
 	-- which kills your ability to receive addon comms during the loading process.
 	if IsInGroup() then
 		SendAddonMessage("BigWigs", versionQueryString, IsInGroup(2) and "INSTANCE_CHAT" or "RAID")
-		SendAddonMessage("D4", "H\t", IsInGroup(2) and "INSTANCE_CHAT" or "RAID") -- Also request DBM versions
+		--local name = UnitName("player")
+		--local realm = GetRealmName()
+		--local normalizedPlayerRealm = realm:gsub("[%s-]+", "") -- Has to mimic DBM code
+		--SendAddonMessage("D5", name.. "-" ..normalizedPlayerRealm.."\t1\tH\t", IsInGroup(2) and "INSTANCE_CHAT" or "RAID") -- Also request DBM versions
+		SendAddonMessage("D4", "H", IsInGroup(2) and "INSTANCE_CHAT" or "RAID") -- Also request DBM versions
 	end
 
 	-- Core is loaded, nil these to force checking BigWigs.db.profile.option
@@ -1583,6 +1647,11 @@ end
 
 function public:LoadZone(zone)
 	loadZone(zone)
+end
+
+function public:GetAddOnState(name)
+	local _, _, _, _, addonState = GetAddOnInfo(name)
+	return addonState
 end
 
 -----------------------------------------------------------------------

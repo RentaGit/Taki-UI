@@ -10,6 +10,8 @@ addon.LOGO_LOCATION = "Interface\\AddOns\\RCLootCouncil\\Media\\rc_logo"
 --- @class Prefixes
 addon.PREFIXES = {MAIN = "RCLC", VERSION = "RCLCv", SYNC = "RCLCs"}
 
+addon.MIN_LOOT_THRESHOLD = 3 -- Only loot rares or better
+
 addon.BTN_SLOTS = {
 	INVTYPE_HEAD = "AZERITE",
 	INVTYPE_CHEST = "AZERITE",
@@ -44,6 +46,9 @@ addon.OPT_MORE_BUTTONS_VALUES = {
 	-- CORRUPTED = _G.CORRUPTION_TOOLTIP_TITLE,
 	CONTEXT_TOKEN = "Beads and Spherules",
 	PETS = _G.PETS,
+	MOUNTS = _G.MOUNTS,
+	BAGSLOT = _G.BAGSLOT,
+	RECIPE = _G.AUCTION_CATEGORY_RECIPES,
 }
 
 --[[
@@ -117,6 +122,27 @@ addon.RESPONSE_CODE_GENERATORS = {
 			if addon.BTN_SLOTS[itemEquipLoc] == "AZERITE" then return "AZERITE" end
 		end
 	end,
+
+	   -- Mounts
+   function (_, db, _, _, classID, subClassID)
+      if db.enabledButtons.MOUNTS and classID == Enum.ItemClass.Miscellaneous and subClassID == Enum.ItemMiscellaneousSubclass.Mount then
+         return "MOUNTS"
+      end
+   end,
+
+   -- Bags
+   function(_, db, _, _, classID)
+      if db.enabledButtons.BAGSLOT and classID == Enum.ItemClass.Container then
+         return "BAGSLOT"
+      end
+   end,
+
+   -- Recipies
+	function(_, db, _, _, classID)
+		if db.enabledButtons.RECIPE and classID == Enum.ItemClass.Recipe then
+			return "RECIPE"
+		end
+   end
 }
 
 --- @alias VersionCodes

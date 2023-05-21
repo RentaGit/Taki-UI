@@ -81,7 +81,7 @@ options_button_template = DF.table.copy({}, options_button_template)
 options_button_template.backdropcolor = {.2, .2, .2, .8}
 
 Plater.APIList = {
-	{Name = "SetNameplateColor", 		Signature = "Plater.SetNameplateColor (unitFrame, color)", 				Desc = "Set the color of the nameplate.\n\nColor formats are:\n|cFFFFFF00Just Values|r: r, g, b\n|cFFFFFF00Index Table|r: {r, g, b}\n|cFFFFFF00Hash Table|r: {r = 1, g = 1, b = 1}\n|cFFFFFF00Hex|r: '#FFFF0000' or '#FF0000'\n|cFFFFFF00Name|r: 'yellow' 'white'\n\nCalling without passing width and height reset the color to default."},
+	{Name = "SetNameplateColor", 		Signature = "Plater.SetNameplateColor (unitFrame, color)", 				Desc = "Set the color of the nameplate.\n\nColor formats are:\n|cFFFFFF00Just Values|r: r, g, b\n|cFFFFFF00Index Table|r: {r, g, b}\n|cFFFFFF00Hash Table|r: {r = 1, g = 1, b = 1}\n|cFFFFFF00Hex|r: '#FFFF0000' or '#FF0000'\n|cFFFFFF00Name|r: 'yellow' 'white'\n\nCalling without passing a color will reset the color to default."},
 	{Name = "SetNameplateSize", 		Signature = "Plater.SetNameplateSize (unitFrame, width, height)",		Desc = "Adjust the nameplate size.\n\nCalling without passing width and height reset the size to default."},
 	{Name = "SetBorderColor", 			Signature = "Plater.SetBorderColor (unitFrame, r, g, b, a)",					Desc = "Set the border color.\n\nCalling without passing any color reset the color to default."},
 	
@@ -689,7 +689,8 @@ end
 						local profilesFrame = mainFrame.AllFrames [PLATER_OPTIONS_PROFILES_TAB]
 						
 						if profileExists then
-							DF:ShowPromptPanel (format (L["OPTIONS_PROFILE_IMPORT_OVERWRITE"], profileName), function() profilesFrame.DoProfileImport(profileName, profile, true, isWagoUpdate) end, function() end, true, 500)
+							local LOC = DF.Language.GetLanguageTable(addonName)
+							DF:ShowPromptPanel(string.format(LOC["OPTIONS_PROFILE_IMPORT_OVERWRITE"], profileName), function() profilesFrame.DoProfileImport(profileName, profile, true, isWagoUpdate) end, function() end, true, 500)
 						else
 							profilesFrame.DoProfileImport(profileName, profile, false, false)
 						end
@@ -919,12 +920,12 @@ end
 		elseif (option == "wago_slugs") then
 			import_from_wago(scriptId)
 			update_wago_slug_data()
-			mainFrame.wagoSlugFrame.ScriptSelectionScrollBox:Refresh()
+			mainFrame.ScriptSelectionScrollBox:Refresh()
 			
 		elseif (option == "wago_stash") then
 			import_from_wago(scriptId, true)
 			update_wago_stash_data()
-			mainFrame.wagoStashFrame.ScriptSelectionScrollBox:Refresh()
+			mainFrame.ScriptSelectionScrollBox:Refresh()
 			
 		end
 		
@@ -1279,6 +1280,7 @@ end
 		local dataInOrder = {}
 		
 		if (mainFrame.SearchString ~= "") then
+			local scriptsFound = {}
 			for i = 1, #data do
 				if not data[i].hidden then
 					local bFoundMatch = false
@@ -1288,9 +1290,10 @@ end
 							local spellName = GetSpellInfo(spellId)
 							if (spellName) then
 								spellName = spellName:lower()
-								if (spellName:find(mainFrame.SearchString)) then
+								if (spellName:find(mainFrame.SearchString) and not scriptsFound[data[i].Name]) then
 									dataInOrder[#dataInOrder+1] = {i, data [i], data[i].Name, data[i].Enabled and 1 or 0, data[i].hasWagoUpdateFromImport and 1 or 0}
 									bFoundMatch = true
+									scriptsFound[data[i].Name] = true
 								end
 							end
 						end
@@ -1825,6 +1828,7 @@ function Plater.CreateWagoPanel()
 	wagoSlugFrame:SetPoint("topleft", wagoFrame, "topleft")
 	wagoSlugFrame:SetPoint("bottomright", wagoFrame, "bottomright")
 	wagoFrame.wagoSlugFrame = wagoSlugFrame
+	mainFrame.wagoSlugFrame = wagoSlugFrame
 	wagoSlugFrame:Show()
 	--wagoSlugFrame:SetScript("OnShow", function()  end)
 	
@@ -2155,6 +2159,9 @@ function Plater.CreateHookingPanel()
 		--do a hot reload on the script
 		if (haveChanges) then
 			hookFrame.ApplyScript()
+		else
+			-- do this at least to ensure options changes are up to date
+			Plater.RecompileScript(scriptObject)
 		end
 		
 		--refresh all nameplates shown in the screen
@@ -3388,7 +3395,7 @@ function Plater.CreateScriptingPanel()
 		for _, plateFrame in ipairs (Plater.GetAllShownPlates()) do
 			local unitFrame = plateFrame.unitFrame
 
-			if (scriptObject.ScriptType == 1) then
+			if (scriptObject.ScriptType == 1) then --scriptType 1 means the scriptObject has triggers that check for Buffs and Debuffs, ScriptType can also be called TriggerType
 				--buff and debuffs
 				--iterate among all icons shown in the nameplate and attempt to kill the script by its trigger
 				for _, iconAuraFrame in ipairs (unitFrame.BuffFrame.PlaterBuffList) do
@@ -3402,13 +3409,13 @@ function Plater.CreateScriptingPanel()
 					end
 				end
 				
-			elseif (scriptObject.ScriptType == 2) then
+			elseif (scriptObject.ScriptType == 2) then --scriptType 2 means the scriptObject has triggers that check if a spell cast has a certain spellName or spellId
 				--cast bar
 				for _, spellID in ipairs (scriptObject.SpellIds) do
 					unitFrame.castBar:KillScript (spellID)
 				end
 
-			elseif (scriptObject.ScriptType == 3) then
+			elseif (scriptObject.ScriptType == 3) then --scriptType 3 means the scriptObject will check if nameplate is showing a certain npc (by matching npc name or npc id)
 				--nameplate
 				for _, triggerID in ipairs (scriptObject.NpcNames) do
 					unitFrame:KillScript (triggerID)

@@ -51,10 +51,13 @@ function Node:Initialize(attrs)
     self.questDeps = ns.AsTable(self.questDeps)
     self.parent = ns.AsIDTable(self.parent)
     self.requires = ns.AsTable(self.requires, Requirement)
+    self.group = ns.AsTable(self.group, Group)
 
-    -- ensure proper group is assigned
-    if not IsInstance(self.group, Group) then
-        error('group attribute must be a Group class instance: ' .. self.group)
+    -- ensure proper group(s) is/are assigned
+    for _, group in pairs(self.group) do
+        if not IsInstance(group, Group) then
+            error('group attribute must be a Group class instance: ' .. group)
+        end
     end
 end
 
@@ -65,8 +68,8 @@ for this node.
 
 function Node:GetDisplayInfo(mapID, minimap)
     local icon = ns.GetIconPath(self.icon)
-    local scale = self.scale * self.group:GetScale(mapID)
-    local alpha = self.alpha * self.group:GetAlpha(mapID)
+    local scale = self.scale * self.group[1]:GetScale(mapID) -- Get scale/alpha form first (main) group
+    local alpha = self.alpha * self.group[1]:GetAlpha(mapID)
 
     if not minimap and WorldMapFrame.isMaximized and
         ns:GetOpt('maximized_enlarged') then
@@ -88,6 +91,8 @@ function Node:GetGlow(mapID, minimap, focused)
         self.glow.scale = scale
         if focused then
             self.glow.r, self.glow.g, self.glow.b = 0, 1, 0
+        elseif self.OnClick then
+            self.glow.r, self.glow.g, self.glow.b = 0, 0, 1
         else
             self.glow.r, self.glow.g, self.glow.b = 1, 1, 0
         end
@@ -160,7 +165,7 @@ Iterate over rewards that are enabled for this character.
 --]]
 
 function Node:IterateRewards()
-    local index, reward = 0
+    local index, reward = 0, nil
     return function()
         if not (self.rewards and #self.rewards) then return end
         repeat
@@ -210,6 +215,7 @@ function Node:Prepare()
 
     ns.PrepareLinks(self.label)
     ns.PrepareLinks(self.sublabel)
+    ns.PrepareLinks(self.location)
     ns.PrepareLinks(self.note)
 
     if self.requires then
@@ -264,6 +270,11 @@ function Node:Render(tooltip, focusable)
         rlabel = (#rlabel > 0) and focus .. ' ' .. rlabel or focus
     end
 
+    if self.OnClick then
+        local click = ns.GetIconLink('left_mouse', 12)
+        rlabel = click .. ' ' .. ns.status.Gray(self.clabel) or click
+    end
+
     -- render top-right label text
     if #rlabel > 0 then
         local rtext = _G[tooltip:GetName() .. 'TextRight1']
@@ -290,10 +301,27 @@ function Node:Render(tooltip, focusable)
         end
     end
 
+    -- additional text for the node to describe where the object or
+    -- rare can be found
+    if self.location and ns:GetOpt('show_notes') then
+        if self.requires or self.sublabel then
+            GameTooltip_AddBlankLineToTooltip(tooltip)
+        end
+        tooltip:AddLine(ns.RenderLinks(self.location), 1, 1, 1, true)
+    end
+
+    -- adds text if the node spawns in a specific rotation
+    if self.interval then
+        if self.requires or self.sublabel or self.location then
+            GameTooltip_AddBlankLineToTooltip(tooltip)
+        end
+        tooltip:AddLine(ns.RenderLinks(self.interval:GetText()), 1, 1, 1, true)
+    end
+
     -- additional text for the node to describe how to interact with the
     -- object or summon the rare
     if self.note and ns:GetOpt('show_notes') then
-        if self.requires or self.sublabel then
+        if self.requires or self.sublabel or self.location or self.interval then
             GameTooltip_AddBlankLineToTooltip(tooltip)
         end
         tooltip:AddLine(ns.RenderLinks(self.note), 1, 1, 1, true)
@@ -302,22 +330,7 @@ function Node:Render(tooltip, focusable)
     -- all rewards (achievements, pets, mounts, toys, quests) that can be
     -- collected or completed from this node
     if self.rewards and ns:GetOpt('show_loot') then
-        local firstAchieve, firstOther = true, true
-        for reward in self:IterateRewards() do
-
-            -- Add a blank line between achievements and other rewards
-            local isAchieve = IsInstance(reward, ns.reward.Achievement)
-            local isSpacer = IsInstance(reward, ns.reward.Spacer)
-            if isAchieve and firstAchieve then
-                GameTooltip_AddBlankLineToTooltip(tooltip)
-                firstAchieve = false
-            elseif not (isAchieve or isSpacer) and firstOther then
-                GameTooltip_AddBlankLineToTooltip(tooltip)
-                firstOther = false
-            end
-
-            reward:Render(tooltip)
-        end
+        self:RenderRewards(tooltip)
     end
 
     if self.spellID then
@@ -329,6 +342,24 @@ function Node:Render(tooltip, focusable)
                     self.spellID, spell:GetSpellTexture())
                 self.cancelSpellDataCallback = nil
             end);
+    end
+end
+
+function Node:RenderRewards(tooltip)
+    local firstAchieve, firstOther = true, true
+    for reward in self:IterateRewards() do
+        -- Add a blank line between achievements and other rewards
+        local isAchieve = ns.IsInstance(reward, ns.reward.Achievement)
+        local isSpacer = ns.IsInstance(reward, ns.reward.Spacer)
+        if isAchieve and firstAchieve then
+            tooltip:AddLine(' ')
+            firstAchieve = false
+        elseif not (isAchieve or isSpacer) and firstOther then
+            tooltip:AddLine(' ')
+            firstOther = false
+        end
+
+        reward:Render(tooltip)
     end
 end
 

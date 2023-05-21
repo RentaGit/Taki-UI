@@ -1,6 +1,6 @@
 
 
-local _detalhes	= 	_G._detalhes
+local _detalhes	= 	_G.Details
 local Loc = LibStub("AceLocale-3.0"):GetLocale ( "Details" )
 local _
 local addonName, Details222 = ...
@@ -606,6 +606,31 @@ function SlashCmdList.DETAILS (msg, editbox)
 		_detalhes.ResetButton:SetBackdropColor(0, 0, 1, 1)
 
 		--Details.VarDump (_detalhes.ResetButton)
+
+	elseif (command == "trinket") then
+		local tooltipData = GameTooltip:GetTooltipData()
+		if (tooltipData) then
+			local spellId = tooltipData.id
+			local spellName = GetSpellInfo(spellId)
+			
+			if (spellName) then
+				
+				local itemLink = GetInventoryItemLink("player", 13)
+				if (itemLink) then
+					local itemName = GetItemInfo(itemLink)
+					if (itemName) then
+						local itemID, enchantID, gemID1, gemID2, gemID3, gemID4, suffixID, uniqueID, linkLevel, specializationID, modifiersMask, itemContext = select(2, strsplit(":", itemLink))
+						
+						itemID = tonumber(itemID)
+						
+						if (itemID) then
+							local s = "["..spellId.."] = {name = formatTextForItem("..itemID..")}, --trinket: ".. itemName
+							dumpt({s})
+						end
+					end
+				end
+			end
+		end
 
 	elseif (command == "mini") then
 		local instance = _detalhes.tabela_instancias [1]
@@ -2359,7 +2384,7 @@ if (WOW_PROJECT_ID == WOW_PROJECT_MAINLINE) then
 					local totalMembers, onlineMembers, onlineAndMobileMembers = GetNumGuildMembers()
 					local realmName = GetRealmName()
 					--create a string to use into the gsub call when removing the realm name from the player name, by default all player names returned from GetGuildRosterInfo() has PlayerName-RealmName format
-					local realmNameGsub = "%-" .. realmName
+					local realmNameGsub = "%-.*"
 					local guildName = GetGuildInfo("player")
 
 					if (guildName) then
@@ -2430,6 +2455,7 @@ if (WOW_PROJECT_ID == WOW_PROJECT_MAINLINE) then
 							--this unit in the cache isn't shown?
 							if (not unitsAdded[unitName] and keystoneTable.guild_name == guildName and keystoneTable.date > cutoffDate) then
 								if (keystoneTable[2] > 0 or keystoneTable[6] > 0) then
+									keystoneTable[11] = UnitInParty(unitName) and (string.byte(unitName, 1) + string.byte(unitName, 2)) or 0 --isInMyParty
 									keystoneTable[12] = false --isOnline
 									newData[#newData+1] = keystoneTable
 									unitsAdded[unitName] = true

@@ -1,52 +1,16 @@
-tag 8cf2bf9246e851c26b076976694364e2a716e9eb r51
+tag 613b548bc8ffa26ae31e0ca5f292402bfc3e34fc r54
 Author:	Benjamin Staneck <staneck@gmail.com>
-Date:	Thu Jan 19 21:47:38 2023 +0100
+Date:	Tue May 16 17:26:41 2023 +0200
 
-commit 33271e10c3061bc1398d447c4dabab2cbee79920
+commit c541d9d64ef84a9befc15f8b6687b9af6f60573e
+Author: Nihilistzsche <152417+nihilistzsche@users.noreply.github.com>
+Date:   Tue May 16 06:03:53 2023 -0700
+
+    Dynamically adjust color palettes per WoW flavor (#11)
+
+commit 964dd60f2881f94ea745ed81592bd114c736652a
 Author: Benjamin Staneck <staneck@gmail.com>
-Date:   Thu Jan 19 05:06:05 2023 +0100
+Date:   Tue May 2 23:04:31 2023 +0200
 
-    Update feature guards for Wrath classic
-
-commit bc0baae69cef303095473ecd30dbd49305778b4b
-Author: Benjamin Staneck <staneck@gmail.com>
-Date:   Fri Nov 18 01:56:35 2022 +0100
-
-    Update Retail TOC for Patch 10.0.2
-
-commit f6f1c66645180db069d188c76173721b154e9024
-Author: Jesus Diaz <contact@jesusdiaz.dev>
-Date:   Mon Oct 31 20:49:54 2022 -0500
-
-    Quick Wrath Fix
-
-commit 3f71a5774853c52010d81fdbcd5b4c66fd91c90a
-Author: Benjamin Staneck <staneck@gmail.com>
-Date:   Thu Oct 27 12:45:55 2022 +0200
-
-    Update for Dragonflight
-
-commit bff707ae35c34db65c279be92a0009682924d76d
-Author: anzz1 <anzz1@live.com>
-Date:   Sat Sep 3 04:23:56 2022 +0300
-
-    TOC for WOTLK Classic
-
-commit fa771b95a4bbec09ab5074b402e86593967f759d
-Author: anzz1 <anzz1@live.com>
-Date:   Sat Sep 3 04:22:56 2022 +0300
-
-    Add support for WOTLK Classic
-
-commit 1228bce3b61ac77b8c8981a32e3853e97b59dc80
-Author: Timmy Willison <4timmywil@gmail.com>
-Date:   Mon May 16 16:41:20 2022 -0400
-
-    Create LICENSE
-
-commit 1228bce3b61ac77b8c8981a32e3853e97b59dc80
-Author: Timmy Willison <4timmywil@gmail.com>
-Date:   Mon May 16 16:41:20 2022 -0400
-
-    Create LICENSE
+    Add TOC icon
 

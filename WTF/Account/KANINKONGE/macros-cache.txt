@@ -57,6 +57,11 @@ VER 3 0000000000000128 ".sh IS/FN" "135845"
 /cast [known:Ice Strike] Ice Strike
 /cast [known:Fire Nova] Fire Nova
 END
+VER 3 0000000000000132 ".sh LL" "134400"
+#showtooltip lava lash
+/use [@player] Totemic Projection
+/cast lava lash
+END
 VER 3 00000000000000B2 ".sh LMT/IF" "135855"
 #showtooltip
 /cast [known:Icefury] Icefury;
@@ -127,13 +132,17 @@ VER 3 00000000000000ED "use belt" "605237"
 #showtooltip
 /use 6
 END
+VER 3 0000000000000133 "use bracer" "134400"
+#showtooltip
+/use 9
+END
 VER 3 00000000000000DE "use cloak" "852263"
 #showtooltip
 /use 15
 END
 VER 3 00000000000000E0 "use trinket 1" "134490"
 #showtooltip
-/use 13
+/use [@cursor] 13
 END
 VER 3 0000000000000107 "use trinket 2" "134491"
 #showtooltip

@@ -481,6 +481,7 @@ local spellBlacklist = {
   [213405] = true, -- dh stuff
   [391191] = true, -- dh stuff
   [390181] = true, -- dh stuff
+  [228318] = true, -- enrage
   --[X]  = true,
 }
 local lastEnemyIdx
@@ -500,7 +501,9 @@ function MDT:UpdateEnemyInfoFrame(enemyIdx)
   local f = MDT.EnemyInfoFrame
   f:SetTitle(L[data.name])
   f.model:SetDisplayInfo(data.displayId or 39490)
-  f.model:ResetModel()
+  if MDT:IsDragonflight() then
+    f.model:ResetModel()
+  end
   if data.modelPosition then
     f.model:SetPosition(unpack(data.modelPosition))
   else

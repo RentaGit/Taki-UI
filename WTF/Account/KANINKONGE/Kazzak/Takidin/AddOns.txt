@@ -125,3 +125,11 @@ MacroToolkit: disabled
 MacroToolkitIcons: disabled
 LibStub: disabled
 TakUI: disabled
+Narcissus: disabled
+Leatrix_Plus: disabled
+CopyPasta2: disabled
+Blizzard_CombatText: enabled
+BigWigs_DragonIsles: enabled
+BigWigs_VaultOfTheIncarnates: enabled
+ImprovedTalentLoadouts: disabled
+BigWigs_Aberrus: enabled

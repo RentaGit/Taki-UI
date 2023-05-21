@@ -121,7 +121,7 @@ local icons = setmetatable({}, {__index =
 			if key > 8 then
 				value = GetSpellTexture(key)
 				if not value then
-					core:Error(format("An invalid spell id (%d) is being used as a texture in a boss module.", key))
+					core:Error(format("The spell id %q has no icon texture but is being used as an icon in a boss module.", key))
 				end
 			elseif key > 0 then
 				-- Texture id list for raid icons 1-8 is 137001-137008. Base texture path is Interface\\TARGETINGFRAME\\UI-RaidTargetingIcon_%d
@@ -129,7 +129,7 @@ local icons = setmetatable({}, {__index =
 			else
 				local tbl = C_EncounterJournal_GetSectionInfo(-key)
 				if not tbl or not tbl.abilityIcon then
-					core:Error(format("An invalid journal id (%d) is being used as a texture in a boss module.", key))
+					core:Error(format("The journal id %q has no icon texture but is being used as an icon in a boss module.", key))
 				end
 			end
 		else
@@ -394,6 +394,14 @@ function boss:Disable(isWipe)
 			end
 		end
 
+		-- Remove all private aura sounds
+		if self.privateAuraSounds then
+			for _, id in next, self.privateAuraSounds do
+				C_UnitAuras.RemovePrivateAuraAppliedSound(id)
+			end
+			self.privateAuraSounds = nil
+		end
+
 		-- Cancel all say countdowns
 		for _, tbl in next, self.sayCountdowns do
 			tbl[1] = true
@@ -402,7 +410,6 @@ function boss:Disable(isWipe)
 		self.sayCountdowns = nil
 		self.scheduledMessages = nil
 		self.targetEventFunc = nil
-		self.missing = nil
 		self.isWiping = nil
 		self.isEngaged = nil
 		self.bossTargetChecks = nil
@@ -411,6 +418,32 @@ function boss:Disable(isWipe)
 
 		if not isWiping then
 			self:SendMessage("BigWigs_OnBossDisable", self)
+		end
+
+		if self.missing then
+			local newBar = "New timer for %q at stage %d with placement %d and value %.2f on %d running ".. BigWigsLoader:GetVersionString() ..", tell the authors."
+			local newBarError = "New timer for %q at stage %d with placement %d and value %.2f."
+			local difficultyToText = {[14] = "N", [15] = "H", [16] = "M", [17] = "LFR"}
+			local errorHeader = format("BigWigs is missing timers on %q running %s, tell the devs!", difficultyToText[self:Difficulty()] or self:Difficulty(), BigWigsLoader:GetVersionString())
+			local errorStrings = {errorHeader}
+			for key, stageTbl in next, self.missing do
+				for stage = 0, 5, 0.5 do
+					if stageTbl[stage] then
+						local count = #stageTbl[stage]
+						for timeEntry = 2, count do
+							local t = stageTbl[stage][timeEntry] - stageTbl[stage][timeEntry-1]
+							local text = format(newBar, key, stage, timeEntry-1, t, self:Difficulty())
+							core:Print(text)
+							errorStrings[#errorStrings+1] = format(newBarError, key, stage, timeEntry-1, t)
+						end
+					end
+				end
+			end
+			if #errorStrings > 1 then
+				local timersText = table.concat(errorStrings, "\n")
+				core:Error(timersText, true)
+			end
+			self.missing = nil
 		end
 	end
 end
@@ -2375,7 +2408,6 @@ do
 	local badNameplateBarStart = "Attempted to start nameplate bar %q without a valid unitGUID."
 	local badNameplateBarStop = "Attempted to stop nameplate bar %q without a valid unitGUID."
 	local badNameplateBarTimeLeft = "Attempted to get time left of nameplate bar %q without a valid unitGUID."
-	local newBar = "New timer for %q at stage %d with placement %d and value %.2f on %d running ".. BigWigsLoader:GetVersionString() ..", tell the authors."
 
 	--- Display a bar.
 	-- @param key the option key
@@ -2386,14 +2418,16 @@ do
 		local lengthType = type(length)
 		if not length then
 			if not self.missing then self.missing = {} end
+			local stage = self:GetStage() or 0
 			if not self.missing[key] then
 				local t = GetTime()
-				self.missing[key] = {t}
+				self.missing[key] = {[stage] = {t}}
+			elseif not self.missing[key][stage] then
+				local t = GetTime()
+				self.missing[key][stage] = {t}
 			else
-				local t, c = GetTime(), #self.missing[key]
-				local new = t - self.missing[key][c]
-				core:Print(format(newBar, key, self.stage or 0, c, new, self:Difficulty()))
-				self.missing[key][c+1] = t
+				local t, c = GetTime(), #self.missing[key][stage]
+				self.missing[key][stage][c+1] = t
 			end
 			return
 		elseif lengthType ~= "number" and lengthType ~= "table" then
@@ -2401,8 +2435,6 @@ do
 			return
 		elseif length == 0 then
 			return
-		elseif self.missing and self.missing[key] then
-			self.missing[key] = nil
 		end
 		local time, maxTime
 		if lengthType == "table" then
@@ -2431,14 +2463,16 @@ do
 		local lengthType = type(length)
 		if not length then
 			if not self.missing then self.missing = {} end
+			local stage = self:GetStage() or 0
 			if not self.missing[key] then
 				local t = GetTime()
-				self.missing[key] = {t}
+				self.missing[key] = {[stage] = {t}}
+			elseif not self.missing[key][stage] then
+				local t = GetTime()
+				self.missing[key][stage] = {t}
 			else
-				local t, c = GetTime(), #self.missing[key]
-				local new = t - self.missing[key][c]
-				core:Print(format(newBar, key, self.stage or 0, c, new, self:Difficulty()))
-				self.missing[key][c+1] = t
+				local t, c = GetTime(), #self.missing[key][stage]
+				self.missing[key][stage][c+1] = t
 			end
 			return
 		elseif lengthType ~= "number" and lengthType ~= "table" then
@@ -2446,8 +2480,6 @@ do
 			return
 		elseif length == 0 then
 			return
-		elseif self.missing and self.missing[key] then
-			self.missing[key] = nil
 		end
 		local time, maxTime
 		if lengthType == "table" then
@@ -2721,6 +2753,26 @@ function boss:CustomIcon(key, unit, icon)
 	end
 end
 
+do
+	local flagToIcon = {
+		[0x00000001] = 1, -- COMBATLOG_OBJECT_RAIDTARGET1
+		[0x00000002] = 2, -- COMBATLOG_OBJECT_RAIDTARGET2
+		[0x00000004] = 3, -- COMBATLOG_OBJECT_RAIDTARGET3
+		[0x00000008] = 4, -- COMBATLOG_OBJECT_RAIDTARGET4
+		[0x00000010] = 5, -- COMBATLOG_OBJECT_RAIDTARGET5
+		[0x00000020] = 6, -- COMBATLOG_OBJECT_RAIDTARGET6
+		[0x00000040] = 7, -- COMBATLOG_OBJECT_RAIDTARGET7
+		[0x00000080] = 8, -- COMBATLOG_OBJECT_RAIDTARGET8
+	}
+
+	--- Get the raid target icon currently set on a unit based on its combat log flags.
+	-- @string flags unit bit flags
+	-- @return number The number based on the icon ranging from 1-8 (nil if no icon is set)
+	function boss:GetIcon(flags)
+		return flagToIcon[flags]
+	end
+end
+
 -------------------------------------------------------------------------------
 -- Chat.
 -- @section chat
@@ -2882,6 +2934,23 @@ end
 --- Request to play the victory sound.
 function boss:PlayVictorySound()
 	self:SendMessage("BigWigs_VictorySound", self)
+end
+
+--- Register a sound to be played when a Private Aura is applied to you.
+-- @param key the option key
+-- @number[opt] spellId the spell id of the Private Aura if different from the key
+-- @string[opt] sound the sound to play, defaults to "warning"
+function boss:SetPrivateAuraSound(key, spellId, sound)
+	local sounds = core:GetPlugin("Sounds", true)
+	if sounds then
+		if not self.privateAuraSounds then self.privateAuraSounds = {} end
+		self.privateAuraSounds[#self.privateAuraSounds + 1] = C_UnitAuras.AddPrivateAuraAppliedSound({
+			spellID = spellId or key,
+			unitToken = "player",
+			soundFileName = sounds:GetSoundFile(self, key, sound or "warning"),
+			outputChannel = "master",
+		})
+	end
 end
 
 do

@@ -119,7 +119,7 @@ function Module:OnEnable()
             end
         end
 
-        if db.petbar then
+        if db.bars.petbar then
             if PetActionBar:GetEffectiveAlpha() and PetActionBar:GetEffectiveAlpha() > 0.001 then
                 showGCD("PetActionButton")
             else
@@ -127,7 +127,7 @@ function Module:OnEnable()
             end
         end
 
-        if db.stancebar then
+        if db.bars.stancebar then
             if StanceBar:GetEffectiveAlpha() and StanceBar:GetEffectiveAlpha() > 0.001 then
                 showGCD("StanceButton")
             else
@@ -217,7 +217,7 @@ function Module:OnEnable()
         elseif db.bagbar == "show" then
             MouseoverDefaultBars:Alpha("bagbar", 1)
         elseif db.bagbar == "hide" then
-            BagBar:Hide()
+            BagsBar:Hide()
         end
     end
 
@@ -247,7 +247,7 @@ function Module:OnEnable()
         elseif actionbar == "micromenu" then
             MicroMenu:SetAlpha(alpha)
         elseif actionbar == "bagbar" then
-            BagBar:SetAlpha(alpha)
+            BagsBar:SetAlpha(alpha)
         end
     end
 

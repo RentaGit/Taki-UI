@@ -1,4 +1,4 @@
-local MINOR = 3
+local MINOR = 4
 local lib = LibStub:NewLibrary('LibEditMode', MINOR)
 if not lib then
 	-- this or a newer version is already loaded
@@ -184,7 +184,7 @@ function lib:AddFrame(frame, callback, default)
 	selection:SetScript('OnMouseDown', onMouseDown)
 	selection:SetScript('OnDragStart', onDragStart)
 	selection:SetScript('OnDragStop', onDragStop)
-	selection:SetLabelText(frame:GetName())
+	selection.Label:SetText(frame:GetName())
 	selection:Hide()
 
 	frameSelections[frame] = selection

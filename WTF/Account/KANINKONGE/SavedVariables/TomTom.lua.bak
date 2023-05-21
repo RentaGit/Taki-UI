@@ -26,6 +26,7 @@ TomTomDB = {
 		["Zfafasfasdfs - Kazzak"] = "Default",
 		["Takidhtest - Kazzak"] = "Default",
 		["Rentaki - Lightbringer"] = "Default",
+		["Takosa - Kazzak"] = "Default",
 		["Rentaco - Ravencrest"] = "Default",
 		["Asdsfesdfs - Kazzak"] = "Default",
 		["Takirogtrial - Ravencrest"] = "Default",
@@ -123,6 +124,7 @@ TomTomWaypointsM = {
 		["Zfafasfasdfs - Kazzak"] = "Zfafasfasdfs - Kazzak",
 		["Takidhtest - Kazzak"] = "Takidhtest - Kazzak",
 		["Rentaki - Lightbringer"] = "Rentaki - Lightbringer",
+		["Takosa - Kazzak"] = "Takosa - Kazzak",
 		["Rentaco - Ravencrest"] = "Rentaco - Ravencrest",
 		["Asdsfesdfs - Kazzak"] = "Asdsfesdfs - Kazzak",
 		["Takirogtrial - Ravencrest"] = "Takirogtrial - Ravencrest",
@@ -271,6 +273,8 @@ TomTomWaypointsM = {
 					["world"] = true,
 				},
 			},
+		},
+		["Takosa - Kazzak"] = {
 		},
 		["Rentaco - Ravencrest"] = {
 		},
@@ -763,6 +767,39 @@ TomTomWaypointsM = {
 		["Huntaki - Ravencrest"] = {
 		},
 		["Rentaki - Kazzak"] = {
+			[2022] = {
+				["2022:221800000:514300000:TomTom waypoint"] = {
+					2022, -- [1]
+					0.2218, -- [2]
+					0.5143, -- [3]
+					["arrivaldistance"] = 15,
+					["crazy"] = true,
+					["persistent"] = true,
+					["desc"] = "TomTom waypoint",
+					["silent"] = true,
+					["cleardistance"] = 10,
+					["title"] = "TomTom waypoint",
+					["from"] = "TomTom/way",
+					["callbacks"] = {
+						["distance"] = {
+							[10] = nil --[[ skipped inline function ]],
+							[15] = nil --[[ skipped inline function ]],
+						},
+						["world"] = {
+							["onclick"] = nil --[[ skipped inline function ]],
+							["tooltip_update"] = nil --[[ skipped inline function ]],
+							["tooltip_show"] = nil --[[ skipped inline function ]],
+						},
+						["minimap"] = {
+							["onclick"] = nil --[[ skipped inline function ]],
+							["tooltip_update"] = nil --[[ skipped inline function ]],
+							["tooltip_show"] = nil --[[ skipped inline function ]],
+						},
+					},
+					["minimap"] = true,
+					["world"] = true,
+				},
+			},
 		},
 		["Nyumi - Argent Dawn"] = {
 		},

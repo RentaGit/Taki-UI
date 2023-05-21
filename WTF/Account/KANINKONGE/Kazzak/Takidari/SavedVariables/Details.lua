@@ -8,9 +8,12 @@ _detalhes_database = {
 		},
 	},
 	["ocd_tracker"] = {
-		["enabled"] = false,
+		["show_title"] = true,
 		["current_cooldowns"] = {
 		},
+		["pos"] = {
+		},
+		["group_frames"] = true,
 		["lines_per_column"] = 12,
 		["frames"] = {
 			["defensive-raid"] = {
@@ -34,17 +37,16 @@ _detalhes_database = {
 			["utility"] = false,
 			["defensive-personal"] = false,
 		},
-		["pos"] = {
-		},
-		["height"] = 18,
+		["framme_locked"] = false,
 		["cooldowns"] = {
 		},
-		["framme_locked"] = false,
+		["width"] = 120,
+		["height"] = 18,
 		["show_conditions"] = {
 			["only_inside_instance"] = true,
 			["only_in_group"] = true,
 		},
-		["width"] = 120,
+		["enabled"] = false,
 		["filters"] = {
 			["defensive-raid"] = false,
 			["ofensive"] = true,
@@ -53,7 +55,7 @@ _detalhes_database = {
 			["defensive-personal"] = false,
 		},
 	},
-	["combat_counter"] = 851,
+	["combat_counter"] = 859,
 	["force_font_outline"] = "",
 	["tabela_instancias"] = {
 	},
@@ -65,7 +67,7 @@ _detalhes_database = {
 	},
 	["on_death_menu"] = false,
 	["nick_tag_cache"] = {
-		["nextreset"] = 1675587321,
+		["nextreset"] = 1677303621,
 		["last_version"] = 15,
 	},
 	["last_instance_id"] = 2289,
@@ -114,9 +116,9 @@ _detalhes_database = {
 		["frame"] = {
 		},
 	},
-	["ignore_nicktag"] = false,
-	["SoloTablesSaved"] = {
-		["Mode"] = 1,
+	["last_encounter"] = "Gruul the Dragonkiller",
+	["character_data"] = {
+		["logons"] = 86,
 	},
 	["mythic_plus_log"] = {
 	},
@@ -124,7 +126,12 @@ _detalhes_database = {
 		["enabled"] = true,
 		["channel"] = "SELF",
 	},
-	["last_version"] = "10.0.2 10409",
+	["last_day"] = "15",
+	["data_harvested_for_charts"] = {
+	},
+	["SoloTablesSaved"] = {
+		["Mode"] = 1,
+	},
 	["plugin_database"] = {
 		["DETAILS_PLUGIN_COMPARETWO_WINDOW"] = {
 			["enabled"] = true,
@@ -235,7 +242,7 @@ _detalhes_database = {
 			["author"] = "Details! Team",
 			["row_texture"] = "Details Serenity",
 			["square_grow_direction"] = "right",
-			["use_spark"] = true,
+			["y"] = 4.57763671875e-05,
 			["row_color"] = {
 				0.1, -- [1]
 				0.1, -- [2]
@@ -245,16 +252,6 @@ _detalhes_database = {
 			["square_amount"] = 5,
 			["enabled"] = false,
 			["arrow_size"] = 10,
-			["font_size"] = 10,
-			["row_spacement"] = 21,
-			["main_frame_color"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.2, -- [4]
-			},
-			["main_frame_strata"] = "LOW",
-			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
 			["per_second"] = {
 				["enabled"] = false,
 				["point"] = "CENTER",
@@ -266,7 +263,17 @@ _detalhes_database = {
 				["update_speed"] = 0.05,
 				["size"] = 32,
 			},
-			["y"] = 4.57763671875e-05,
+			["row_spacement"] = 21,
+			["main_frame_color"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.2, -- [4]
+			},
+			["main_frame_strata"] = "LOW",
+			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
+			["font_size"] = 10,
+			["use_spark"] = true,
 			["x"] = 0,
 			["font_face"] = "Friz Quadrata TT",
 			["square_size"] = 32,
@@ -377,8 +384,6 @@ _detalhes_database = {
 			["author"] = "Details! Team",
 		},
 	},
-	["last_encounter"] = "Gruul the Dragonkiller",
-	["last_day"] = "21",
 	["last_realversion"] = 148,
 	["announce_firsthit"] = {
 		["enabled"] = true,
@@ -519,11 +524,6 @@ _detalhes_database = {
 			},
 		},
 	},
-	["data_harvested_for_charts"] = {
-	},
-	["character_data"] = {
-		["logons"] = 82,
-	},
 	["local_instances_config"] = {
 		{
 			["modo"] = 2,
@@ -595,6 +595,8 @@ _detalhes_database = {
 			},
 		}, -- [2]
 	},
+	["last_version"] = "10.0.5 10561",
+	["ignore_nicktag"] = false,
 	["announce_cooldowns"] = {
 		["ignored_cooldowns"] = {
 		},

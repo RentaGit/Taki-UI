@@ -34,11 +34,11 @@ local L = Core.Locale
 local Masque = LibStub("AceAddon-3.0"):NewAddon(MASQUE)
 
 -- API Version
-local API_VERSION = 100002
+local API_VERSION = 100100
 
 -- Client Version
 local WOW_VERSION = select(4, GetBuildInfo()) or 0
-local WOW_RETAIL = (WOW_VERSION >= 100000 and true) or nil
+local WOW_RETAIL = (WOW_VERSION > 100000 and true) or nil
 
 ----------------------------------------
 -- Utility
@@ -86,8 +86,8 @@ Core.WOW_VERSION = WOW_VERSION
 Core.WOW_RETAIL = WOW_RETAIL
 
 -- Add-On Info
-Core.Version = GetAddOnMetadata(MASQUE, "Version")
-Core.Discord = "https://discord.gg/DDVqkd6"
+Core.Version = "10.1.1"
+Core.Discord = "https://discord.gg/7MTWRgDzz8"
 
 Core.Authors = {
 	"StormFX",
@@ -145,6 +145,9 @@ function Masque:OnInitialize()
 		profile = {
 			API_VERSION = 0,
 			AltSort = false,
+			CB_Warn = {
+				["*"] = true
+			},
 			Debug = false,
 			SkinInfo = true,
 			StandAlone = true,
@@ -165,6 +168,7 @@ function Masque:OnInitialize()
 			LDB = {
 				hide = true,
 				minimapPos = 220,
+				position = 0,
 				radius = 80,
 			},
 		},
