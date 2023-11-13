@@ -24,6 +24,7 @@ HandyNotesDB = {
 		["Takitest - Ravencrest"] = "Takitest - Ravencrest",
 		["Takosa - Kazzak"] = "Takosa - Kazzak",
 		["Rentaco - Ravencrest"] = "Rentaco - Ravencrest",
+		["Takilock - Kazzak"] = "Takilock - Kazzak",
 		["Takirogtrial - Ravencrest"] = "Takirogtrial - Ravencrest",
 		["Takuu - Ravencrest"] = "Takuu - Ravencrest",
 		["Taaku - Kazzak"] = "Taaku - Kazzak",
@@ -113,6 +114,8 @@ HandyNotesDB = {
 		["Takosa - Kazzak"] = {
 		},
 		["Rentaco - Ravencrest"] = {
+		},
+		["Takilock - Kazzak"] = {
 		},
 		["Takirogtrial - Ravencrest"] = {
 		},
@@ -225,6 +228,7 @@ HandyNotes_HandyNotesDB = {
 		["Takitest - Ravencrest"] = "Takitest - Ravencrest",
 		["Takosa - Kazzak"] = "Takosa - Kazzak",
 		["Rentaco - Ravencrest"] = "Rentaco - Ravencrest",
+		["Takilock - Kazzak"] = "Takilock - Kazzak",
 		["Takirogtrial - Ravencrest"] = "Takirogtrial - Ravencrest",
 		["Takuu - Ravencrest"] = "Takuu - Ravencrest",
 		["Taaku - Kazzak"] = "Taaku - Kazzak",
@@ -314,6 +318,8 @@ HandyNotes_HandyNotesDB = {
 		["Takosa - Kazzak"] = {
 		},
 		["Rentaco - Ravencrest"] = {
+		},
+		["Takilock - Kazzak"] = {
 		},
 		["Takirogtrial - Ravencrest"] = {
 		},

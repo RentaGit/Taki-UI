@@ -1,4 +1,9 @@
-﻿TLX = {};
+﻿local addonName = ...;
+local print = function(...)
+	_G["print"](format("|cff1eff00%s: |r", addonName), ...);
+end
+
+TLX = {};
 TalentLoadoutsEx = TalentLoadoutsEx or {};
 
 -- For C_Traits.GetNodeInfo() Issue
@@ -6,6 +11,9 @@ TalentLoadoutsEx = TalentLoadoutsEx or {};
 -- https://www.curseforge.com/wow/addons/talent-loadout-ex#c34
 local singleEntryNodeIDs = {
 	[76180] = true, -- Unholy Pact(Unholy DK)
+	[82582] = true, -- Twilight Corruption(Discipline Priest)
+	[90750] = true, -- Deeper Stratagem(Rogue)
+	[90644] = true, -- Ghostly Strike(Outlow Rogue)
 };
 
 local InitTable = function()
@@ -107,6 +115,16 @@ TLX.GetRanks = function(isActive)
 	return config;
 end
 
+local SetPvpTalent = function(slot, pvpTalentID)
+	if pvpTalentID then
+		if (GetPvpTalentInfoByID(pvpTalentID)) then
+			LearnPvpTalent(pvpTalentID, slot);
+		else
+			print(format("[%s] is not valid PvP Talent ID now.", pvpTalentID));
+		end
+	end
+end
+
 TLX.LoadConfig = function(option)
 	local configID = C_ClassTalents.GetActiveConfigID();
 	if configID == nil then
@@ -126,24 +144,29 @@ TLX.LoadConfig = function(option)
 
 			-- Class/Spec
 			if talentInfo[1] then
-				C_Traits.ResetTree(configID, treeID);
-				for i, nodeID in pairs(GetNodeIDs(configID, treeID)) do
-					if i > #talentInfo[1] then
-						break;
-					end
+				C_Timer.After(
+					0,
+					function()
+						C_Traits.ResetTree(configID, treeID);
+						for i, nodeID in pairs(GetNodeIDs(configID, treeID)) do
+							if i > #talentInfo[1] then
+								break;
+							end
 
-					local state = tonumber(talentInfo[1]:sub(i, i));
-					if state > 0 then
-						local nodeInfo = C_Traits.GetNodeInfo(configID, nodeID);
-						if not singleEntryNodeIDs[nodeID] and #nodeInfo.entryIDs > 1 then
-							C_Traits.SetSelection(configID, nodeID, nodeInfo.entryIDs[state]);
-						else
-							for j = 1, state do
-								C_Traits.PurchaseRank(configID, nodeID);
+							local state = tonumber(talentInfo[1]:sub(i, i));
+							if state > 0 then
+								local nodeInfo = C_Traits.GetNodeInfo(configID, nodeID);
+								if not singleEntryNodeIDs[nodeID] and #nodeInfo.entryIDs > 1 then
+									C_Traits.SetSelection(configID, nodeID, nodeInfo.entryIDs[state]);
+								else
+									for j = 1, state do
+										C_Traits.PurchaseRank(configID, nodeID);
+									end
+								end
 							end
 						end
 					end
-				end
+				);
 			end
 
 			-- PvP
@@ -160,13 +183,10 @@ TLX.LoadConfig = function(option)
 					);
 				end
 
-				LearnPvpTalent = LearnPvpTalent;
-				unpack = unpack;
-
 				local pvpTalentID1, pvpTalentID2, pvpTalentID3 = unpack(talentInfo, 2);
-				LearnPvpTalent(tonumber(pvpTalentID3 or pvpTalentID1), 3);
-				LearnPvpTalent(tonumber(pvpTalentID2 or pvpTalentID1), 2);
-				LearnPvpTalent(tonumber(pvpTalentID1), 1);
+				SetPvpTalent(3, tonumber(pvpTalentID3 or pvpTalentID1));
+				SetPvpTalent(2, tonumber(pvpTalentID2 or pvpTalentID1));
+				SetPvpTalent(1, tonumber(pvpTalentID1));
 			end
 
 			return true;

@@ -108,3 +108,5 @@ LibClassicDurations: enabled
 LibClassicCasterino: enabled
 LibGetFrame-1.0: enabled
 DejaCharacterStats: disabled
+Blizzard_CombatText: enabled
+BigWigs_Aberrus: enabled

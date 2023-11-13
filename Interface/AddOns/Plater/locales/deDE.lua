@@ -5,36 +5,36 @@ do
 
 ------------------------------------------------------------
 --[[Translation missing --]]
+L["EXPORT"] = "Export"
+--[[Translation missing --]]
+L["EXPORT_CAST_COLORS"] = "Share Colors"
+--[[Translation missing --]]
+L["EXPORT_CAST_SOUNDS"] = "Share Sounds"
+--[[Translation missing --]]
 L["HIGHLIGHT_HOVEROVER"] = "Hover Over Highlight"
 --[[Translation missing --]]
 L["HIGHLIGHT_HOVEROVER_ALPHA"] = "Hover Over Highlight Alpha"
 --[[Translation missing --]]
 L["HIGHLIGHT_HOVEROVER_DESC"] = "Highlight effect when the mouse is over the nameplate."
+--[[Translation missing --]]
+L["IMPORT"] = "Import"
+--[[Translation missing --]]
+L["IMPORT_CAST_COLORS"] = "Import Colors"
+--[[Translation missing --]]
+L["IMPORT_CAST_SOUNDS"] = "Import Sounds"
 L["OPTIONS_ALPHA"] = "Alpha"
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_ALPHAMULTIPLIER"] = "Transparency multiplier."
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_DEFAULT"] = "Default Transparency"
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_DEFAULT_DESC"] = "Amount of transparency applyed to all the components of a single nameplate."
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_ENABLE_ENEMIES"] = "Enable For Enemies"
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_ENABLE_ENEMIES_DESC"] = "Apply Transparency settings to enemy units."
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_ENABLE_FRIENDLY"] = "Enable For Friendly"
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_ENABLE_FRIENDLY_DESC"] = "Apply Transparency settings to friendly units."
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_TARGET_INRANGE"] = "Target Alpha/In-Range"
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_TARGET_INRANGE_DESC"] = "Transparency for targets or in-range units."
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_TITLE_ENEMIES"] = "Transparency Amount Per Frame (enemies)"
---[[Translation missing --]]
-L["OPTIONS_ALPHABYFRAME_TITLE_FRIENDLY"] = "Transparency Amount Per Frame (friendly)"
---[[Translation missing --]]
-L["OPTIONS_AMOUNT"] = "Amount"
+L["OPTIONS_ALPHABYFRAME_ALPHAMULTIPLIER"] = "Transparenz-Multiplikator."
+L["OPTIONS_ALPHABYFRAME_DEFAULT"] = "Standard-Transparenz"
+L["OPTIONS_ALPHABYFRAME_DEFAULT_DESC"] = "Höhe der Transparenz, die auf alle Komponenten eines einzelnen Namensschilds angewendet wird."
+L["OPTIONS_ALPHABYFRAME_ENABLE_ENEMIES"] = "Aktivieren für Feinde"
+L["OPTIONS_ALPHABYFRAME_ENABLE_ENEMIES_DESC"] = "Transparenz-Einstellungen auf gegnerische Einheiten anwenden."
+L["OPTIONS_ALPHABYFRAME_ENABLE_FRIENDLY"] = "Für freundliche Ziele Aktivieren"
+L["OPTIONS_ALPHABYFRAME_ENABLE_FRIENDLY_DESC"] = "Transparenzeinstellungen auf befreundete Einheiten anwenden."
+L["OPTIONS_ALPHABYFRAME_TARGET_INRANGE"] = "Ziel-Alpha/Reichweite"
+L["OPTIONS_ALPHABYFRAME_TARGET_INRANGE_DESC"] = "Transparenz für Ziele oder Einheiten in Reichweite."
+L["OPTIONS_ALPHABYFRAME_TITLE_ENEMIES"] = "Transparenzbetrag pro Frame (Feinde)"
+L["OPTIONS_ALPHABYFRAME_TITLE_FRIENDLY"] = "Transparenzbetrag pro Frame (freundlich)"
+L["OPTIONS_AMOUNT"] = "Menge"
 L["OPTIONS_ANCHOR"] = "Ankerpunkt"
 L["OPTIONS_ANCHOR_BOTTOM"] = "Unten"
 L["OPTIONS_ANCHOR_BOTTOMLEFT"] = "Unten links"
@@ -142,6 +142,8 @@ L["OPTIONS_CASTBAR_TOGGLE_TEST"] = "Toggle Cast Bar Test"
 L["OPTIONS_CASTBAR_TOGGLE_TEST_DESC"] = "Start cast bar test, press again to stop."
 --[[Translation missing --]]
 L["OPTIONS_CASTBAR_WIDTH"] = "Width of the cast bar."
+--[[Translation missing --]]
+L["OPTIONS_CASTCOLORS_DISABLECOLORS"] = "Disable All Colors"
 --[[Translation missing --]]
 L["OPTIONS_CLICK_SPACE_HEIGHT"] = "The height of the are area which accepts mouse clicks to select the target"
 --[[Translation missing --]]
@@ -314,6 +316,8 @@ L["OPTIONS_NOESSENTIAL_NAME"] = "Disable non-essential script updates during Pla
 L["OPTIONS_NOESSENTIAL_SKIP_ALERT"] = "Skipped non-essential patch:"
 --[[Translation missing --]]
 L["OPTIONS_NOESSENTIAL_TITLE"] = "Skip Non Essential Script Patches"
+--[[Translation missing --]]
+L["OPTIONS_NOTHING_TO_EXPORT"] = "There's nothing to export."
 L["OPTIONS_OKAY"] = "Okay"
 L["OPTIONS_OUTLINE"] = "Umriss"
 --[[Translation missing --]]
@@ -384,6 +388,10 @@ L["OPTIONS_SHIELD_BAR"] = "Shield Bar"
 L["OPTIONS_SHOW_CASTBAR"] = "Show cast bar"
 --[[Translation missing --]]
 L["OPTIONS_SHOW_POWERBAR"] = "Show power bar"
+--[[Translation missing --]]
+L["OPTIONS_SHOWOPTIONS"] = "Show Options"
+--[[Translation missing --]]
+L["OPTIONS_SHOWSCRIPTS"] = "Show Scripts"
 --[[Translation missing --]]
 L["OPTIONS_SHOWTOOLTIP"] = "Show Tooltip"
 --[[Translation missing --]]

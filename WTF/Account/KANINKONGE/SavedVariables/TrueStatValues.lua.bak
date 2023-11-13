@@ -1,0 +1,18 @@
+
+TSV_DB = {
+	["profileKeys"] = {
+		["Rentaki - Kazzak"] = "Rentaki - Kazzak",
+		["Takidin - Kazzak"] = "Takidin - Kazzak",
+		["Thaaeyn - Argent Dawn"] = "Thaaeyn - Argent Dawn",
+		["Rintake - Ragnaros"] = "Rintake - Ragnaros",
+		["Takeera - Kazzak"] = "Takeera - Kazzak",
+		["Takiasd - EU Mythic Dungeons"] = "Takiasd - EU Mythic Dungeons",
+		["Takiscoper - Kazzak"] = "Takiscoper - Kazzak",
+		["Takii - Doomhammer"] = "Takii - Doomhammer",
+		["Rentaco - Kazzak"] = "Rentaco - Kazzak",
+		["Takii - Frostmane"] = "Takii - Frostmane",
+		["Takilock - Kazzak"] = "Takilock - Kazzak",
+		["Takidari - Kazzak"] = "Takidari - Kazzak",
+		["Taaku - Kazzak"] = "Taaku - Kazzak",
+	},
+}

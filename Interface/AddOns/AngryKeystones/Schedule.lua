@@ -6,18 +6,20 @@ local rowCount = 3
 local requestPartyKeystones
 
 -- 1:Overflowing, 2:Skittish, 3:Volcanic, 4:Necrotic, 5:Teeming, 6:Raging, 7:Bolstering, 8:Sanguine, 9:Tyrannical, 10:Fortified, 11:Bursting, 12:Grievous, 13:Explosive, 14:Quaking, 16:Infested, 117: Reaping, 119:Beguiling 120:Awakened, 121:Prideful, 122:Inspiring, 123:Spiteful, 124:Storming
+-- Dragonflight Season 2
+-- 134:Entangling, 135：Afflicted, 136:Incorporeal
 local affixSchedule = {
-	-- Dragonflight Season 1
-	[1]  = { [1]=6,   [2]=14,  [3]=10, }, -- Fortified | Raging | Quaking
-	[2]  = { [1]=11,  [2]=12,  [3]=9,  }, -- Tyrannical | Bursting | Grievous
-	[3]  = { [1]=8,   [2]=3,   [3]=10, }, -- Fortified | Sanguine | Volcanic
-	[4]  = { [1]=6,   [2]=124, [3]=9,  }, -- Tyrannical | Raging | Storming
-	[5]  = { [1]=123, [2]=12,  [3]=10, }, -- Fortified | Spiteful | Grievous
-	[6]  = { [1]=8,   [2]=13,  [3]=9,  }, -- Tyrannical | Sanguine | Explosive
-	[7]  = { [1]=7,   [2]=124, [3]=10, }, -- Fortified | Bolstering | Storming
-	[8]  = { [1]=123, [2]=14,  [3]=9,  }, -- Tyrannical | Spiteful | Quaking
-	[9]  = { [1]=11,  [2]=13,  [3]=10, }, -- Fortified | Bursting | Explosive
-	[10] = { [1]=7,   [2]=3,   [3]=9,  }, -- Tyrannical | Bolstering | Volcanic
+	-- Dragonflight Season 2
+	[1]  = { [1]=6,   [2]=124, [3]=9, }, -- Tyrannical | Raging      | Storming
+	[2]  = { [1]=134, [2]=7,   [3]=10,}, -- Fortified  | Entangling  | Bolstering
+	[3]  = { [1]=136, [2]=123, [3]=9, }, -- Tyrannical | Incorporeal | Spiteful
+	[4]  = { [1]=135, [2]=6,   [3]=10,}, -- Fortified  | Afflicted   | Raging
+	[5]  = { [1]=3,   [2]=8,   [3]=9, }, -- Tyrannical | Volcanic    | Sanguine
+	[6]  = { [1]=124, [2]=11,  [3]=10,}, -- Fortified  | Storming    | Bursting
+	[7]  = { [1]=135, [2]=7,   [3]=9, }, -- Tyrannical | Afflicted   | Bolstering
+	[8]  = { [1]=136, [2]=8,   [3]=10,}, -- Fortified  | Incorporeal | Sanguine
+	[9]  = { [1]=134, [2]=11,  [3]=9, }, -- Tyrannical | Entangling  | Bursting
+	[10] = { [1]=3,   [2]=123, [3]=10,}, -- Fortified  | Volcanic    | Spiteful
 }
 
 local scheduleEnabled = true

@@ -96,3 +96,5 @@ BigDebuffs: disabled
 MacroToolkit: disabled
 MacroToolkitIcons: disabled
 TakUI: disabled
+Blizzard_CombatText: enabled
+BigWigs_Aberrus: enabled

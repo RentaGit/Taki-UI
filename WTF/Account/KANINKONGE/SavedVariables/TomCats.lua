@@ -5,8 +5,11 @@ TomCats_Account = {
 	},
 	["hallowsend"] = {
 	},
-	["lastExpirationWarning"] = 0,
+	["lastExpirationWarning"] = 1698335101,
 	["discoveriesResetCount"] = 0,
+	["noblegarden"] = {
+		["enabled"] = true,
+	},
 	["lunarfestival"] = {
 		["preferences"] = {
 		},
@@ -32,9 +35,12 @@ TomCats_Account = {
 		},
 	},
 	["discoveriesVersion"] = "2.3.24",
-	["lastVersionSeen"] = "2.4.53",
+	["lastVersionSeen"] = "2.4.98",
 	["preferences"] = {
-		["dragonGlyphsTipShown"] = true,
+		["TomCats-HallowsEndMinimapButton"] = {
+			["hidden"] = false,
+			["position"] = -2.514,
+		},
 		["TomCats-MinimapButton"] = {
 			["hidden"] = false,
 			["position"] = -2.888,
@@ -48,10 +54,26 @@ TomCats_Account = {
 			["hidden"] = false,
 			["position"] = -3.262,
 		},
-		["dragonGlyphsEnabled"] = true,
-		["TomCats-HallowsEndMinimapButton"] = {
+		["TomCats-MidsummerMinimapButton2023"] = {
 			["hidden"] = false,
 			["position"] = -2.514,
+		},
+		["AccessoryWindow"] = {
+			["primeGamingLoot"] = 3,
+			["elementalStorms"] = 3,
+			["treasureGoblin"] = 3,
+			["WindowLocation"] = {
+				"TOPRIGHT", -- [1]
+				nil, -- [2]
+				"TOPRIGHT", -- [3]
+				-468.7511901855469, -- [4]
+				-82.50017547607422, -- [5]
+			},
+			["display"] = 100,
+			["twitchDrops"] = 3,
+			["timeRifts"] = 3,
+			["snoozed"] = {
+			},
 		},
 		["betaEnabled"] = false,
 		["TomCats-LunarFestivalMinimapButton2023"] = {
@@ -70,6 +92,8 @@ TomCats_Account = {
 	["primalstorms"] = {
 		["preferences"] = {
 		},
+	},
+	["midsummer"] = {
 	},
 	["discoveries"] = {
 		["version"] = "0",

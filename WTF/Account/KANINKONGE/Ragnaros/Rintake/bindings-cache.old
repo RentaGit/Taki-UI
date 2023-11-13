@@ -14,6 +14,7 @@ bind Z NONE
 bind NUMLOCK NONE
 bind BUTTON4 CLICK BT4Button98:LeftButton
 bind INSERT NONE
+bind DELETE TOGGLEAUTORUN
 bind PAGEUP CLICK BT4Button87:LeftButton
 bind PAGEDOWN CLICK BT4Button93:LeftButton
 bind R CLICK BT4Button118:LeftButton
@@ -53,7 +54,7 @@ bind SHIFT-G CLICK BT4Button50:LeftButton
 bind SHIFT-C NONE
 bind T CLICK BT4Button15:LeftButton
 bind ¨ TOGGLEUI
-bind BUTTON5 TOGGLEAUTORUN
+bind BUTTON5 NONE
 bind ALT-1 CLICK BT4Button92:LeftButton
 bind ALT-2 CLICK BT4Button94:LeftButton
 bind ALT-3 CLICK BT4Button13:LeftButton

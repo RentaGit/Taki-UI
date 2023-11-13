@@ -15,6 +15,7 @@ OmniCCDB = {
 		["Takil - Kazzak"] = "Default",
 		["Rintake - Ragnaros"] = "Default",
 		["Takidin - Ravencrest"] = "Default",
+		["Takilock - Kazzak"] = "Default",
 		["Takided - Kazzak"] = "Default",
 		["Rentakidh - Argent Dawn"] = "Default",
 		["Takidari - Kazzak"] = "Default",
@@ -23,8 +24,8 @@ OmniCCDB = {
 		["Takidin - Kazzak"] = "Default",
 		["Takosa - Kazzak"] = "Default",
 		["Thaaeyn - Argent Dawn"] = "Default",
-		["Rentaco - Kazzak"] = "Default",
 		["Rentaki - Ravencrest"] = "Default",
+		["Rentaco - Kazzak"] = "Default",
 		["Takidemon - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
 		["Takidk - Kazzak"] = "Default",
@@ -38,7 +39,7 @@ OmniCCDB = {
 	},
 	["global"] = {
 		["dbVersion"] = 6,
-		["addonVersion"] = "10.1.0",
+		["addonVersion"] = "10.1.2",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -70,16 +71,16 @@ OmniCCDB = {
 						["minutes"] = {
 						},
 						["hours"] = {
-							["b"] = 1,
+							["r"] = 1,
 							["scale"] = 1,
 							["g"] = 1,
-							["r"] = 1,
+							["b"] = 1,
 						},
 						["charging"] = {
 							["a"] = 1,
-							["r"] = 1,
-							["scale"] = 1,
 							["b"] = 1,
+							["scale"] = 1,
+							["r"] = 1,
 						},
 						["controlled"] = {
 							["b"] = 1,
@@ -95,11 +96,11 @@ OmniCCDB = {
 				},
 				["Plater Nameplates Theme"] = {
 					["textStyles"] = {
-						["seconds"] = {
-						},
 						["minutes"] = {
 						},
 						["soon"] = {
+						},
+						["seconds"] = {
 						},
 					},
 					["fontFace"] = "Interface\\Addons\\SUI\\Media\\Fonts\\Prototype.ttf",
@@ -109,7 +110,6 @@ OmniCCDB = {
 	},
 }
 OmniCC4Config = {
-	["version"] = "8.2.5",
 	["groupSettings"] = {
 		["base"] = {
 			["styles"] = {
@@ -167,4 +167,5 @@ OmniCC4Config = {
 	},
 	["groups"] = {
 	},
+	["version"] = "8.2.5",
 }

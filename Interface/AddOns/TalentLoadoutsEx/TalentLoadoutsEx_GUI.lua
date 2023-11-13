@@ -5,6 +5,32 @@ TLX.Popup = TLX.Popup or {};
 
 TalentLoadoutsExGUI = TalentLoadoutsExGUI or {};
 
+TLX.Icons = {
+	-- M+
+	{
+		{4578412, "Brackenhide Hollow", "BH"},
+		{4578415, "Halls of Infusion", "HoI"},
+		{4578417, "Neltharus", "NELT"},
+		{4578418, "Uldaman: Legacy of Tyr", "ULD"},
+		{2011112, "Freehold", "FH"},
+		{2011151, "The Underrot", "UNDR"},
+		{1417429, "Neltharion's Lair", "NL"},
+		{409599, "Vortex Pinnacle", "VP"},
+	},
+	-- Raid
+	{
+		{5161745, "Kazzara, the Hellforged"},
+		{5161743, "The Amalgamation Chamber"},
+		{5161744, "The Forgotten Experiments"},
+		{5161751, "Assault of the Zaqali"},
+		{5161749, "Rashok, the Elder"},
+		{5161752, "The Vigilant Steward, Zskarn"},
+		{5161746, "Magmorax"},
+		{5161747, "Echo of Neltharion"},
+		{5161750, "Scalecommander Sarkareth"},
+	},
+};
+
 local STRIPE_COLOR = {r=0.9, g=0.9, b=1};
 local DEFAUALT_ICON = 134400;
 
@@ -351,14 +377,14 @@ function TlxPopupMixin:OnShow()
 
 	PlaySound(SOUNDKIT.IG_CHARACTER_INFO_OPEN);
 	self.iconDataProvider = CreateAndInitFromMixin(IconDataProviderMixin, IconDataProviderExtraType.Spell);
+	self.BorderBox.IconTypeDropDown:SetSelectedValue(IconSelectorPopupFrameIconFilterTypes.All);
 	self:Update();
 	self.BorderBox.IconSelectorEditBox:OnTextChanged();
 
 	local function OnIconSelected(selectionIndex, icon)
 		self.BorderBox.SelectedIconArea.SelectedIconButton:SetIconTexture(icon);
-		self.BorderBox.SelectedIconArea.SelectedIconButton.SelectedTexture:SetShown(false);
-		self.BorderBox.SelectedIconArea.SelectedIconText.SelectedIconHeader:SetText(ICON_SELECTION_TITLE_CURRENT);
 		self.BorderBox.SelectedIconArea.SelectedIconText.SelectedIconDescription:SetText(ICON_SELECTION_CLICK);
+		self.BorderBox.SelectedIconArea.SelectedIconText.SelectedIconDescription:SetFontObject(GameFontHighlightSmall);
 	end
 
 	self.IconSelector:SetSelectedCallback(OnIconSelected);
@@ -389,7 +415,6 @@ function TlxPopupMixin:Update()
 	self.IconSelector:SetSelectionsDataProvider(getSelection, getNumSelections);
 	self.IconSelector:ScrollToSelectedIndex();
 
-	self.BorderBox.SelectedIconArea.SelectedIconButton:SetSelectedTexture();
 	self:SetSelectedIconText();
 end
 
@@ -419,6 +444,34 @@ function TlxPopupMixin:OkayButton_OnClick()
 	IconSelectorPopupFrameTemplateMixin.OkayButton_OnClick(self);
 end
 
+TlxIconListFrame_OnLoad = function(self)
+	local parent = self;
+	local gridOffset = 46;
+
+	for groupIndex, group in ipairs(TLX.Icons) do
+		for iconIndex, iconInfo in ipairs(group) do
+			local iconFrame = CreateFrame("Frame", nil, parent, "TlxIconButtonTemplate");
+			iconFrame:SetPoint("TOPLEFT", parent, "TOPLEFT", 18 + gridOffset * (iconIndex - 1), -12 - gridOffset * (groupIndex - 1));
+			iconFrame.iconID = iconInfo[1];
+			iconFrame.tooltip = iconInfo[2];
+			iconFrame.text:SetText(iconInfo[3] or tostring(iconIndex));
+			iconFrame.texture:SetTexture(iconFrame.iconID);
+		end
+	end
+end
+
+TlxIconButton_OnEnter = function(self)
+	GameTooltip:ClearLines();
+	GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+	GameTooltip:AddLine(self.tooltip);
+	GameTooltip:AddLine(self.iconID);
+	GameTooltip:Show();
+end
+
+TlxIconButton_OnMouseDown = function(self)
+	TlxFrameSearchBox:SetText(tostring(self.iconID));
+end
+
 local IsAddOnLoadFinished = function(name)
 	local loaded, finished = IsAddOnLoaded(name);
 	return loaded and finished;
@@ -437,10 +490,32 @@ end
 
 local isSetAddOn_LMIS = false;
 local addonName_LMIS = "LargerMacroIconSelection";
+local addonName_LMISD = "LargerMacroIconSelectionData";
 local SetAddOn_LMIS = function()
 	if IsAddOnLoadFinished(TLX.AddonName) and IsAddOnLoadFinished(addOnName_BCTU) and IsAddOnLoadFinished(addonName_LMIS) and isSetAddOn_LMIS == false then
+		if not IsAddOnLoadFinished(addonName_LMISD) then
+			LoadAddOn(addonName_LMISD);
+			return;
+		end
+
+		-- Add Icons
+		local fileData = LargerMacroIconSelectionData:GetFileDataRetail();
+		fileData[5161745] = "inv_achievement_raiddragon_kazzara";
+		fileData[5161743] = "inv_achievement_raiddragon_amalgamationchamber";
+		fileData[5161744] = "inv_achievement_raiddragon_forgottenexperiments";
+		fileData[5161751] = "inv_achievement_raiddragon_zaqaliassault";
+		fileData[5161749] = "inv_achievement_raiddragon_rashok";
+		fileData[5161752] = "inv_achievement_raiddragon_zskarn";
+		fileData[5161746] = "inv_achievement_raiddragon_magmorax";
+		fileData[5161747] = "inv_achievement_raiddragon_neltharion";
+		fileData[5161750] = "inv_achievement_raiddragon_sarkareth";
+		LargerMacroIconSelectionData.GetFileDataRetail = function(self)
+			return fileData;
+		end
+
 		LargerMacroIconSelection:Initialize(TlxFrame.PopupFrame);
 		TlxFrame.PopupFrame.SearchNotice:Hide();
+		TlxFrame.PopupFrame.IconListFrame:Show();
 		isSetAddOn_LMIS = true;
 	end
 end
@@ -462,6 +537,8 @@ loadFrame:SetScript(
 				SetAddOn_BCTU();
 				SetAddOn_LMIS();
 			elseif addOnName == addonName_LMIS then
+				SetAddOn_LMIS();
+			elseif addOnName == addonName_LMISD then
 				SetAddOn_LMIS();
 			end
 		end

@@ -13,7 +13,7 @@ local strsplit = _G.strsplit
 local floor = _G.floor
 local tremove = _G.tremove
 local UnitName = _G.UnitName
-local tinsert = _G.tinsert
+local tinsert = tinsert
 local IsInRaid = _G.IsInRaid
 local GetNumGroupMembers = _G.GetNumGroupMembers
 local GetRaidRosterInfo = _G.GetRaidRosterInfo
@@ -80,11 +80,11 @@ function Details.packFunctions.PackCombatData(combatObject, flags)
     --0x8 misc
     --0x10 no combat header
 
-    table.wipe(actorInformation)
-    table.wipe(actorInformationIndexes)
-    table.wipe(actorDamageInfo)
-    table.wipe(actorHealInfo)
-    table.wipe(actorUtilityInfo)
+    Details:Destroy(actorInformation)
+    Details:Destroy(actorInformationIndexes)
+    Details:Destroy(actorDamageInfo)
+    Details:Destroy(actorHealInfo)
+    Details:Destroy(actorUtilityInfo)
 
     --reset the serial counter
     entitySerialCounter = 0

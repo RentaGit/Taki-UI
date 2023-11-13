@@ -1,13 +1,5 @@
 
 EncounterDetailsDB = {
-	["emotes"] = {
-		{
-			["boss"] = "Nalorakk",
-		}, -- [1]
-		{
-			["boss"] = "Akil'zon",
-		}, -- [2]
-	},
 	["encounter_spells"] = {
 		[43529] = {
 			["school"] = 1,
@@ -59,13 +51,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Amani Bear Mount",
 		},
-		[43526] = {
-			["school"] = 8,
+		[42384] = {
+			["school"] = 1,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Amani'shi Wind Walker",
+			["source"] = "Nalorakk",
 		},
 		[42943] = {
 			["school"] = 1,
@@ -85,14 +78,21 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Nalorakk",
 		},
-		[42384] = {
-			["school"] = 1,
+		[43526] = {
+			["school"] = 8,
 			["token"] = {
-				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Nalorakk",
+			["source"] = "Amani'shi Wind Walker",
 		},
+	},
+	["emotes"] = {
+		{
+			["boss"] = "Nalorakk",
+		}, -- [1]
+		{
+			["boss"] = "Akil'zon",
+		}, -- [2]
 	},
 }

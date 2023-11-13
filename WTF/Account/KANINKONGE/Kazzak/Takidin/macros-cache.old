@@ -1,6 +1,6 @@
 VER 3 0100000000000015 " bop mo" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/cast [@mouseover] blessing of protection
+/cast [@mouseover,help,nodead][help,nodead][@player] blessing of protection
 END
 VER 3 0100000000000018 "cancel bop" "INV_MISC_QUESTIONMARK"
 /cancelaura blessing of protection
@@ -8,46 +8,52 @@ VER 3 0100000000000018 "cancel bop" "INV_MISC_QUESTIONMARK"
 END
 VER 3 0100000000000007 "CDs" "INV_MISC_QUESTIONMARK"
 #showtooltip
+/use 13
 /cast Avenging Wrath
-/cast Holy Avenger
 END
-VER 3 0100000000000010 "cleanse" "INV_MISC_QUESTIONMARK"
-#showtooltip Cleanse Toxins
-/cast [@mouseover] Cleanse Toxins
+VER 3 0100000000000010 "cleanse toxins" "134400"
+#showtooltip
+/cast [@mouseover,help,nodead][help,nodead][@player]  Cleanse toxins
 END
 VER 3 010000000000000D "flash of light" "INV_MISC_QUESTIONMARK"
-#showtooltip flash of light
-/cast [@mouseover] flash of light
+#showtooltip
+/cast [@mouseover,help,nodead][help,nodead][@player] flash of light
+END
+VER 3 010000000000001D "freedom mo" "134400"
+#showtooltip
+/cast [@mouseover,help,nodead][help,nodead][@player] blessing of freedom
 END
 VER 3 010000000000000C "holy light" "INV_MISC_QUESTIONMARK"
-#showtooltip holy light
-/cast [@mouseover] holy light
+#showtooltip
+/cast [@mouseover,help,nodead][help,nodead][@player] holy light
 END
 VER 3 010000000000000B "holy shock" "INV_MISC_QUESTIONMARK"
-#showtooltip holy shock
-/cast [@mouseover] holy shock
+#showtooltip
+/cast [@mouseover,exists] Holy Shock; Holy Shock
 END
 VER 3 0100000000000014 "loh mo" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/cast [@mouseover] lay on hands
+/cast [@mouseover,help,nodead][help,nodead][@player] lay on hands
 END
 VER 3 010000000000001C "mo cleanse" "INV_MISC_QUESTIONMARK"
-#showtooltip cleanse
-/cast [@mouseover] cleanse
+#showtooltip
+/cast [@mouseover,help,nodead][help,nodead][@player] cleanse
 END
-VER 3 0100000000000019 "mo holy shock" "INV_MISC_QUESTIONMARK"
+VER 3 0100000000000019 "mo cr" "134400"
+#showtooltip
+/cast [@mouseover] intercession
 END
 VER 3 010000000000001B "mo kyr" "INV_MISC_QUESTIONMARK"
-#showtooltip divine toll
-/cast [@mouseover] divine toll
+#showtooltip
+/cast [@mouseover,help,nodead][help,nodead][@target] divine toll
 END
-VER 3 0100000000000016 "mo martyr" "INV_MISC_QUESTIONMARK"
-#showtooltip light of the martyr
-/cast [@mouseover] light of the martyr
+VER 3 0100000000000016 "mo summer" "134400"
+#showtooltip
+/cast [@mouseover,help,nodead][help,nodead][@player] blessing of summer
 END
 VER 3 010000000000001A "mo wog" "INV_MISC_QUESTIONMARK"
 #showtooltip word of glory
-/cast [@mouseover] word of glory
+/cast [@mouseover,help,nodead][help,nodead][@player] word of glory
 END
 VER 3 0100000000000005 "remove" "INV_QIRAJIDOL_SUN"
 /cancelaura divine shield
@@ -65,8 +71,4 @@ VER 3 0100000000000012 "wings" "INV_MISC_QUESTIONMARK"
 #showtooltip Avenging Wrath
 /cast Avenging Wrath
 /use 13
-END
-VER 3 010000000000001E "wog" "INV_MISC_QUESTIONMARK"
-#showtooltip word of glory
-/cast [target=mouseover,exists] Primordial Wave(Necrolord) [target=target,exists] Primordial Wave(Necrolord)
 END

@@ -1,12 +1,6 @@
 
 EncounterDetailsDB = {
-	["emotes"] = {
-		{
-			["boss"] = "Nalorakk",
-		}, -- [1]
-		{
-			["boss"] = "Akil'zon",
-		}, -- [2]
+	["chartData"] = {
 	},
 	["encounter_spells"] = {
 		[42943] = {
@@ -18,5 +12,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Amani Lynx Cub",
 		},
+	},
+	["emotes"] = {
+		{
+			["boss"] = "Nalorakk",
+		}, -- [1]
+		{
+			["boss"] = "Akil'zon",
+		}, -- [2]
 	},
 }

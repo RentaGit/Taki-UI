@@ -6,27 +6,31 @@ MacroToolkitDB = {
 			},
 		},
 	},
-	["global"] = {
-		["backups"] = {
-		},
-		["ebackups"] = {
-		},
-	},
 	["profileKeys"] = {
-		["Rentaki - Kazzak"] = "profile",
-		["Takidin - Kazzak"] = "profile",
-		["Thaaeyn - Argent Dawn"] = "profile",
-		["Ivelea - Argent Dawn"] = "profile",
-		["Takidemon - Kazzak"] = "profile",
-		["Takeera - Kazzak"] = "profile",
 		["Hunteraki - Frostmane"] = "profile",
-		["Felenia - Doomhammer"] = "profile",
-		["Takided - Kazzak"] = "profile",
-		["Takibank - Argent Dawn"] = "profile",
+		["Takilock - Kazzak"] = "profile",
+		["Rintake - Ragnaros"] = "profile",
+		["Takii - Frostmane"] = "profile",
 		["Arcataki - Doomhammer"] = "profile",
-		["Takosa - Kazzak"] = "profile",
 		["Takidari - Kazzak"] = "profile",
 		["Taaku - Kazzak"] = "profile",
+		["Ivelea - Argent Dawn"] = "profile",
+		["Takided - Kazzak"] = "profile",
+		["Thaaeyn - Argent Dawn"] = "profile",
+		["Takidemon - Kazzak"] = "profile",
+		["Felenia - Doomhammer"] = "profile",
+		["Takidin - Kazzak"] = "profile",
+		["Takibank - Argent Dawn"] = "profile",
+		["Rentaki - Kazzak"] = "profile",
+		["Takosa - Kazzak"] = "profile",
+		["Takii - Doomhammer"] = "profile",
+		["Takeera - Kazzak"] = "profile",
+	},
+	["global"] = {
+		["ebackups"] = {
+		},
+		["backups"] = {
+		},
 	},
 	["profiles"] = {
 		["profile"] = {

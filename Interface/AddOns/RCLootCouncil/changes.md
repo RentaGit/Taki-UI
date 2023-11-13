@@ -1,4 +1,4 @@
-## Changes
+## Bugfixes
 
-Uncommon quality (greens) items are now ignored.
+- *Fixed `nil` errors causing error handler to throw errors.*
 

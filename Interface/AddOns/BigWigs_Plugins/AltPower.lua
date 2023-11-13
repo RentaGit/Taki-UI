@@ -2,6 +2,8 @@
 -- Module Declaration
 --
 
+if BigWigsLoader.isClassic then return end
+
 local plugin = BigWigs:NewPlugin("AltPower")
 if not plugin then return end
 
@@ -146,7 +148,7 @@ do
 						type = "execute",
 						name = L.test,
 						desc = L.altPowerTestDesc,
-						func = function() 
+						func = function()
 							plugin:Test()
 						end,
 						width = 1.5,
@@ -290,7 +292,7 @@ do
 						type = "execute",
 						name = L.resetAll,
 						desc = L.resetAltPowerDesc,
-						func = function() 
+						func = function()
 							plugin:Contract()
 							plugin.db:ResetProfile()
 						end,

@@ -2,18 +2,46 @@
 PasteDB = {
 	["profileKeys"] = {
 		["Hunteraki - Frostmane"] = "Hunteraki - Frostmane",
+		["Takilock - Kazzak"] = "Takilock - Kazzak",
+		["Rintake - Ragnaros"] = "Rintake - Ragnaros",
+		["Takikin - Kazzak"] = "Takikin - Kazzak",
+		["Takii - Frostmane"] = "Takii - Frostmane",
+		["Takidari - Kazzak"] = "Takidari - Kazzak",
+		["Taaku - Kazzak"] = "Taaku - Kazzak",
+		["Ivelea - Argent Dawn"] = "Ivelea - Argent Dawn",
 		["Takidin - Kazzak"] = "Takidin - Kazzak",
 		["Thaaeyn - Argent Dawn"] = "Thaaeyn - Argent Dawn",
 		["Takeera - Kazzak"] = "Takeera - Kazzak",
-		["Rentaki - Kazzak"] = "Rentaki - Kazzak",
+		["Takiscoper - Kazzak"] = "Takiscoper - Kazzak",
 		["Takibank - Argent Dawn"] = "Takibank - Argent Dawn",
-		["Ivelea - Argent Dawn"] = "Ivelea - Argent Dawn",
+		["Rentaco - Kazzak"] = "Rentaco - Kazzak",
 		["Takosa - Kazzak"] = "Takosa - Kazzak",
-		["Takidari - Kazzak"] = "Takidari - Kazzak",
-		["Taaku - Kazzak"] = "Taaku - Kazzak",
+		["Takii - Doomhammer"] = "Takii - Doomhammer",
+		["Rentaki - Kazzak"] = "Rentaki - Kazzak",
 	},
 	["profiles"] = {
 		["Hunteraki - Frostmane"] = {
+			["loaded"] = true,
+		},
+		["Takilock - Kazzak"] = {
+			["loaded"] = true,
+		},
+		["Rintake - Ragnaros"] = {
+			["loaded"] = true,
+		},
+		["Takikin - Kazzak"] = {
+			["loaded"] = true,
+		},
+		["Takii - Frostmane"] = {
+			["loaded"] = true,
+		},
+		["Takidari - Kazzak"] = {
+			["loaded"] = true,
+		},
+		["Taaku - Kazzak"] = {
+			["loaded"] = true,
+		},
+		["Ivelea - Argent Dawn"] = {
 			["loaded"] = true,
 		},
 		["Takidin - Kazzak"] = {
@@ -23,13 +51,28 @@ PasteDB = {
 			["pos"] = {
 			},
 			["minimap"] = {
-				["minimapPos"] = 311.6127214633108,
+				["minimapPos"] = 291.3608120506099,
 			},
 		},
 		["Thaaeyn - Argent Dawn"] = {
 			["loaded"] = true,
 		},
 		["Takeera - Kazzak"] = {
+			["loaded"] = true,
+		},
+		["Takiscoper - Kazzak"] = {
+			["loaded"] = true,
+		},
+		["Takibank - Argent Dawn"] = {
+			["loaded"] = true,
+		},
+		["Rentaco - Kazzak"] = {
+			["loaded"] = true,
+		},
+		["Takosa - Kazzak"] = {
+			["loaded"] = true,
+		},
+		["Takii - Doomhammer"] = {
 			["loaded"] = true,
 		},
 		["Rentaki - Kazzak"] = {
@@ -41,21 +84,6 @@ PasteDB = {
 			["whispertarget"] = "",
 			["pos"] = {
 			},
-		},
-		["Takibank - Argent Dawn"] = {
-			["loaded"] = true,
-		},
-		["Ivelea - Argent Dawn"] = {
-			["loaded"] = true,
-		},
-		["Takosa - Kazzak"] = {
-			["loaded"] = true,
-		},
-		["Takidari - Kazzak"] = {
-			["loaded"] = true,
-		},
-		["Taaku - Kazzak"] = {
-			["loaded"] = true,
 		},
 	},
 }

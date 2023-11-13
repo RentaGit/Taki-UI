@@ -15,7 +15,7 @@ local function createMainPanel()
 	local author = frame:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 	title:SetFormattedText("|T%s:%d|t %s", "Interface\\AddOns\\MacroToolkit\\mtsm", 48, "Macro Toolkit")
 	title:SetPoint("CENTER", frame, "CENTER", 0, 170)
-	version:SetFormattedText("%s %s", _G.GAME_VERSION_LABEL, GetAddOnMetadata("MacroToolkit", "Version"))
+	version:SetFormattedText("%s %s", _G.GAME_VERSION_LABEL, (GetAddOnMetadata or C_AddOns.GetAddOnMetadata)("MacroToolkit", "Version"))
 	version:SetPoint("CENTER", frame, "CENTER", 0, 130)
 	author:SetFormattedText("%s: Deepac", L["Author"])
 	author:SetPoint("CENTER", frame, "CENTER", 0, 100)
@@ -118,15 +118,16 @@ local checkPanel = {
 			get = function() return MT.db.profile.replacemt end,
 			set  = function(info, value) MT.db.profile.replacemt = value end,
 		},
-		broker = {
-			order = 5,
-			type = "toggle",
-			name = L["Enable data broker"],
-			desc = L["Enable certain types of macro to be called via a data broker addon"],
-			width = "full",
-			get = function() return MT.db.profile.broker end,
-			set = function(info, value) MT.db.profile.broker = value MT:MacroFrameUpdate() end,
-		},
+		-- disabled broker code (issue #37)
+		--broker = {
+		--	order = 5,
+		--	type = "toggle",
+		--	name = L["Enable data broker"],
+		--	desc = L["Enable certain types of macro to be called via a data broker addon"],
+		--	width = "full",
+		--	get = function() return MT.db.profile.broker end,
+		--	set = function(info, value) MT.db.profile.broker = value MT:MacroFrameUpdate() end,
+		--},
 		noskin = {
 			order = 6,
 			type = "toggle",

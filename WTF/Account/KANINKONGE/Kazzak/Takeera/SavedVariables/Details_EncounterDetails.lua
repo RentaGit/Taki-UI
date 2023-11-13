@@ -1,123 +1,6 @@
 
 EncounterDetailsDB = {
-	["emotes"] = {
-		{
-			{
-				4.215000000025611, -- [1]
-				"Such insolence... very well, I shall show you!", -- [2]
-				"Star Augur Etraeus", -- [3]
-				7, -- [4]
-			}, -- [1]
-			{
-				10.38300000003073, -- [1]
-				"See for yourself the cruel, frozen void that lies beyond the margin of Azeroth's skies!", -- [2]
-				"Star Augur Etraeus", -- [3]
-				7, -- [4]
-			}, -- [2]
-			{
-				19.69599999999628, -- [1]
-				"The Burning Legion. Slayers of whole worlds.", -- [2]
-				"Star Augur Etraeus", -- [3]
-				7, -- [4]
-			}, -- [3]
-			{
-				25.48499999998603, -- [1]
-				"Could we hope to resist? Can you?!", -- [2]
-				"Star Augur Etraeus", -- [3]
-				7, -- [4]
-			}, -- [4]
-			{
-				32.35499999998137, -- [1]
-				"The stars have judged you, and found you wanting.", -- [2]
-				"Star Augur Etraeus", -- [3]
-				7, -- [4]
-			}, -- [5]
-			{
-				50.41399999998976, -- [1]
-				"Is that not enough? Must I show you the true horror of our reality?", -- [2]
-				"Star Augur Etraeus", -- [3]
-				7, -- [4]
-			}, -- [6]
-			{
-				57.35700000001816, -- [1]
-				"Very well... witness what I have seen, and TREMBLE!", -- [2]
-				"Star Augur Etraeus", -- [3]
-				7, -- [4]
-			}, -- [7]
-			["boss"] = "Star Augur Etraeus",
-		}, -- [1]
-		{
-			{
-				10.08600000001025, -- [1]
-				"Have a bite master, I know it's your favorite.", -- [2]
-				"Trilliax", -- [3]
-				7, -- [4]
-			}, -- [1]
-			["boss"] = "Trilliax",
-		}, -- [2]
-		{
-			{
-				0.1990000000223517, -- [1]
-				"Why defy that which devours all things?", -- [2]
-				"Chronomatic Anomaly", -- [3]
-				7, -- [4]
-			}, -- [1]
-			{
-				0.1990000000223517, -- [1]
-				"|TInterface\\Icons\\ability_mage_timewarp:20|tThe passage of time is now normal.", -- [2]
-				"Chronomatic Anomaly", -- [3]
-				1, -- [4]
-			}, -- [2]
-			{
-				1.020000000018627, -- [1]
-				"Shanar daloras! I have no idea how such an entity came to be, but the essence of the Nightwell is surging through it.", -- [2]
-				"First Arcanist Thalyssra", -- [3]
-				7, -- [4]
-			}, -- [3]
-			{
-				5.209000000031665, -- [1]
-				"The wheels of time turn against you.", -- [2]
-				"Chronomatic Anomaly", -- [3]
-				5, -- [4]
-			}, -- [4]
-			{
-				6.717999999993481, -- [1]
-				"|TInterface\\Icons\\spell_mage_altertime:20|tYou've been given a |cFFFF0000|Hspell:206617|h[Time Bomb]|h|r.", -- [2]
-				"Chronomatic Anomaly", -- [3]
-				2, -- [4]
-			}, -- [5]
-			{
-				10.31100000004517, -- [1]
-				"Tendrils of power are emanating from the aberration. I believe Elisande is using this creature to maintain the time lock spell.", -- [2]
-				"First Arcanist Thalyssra", -- [3]
-				7, -- [4]
-			}, -- [6]
-			{
-				12.21400000003632, -- [1]
-				"|TInterface\\Icons\\ability_mage_timewarp:20|tTime is passing much more quickly.", -- [2]
-				"Chronomatic Anomaly", -- [3]
-				1, -- [4]
-			}, -- [7]
-			{
-				12.21400000003632, -- [1]
-				"Precise. Perfect. Inevitable.", -- [2]
-				"Chronomatic Anomaly", -- [3]
-				7, -- [4]
-			}, -- [8]
-			{
-				18.81400000001304, -- [1]
-				"In order to free our allies at the gate, this monstrosity must be destroyed!", -- [2]
-				"First Arcanist Thalyssra", -- [3]
-				7, -- [4]
-			}, -- [9]
-			{
-				19.21700000000419, -- [1]
-				"A Waning Time Particle falls out of the Nightwell.", -- [2]
-				"Chronomatic Anomaly", -- [3]
-				1, -- [4]
-			}, -- [10]
-			["boss"] = "Chronomatic Anomaly",
-		}, -- [3]
+	["chartData"] = {
 	},
 	["encounter_spells"] = {
 		[40504] = {
@@ -3532,13 +3415,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Illusionary Clone",
 		},
-		[3600] = {
+		[326018] = {
 			["school"] = 8,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Earthbind Totem",
+			["source"] = "Spinemaw Larva",
 		},
 		[193443] = {
 			["school"] = 1,
@@ -3564,13 +3447,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Forsworn Squad-Leader",
 		},
-		[326018] = {
+		[3600] = {
 			["school"] = 8,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Spinemaw Larva",
+			["source"] = "Earthbind Totem",
 		},
 		[339573] = {
 			["school"] = 32,
@@ -3632,6 +3515,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Kul'tharok",
 		},
+		[218508] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Arcanist Tel'arn",
+		},
 		[328322] = {
 			["school"] = 32,
 			["token"] = {
@@ -3640,13 +3530,6 @@ EncounterDetailsDB = {
 				["SPELL_DAMAGE"] = true,
 			},
 			["source"] = "Undying Stonefiend",
-		},
-		[218508] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Arcanist Tel'arn",
 		},
 		[207881] = {
 			["school"] = 4,
@@ -3790,20 +3673,6 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Legion Hound",
 		},
-		[326281] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Tred'ova",
-		},
-		[206618] = {
-			["school"] = 64,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Chronomatic Anomaly",
-		},
 		[325258] = {
 			["school"] = 32,
 			["type"] = "BUFF",
@@ -3813,6 +3682,20 @@ EncounterDetailsDB = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "Mueh'zala",
+		},
+		[206618] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Chronomatic Anomaly",
+		},
+		[326281] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Tred'ova",
 		},
 		[342905] = {
 			["school"] = 16,
@@ -3876,12 +3759,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Congealed Slime",
 		},
-		[325260] = {
+		[320145] = {
 			["school"] = 1,
 			["token"] = {
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Grand Proctor Beryllia",
+			["source"] = "Millificent Manastorm",
 		},
 		[192007] = {
 			["school"] = 64,
@@ -3890,21 +3773,6 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 			["source"] = "Arcane Hydra Spawn",
-		},
-		[325261] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Grand Proctor Beryllia",
-		},
-		[336258] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Domina Venomblade",
 		},
 		[331399] = {
 			["school"] = 8,
@@ -3915,6 +3783,21 @@ EncounterDetailsDB = {
 				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
 			["source"] = "Margrave Stradama",
+		},
+		[336258] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Domina Venomblade",
+		},
+		[325261] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Grand Proctor Beryllia",
 		},
 		[209433] = {
 			["school"] = 64,
@@ -3934,15 +3817,6 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Seaspray Crab",
 		},
-		[320147] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
-			},
-			["source"] = "Millificent Manastorm",
-		},
 		[197541] = {
 			["school"] = 4,
 			["type"] = "DEBUFF",
@@ -3951,6 +3825,15 @@ EncounterDetailsDB = {
 				["SPELL_DAMAGE"] = true,
 			},
 			["source"] = "Cordana Felsong",
+		},
+		[320147] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
+			},
+			["source"] = "Millificent Manastorm",
 		},
 		[205486] = {
 			["school"] = 64,
@@ -4071,20 +3954,6 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Elisande",
 		},
-		[323732] = {
-			["school"] = 64,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Dealer Xy'exa",
-		},
-		[208924] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Trilliax",
-		},
 		[214167] = {
 			["school"] = 64,
 			["type"] = "DEBUFF",
@@ -4093,6 +3962,20 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 			["source"] = "Star Augur Etraeus",
+		},
+		[208924] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Trilliax",
+		},
+		[323732] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Dealer Xy'exa",
 		},
 		[202019] = {
 			["school"] = 32,
@@ -4262,15 +4145,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Oryphrion",
 		},
-		[326039] = {
-			["school"] = 32,
-			["type"] = "BUFF",
+		[197418] = {
+			["school"] = 1,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Grand Proctor Beryllia",
+			["source"] = "Illysanna Ravencrest",
 		},
 		[197546] = {
 			["school"] = 1,
@@ -4399,12 +4281,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Expedient Elemental",
 		},
-		[202919] = {
-			["school"] = 4,
+		[193712] = {
+			["school"] = 64,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Tirathon Saltheril",
+			["source"] = "Lady Hatecoil",
 		},
 		[192050] = {
 			["school"] = 8,
@@ -4424,14 +4307,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Talixae Flamewreath",
 		},
-		[319650] = {
-			["school"] = 1,
+		[202919] = {
+			["school"] = 4,
 			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Kryxis the Voracious",
+			["source"] = "Tirathon Saltheril",
 		},
 		[329113] = {
 			["school"] = 1,
@@ -4467,12 +4348,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Rek the Hardened",
 		},
-		[207907] = {
-			["school"] = 4,
+		[322465] = {
+			["school"] = 8,
 			["token"] = {
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Talixae Flamewreath",
+			["source"] = "Tred'ova",
 		},
 		[334485] = {
 			["school"] = 1,
@@ -4484,12 +4365,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Ventunax",
 		},
-		[322465] = {
-			["school"] = 8,
+		[207907] = {
+			["school"] = 4,
 			["token"] = {
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Tred'ova",
+			["source"] = "Talixae Flamewreath",
 		},
 		[208865] = {
 			["school"] = 64,
@@ -4690,13 +4571,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Corpse Harvester",
 		},
-		[193712] = {
-			["school"] = 64,
+		[319650] = {
+			["school"] = 1,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Lady Hatecoil",
+			["source"] = "Kryxis the Voracious",
 		},
 		[323138] = {
 			["school"] = 32,
@@ -4775,14 +4657,15 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Elisande",
 		},
-		[197418] = {
-			["school"] = 1,
+		[326039] = {
+			["school"] = 32,
+			["type"] = "BUFF",
 			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Illysanna Ravencrest",
+			["source"] = "Grand Proctor Beryllia",
 		},
 		[193159] = {
 			["school"] = 1,
@@ -4978,12 +4861,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Oryphrion",
 		},
-		[320145] = {
+		[325260] = {
 			["school"] = 1,
 			["token"] = {
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Millificent Manastorm",
+			["source"] = "Grand Proctor Beryllia",
 		},
 		[322736] = {
 			["school"] = 1,
@@ -5538,5 +5421,124 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Mueh'zala",
 		},
+	},
+	["emotes"] = {
+		{
+			{
+				4.215000000025611, -- [1]
+				"Such insolence... very well, I shall show you!", -- [2]
+				"Star Augur Etraeus", -- [3]
+				7, -- [4]
+			}, -- [1]
+			{
+				10.38300000003073, -- [1]
+				"See for yourself the cruel, frozen void that lies beyond the margin of Azeroth's skies!", -- [2]
+				"Star Augur Etraeus", -- [3]
+				7, -- [4]
+			}, -- [2]
+			{
+				19.69599999999628, -- [1]
+				"The Burning Legion. Slayers of whole worlds.", -- [2]
+				"Star Augur Etraeus", -- [3]
+				7, -- [4]
+			}, -- [3]
+			{
+				25.48499999998603, -- [1]
+				"Could we hope to resist? Can you?!", -- [2]
+				"Star Augur Etraeus", -- [3]
+				7, -- [4]
+			}, -- [4]
+			{
+				32.35499999998137, -- [1]
+				"The stars have judged you, and found you wanting.", -- [2]
+				"Star Augur Etraeus", -- [3]
+				7, -- [4]
+			}, -- [5]
+			{
+				50.41399999998976, -- [1]
+				"Is that not enough? Must I show you the true horror of our reality?", -- [2]
+				"Star Augur Etraeus", -- [3]
+				7, -- [4]
+			}, -- [6]
+			{
+				57.35700000001816, -- [1]
+				"Very well... witness what I have seen, and TREMBLE!", -- [2]
+				"Star Augur Etraeus", -- [3]
+				7, -- [4]
+			}, -- [7]
+			["boss"] = "Star Augur Etraeus",
+		}, -- [1]
+		{
+			{
+				10.08600000001025, -- [1]
+				"Have a bite master, I know it's your favorite.", -- [2]
+				"Trilliax", -- [3]
+				7, -- [4]
+			}, -- [1]
+			["boss"] = "Trilliax",
+		}, -- [2]
+		{
+			{
+				0.1990000000223517, -- [1]
+				"Why defy that which devours all things?", -- [2]
+				"Chronomatic Anomaly", -- [3]
+				7, -- [4]
+			}, -- [1]
+			{
+				0.1990000000223517, -- [1]
+				"|TInterface\\Icons\\ability_mage_timewarp:20|tThe passage of time is now normal.", -- [2]
+				"Chronomatic Anomaly", -- [3]
+				1, -- [4]
+			}, -- [2]
+			{
+				1.020000000018627, -- [1]
+				"Shanar daloras! I have no idea how such an entity came to be, but the essence of the Nightwell is surging through it.", -- [2]
+				"First Arcanist Thalyssra", -- [3]
+				7, -- [4]
+			}, -- [3]
+			{
+				5.209000000031665, -- [1]
+				"The wheels of time turn against you.", -- [2]
+				"Chronomatic Anomaly", -- [3]
+				5, -- [4]
+			}, -- [4]
+			{
+				6.717999999993481, -- [1]
+				"|TInterface\\Icons\\spell_mage_altertime:20|tYou've been given a |cFFFF0000|Hspell:206617|h[Time Bomb]|h|r.", -- [2]
+				"Chronomatic Anomaly", -- [3]
+				2, -- [4]
+			}, -- [5]
+			{
+				10.31100000004517, -- [1]
+				"Tendrils of power are emanating from the aberration. I believe Elisande is using this creature to maintain the time lock spell.", -- [2]
+				"First Arcanist Thalyssra", -- [3]
+				7, -- [4]
+			}, -- [6]
+			{
+				12.21400000003632, -- [1]
+				"|TInterface\\Icons\\ability_mage_timewarp:20|tTime is passing much more quickly.", -- [2]
+				"Chronomatic Anomaly", -- [3]
+				1, -- [4]
+			}, -- [7]
+			{
+				12.21400000003632, -- [1]
+				"Precise. Perfect. Inevitable.", -- [2]
+				"Chronomatic Anomaly", -- [3]
+				7, -- [4]
+			}, -- [8]
+			{
+				18.81400000001304, -- [1]
+				"In order to free our allies at the gate, this monstrosity must be destroyed!", -- [2]
+				"First Arcanist Thalyssra", -- [3]
+				7, -- [4]
+			}, -- [9]
+			{
+				19.21700000000419, -- [1]
+				"A Waning Time Particle falls out of the Nightwell.", -- [2]
+				"Chronomatic Anomaly", -- [3]
+				1, -- [4]
+			}, -- [10]
+			["boss"] = "Chronomatic Anomaly",
+		}, -- [3]
 	},
 }

@@ -10,6 +10,7 @@ local sortPriority = function(a, b)
 	end
 	return aprio > bprio
 end
+P.sortPriority = sortPriority
 
 function P:SetIconLayout(frame, sortOrder)
 	local icons = frame.icons
@@ -171,7 +172,7 @@ function P:SetChargeScale(icon, chargeScale)
 end
 
 function P:SetTooltip(icon, showTooltip)
-	icon:EnableMouse(showTooltip)
+	icon:EnableMouse((not icon.SetPassThroughButtons or icon.isPassThrough) and (showTooltip or icon.tooltipID))
 end
 
 function P:ApplySettings(frame)

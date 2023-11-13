@@ -118,3 +118,7 @@ WorldQuestTracker: disabled
 ParagonReputation: disabled
 AddOnSkins: disabled
 ElvUI_OptionsUI: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled

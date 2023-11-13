@@ -246,3 +246,9 @@ LibGraph-2.0: enabled
 ImprovedTalentLoadouts: disabled
 BigWigs_Aberrus: enabled
 HereBeDragons-2.0: enabled
+Masque_Shadow: enabled
+TalentLoadoutsEx: enabled
+Paste: disabled
+ColorPickerPlus: enabled
+CopyPasta2: disabled
+TrueStatValues: enabled

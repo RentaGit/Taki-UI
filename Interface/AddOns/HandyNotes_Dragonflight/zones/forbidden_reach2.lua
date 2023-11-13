@@ -13,7 +13,7 @@ local PetBattle = ns.node.PetBattle
 local Rare = ns.node.Rare
 
 local Dragonglyph = ns.node.Dragonglyph
-local Dragonrace = ns.node.Dragonrace
+local ElusiveCreature = ns.node.ElusiveCreature
 local Flag = ns.node.Flag
 local SignalTransmitter = ns.node.SignalTransmitter
 
@@ -685,118 +685,6 @@ map.nodes[37743063] = Dragonglyph({
 }) -- Forbidden Reach Glyph Hunter: Caldera of the Menders
 
 -------------------------------------------------------------------------------
---------------------------------- DRAGONRACES ---------------------------------
--------------------------------------------------------------------------------
-
-map.nodes[76136563] = Dragonrace({
-    label = '{quest:73017}',
-    normal = {2201, 46, 43},
-    advanced = {2207, 47, 42},
-    reverse = {2213, 47, 42},
-    rewards = {
-        Achievement({id = 17279, criteria = 1, oneline = true}), -- normal bronze
-        Achievement({id = 17280, criteria = 1, oneline = true}), -- normal silver
-        Achievement({id = 17281, criteria = 1, oneline = true}), -- normal gold
-        Achievement({id = 17284, criteria = 1, oneline = true}), -- advanced bronze
-        Achievement({id = 17286, criteria = 1, oneline = true}), -- advanced silver
-        Achievement({id = 17287, criteria = 1, oneline = true}), -- advanced gold
-        Achievement({id = 17288, criteria = 1, oneline = true}), -- reverse bronze
-        Achievement({id = 17289, criteria = 1, oneline = true}), -- reverse silver
-        Achievement({id = 17290, criteria = 1, oneline = true}) -- reverse gold
-    }
-}) -- Stormsunder Crater Circuit
-
-map.nodes[31326573] = Dragonrace({
-    label = '{quest:73020}',
-    normal = {2202, 55, 52},
-    advanced = {2208, 54, 49},
-    reverse = {2214, 58, 53},
-    rewards = {
-        Achievement({id = 17279, criteria = 2, oneline = true}), -- normal bronze
-        Achievement({id = 17280, criteria = 2, oneline = true}), -- normal silver
-        Achievement({id = 17281, criteria = 2, oneline = true}), -- normal gold
-        Achievement({id = 17284, criteria = 2, oneline = true}), -- advanced bronze
-        Achievement({id = 17286, criteria = 2, oneline = true}), -- advanced silver
-        Achievement({id = 17287, criteria = 2, oneline = true}), -- advanced gold
-        Achievement({id = 17288, criteria = 2, oneline = true}), -- reverse bronze
-        Achievement({id = 17289, criteria = 2, oneline = true}), -- reverse silver
-        Achievement({id = 17290, criteria = 2, oneline = true}) -- reverse gold
-    }
-}) -- Morqut Ascent
-
-map.nodes[63095195] = Dragonrace({
-    label = '{quest:73025}',
-    normal = {2203, 56, 53},
-    advanced = {2209, 55, 50},
-    reverse = {2215, 55, 50},
-    rewards = {
-        Achievement({id = 17279, criteria = 3, oneline = true}), -- normal bronze
-        Achievement({id = 17280, criteria = 3, oneline = true}), -- normal silver
-        Achievement({id = 17281, criteria = 3, oneline = true}), -- normal gold
-        Achievement({id = 17284, criteria = 3, oneline = true}), -- advanced bronze
-        Achievement({id = 17286, criteria = 3, oneline = true}), -- advanced silver
-        Achievement({id = 17287, criteria = 3, oneline = true}), -- advanced gold
-        Achievement({id = 17288, criteria = 3, oneline = true}), -- reverse bronze
-        Achievement({id = 17289, criteria = 3, oneline = true}), -- reverse silver
-        Achievement({id = 17290, criteria = 3, oneline = true}) -- reverse gold
-    }
-}) -- Aerie Chasm Cruise
-
-map.nodes[63658406] = Dragonrace({
-    label = '{quest:73029}',
-    normal = {2204, 73, 70},
-    advanced = {2210, 73, 68},
-    reverse = {2216, 68, 63},
-    rewards = {
-        Achievement({id = 17279, criteria = 4, oneline = true}), -- normal bronze
-        Achievement({id = 17280, criteria = 4, oneline = true}), -- normal silver
-        Achievement({id = 17281, criteria = 4, oneline = true}), -- normal gold
-        Achievement({id = 17284, criteria = 4, oneline = true}), -- advanced bronze
-        Achievement({id = 17286, criteria = 4, oneline = true}), -- advanced silver
-        Achievement({id = 17287, criteria = 4, oneline = true}), -- advanced gold
-        Achievement({id = 17288, criteria = 4, oneline = true}), -- reverse bronze
-        Achievement({id = 17289, criteria = 4, oneline = true}), -- reverse silver
-        Achievement({id = 17290, criteria = 4, oneline = true}) -- reverse gold
-    }
-}) -- Southern Reach Route
-
-map.nodes[41361455] = Dragonrace({
-    label = '{quest:73033}',
-    normal = {2205, 61, 58},
-    advanced = {2211, 61, 58},
-    reverse = {2217, 55, 50},
-    rewards = {
-        Achievement({id = 17279, criteria = 5, oneline = true}), -- normal bronze
-        Achievement({id = 17280, criteria = 5, oneline = true}), -- normal silver
-        Achievement({id = 17281, criteria = 5, oneline = true}), -- normal gold
-        Achievement({id = 17284, criteria = 5, oneline = true}), -- advanced bronze
-        Achievement({id = 17286, criteria = 5, oneline = true}), -- advanced silver
-        Achievement({id = 17287, criteria = 5, oneline = true}), -- advanced gold
-        Achievement({id = 17288, criteria = 5, oneline = true}), -- reverse bronze
-        Achievement({id = 17289, criteria = 5, oneline = true}), -- reverse silver
-        Achievement({id = 17290, criteria = 5, oneline = true}) -- reverse gold
-    }
-}) -- Caldera Coaster
-
-map.nodes[49426006] = Dragonrace({
-    label = '{quest:73061}',
-    normal = {2206, 62, 59},
-    advanced = {2212, 61, 58},
-    reverse = {2218, 61, 58},
-    rewards = {
-        Achievement({id = 17279, criteria = 6, oneline = true}), -- normal bronze
-        Achievement({id = 17280, criteria = 6, oneline = true}), -- normal silver
-        Achievement({id = 17281, criteria = 6, oneline = true}), -- normal gold
-        Achievement({id = 17284, criteria = 6, oneline = true}), -- advanced bronze
-        Achievement({id = 17286, criteria = 6, oneline = true}), -- advanced silver
-        Achievement({id = 17287, criteria = 6, oneline = true}), -- advanced gold
-        Achievement({id = 17288, criteria = 6, oneline = true}), -- reverse bronze
-        Achievement({id = 17289, criteria = 6, oneline = true}), -- reverse silver
-        Achievement({id = 17290, criteria = 6, oneline = true}) -- reverse gold
-    }
-}) -- Forbidden Reach Rush
-
--------------------------------------------------------------------------------
 ------------------------------- FORBIDDEN HOARD -------------------------------
 -------------------------------------------------------------------------------
 
@@ -1033,6 +921,33 @@ map.nodes[39988182] = SignalTransmitter({quest = 73145}) -- Sharpscale Coast
 map.nodes[78035110] = SignalTransmitter({quest = 73144}) -- Stormsunder Mountain
 
 -------------------------------------------------------------------------------
+------------------------------ ELUSIVE CREATURES ------------------------------
+-------------------------------------------------------------------------------
+
+map.nodes[41905742] = ElusiveCreature({
+    label = '{npc:202436}',
+    quest = 74232,
+    rewards = {
+        Item({item = 193218}), -- Dense Hide
+        Item({item = 193211}), -- Resilient Leather
+        Achievement({id = 18833, criteria = 61481}) -- Elusive Legends of the Dragon Isles
+    },
+    pois = {Path({ns.poi.Circle({origin = 41905742, radius = 4})})}
+}) -- Elusive Frienzied Amberfir
+
+map.nodes[45804040] = ElusiveCreature({
+    label = '{npc:202441}',
+    quest = 74233,
+    rewards = {
+        Item({item = 193218}), -- Dense Hide
+        Item({item = 193211}), -- Resilient Leather
+        Item({item = 204092}), -- Auric Fleece
+        Achievement({id = 18833, criteria = 61482}) -- Elusive Legends of the Dragon Isles
+    },
+    pois = {Path({ns.poi.Circle({origin = 45804040, radius = 2})})}
+}) -- Elusive Auric Argali
+
+-------------------------------------------------------------------------------
 -------------------------------- ZSKERA VAULTS --------------------------------
 -------------------------------------------------------------------------------
 
@@ -1234,6 +1149,21 @@ end
 
 map.nodes[30267800] = MossyMammoth()
 
+------------------------- TOY: TINY BOX OF TINY ROCKS -------------------------
+
+map.nodes[30268000] = Collectible({
+    label = '{achievement:18559}',
+    location = L['in_zskera_vaults'],
+    icon = 132762,
+    note = L['tiny_box_of_tiny_rocks_note'], -- TODO: can also be less often found in the waking shores
+    fgroup = 'zskera_vaults',
+    group = ns.groups.ZSKERA_VAULTS,
+    rewards = {
+        Achievement({id = 18559, criteria = {id = 1, qty = true}}), -- Many Boxes, Many Rockses
+        Toy({item = 207099}) -- Tiny Box of Tiny Rocks
+    }
+}) -- TOY: Tiny Box of Tiny Rocks
+
 -------------------------------------------------------------------------------
 ------------------ DRAGONSCALE EXPEDITION: THE HIGHEST PEAKS ------------------
 -------------------------------------------------------------------------------
@@ -1411,6 +1341,13 @@ map.nodes[55393586] = ScalecommanderItem({
 -------------------------------- MISCELLANEOUS --------------------------------
 -------------------------------------------------------------------------------
 
+---------------------------- PET: MOTE OF NASZ'URO ----------------------------
+
+map.nodes[36043426] = ns.node.MoteOfNaszuro({
+    quest = 76188,
+    note = L['naszuro_caldera_of_the_menders']
+}) -- Caldera of the Menders
+
 ----------------------------- SPELLSWORN GATEWAYS -----------------------------
 
 local SpellswornGateway = Class('SpellswornGateway', Node, {
@@ -1475,14 +1412,15 @@ map.nodes[34325997] = Collectible({
     scale = 1.3,
     note = L['renown_envoy_note'],
     rewards = {
-        Section('{npc:200566}'), Pet({item = 191915, id = 3259}), -- Shaggy
-        Spacer(), Section('{npc:200562}'),
-        Pet({item = 193850, id = 3330, note = 'x25000'}), -- Buckie
-        Spacer(), Section('{npc:200564}'),
-        Mount({item = 204382, id = 1467, note = 'x100000'}), -- Noble Bruffalon
-        Spacer(), Section('{npc:200563}'),
-        DC.SetNote(DC.WindborneVelocidrake.ExposedFinnedNeck, 'x2500'),
-        DC.SetNote(DC.HighlandDrake.TaperedNose, 'x2500')
+        Section('{npc:200566}'), -- Cataloger Daela
+        Pet({item = 191915, id = 3259, count = 2000}), -- Shaggy
+        Spacer(), Section('{npc:200562}'), -- Turik
+        Pet({item = 193850, id = 3330, count = 25000}), -- Buckie
+        Spacer(), Section('{npc:200564}'), -- Storykeepe Ashekh
+        Mount({item = 204382, id = 1467, count = 100000}), -- Noble Bruffalon
+        Spacer(), Section('{npc:200563}'), -- Kraxxus
+        DC.SetCount(DC.WindborneVelocidrake.ExposedFinnedNeck, 2500),
+        DC.SetCount(DC.HighlandDrake.TaperedNose, 2500)
     }
 }) -- Cataloger Daela, Turik, Storykeeper Ashekh, and Kraxxus <Renown Envoys>
 
@@ -1492,14 +1430,14 @@ map.nodes[35905744] = Collectible({
     scale = 1.3,
     note = L['trader_hagarth_note'],
     rewards = {
-        Recipe({item = 203420, profession = 171}), -- Recipe: Draconic Suppression Powder
-        Recipe({item = 203421, profession = 164}), -- Plans: Ancient Ceremonial Trident
-        Recipe({item = 203422, profession = 185}), -- Recipe: Sparkling Spice Pouch
-        Recipe({item = 203423, profession = 333}), -- Formula: Glowing Crystal Bookmark
-        Recipe({item = 203424, profession = 202}), -- Schematic: Gnomish Voicebox
-        Recipe({item = 203425, profession = 773}), -- Technique: Arcane Dispelling Rune
-        Recipe({item = 203426, profession = 755}), -- Design: Crystal Tuning Fork
-        Recipe({item = 203427, profession = 165}), -- Pattern: Reinforced Pristine Leather
-        Recipe({item = 203428, profession = 197}) -- Pattern: Traditional Morqut Kite
+        Recipe({item = 203420, profession = 171, count = 10}), -- Recipe: Draconic Suppression Powder
+        Recipe({item = 203421, profession = 164, count = 10}), -- Plans: Ancient Ceremonial Trident
+        Recipe({item = 203422, profession = 185, count = 10}), -- Recipe: Sparkling Spice Pouch
+        Recipe({item = 203423, profession = 333, count = 10}), -- Formula: Glowing Crystal Bookmark
+        Recipe({item = 203424, profession = 202, count = 10}), -- Schematic: Gnomish Voicebox
+        Recipe({item = 203425, profession = 773, count = 10}), -- Technique: Arcane Dispelling Rune
+        Recipe({item = 203426, profession = 755, count = 10}), -- Design: Crystal Tuning Fork
+        Recipe({item = 203427, profession = 165, count = 10}), -- Pattern: Reinforced Pristine Leather
+        Recipe({item = 203428, profession = 197, count = 10}) -- Pattern: Traditional Morqut Kite
     }
 }) -- Trader Hag'arth <Artisan's Consortium Quartermaster>

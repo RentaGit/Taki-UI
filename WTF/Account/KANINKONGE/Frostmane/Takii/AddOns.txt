@@ -126,3 +126,7 @@ ElvUI_OptionsUI: disabled
 Narcissus: disabled
 Narcissus_Database: disabled
 Narcissus_Barbershop: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled

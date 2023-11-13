@@ -57,14 +57,10 @@ ACP_Data = {
 		}, -- [1]
 	},
 	["collapsed"] = {
-		["HandyNotes"] = true,
-		["Libraries"] = true,
-		["LittleWigs"] = true,
-		["BigWigs"] = true,
 		["Details"] = true,
+		["BigWigs"] = true,
+		["LittleWigs"] = true,
 		["OmniCC"] = true,
-		["Blizzard Addons"] = true,
-		["Masque"] = true,
 	},
 	["ProtectedAddons"] = {
 		["ACP"] = true,

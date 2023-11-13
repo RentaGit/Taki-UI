@@ -1,4 +1,4 @@
-local MINOR = 4
+local MINOR = 7
 local lib, minor = LibStub('LibEditMode')
 if minor > MINOR then
 	return
@@ -9,8 +9,8 @@ if not LDD then
 	error('LibEditMode requires LibDropDown to function')
 end
 
-local function isChecked(a, getB)
-	return a == getB(lib.activeLayoutName)
+local function isChecked(a, getB, default)
+	return a == (getB(lib.activeLayoutName) or default)
 end
 
 local dropdownMixin = {}
@@ -21,12 +21,12 @@ function dropdownMixin:Setup(data)
 	self.Dropdown:Clear()
 
 	for _, info in next, data.values do
-		info.checked = GenerateClosure(isChecked, info.text, data.get)
+		info.checked = GenerateClosure(isChecked, info.text, data.get, data.default)
 		info.func = GenerateClosure(self.OnSettingSelected, self, info.text)
 		info.keepShown = false
 		self.Dropdown:Add(info)
 
-		if info.checked then
+		if info.checked() then
 			self.Dropdown:SetText(info.text)
 		end
 	end
@@ -60,4 +60,7 @@ lib.internal:CreatePool(lib.SettingType.Dropdown, function()
 	frame.Dropdown = dropdown
 
 	return frame
+end, function(_, frame)
+	frame:Hide()
+	frame.layoutIndex = nil
 end)

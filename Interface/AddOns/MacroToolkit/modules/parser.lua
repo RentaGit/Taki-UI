@@ -1,7 +1,7 @@
 local MT = MacroToolkit
 local string, table, ipairs, pairs, type, math = string, table, ipairs, pairs, type, math
-local strsplit, select, wipe, tonumber, tostring = strsplit, select, wipe, tonumber, tostring
-local GetSpellInfo, GetItemInfo = GetSpellInfo, GetItemInfo, IsHelpfulSpell, IsHarmfulSpell
+local strsplit, select, wipe, tonumber = strsplit, select, wipe, tonumber
+local GetSpellInfo, GetItemInfo = GetSpellInfo, GetItemInfo
 local format = string.format
 local _G = _G
 local L = MT.L
@@ -9,6 +9,43 @@ MT.clist = {cast={}, script={}, click={}, console={}, target={}, castsequence={}
 
 local function trim(s) return string.match(s, "^%s*(.*%S)") or "" end
 local function escape(s) return (s:gsub("[%-%.%+%[%]%(%)%$%^%%%?%*]","%%%1"):gsub("%z","%%z")) end
+
+local LibTalentTreeExists, LibTalentTree = pcall(LibStub, "LibTalentTree-1.0");
+local spellCache;
+local function getSpellCache()
+    if spellCache then return spellCache end
+    spellCache = {}
+    -- for now, just built based on current class' talents, and only for retail
+    if not LibTalentTreeExists then return spellCache end
+
+    local treeId = LibTalentTree:GetClassTreeId(UnitClassBase('player'));
+    local nodes = C_Traits.GetTreeNodes(treeId);
+    for _, nodeId in ipairs(nodes) do
+        local nodeInfo = LibTalentTree:GetNodeInfo(nodeId);
+        for _, entryID in ipairs(nodeInfo and nodeInfo.entryIDs or {}) do
+            local entryInfo = LibTalentTree:GetEntryInfo(entryID);
+            local definitionInfo = entryInfo and C_Traits.GetDefinitionInfo(entryInfo.definitionID);
+            local spellID = definitionInfo and definitionInfo.spellID;
+            if spellID and GetSpellInfo(spellID) then
+                spellCache[string.lower(GetSpellInfo(spellID))] = spellID;
+            end
+        end
+    end
+
+    return spellCache;
+end
+
+local function GetSpellInfoPlus(spellIDOrName)
+    if GetSpellInfo(spellIDOrName) or tonumber(spellIDOrName, 10) then
+        return GetSpellInfo(spellIDOrName)
+    end
+
+    local cache = getSpellCache();
+    local spellID = cache[string.lower(spellIDOrName)];
+    if spellID then
+        return GetSpellInfo(spellID);
+    end
+end
 
 function MT:FindShortest(cglobal)
     local shortest = string.rep("x", 99)
@@ -144,10 +181,10 @@ local function validateCommandVerb(commandtext, parameters)
         for k, v in pairs(MT.commands) do
             if k == commandtext then
                 if v[3] then cc = format("|c%s", MT.db.profile.emotecolour) end
-                if v[2] == 5 then
+                if v[2] == MT.COMMAND_REMOVED then
                     msg = format("%s: %s%s%s", L["Command removed"], MT.slash, cc, commandtext)
                     p = true
-                elseif v[2] == 1 then
+                elseif v[2] == MT.COMMAND_PARAM_REQUIRED then
                     if not param then
                         msg = format("%s: %s%s%s", L["Required parameter missing"], MT.slash, cc, commandtext)
                         p = true
@@ -257,7 +294,7 @@ local function validateParameters(parameters, commandtext)
     if string.sub(parameters, 1, 1) == "!" then parameters = string.sub(parameters, 2) end
     if isScript(commandtext) or  isConsole(commandtext) or isClick(commandtext) then c = format("|c%s", MT.db.profile.scriptcolour)
     elseif isTarget(commandtext) then c = format("|c%s", MT.db.profile.targetcolour)
-    elseif GetSpellInfo(parameters) then c = format("|c%s", MT.db.profile.spellcolour)
+    elseif GetSpellInfoPlus(parameters) then c = format("|c%s", MT.db.profile.spellcolour)
     elseif GetItemInfo(parameters) then c = format("|c%s", MT.db.profile.itemcolour)
     elseif isNumeric({parameters}) then c = format("|c%s", MT.db.profile.stringcolour)
     elseif MT.db.profile.unknown then err = format("%s: |c%s%s|r", L["Unknown parameter"], MT.db.profile.stringcolour, parameters) end
@@ -335,7 +372,7 @@ local function validateCondition(condition, optionArguments, parameters)
         local k = condition
         local v = MT.conditions[k] or nil
         if v then
-            if v > 0 and k ~= "group" and k ~= "mod" and k ~= "modifier" and k~= "pet" and (not no) then
+            if v ~= MT.CONDITION_TYPE_NONE and not MT.optionalConditions[k] and (not no) then
                 if #optionArguments == 0 then
                     msg = format("%s: %s%s", L["Argument not optional"], conditionColor, condition)
                     noa = true
@@ -343,39 +380,41 @@ local function validateCondition(condition, optionArguments, parameters)
                 end
             end
             if #optionArguments > 0 then
-                if v == 0 then
+                if v == MT.CONDITION_TYPE_NONE then
                     msg = format("%s: %s%s", L["Invalid argument"], conditionColor, condition)
                     isCondition = false
-                elseif v == 1 then --validate numeric
+                elseif v == MT.CONDITION_TYPE_NUMERIC then
                     valid, arg1 = isNumeric(optionArguments)
                     if not valid then
                         msg = format("%s: %s%s|r - %s", L["Arguments must be numeric"], conditionColor, condition, arg1)
                         isCondition = false
                     else msg = nil end
-                elseif v == 2 then --validate text
+                elseif v == MT.CONDITION_TYPE_TEXTUAL then
                     if isNumeric(optionArguments) then
                         msg = format("%s: %s%s", L["Arguments must not be numeric"], conditionColor, condition)
                         isCondition = false
                     else msg = nil end
-                elseif v == 3 then --validate alphanumeric
+                elseif v == MT.CONDITION_TYPE_ALPHANUMERIC then
                     valid, arg1 = isAlphaNumeric(optionArguments)
                     if not valid then
                         msg = format("%s: %s%s|r - %s", L["Arguments must be alphanumeric"], conditionColor, condition, arg1)
                         isCondition = false
                     else msg = nil end
-                elseif v > 3 and v < 7 then --validate group
+                elseif v == MT.CONDITION_TYPE_PARTY_RAID
+                        or v == MT.CONDITION_TYPE_MOD_KEYS
+                        or v == MT.CONDITION_TYPE_MOUSEBUTTONS then
                     valid, arg1 = isValid(optionArguments, v)
                     if not valid then
                         msg = format("%s: %s%s|r - %s", L["Invalid argument"], conditionColor, condition, arg1)
                         isCondition = false
                     else msg = nil end
-                elseif v == 7 then
+                elseif v == MT.CONDITION_TYPE_NUMERIC_WITH_SLASH then
                     valid, arg1 = isNumeric(optionArguments, true)
                     if not valid then
                         msg = format("%s: %s%s|r - %s", L["Arguments must be numeric"], conditionColor, condition, arg1)
                         isCondition = false
                     else msg = nil end
-                elseif v == 8 then --validate alphanumeric + spaces
+                elseif v == MT.CONDITION_TYPE_ALPHANUMERIC_WITH_SPACES then
                     valid, arg1 = isAlphaNumeric(optionArguments, "[%w ]+")
                     if not valid then
                         msg = format("%s: %s%s|r - %s", L["Arguments must be alphanumeric"], conditionColor, condition, arg1)
@@ -388,12 +427,12 @@ local function validateCondition(condition, optionArguments, parameters)
     if not msg then
         color = conditionColor
         if condition == 'known' and optionArguments and optionArguments[1] then
-            local name, _ = GetSpellInfo(optionArguments[1])
+            local name, _ = GetSpellInfoPlus(optionArguments[1])
             if not name then
                 msg = format("%s: [%s%s|r:%s] - %s", L["Invalid condition"], conditionColor, condition, optionArguments[1], "Unknown spell")
                 isCondition = false
             elseif name:lower() ~= parameters:lower() and optionArguments[1]:lower() ~= parameters:lower() then
-                local spellID = select(7, GetSpellInfo(parameters))
+                local spellID = select(7, GetSpellInfoPlus(parameters))
                 msg = format(
                     "Known spell mismatch: [%s%s%s|r:%s (%s)]\n       %s%s",
                     conditionColor,
@@ -526,7 +565,7 @@ function MT:ShortenMacro(macrotext)
                 local spellNameOrID = string.gsub(v, "known:", "")
                 -- if not a number
                 if not tonumber(spellNameOrID) then
-                    local spellInfo = { GetSpellInfo(spellNameOrID) }
+                    local spellInfo = { GetSpellInfoPlus(spellNameOrID) }
                     local spellName, spellID = spellInfo[1], spellInfo[7]
                     if spellID and string.len(spellID) < string.len(spellName) then v = format("known:%d", spellID) end
                 end

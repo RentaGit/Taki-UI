@@ -1,6 +1,6 @@
 # Details! Damage Meter
 
-## [Details.20230520.11023.151](https://github.com/Tercioo/Details-Damage-Meter/tree/Details.20230520.11023.151) (2023-05-20)
-[Full Changelog](https://github.com/Tercioo/Details-Damage-Meter/compare/Details.20230520.11022.151...Details.20230520.11023.151) 
+## [Details.20231108.12026.155](https://github.com/Tercioo/Details-Damage-Meter/tree/Details.20231108.12026.155) (2023-11-08)
+[Full Changelog](https://github.com/Tercioo/Details-Damage-Meter/compare/Details.20231108.12025.155...Details.20231108.12026.155) 
 
-- Hour0 bug fix  
+- Added Details:GetUntitClass(unitId), this call handles the Ambiguate in combatlog's player name when calling UnitClass  

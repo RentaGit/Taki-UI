@@ -3,10 +3,10 @@ AdvancedInterfaceOptions: disabled
 AngryKeystones: disabled
 BigDebuffs: disabled
 BigWigs: disabled
-BigWigs_Core: disabled
+BigWigs_Core: enabled
 BigWigs_DragonIsles: disabled
-BigWigs_Options: disabled
-BigWigs_Plugins: disabled
+BigWigs_Options: enabled
+BigWigs_Plugins: enabled
 BigWigs_VaultOfTheIncarnates: disabled
 !BugGrabber: disabled
 BugSack: disabled
@@ -27,10 +27,10 @@ Leatrix_Plus: disabled
 LibGroupInSpecT-1.1: disabled
 LibStub: disabled
 LibSharedMedia-3.0: disabled
-LittleWigs: disabled
+LittleWigs: enabled
 LittleWigs_BattleForAzeroth: disabled
 LittleWigs_BurningCrusade: disabled
-LittleWigs_Cataclysm: disabled
+LittleWigs_Cataclysm: enabled
 LittleWigs_Classic: disabled
 LittleWigs_Legion: disabled
 LittleWigs_MistsOfPandaria: disabled
@@ -57,7 +57,7 @@ TakUI: disabled
 TomCats: disabled
 TomTom: disabled
 WeakAuras: disabled
-WeakAurasArchive: disabled
+WeakAurasArchive: enabled
 WeakAurasModelPaths: disabled
 WeakAurasOptions: disabled
 WeakAurasTemplates: disabled
@@ -71,3 +71,8 @@ Narcissus_Barbershop: disabled
 SUI: disabled
 Blizzard_ObjectiveTracker: enabled
 Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled
+WeakAurasCompanion: enabled
+Blizzard_CombatText: enabled
+BigWigs_Aberrus: enabled

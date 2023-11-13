@@ -19,8 +19,6 @@ L.already_registered = "|cffff0000警告：|r |cff00ff00%s|r（|cffffff00%s|r）
 L.testNameplate = "已检测到目标，在目标姓名板上创建一个测试姓名板条。 |cFF33FF99此功能很少用到，当与多个首领/增援战斗时通常一个计时条并且需要保持追踪冷却施放相同的法术。|r"
 
 -- Loader / Options.lua
-L.classicWarning1 = "|cFF33FF99BigWigs|r：你在经典怀旧服务器上正在使用错误版本的 BigWigs。"
-L.classicWarning2 = "|cFF33FF99BigWigs|r：请安装经典怀旧版本 BigWigs。"
 L.officialRelease = "你所使用的 BigWigs %s 为官方正式版（%s）"
 L.alphaRelease = "你所使用的 BigWigs %s 为“α测试版”（%s）"
 L.sourceCheckout = "你所使用的 BigWigs %s 为从源直接检出的。"
@@ -45,6 +43,19 @@ L.disabledAddOn = "你的 |cFF436EEE%s|r 插件已禁用，计时器将不被显
 L.removeAddOn = "请移除“|cFF436EEE%s|r”，其已被“|cFF436EEE%s|r”所替代。"
 L.alternativeName = "%s（|cFF436EEE%s|r）"
 
+L.expansionNames = {
+	"经典旧世", -- Classic
+	"燃烧的远征", -- The Burning Crusade
+	"巫妖王之怒", -- Wrath of the Lich King
+	"大地的裂变", -- Cataclysm
+	"熊猫人之谜", -- Mists of Pandaria
+	"德拉诺之王", -- Warlords of Draenor
+	"军团再临", -- Legion
+	"争霸艾泽拉斯", -- Battle for Azeroth
+	"暗影国度", -- Shadowlands
+	"巨龙时代", -- Dragonflight
+}
+
 -- Media.lua (These are the names of the sounds in the dropdown list in the "sounds" section)
 L.Beware = "当心（奥尔加隆）"
 L.FlagTaken = "夺旗（PvP）"
@@ -55,6 +66,7 @@ L.spell_under_you = "BigWigs：法术在你脚下"
 
 -- Options.lua
 L.options = "选项"
+L.optionsKey = "ID: %s" -- The key that messages/bars/options use
 L.raidBosses = "团队首领"
 L.dungeonBosses = "地下城首领"
 L.introduction = "欢迎使用 BigWigs 戏弄各个首领。请系好安全带，吃吃花生并享受这次旅行。它不会吃了你的孩子，但会协助你的团队与新的首领进行战斗就如同享受饕餮大餐一样。"
@@ -126,6 +138,8 @@ L.VOICE = "语音"
 L.VOICE_desc = "如果安装了语音插件，此选项可以开启并播放警报音效文件。"
 L.COUNTDOWN = "倒数"
 L.COUNTDOWN_desc = "如启用，将增加最少5秒的语音和可见倒数。想像一下某人倒数“5…4…3…2…1…”时在屏幕中间显示大数字。"
+L.CASTBAR_COUNTDOWN = "施法条倒数计时"
+L.CASTBAR_COUNTDOWN_desc = "启用后，为施法条的最后五秒显示巨大的文字与语音倒数。"
 L.INFOBOX = L.infobox
 L.INFOBOX_desc = L.infobox_desc
 L.SOUND = "音效"
@@ -139,7 +153,7 @@ L.ME_ONLY_EMPHASIZE_desc = "启用此选项将醒目如只作用于自身相关�
 L.NAMEPLATEBAR = "姓名板条"
 L.NAMEPLATEBAR_desc = "当多个怪物施放相同的法术时，有时会在姓名板上附加条。如果此技能要伴随姓名板条隐藏，则禁用此选项。"
 L.PRIVATE = "私有光环"
-L.PRIVATE_desc = "私有光环无法用常规手段追踪，但可以在音效分页指定“点名在你身上”的音效。"
+L.PRIVATE_desc = "私有光环无法用常规手段追踪，但可以在音效分页指定“只对自身”的音效。"
 
 L.advanced = "高级选项"
 L.back = "<< 返回"
@@ -151,7 +165,7 @@ L.dispeller = "|cFFFF0000只警报驱散和打断。|r"
 
 -- Statistics
 L.statistics = "统计"
-L.lfr = "随机团队"
+L.LFR = "随机团队"
 L.normal = "普通"
 L.heroic = "英雄"
 L.mythic = "史诗"

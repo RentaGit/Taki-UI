@@ -112,3 +112,6 @@ MacroToolkitIcons: disabled
 BigDebuffs: disabled
 AdvancedInterfaceOptions: disabled
 TakUI: disabled
+Blizzard_CombatText: enabled
+LittleWigs_Cataclysm: enabled
+BigWigs_Aberrus: enabled

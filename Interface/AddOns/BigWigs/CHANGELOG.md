@@ -1,9 +1,8 @@
 # BigWigs
 
-## [v279](https://github.com/BigWigsMods/BigWigs/tree/v279) (2023-05-19)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v278.2...v279) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
+## [v295.1](https://github.com/BigWigsMods/BigWigs/tree/v295.1) (2023-11-09)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v295...v295.1) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
 
-- bump version  
-- Aberrus/Locales: Locale tweak  
-- Aberrus/Locales: Locale fix, closes #1390  
-- Aberrus/Sarkareth: Remove the initial say message for Void Fracture at the end of Stage 1  
+- Amirdrassil: bump toc  
+- Update option files  
+- Aberrus/Sarkareth: Update mythic p3 times  

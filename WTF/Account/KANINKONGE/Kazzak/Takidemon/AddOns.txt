@@ -90,3 +90,5 @@ LibRangeCheck-2.0: enabled
 LibClassicDurations: enabled
 LibClassicCasterino: enabled
 LibGetFrame-1.0: enabled
+Blizzard_CombatText: enabled
+BigWigs_Aberrus: enabled

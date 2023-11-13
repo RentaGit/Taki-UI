@@ -180,10 +180,10 @@ local function GetOptions()
 						},
 						notice1 = {
 							name = format("|cffff2020* %s", (E.isClassic and L["Group member must have OmniCD to detect Talents."])
-							or (E.isWOTLKC and L["Group member must have OmniCD to detect cooldown reduction by Glyphs."])
-							or (E.isSL and L["Group member must have OmniCD to detect cooldown reduction with a chance to proc and Soulbind Conduits."])
-							or (E.isDF and L["Group member must have OmniCD to detect cooldown reduction with a chance to proc."])
-							or ""),
+								or (E.isWOTLKC and L["Group member must have OmniCD to detect cooldown reduction by Glyphs."])
+								or (E.isSL and L["Group member must have OmniCD to detect cooldown reduction with a chance to proc and Soulbind Conduits."])
+								or (E.isDF and L["Group member must have OmniCD to detect cooldown reduction with a chance to proc."])
+								or ""),
 							order = 18,
 							type = "description",
 						},
@@ -280,6 +280,29 @@ local function GetOptions()
 									type = "input",
 									dialogControl = "Link-OmniCD",
 									get = function() return "https://www.curseforge.com/wow/addons/omnicd-battleres" end,
+								},
+							}
+						} or nil,
+						otherAddOns = E.isDF and {
+							name = ADDONS,
+							order = 60,
+							type = "group",
+							args = {
+								omniauras = {
+									name = "OmniAuras",
+									desc = "Track important buffs and debuffs on any Blizzard frame",
+									order = 1,
+									type = "input",
+									dialogControl = "Link-OmniCD",
+									get = function() return "https://www.curseforge.com/wow/addons/omniauras" end,
+								},
+								omnisort = {
+									name = "OmniSort",
+									desc = "Party group sorter with auto-adjusting keybinds and macros",
+									order = 2,
+									type = "input",
+									dialogControl = "Link-OmniCD",
+									get = function() return "https://www.curseforge.com/wow/addons/omnisort" end,
 								},
 							}
 						} or nil,

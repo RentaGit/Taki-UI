@@ -15,38 +15,39 @@ Details_StreamerDB = {
 		["Takiscoper - Kazzak"] = "Hunteraki - Frostmane",
 		["Rentaco - Kazzak"] = "Hunteraki - Frostmane",
 		["Takidari - Ravencrest"] = "Hunteraki - Frostmane",
+		["Takibank - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Takil - Kazzak"] = "Hunteraki - Frostmane",
-		["Taaku - Kazzak"] = "Hunteraki - Frostmane",
+		["Rintake - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Rentakibmah - Baelgun"] = "Hunteraki - Frostmane",
 		["Rintake - Ragnaros"] = "Hunteraki - Frostmane",
 		["Rentakigold - Twisting Nether"] = "Hunteraki - Frostmane",
-		["Rintake - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Takided - Kazzak"] = "Hunteraki - Frostmane",
 		["Rentaki - Ravencrest"] = "Hunteraki - Frostmane",
-		["Rentaki - Kazzak"] = "Hunteraki - Frostmane",
-		["Takimage - Kazzak"] = "Hunteraki - Frostmane",
+		["Ivelea - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Takidin - Kazzak"] = "Hunteraki - Frostmane",
+		["Takimage - Kazzak"] = "Hunteraki - Frostmane",
+		["Rendudu - Kazzak"] = "Hunteraki - Frostmane",
 		["Takii - Frostmane"] = "Hunteraki - Frostmane",
 		["Takioblivion - Medivh"] = "Hunteraki - Frostmane",
 		["Rentakidh - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Takidari - Kazzak"] = "Hunteraki - Frostmane",
 		["Rentakigold - Eredar"] = "Hunteraki - Frostmane",
-		["Ivelea - Argent Dawn"] = "Hunteraki - Frostmane",
+		["Rentaki - Kazzak"] = "Hunteraki - Frostmane",
 		["Nyumi - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Takigalywix - Aegwynn"] = "Hunteraki - Frostmane",
 		["Thaaeyn - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Takii - Argent Dawn"] = "Hunteraki - Frostmane",
 		["Rentakigold - Blackmoore"] = "Hunteraki - Frostmane",
-		["Rendudu - Kazzak"] = "Hunteraki - Frostmane",
+		["Takidemon - Kazzak"] = "Hunteraki - Frostmane",
 		["Takeera - Kazzak"] = "Hunteraki - Frostmane",
 		["Takidk - Kazzak"] = "Hunteraki - Frostmane",
-		["Takidemon - Kazzak"] = "Hunteraki - Frostmane",
 		["Takiworgen - Ravencrest"] = "Hunteraki - Frostmane",
-		["Takitalon - Arathi"] = "Hunteraki - Frostmane",
 		["Takiworra - Kazzak"] = "Hunteraki - Frostmane",
+		["Takitalon - Arathi"] = "Hunteraki - Frostmane",
+		["Taaku - Kazzak"] = "Hunteraki - Frostmane",
 		["Takosa - Kazzak"] = "Hunteraki - Frostmane",
 		["Rentaco - Ravencrest"] = "Hunteraki - Frostmane",
-		["Takibank - Argent Dawn"] = "Hunteraki - Frostmane",
+		["Takilock - Kazzak"] = "Hunteraki - Frostmane",
 	},
 	["profiles"] = {
 		["Hunteraki - Frostmane"] = {
@@ -59,28 +60,25 @@ Details_StreamerDB = {
 				1, -- [3]
 				0.5, -- [4]
 			},
+			["scale"] = 1,
 			["arrow_anchor_y"] = 0,
-			["main_frame_size"] = {
-				300, -- [1]
-				500.000030517578, -- [2]
-			},
 			["minimap"] = {
 				["minimapPos"] = 353.2204949741532,
 				["radius"] = 160,
 				["hide"] = true,
 			},
-			["main_frame_locked"] = false,
+			["row_height"] = 20,
 			["arrow_anchor_x"] = 0,
-			["author"] = "Details! Team",
+			["font_color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
 			["row_texture"] = "Details Serenity",
 			["square_grow_direction"] = "right",
-			["y"] = 4.57763671875e-05,
-			["row_color"] = {
-				0.1, -- [1]
-				0.1, -- [2]
-				0.1, -- [3]
-				0.4, -- [4]
-			},
+			["point"] = "CENTER",
+			["main_frame_strata"] = "LOW",
 			["square_amount"] = 5,
 			["enabled"] = false,
 			["arrow_size"] = 10,
@@ -91,9 +89,9 @@ Details_StreamerDB = {
 				["font_shadow"] = true,
 				["y"] = 3.0517578125e-05,
 				["x"] = 3.0517578125e-05,
-				["attribute_type"] = 1,
-				["update_speed"] = 0.05,
 				["size"] = 32,
+				["update_speed"] = 0.05,
+				["attribute_type"] = 1,
 			},
 			["row_spacement"] = 21,
 			["main_frame_color"] = {
@@ -102,22 +100,25 @@ Details_StreamerDB = {
 				0, -- [3]
 				0.2, -- [4]
 			},
-			["main_frame_strata"] = "LOW",
+			["author"] = "Details! Team",
 			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
-			["use_spark"] = true,
+			["y"] = 4.57763671875e-05,
 			["font_size"] = 10,
 			["x"] = 0,
 			["font_face"] = "Friz Quadrata TT",
 			["square_size"] = 32,
-			["point"] = "CENTER",
-			["font_color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
+			["use_spark"] = true,
+			["row_color"] = {
+				0.1, -- [1]
+				0.1, -- [2]
+				0.1, -- [3]
+				0.4, -- [4]
 			},
-			["row_height"] = 20,
-			["scale"] = 1,
+			["main_frame_locked"] = false,
+			["main_frame_size"] = {
+				300, -- [1]
+				500.000030517578, -- [2]
+			},
 		},
 	},
 }

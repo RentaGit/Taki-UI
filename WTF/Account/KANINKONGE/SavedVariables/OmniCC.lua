@@ -2,7 +2,7 @@
 OmniCCDB = {
 	["global"] = {
 		["dbVersion"] = 6,
-		["addonVersion"] = "10.1.0",
+		["addonVersion"] = "10.1.2",
 	},
 	["profileKeys"] = {
 		["Rentamdi - Kazzak"] = "Default",
@@ -20,25 +20,26 @@ OmniCCDB = {
 		["Rintake - Ragnaros"] = "Default",
 		["Takidin - Ravencrest"] = "Default",
 		["Takidari - Ravencrest"] = "Default",
+		["Takidin - Kazzak"] = "Default",
 		["Rentakidh - Argent Dawn"] = "Default",
 		["Takidari - Kazzak"] = "Default",
-		["Takosa - Kazzak"] = "Default",
+		["Takiworra - Kazzak"] = "Default",
 		["Rentaki - Kazzak"] = "Default",
 		["Takided - Kazzak"] = "Default",
-		["Takiworra - Kazzak"] = "Default",
-		["Thaaeyn - Argent Dawn"] = "Default",
 		["Ivelea - Argent Dawn"] = "Default",
+		["Thaaeyn - Argent Dawn"] = "Default",
 		["Takitalon - Arathi"] = "Default",
+		["Rendudu - Kazzak"] = "Default",
 		["Takidemon - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
 		["Takidk - Kazzak"] = "Default",
-		["Rendudu - Kazzak"] = "Default",
 		["Huntaki - Ravencrest"] = "Default",
-		["Rentaki - Ravencrest"] = "Default",
 		["Rentaco - Kazzak"] = "Default",
+		["Rentaki - Ravencrest"] = "Default",
+		["Takosa - Kazzak"] = "Default",
 		["Rintake - Argent Dawn"] = "Default",
 		["Rentaco - Ravencrest"] = "Default",
-		["Takidin - Kazzak"] = "Default",
+		["Takilock - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -70,16 +71,16 @@ OmniCCDB = {
 						["minutes"] = {
 						},
 						["hours"] = {
-							["b"] = 1,
+							["r"] = 1,
 							["scale"] = 1,
 							["g"] = 1,
-							["r"] = 1,
+							["b"] = 1,
 						},
 						["charging"] = {
 							["a"] = 1,
-							["r"] = 1,
-							["scale"] = 1,
 							["b"] = 1,
+							["scale"] = 1,
+							["r"] = 1,
 						},
 						["controlled"] = {
 							["b"] = 1,
@@ -95,11 +96,11 @@ OmniCCDB = {
 				},
 				["Plater Nameplates Theme"] = {
 					["textStyles"] = {
+						["soon"] = {
+						},
 						["minutes"] = {
 						},
 						["seconds"] = {
-						},
-						["soon"] = {
 						},
 					},
 					["fontFace"] = "Interface\\Addons\\SUI\\Media\\Fonts\\Prototype.ttf",
@@ -109,8 +110,6 @@ OmniCCDB = {
 	},
 }
 OmniCC4Config = {
-	["groups"] = {
-	},
 	["version"] = "8.2.5",
 	["groupSettings"] = {
 		["base"] = {
@@ -166,5 +165,7 @@ OmniCC4Config = {
 			["minEffectDuration"] = 30,
 			["fontSize"] = 16,
 		},
+	},
+	["groups"] = {
 	},
 }

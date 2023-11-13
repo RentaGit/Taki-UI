@@ -1,25 +1,37 @@
 
 SUIDB = {
 	["profileKeys"] = {
-		["Rentaki - Kazzak"] = "Default",
-		["Takidin - Kazzak"] = "Default",
-		["Ivelea - Argent Dawn"] = "Default",
-		["Thaaeyn - Argent Dawn"] = "Default",
 		["Hunteraki - Frostmane"] = "Default",
-		["Renqqø - Kazzak"] = "Default",
-		["Takidemon - Kazzak"] = "Default",
-		["Takeera - Kazzak"] = "Default",
-		["Felenia - Doomhammer"] = "Default",
-		["Rendudu - Kazzak"] = "Default",
-		["Takided - Kazzak"] = "Default",
-		["Takibank - Argent Dawn"] = "Default",
+		["Takilock - Kazzak"] = "Default",
+		["Rintake - Ragnaros"] = "Default",
+		["Takikin - Kazzak"] = "Default",
+		["Takii - Frostmane"] = "Default",
 		["Arcataki - Doomhammer"] = "Default",
-		["Takosa - Kazzak"] = "Default",
 		["Takidari - Kazzak"] = "Default",
 		["Taaku - Kazzak"] = "Default",
+		["Ivelea - Argent Dawn"] = "Default",
+		["Takided - Kazzak"] = "Default",
+		["Thaaeyn - Argent Dawn"] = "Default",
+		["Takidin - Kazzak"] = "Default",
+		["Renqqø - Kazzak"] = "Default",
+		["Rendudu - Kazzak"] = "Default",
+		["Felenia - Doomhammer"] = "Default",
+		["Takeera - Kazzak"] = "Default",
+		["Takiscoper - Kazzak"] = "Default",
+		["Takibank - Argent Dawn"] = "Default",
+		["Rentaco - Kazzak"] = "Default",
+		["Takidemon - Kazzak"] = "Default",
+		["Takosa - Kazzak"] = "Default",
+		["Takii - Doomhammer"] = "Default",
+		["Rentaki - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
+			["misc"] = {
+				["DetailsNewsWindow"] = {
+					["scale"] = 1,
+				},
+			},
 			["general"] = {
 				["cosmetic"] = {
 					["afkscreen"] = false,
@@ -87,6 +99,9 @@ SUIDB = {
 					["flash"] = true,
 					["size"] = 15,
 				},
+			},
+			["nameplates"] = {
+				["stackingmode"] = true,
 			},
 			["raidframes"] = {
 				["texture"] = "Interface\\AddOns\\Details\\images\\bar_background",

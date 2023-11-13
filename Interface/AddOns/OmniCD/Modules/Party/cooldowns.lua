@@ -16,7 +16,7 @@ function P:ResetCooldown(icon)
 	end
 
 
-	if spellID == 45438 and E.db.icons.showForbearanceCounter then
+	if (spellID == 45438 or spellID == 414658) and E.db.icons.showForbearanceCounter then
 		local timeLeft = self:GetDebuffDuration(info.unit, 41425)
 		if timeLeft then
 			self:StartCooldown(icon, timeLeft, nil, true)
@@ -120,6 +120,11 @@ function P:StartCooldown(icon, cd, isRecharge, noGlow)
 	end
 
 	local spellID = icon.spellID
+
+	if not isRecharge and info.auras[spellID] then
+		return
+	end
+
 	info.active[spellID] = info.active[spellID] or {}
 
 	local active = info.active[spellID]
@@ -168,6 +173,8 @@ function P:StartCooldown(icon, cd, isRecharge, noGlow)
 			currCharges = currCharges - 1
 			icon.cooldown:SetCooldown(now, cd, modRate)
 		elseif currCharges == 0 then
+
+
 			icon.cooldown:SetCooldown(now, cd, modRate)
 		else
 			currCharges = currCharges - 1

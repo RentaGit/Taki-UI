@@ -1,16 +1,10 @@
-tag 613b548bc8ffa26ae31e0ca5f292402bfc3e34fc r54
+tag 0fadc004711f7683ae9c5bd32458b9cb591ba865 r56
 Author:	Benjamin Staneck <staneck@gmail.com>
-Date:	Tue May 16 17:26:41 2023 +0200
+Date:	Tue Nov 7 21:12:32 2023 +0100
 
-commit c541d9d64ef84a9befc15f8b6687b9af6f60573e
-Author: Nihilistzsche <152417+nihilistzsche@users.noreply.github.com>
-Date:   Tue May 16 06:03:53 2023 -0700
-
-    Dynamically adjust color palettes per WoW flavor (#11)
-
-commit 964dd60f2881f94ea745ed81592bd114c736652a
+commit e017c11926c06c36ad285b610a3ad2c4df496c6b
 Author: Benjamin Staneck <staneck@gmail.com>
-Date:   Tue May 2 23:04:31 2023 +0200
+Date:   Tue Nov 7 21:11:59 2023 +0100
 
-    Add TOC icon
+    Update TOC for Retail Patch 10.2.0
 

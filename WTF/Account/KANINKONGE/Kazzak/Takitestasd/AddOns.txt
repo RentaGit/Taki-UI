@@ -2,9 +2,9 @@ AngryKeystones: disabled
 AutoRole: disabled
 BigWigs: disabled
 BigWigs_CastleNathria: disabled
-BigWigs_Core: disabled
-BigWigs_Options: disabled
-BigWigs_Plugins: disabled
+BigWigs_Core: enabled
+BigWigs_Options: enabled
+BigWigs_Plugins: enabled
 BigWigs_SanctumOfDomination: disabled
 BigWigs_SepulcherOfTheFirstOnes: disabled
 BigWigs_Shadowlands: disabled
@@ -23,10 +23,10 @@ HandyNotes: disabled
 HandyNotes_Shadowlands: disabled
 HandyNotes_ShadowlandsTreasures: disabled
 LibSharedMedia-3.0: disabled
-LittleWigs: disabled
+LittleWigs: enabled
 LittleWigs_BattleForAzeroth: disabled
 LittleWigs_BurningCrusade: disabled
-LittleWigs_Cataclysm: disabled
+LittleWigs_Cataclysm: enabled
 LittleWigs_Classic: disabled
 LittleWigs_Legion: disabled
 LittleWigs_MistsOfPandaria: disabled
@@ -53,7 +53,7 @@ TomCats: disabled
 TomTom: disabled
 VenturePlan: disabled
 WeakAuras: disabled
-WeakAurasArchive: disabled
+WeakAurasArchive: enabled
 WeakAurasModelPaths: disabled
 WeakAurasOptions: disabled
 WeakAurasTemplates: disabled
@@ -70,7 +70,7 @@ LibStub: disabled
 ACP: disabled
 AdvancedInterfaceOptions: disabled
 BigDebuffs: disabled
-BigWigs_Aberrus: disabled
+BigWigs_Aberrus: enabled
 BigWigs_DragonIsles: disabled
 BigWigs_VaultOfTheIncarnates: disabled
 ColorPickerPlus: disabled
@@ -97,3 +97,7 @@ SUI: disabled
 TakUI: disabled
 Blizzard_ObjectiveTracker: enabled
 Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled
+WeakAurasCompanion: enabled
+Blizzard_CombatText: enabled

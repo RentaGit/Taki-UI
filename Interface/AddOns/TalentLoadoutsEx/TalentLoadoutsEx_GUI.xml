@@ -5,6 +5,28 @@
 	<Button name="TlxPanelButtonTemplate" inherits="UIPanelButtonTemplate" virtual="true">
 		<Size x="63" y="22"/>
 	</Button>
+	<Button name="TlxIconButtonTemplate" virtual="true">
+		<Size x="41" y="41"/>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture parentKey="texture" setAllPoints="true"/>
+			</Layer>
+			<Layer level="OVERLAY" textureSubLevel="1">
+				<FontString parentKey="text" inherits="GameFontNormalOutline">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" x="2" y="2"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEnter function="TlxIconButton_OnEnter"/>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnMouseDown function="TlxIconButton_OnMouseDown"/>
+		</Scripts>
+	</Button>
 	<Frame name="TlxFrame" inherits="InsetFrameTemplate" frameStrata="HIGH" virtual="true" enableMouse="true" hidden="true">
 		<Size x="200" y="882"/>
 		<Anchors>
@@ -114,6 +136,16 @@
 								</FontString>
 							</Layer>
 						</Layers>
+					</Frame>
+					<Frame parentKey="IconListFrame" frameStrata="HIGH" inherits="InsetFrameTemplate" enableMouse="true" hidden="true">
+						<Size y="115"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" x="6" y="5"/>
+							<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" x="-5" y="5"/>
+						</Anchors>
+						<Scripts>
+							<OnLoad function="TlxIconListFrame_OnLoad"/>
+						</Scripts>
 					</Frame>
 				</Frames>
 			</Frame>

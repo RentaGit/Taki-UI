@@ -1,6 +1,6 @@
-BigWigs_Core: disabled
-BigWigs_Options: disabled
-BigWigs_Plugins: disabled
+BigWigs_Core: enabled
+BigWigs_Options: enabled
+BigWigs_Plugins: enabled
 ElvUI_VisualAuraTimers: disabled
 ElvUI_ExtraActionBars: disabled
 ElvUI_CastBarOverlay: disabled
@@ -9,9 +9,9 @@ ElvUI_AuraBarsMovers: disabled
 ElvUI_CustomTweaks: disabled
 OPie_Classic: disabled
 WeakAurasCompanion: enabled
-WeakAurasArchive: disabled
+WeakAurasArchive: enabled
 ElvUI_OptionsUI: disabled
-LittleWigs: disabled
+LittleWigs: enabled
 AngryAssignments: disabled
 AngryKeystones: disabled
 Auctionator: disabled
@@ -88,7 +88,7 @@ GladiusEx: disabled
 HandyNotes_Shadowlands: disabled
 LittleWigs_BattleForAzeroth: disabled
 LittleWigs_BurningCrusade: disabled
-LittleWigs_Cataclysm: disabled
+LittleWigs_Cataclysm: enabled
 LittleWigs_Classic: disabled
 LittleWigs_Legion: disabled
 LittleWigs_MistsOfPandaria: disabled
@@ -108,3 +108,9 @@ MacroToolkitIcons: disabled
 BigDebuffs: disabled
 AdvancedInterfaceOptions: disabled
 TakUI: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled
+Blizzard_CombatText: enabled
+BigWigs_Aberrus: enabled

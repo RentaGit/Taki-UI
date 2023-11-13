@@ -110,7 +110,7 @@ AdvancedInterfaceOptions: disabled
 CopyPasta: enabled
 MRT: enabled
 MythicDungeonTools: enabled
-OmniCD: disabled
+OmniCD: enabled
 Plater: enabled
 Quartz: enabled
 RulezItemLevel: disabled
@@ -120,7 +120,7 @@ LortiUI: disabled
 UberUI: disabled
 Blizzard_ObjectiveTracker: enabled
 Blizzard_CompactRaidFrames: enabled
-BigDebuffs: disabled
+BigDebuffs: enabled
 MacroToolkit: disabled
 MacroToolkitIcons: disabled
 LibStub: disabled
@@ -133,3 +133,6 @@ BigWigs_DragonIsles: enabled
 BigWigs_VaultOfTheIncarnates: enabled
 ImprovedTalentLoadouts: disabled
 BigWigs_Aberrus: enabled
+LittleWigs_Shadowlands: enabled
+HandyNotes_Dragonflight: enabled
+Ace3: enabled

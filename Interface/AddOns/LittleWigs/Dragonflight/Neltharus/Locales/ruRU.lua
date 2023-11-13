@@ -4,6 +4,7 @@ if L then
 	L.custom_on_autotalk = "Авторазговор"
 	--L.custom_on_autotalk_desc = "Instantly selects the gossip options to get profession buffs."
 
+	L.burning_chain = "Горящая цепь"
 	L.qalashi_warden = "Куалаши-страж"
 	L.qalashi_hunter = "Куалаши-охотник"
 	L.overseer_lahar = "Надзиратель Лахар"
@@ -13,6 +14,7 @@ if L then
 	L.qalashi_bonesplitter = "Куалаши-костедробительница"
 	L.qalashi_lavabearer = "Куалаши - воин лавы"
 	L.irontorch_commander = "Командир Железного Факела"
+	L.qalashi_blacksmith = "Куалаши-кузнец"
 	L.forgewrought_monstrosity = "Выкованное чудовище"
 	L.qalashi_plunderer = "Куалаши-расхититель"
 	L.qalashi_thaumaturge = "Куалаши-чудотворица"
@@ -23,7 +25,6 @@ end
 L = BigWigs:NewBossLocale("Chargath, Bane of Scales", "ruRU")
 if L then
 	L.slow = "Замедление"
-	L.boss = "БОССЕ"
 end
 
 L = BigWigs:NewBossLocale("Warlord Sargha", "ruRU")

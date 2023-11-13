@@ -1,5 +1,7 @@
 
 EncounterDetailsDB = {
+	["chartData"] = {
+	},
 	["encounter_spells"] = {
 		[43529] = {
 			["school"] = 1,
@@ -51,14 +53,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Amani Bear Mount",
 		},
-		[42384] = {
-			["school"] = 1,
+		[43526] = {
+			["school"] = 8,
 			["token"] = {
-				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Nalorakk",
+			["source"] = "Amani'shi Wind Walker",
 		},
 		[42943] = {
 			["school"] = 1,
@@ -78,13 +79,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Nalorakk",
 		},
-		[43526] = {
-			["school"] = 8,
+		[42384] = {
+			["school"] = 1,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Amani'shi Wind Walker",
+			["source"] = "Nalorakk",
 		},
 	},
 	["emotes"] = {

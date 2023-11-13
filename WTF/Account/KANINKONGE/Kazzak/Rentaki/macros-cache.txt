@@ -49,8 +49,9 @@ VER 3 0100000000000023 "mo eb" "INV_MISC_QUESTIONMARK"
 END
 VER 3 010000000000002E "mount" "132249"
 #showtooltip
-/cast water walking
-/run C_MountJournal.SummonByID(0)
+/run if IsMounted() then Dismount() end
+/run if IsUsableSpell(368896) then C_MountJournal.SummonByID(1563) end
+/cast [flyable] Tarecgosa's Visage; Swift Razzashi Raptor
 END
 VER 3 010000000000000D "purify spirit" "236288"
 #showtooltip purify spirit

@@ -1,3 +1,24 @@
+VER 3 000000000000013A ".p barrier/blind" "134400"
+#showtooltip
+/cast [known:115750] blinding light
+/cast [known:148039,@mouseover,help,nodead][help,nodead][@player] barrier of faith
+END
+VER 3 0000000000000137 ".p blessing" "134400"
+#showtooltip
+/use [@takidin,exists][@mouseover] blessing of autumn
+/use [@player] blessing of winter
+/use [@player] blessing of spring
+/use [@riworra,exists][@mouseover,help] blessing of summer
+END
+VER 3 0000000000000138 ".p focus kick" "134400"
+#showtooltip
+/cast [@focus] rebuke
+END
+VER 3 0000000000000139 ".p holy prism mo" "134400"
+#showtooltip
+/cast [known:114165, @mouseover,help,nodead][help,nodead][@target] holy prism
+/cast [known:114158, @cursor] Light's Hammer
+END
 VER 3 0000000000000096 ".sh ankh" "451167"
 #showtooltip reincarnation
 END
@@ -88,6 +109,11 @@ VER 3 0000000000000122 ".sh SK/ASC" "134400"
 /cast [known:Stormkeeper] Stormkeeper;
 /cast [known:Ascendance] Ascendance;
 END
+VER 3 0000000000000134 ".sh ss" "132314"
+#showtooltip stormstrike
+/use [@player] Totemic Projection
+/cast stormstrike
+END
 VER 3 0000000000000127 ".sh SST/TAT" "4667425"
 #showtooltip
 /cast [known:Stoneskin Totem] Stoneskin Totem;
@@ -112,14 +138,15 @@ END
 VER 3 0000000000000131 "focus mouseover" "1033497"
 /focus [@mouseover,harm,nodead] [harm]
 END
-VER 3 000000000000012E "kill cinderfall" "524305"
-/target cinderfall
-/cast frost shock
-END
 VER 3 000000000000012A "NS/ASC" "134400"
 #showtooltip
 /cast [known:Nature's Swiftness] Nature's Swiftness
 /cast [known:Ascendance] Ascendance
+END
+VER 3 0000000000000136 "Potion" "134400"
+#showtooltip
+/use Fleeting Elemental Potion of Ultimate Power
+/use Elemental Potion of Ultimate Power
 END
 VER 3 000000000000012C "skyfury exp" "135829"
 #showtooltip
@@ -127,6 +154,9 @@ VER 3 000000000000012C "skyfury exp" "135829"
 /use Battle Standard of Coordination
 /use Standard of Unity
 /use Banner of Cooperation
+END
+VER 3 0000000000000135 "target voice" "134400"
+/target voice from beyond
 END
 VER 3 00000000000000ED "use belt" "605237"
 #showtooltip
@@ -142,8 +172,7 @@ VER 3 00000000000000DE "use cloak" "852263"
 END
 VER 3 00000000000000E0 "use trinket 1" "134490"
 #showtooltip
-/target frostforged zealot
-/use 13
+/use [@cursor] 13
 END
 VER 3 0000000000000107 "use trinket 2" "134491"
 #showtooltip

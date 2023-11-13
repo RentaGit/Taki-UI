@@ -85,3 +85,10 @@ MacroToolkitIcons: disabled
 BigDebuffs: disabled
 AdvancedInterfaceOptions: disabled
 TakUI: disabled
+Blizzard_ObjectiveTracker: enabled
+Blizzard_CompactRaidFrames: enabled
+LortiUI: disabled
+UberUI: disabled
+Blizzard_CombatText: enabled
+LittleWigs_Cataclysm: enabled
+BigWigs_Aberrus: enabled

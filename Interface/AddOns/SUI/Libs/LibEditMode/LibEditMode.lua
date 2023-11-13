@@ -1,4 +1,4 @@
-local MINOR = 4
+local MINOR = 7
 local lib = LibStub:NewLibrary('LibEditMode', MINOR)
 if not lib then
 	-- this or a newer version is already loaded
@@ -138,7 +138,7 @@ local function onEditModeEnter()
 	resetSelection()
 
 	for _, callback in next, anonCallbacksEnter do
-		callback()
+		securecallfunction(callback)
 	end
 end
 
@@ -148,7 +148,7 @@ local function onEditModeExit()
 	resetSelection()
 
 	for _, callback in next, anonCallbacksExit do
-		callback()
+		securecallfunction(callback)
 	end
 end
 
@@ -158,7 +158,7 @@ local function onEditModeChanged(_, layoutInfo)
 		lib.activeLayoutName = layoutName
 
 		for _, callback in next, anonCallbacksLayout do
-			callback(layoutName)
+			securecallfunction(callback, layoutName)
 		end
 
 		-- TODO: we should update the position of the button here, let the user not deal with that
@@ -184,7 +184,7 @@ function lib:AddFrame(frame, callback, default)
 	selection:SetScript('OnMouseDown', onMouseDown)
 	selection:SetScript('OnDragStart', onDragStart)
 	selection:SetScript('OnDragStop', onDragStop)
-	selection.Label:SetText(frame:GetName())
+	selection.Label:SetText(frame.editModeName or frame:GetName())
 	selection:Hide()
 
 	frameSelections[frame] = selection
@@ -300,7 +300,7 @@ end
 
 function internal:TriggerCallback(frame, ...)
 	if frameCallbacks[frame] then
-		frameCallbacks[frame](frame, lib.activeLayoutName, ...)
+		securecallfunction(frameCallbacks[frame], frame, lib.activeLayoutName, ...)
 	end
 end
 
