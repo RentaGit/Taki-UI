@@ -108,3 +108,4 @@ TomCats-LunarFestival: disabled
 TomCats-Noblegarden: disabled
 Blizzard_CombatText: enabled
 BigWigs_Aberrus: enabled
+BigWigs_Amirdrassil: enabled

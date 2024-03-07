@@ -2,7 +2,7 @@ local E = select(2, ...):unpack()
 local P, CM, CD = E.Party, E.Comm, E.Cooldowns
 
 local pairs, type, tostring, tonumber, unpack, tinsert, wipe, strmatch, format, min, max, abs = pairs, type, tostring, tonumber, unpack, table.insert, table.wipe, string.match, string.format, math.min, math.max, math.abs
-local GetTime, GetSpellTexture, UnitBuff, UniDebuff, UnitTokenFromGUID, UnitHealth, UnitHealthMax, UnitLevel, UnitChannelInfo, UnitAffectingCombat = GetTime, GetSpellTexture, UnitBuff, UniDebuff, UnitTokenFromGUID, UnitHealth, UnitHealthMax, UnitLevel, UnitChannelInfo, UnitAffectingCombat
+local GetTime, GetSpellTexture, UnitBuff, UnitTokenFromGUID, UnitHealth, UnitHealthMax, UnitLevel, UnitChannelInfo, UnitAffectingCombat = GetTime, GetSpellTexture, UnitBuff, UnitTokenFromGUID, UnitHealth, UnitHealthMax, UnitLevel, UnitChannelInfo, UnitAffectingCombat
 local C_Timer_After, C_Timer_NewTicker = C_Timer.After, C_Timer.NewTicker
 local band = bit.band
 local CombatLogGetCurrentEventInfo = CombatLogGetCurrentEventInfo
@@ -299,7 +299,7 @@ local function ProcessSpell(spellID, guid)
 
 		local updateSpell = E.spell_merged_updateoncast[spellID]
 		if updateSpell then
-			local cd = updateSpell[1]
+			local cd = updateSpell[1] or icon.duration
 
 			if mergedID == 272651 and P.isPvP and info.talentData[356962] then
 				cd = cd / 2
@@ -317,7 +317,7 @@ local function ProcessSpell(spellID, guid)
 		local now = GetTime()
 		for i = 1, #shared, 2 do
 			local sharedID = shared[i]
-			if ( sharedID ~= 336126 or not E.HEALER_SPEC[info.spec] ) then
+
 				local sharedCD = shared[i+1]
 				local sharedIcon = info.spellIcons[sharedID]
 				if sharedIcon then
@@ -329,7 +329,7 @@ local function ProcessSpell(spellID, guid)
 						break
 					end
 				end
-			end
+
 		end
 		return
 	end
@@ -806,11 +806,20 @@ local runicPowerSpenders = {
 
 registeredEvents['SPELL_AURA_APPLIED'][194844] = function(info)
 	local unit = info.unit
-	for i = 1, 50 do
-		local _,_,_,_, duration, _,_,_,_, id = UnitBuff(unit, i)
-		if not id then return end
-		if id == 194844 and duration > 0 then
-			info.auras.bonestormConsumedRP = duration * 10
+	if AuraUtil and AuraUtil.ForEachAura then
+		AuraUtil.ForEachAura(unit, "HELPFUL", nil, function(_,_,_,_, duration,_,_,_,_, id)
+			if id == 194844 and duration > 0 then
+				info.auras.bonestormConsumedRP = duration * 10
+				return true
+			end
+		end)
+	else
+		for i = 1, 50 do
+			local _,_,_,_, duration, _,_,_,_, id = UnitBuff(unit, i)
+			if not id then return end
+			if id == 194844 and duration > 0 then
+				info.auras.bonestormConsumedRP = duration * 10
+			end
 		end
 	end
 end
@@ -960,6 +969,7 @@ local demonHunterSigils = {
 	[207684] = 207685,
 	[202137] = 204490,
 	[202138] = 204843,
+	[390163] = 389860,
 }
 
 local function ReduceSigilsCD(info, _,_,_,_,_,_,_,_,_,_, timestamp)
@@ -977,7 +987,12 @@ local function ReduceSigilsCD(info, _,_,_,_,_,_,_,_,_,_, timestamp)
 end
 
 for _, auraID in pairs(demonHunterSigils) do
-	registeredEvents['SPELL_AURA_APPLIED'][auraID] = ReduceSigilsCD
+	if ( auraID == 389860 or auraID == 204598 ) then
+		registeredEvents['SPELL_DAMAGE'][auraID] = ReduceSigilsCD
+	else
+		registeredEvents['SPELL_AURA_APPLIED'][auraID] = ReduceSigilsCD
+		registeredEvents['SPELL_AURA_REFRESH'][auraID] = ReduceSigilsCD
+	end
 end
 
 
@@ -1888,11 +1903,20 @@ registeredEvents['SPELL_CAST_SUCCESS'][30455] = function(info, _,_, destGUID)
 		else
 			local unit = UnitTokenFromGUID(destGUID)
 			if unit then
-				for i = 1, 50 do
-					local _,_,_,_,_,_,_,_,_, id = UnitDebuff(unit, i)
-					if not id then return end
-					if frozenDebuffs[id] then
-						return ConsumedProcCharge(info, true)
+				if AuraUtil and AuraUtil.ForEachAura then
+					AuraUtil.ForEachAura(unit, "HARMFUL", nil, function(_,_,_,_,_,_,_,_,_, id)
+						if frozenDebuffs[id] then
+							ConsumedProcCharge(info, true)
+							return true
+						end
+					end)
+				else
+					for i = 1, 50 do
+						local _,_,_,_,_,_,_,_,_, id = UnitDebuff(unit, i)
+						if not id then return end
+						if frozenDebuffs[id] then
+							return ConsumedProcCharge(info, true)
+						end
 					end
 				end
 			end
@@ -2943,101 +2967,37 @@ registeredUserEvents['SPELL_AURA_APPLIED'][25771] = registeredEvents['SPELL_AURA
 registeredUserEvents['SPELL_AURA_REMOVED'][25771] = registeredEvents['SPELL_AURA_REMOVED'][25771]
 
 
---[[
-	WOES
-		Free procs (e.g. Divine Purpose, not cost reducers e.g. SealofClarity) are consumed with BastionofLight
-			> NOVEMBER 28, 2022 Hotfixed
-		Righteous Protector incorrectly applies CDR when BastionofLight and (DivinePurpose or ShiningLight) buffs are active at the same time
-		but correctly ignores CDR when singular buffs are up.
-			> NOVEMBER 28, 2022 Hotfixed
-				> DivinePurpose and ShiningLight applies full CDR whenever it's consumed for 'Righteous Protector' only
-		Righteous Protector incorrectly applies double the amount of CDR to Guardian of the Forgotten Queen in PvP
-		Fist of Justice randomly skips CDR outside of it's ICD
-		Divine purpose applies a small amount of CDR incorrectly
-		Empyrean Power applies a small amount of CDR incorrectly
-		Empyrean Power + Fires of Justice incorrectly applies 3 sec CDR (w/ rank2 FoJ)
-		Fires of Justice (consume 1 less HP) doesn't reduce CDR
-		Resolute Defender ignores free spender procs and applies full CDR to Divine Shield and Ardent Defender
-		Patch 10.0.5 Avenging Crusader is now a holy power spender. CDR doesn't work on HoJ w/ FoJ
-
-		Just sync everything.
+--[[ updated for 10.2
+	Free spender procs are still inconsistenctly counted towards Holy Power spent while some aren't.
+	Gets even crazier when there are more than 1 procs active. Just sync everything
 ]]
-
 local offensiveHolyPowerSpender = { [85256] = true, [383328] = true, [215661] = true, [53385] = true,}
 
 local holyPowerSpenders = {
-	--[[
 	[85673] = {
-		234299, nil, 3.0, 853, { "BastionofLight", 0, "DivinePurpose", 0, "ShiningLight", 0, "FireofJustice", -1, "SealofClarity", -1 },
-		392928, nil, 4.5, 633, { "DivinePurpose", 0, "SealofClarity", -1 },
-		385422, nil, 1.0, { 31850, 642 }, nil, { "BastionofLight", 0, "DivinePurpose", 0, "ShiningLight", 0 "SealofClarity", -0.33 },
-		204074, nil, 2.0, { 31884, 231895, 389539, 86659, 228049 }, { "BastionofLight", 0, "DivinePurpose", 0, "ShiningLight", 0, "SealofClarity", -0.5 },
+		234299, nil, 3.0, 853, { "BastionofLight", -2.7, "DivinePurpose", -2.7, "ShiningLight", -2.7, "ShiningRighteousness", -2.7 },
+		392928, nil, 3.0, 633, { "DivinePurpose", 0 },
+		414720, nil, 4.5, 633, { "DivinePurpose", 0, "ShiningRighteousness", 0 },
+		385422, nil, 1.0, { 31850, 642 }, "nil",
+		204074, nil, 2.0, { 31884, 231895, 389539, 86659, 228049 }, "nil",
 	},
 	[53600] = {
-		234299, nil, 3.0, 853, { "BastionofLight", 0, "DivinePurpose", 0, "FireofJustice", -1, "SealofClarity", -1 },
-		392928, nil, 4.5, 633, { "DivinePurpose", 0, "SealofClarity", -1 },
-		385422, nil, 1.0, { 31850, 642 }, nil, { "BastionofLight", 0, "DivinePurpose", 0, "SealofClarity", -0.33 },
-		204074, nil, 2.0, { 31884, 231895, 389539, 86659, 228049 }, { "BastionofLight", 0, "DivinePurpose", 0, "SealofClarity", -0.5 },
-	},
-	[152262] = {
-		234299, nil, 3.0, 853, { "DivinePurpose", 0, "FireofJustice", -1 },
-		392928, nil, 4.5, 633, { "DivinePurpose", 0 },
-		385422, nil, 1.0, { 31850, 642 }, nil, { "DivinePurpose", 0 },
-		204074, nil, 2.0, { 31884, 231895, 389539, 86659, 228049 }, { "DivinePurpose", 0 },
-	},
-	[391054] = {
-		234299, 66,  3.0, 853, { "DivinePurpose", 0 },
-		385422, 66,  1.0, { 31850, 642 }, nil, { "DivinePurpose", 0 },
-		204074, 66, 2.0, { 31884, 231895, 389539, 86659, 228049 }, { "DivinePurpose", 0 },
-	},
-	[85256] = {
-		234299, nil, 3.0, 853, { "DivinePurpose", 0, "FireofJustice", -1 },
-	},
-	[383328] = {
-		234299, nil, 3.0, 853, { "DivinePurpose", 0, "FireofJustice", -1 },
-	},
-	[215661] = {
-		234299, nil, 3.0, 853, { "DivinePurpose", 0, "FireofJustice", -1 },
-	},
-	[53385] = {
-		234299, nil, 3.0, 853, { "EmpyreanPower", 0, "DivinePurpose", 0, "FireofJustice", -1 },
-	},
-	[343527] = {
-		234299, nil, 3.0, 853, { "DivinePurpose", 0, "FireofJustice", -1 },
-	},
-	[384052] = {
-		234299, nil, 3.0, 853, { "DivinePurpose", 0, "FireofJustice", -1 },
-	},
-	[85222] = {
-		234299, nil, 3.0, 853, { "DivinePurpose", 0, "SealofClarity", -1 },
-		392928, nil, 4.5, 633, { "DivinePurpose", 0, "SealofClarity", -1 },
-	},
-	[216331] = {
-		234299, nil, 3.0, 853, { "DivinePurpose", 0, "SealofClarity", -1 },
-		392928, nil, 4.5, 633, { "DivinePurpose", 0, "SealofClarity", -1 },
-	},
-	]]
-	[85673] = {
-		234299, nil, 3.0, 853, { "BastionofLight", 0, "DivinePurpose", -2.7, "ShiningLight", -2.7, "SealofClarity", -1 },
-		392928, nil, 4.5, 633, { "DivinePurpose", -2.7 },
-		385422, nil, 1.0, { 31850, 642 }, nil,
-		204074, nil, 2.0, { 31884, 231895, 389539, 86659, 228049 }, { "BastionofLight", {"DivinePurpose", "ShiningLight"}, "DivinePurpose", .01, "ShiningLight", .01, "SealofClarity", -0.5  },
-	},
-	[53600] = {
-		234299, nil, 3.0, 853, { "BastionofLight", 0, "DivinePurpose", -2.7, "SealofClarity", -1 },
-		392928, nil, 4.5, 633, { "DivinePurpose", -2.7 },
-		385422, nil, 1.0, { 31850, 642 }, nil,
-		204074, nil, 2.0, { 31884, 231895, 389539, 86659, 228049 }, { "BastionofLight", {"DivinePurpose"}, "DivinePurpose", .01, "SealofClarity", -0.5 },
+		234299, nil, 3.0, 853, { "BastionofLight", -2.7, "DivinePurpose", -2.7 },
+		392928, nil, 3.0, 633, { "DivinePurpose", 0 },
+		414720, nil, 4.5, 633, { "DivinePurpose", 0 },
+		385422, nil, 1.0, { 31850, 642 }, "nil",
+		204074, nil, 2.0, { 31884, 231895, 389539, 86659, 228049 }, "nil",
 	},
 	[152262] = {
 		234299, nil, 3.0, 853, { "DivinePurpose", -2.7 },
-		392928, nil, 4.5, 633, { "DivinePurpose", -2.7 },
-		385422, nil, 1.0, { 31850, 642 }, nil,
+		392928, nil, 3.0, 633, { "DivinePurpose", 0 },
+		414720, nil, 4.5, 633, { "DivinePurpose", 0 },
+		385422, nil, 1.0, { 31850, 642 }, "nil",
 		204074, nil, 2.0, { 31884, 231895, 389539, 86659, 228049 }, "nil",
 	},
 	[391054] = {
-		234299, 66,  3.0, 853, { "DivinePurpose", 0 },
-		385422, 66,  1.0, { 31850, 642 }, nil,
+		234299, 66,  3.0, 853, { "DivinePurpose", -2.7 },
+		385422, 66,  1.0, { 31850, 642 }, "nil",
 		204074, 66,  2.0, { 31884, 231895, 389539, 86659, 228049 }, "nil",
 	},
 	[85256] = {
@@ -3059,14 +3019,21 @@ local holyPowerSpenders = {
 		234299, nil, 3.0, 853, { "DivinePurpose", -2.7 },
 	},
 	[85222] = {
-		234299, nil, 3.0, 853, { "DivinePurpose", -2.7, "SealofClarity", -1 },
-		392928, nil, 4.5, 633, { "DivinePurpose", -2.7, "SealofClarity", -1 },
+		234299, nil, 3.0, 853, { "DivinePurpose", -2.7, "ShiningRighteousness", -2.7 },
+		392928, nil, 3.0, 633, { "DivinePurpose", 0 },
+		414720, nil, 4.5, 633, { "DivinePurpose", 0, "ShiningRighteousness", 0 },
 	},
 	[216331] = {
-		--[[
-		234299, nil, 3.0, 853, { "DivinePurpose", 0, "SealofClarity", -1 },
+		--[[ TODO: rechck. Avenging Crusader doesn't reduce HoJ CD w/ Fist of Justice (still bugged in 10.2)
+		234299, nil, 3.0, 853, { "DivinePurpose", 0 },
 		]]
-		392928, nil, 4.5, 633, { "DivinePurpose", 0, "SealofClarity", -1 },
+		392928, nil, 3.0, 633, { "DivinePurpose", 0, },
+		414720, nil, 4.5, 633, { "DivinePurpose", 0, },
+	},
+	[415091] = {
+		234299, nil, 3.0, 853, { "DivinePurpose", -2.7 },
+		392928, nil, 3.0, 633, { "DivinePurpose", 0 },
+		414720, nil, 4.5, 633, { "DivinePurpose", 0 },
 	},
 }
 
@@ -3075,7 +3042,7 @@ local holyPowerSpenders = {
 --[[ For science... ]]
 for id, t in pairs(holyPowerSpenders) do
 	registeredEvents['SPELL_CAST_SUCCESS'][id] = function(info, _,_,_,_,_,_,_,_,_,_, timestamp)
-		local increasedHPCost = offensiveHolyPowerSpender[id] and info.talentData[406545] and not info.auras.DivinePurpose and (id ~= 53385 or not info.auras.EmpyreanPower)
+		local increasedHPCost = offensiveHolyPowerSpender[id] and info.talentData[406545]
 		for i= 1,#t,5 do
 			local talent, spec, rCD, target, aura = t[i], t[i+1], t[i+2], t[i+3], t[i+4]
 			local talentRank = info.talentData[talent]
@@ -3088,24 +3055,11 @@ for id, t in pairs(holyPowerSpenders) do
 								if rrCD == 0 then
 									rCD = 0
 									break
-								elseif type(rrCD) == "table" then
-									local cancelBastion
-									for _, str in pairs(rrCD) do
-										if info.auras[str] then
-											cancelBastion = true
-											break
-										end
-									end
-									if not cancelBastion then
-										rCD = 0
-										break
-									end
-									rrCD = 0
 								end
-								rCD = rCD + rrCD
-								if key ~= "SealofClarity" then
+								if rCD + rrCD < 0 then
 									break
 								end
+								rCD = rCD + rrCD
 							end
 						end
 					end
@@ -3374,7 +3328,7 @@ registeredEvents['SPELL_DAMAGE'][32379] = function(info, _,_,_,_,_,_, overkill, 
 			if icon and icon.active then
 				P:ResetCooldown(icon)
 			end
-			info.auras.time_shadowworddeath_reset = timestamp + 20
+			info.auras.time_shadowworddeath_reset = timestamp + 10
 		end
 		info.auras.isDeathTargetUnder20 = nil
 	end
@@ -3609,6 +3563,25 @@ registeredEvents['SPELL_AURA_APPLIED'][423510] = function(info)
 	info.auras[34861] = true
 end
 
+
+
+registeredEvents['SPELL_DAMAGE'][425529] = function(info, srcGUID, spellID, destGUID)
+	if info.talentData[390770] then
+		local icon = info.spellIcons[34433]
+		if icon then
+			if icon.active then
+				P:UpdateCooldown(icon, 4)
+			end
+			return
+		end
+		icon =	info.spellIcons[123040]
+		if icon then
+			if icon.active then
+				P:UpdateCooldown(icon, 2)
+			end
+		end
+	end
+end
 
 
 
@@ -4478,7 +4451,7 @@ registeredEvents['SPELL_CAST_SUCCESS'][264178] = function(info)
 	if info.talentData[405573] and info.auras.isDemonicCore then
 		local icon = info.spellIcons[111898]
 		if icon and icon.active then
-			P:UpdateCooldown(icon, 1)
+			P:UpdateCooldown(icon, 0.5)
 		end
 	end
 end
@@ -4535,7 +4508,7 @@ local rageSpenders = {
 	[394062] = { 3.0, { 401150, 871 } },
 	[190456] = { 3.5, { 401150, 871 } },
 	[6572]	 = { 2.0, { 401150, 871}, { 390675, 1 }, { "hasRevenge", 0 } },
-	[1680]	 = { { [73]=3, ["d"]=2.0 }, { 262161, 167105, 227847, 401150, 871 }, { 385512, 1.0, 383082, .001 }	},
+	[1680]	 = { { [73]=3, ["d"]=2.0 }, { 262161, 167105, 227847, 401150, 871 }, { 385512, 1.0, 383082, .001 } },
 	[163201] = { { [73]=4, ["d"]=2.0 }, { 262161, 167105, 227847, 401150, 871 }, nil, { "SuddenDeath", 0 } },
 	[281000] = { { [73]=4, ["d"]=2.0 }, { 262161, 167105, 227847, 401150, 871 }, nil, { "SuddenDeath", 0 } },
 	[1464]	 = { { [73]=2, ["d"]=1.0 }, { 262161, 167105, 227847, 401150, 871, 1719, 228920 }, { 383082, .5 } },
@@ -4545,12 +4518,15 @@ local rageSpenders = {
 }
 
 for id, t in pairs(rageSpenders) do
+	local duration, target, modif, aura = t[1], t[2], t[3], t[4]
 	registeredEvents['SPELL_CAST_SUCCESS'][id] = function(info)
 		if not info.talentData[152278] then return end
-		local duration, target, modif, aura = t[1], t[2], t[3], t[4]
 		local rCD = aura and info.auras[ aura[1] ] and aura[2]
 		if rCD == 0 then return end
 		rCD = (type(duration) == "table" and (duration[info.spec] or duration.d) or duration) + (rCD or 0)
+		if info.spec == 72 and P.isPvP then
+			rCD = rCD * 1.33
+		end
 		if modif then
 			for i = 1, #modif, 2 do
 				local tal, rrCD = modif[i], modif[i+1]
@@ -5640,7 +5616,7 @@ setmetatable(registeredHostileEvents, nil)
 function P:SetDisabledColorScheme(destInfo)
 	if not destInfo.isDisabledColor then
 		destInfo.isDisabledColor = true
-		for _, icon in pairs(destInfo.spellIcons) do
+		for id, icon in pairs(destInfo.spellIcons) do
 			local statusBar = icon.statusBar
 			if statusBar then
 				if icon.active then
@@ -5654,6 +5630,10 @@ function P:SetDisabledColorScheme(destInfo)
 			end
 			icon.icon:SetDesaturated(true)
 			icon.icon:SetVertexColor(0.3, 0.3, 0.3)
+
+			if ( E.summonedBuffDuration[id] and destInfo.glowIcons[id] ) then
+				self:RemoveHighlight(icon)
+			end
 		end
 		for key, frame in pairs(P.extraBars) do
 			if frame.shouldRearrangeInterrupts then

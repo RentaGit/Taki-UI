@@ -58,13 +58,13 @@ HandyNotes_Shadowlands: disabled
 HandyNotes_ShadowlandsTreasures: disabled
 LibSharedMedia-3.0: disabled
 LittleWigs: enabled
-LittleWigs_BattleForAzeroth: disabled
+LittleWigs_BattleForAzeroth: enabled
 LittleWigs_BurningCrusade: disabled
 LittleWigs_Cataclysm: enabled
-LittleWigs_Classic: disabled
-LittleWigs_Legion: disabled
+LittleWigs_Classic: enabled
+LittleWigs_Legion: enabled
 LittleWigs_MistsOfPandaria: disabled
-LittleWigs_WarlordsOfDraenor: disabled
+LittleWigs_WarlordsOfDraenor: enabled
 LittleWigs_WrathOfTheLichKing: disabled
 Masque: disabled
 Masque_ElvUIesque: disabled
@@ -106,8 +106,8 @@ LortiUI: disabled
 UberUI: disabled
 ACP: enabled
 BigWigs_Aberrus: enabled
-BigWigs_DragonIsles: disabled
-BigWigs_VaultOfTheIncarnates: disabled
+BigWigs_DragonIsles: enabled
+BigWigs_VaultOfTheIncarnates: enabled
 ColorPickerPlus: disabled
 CopyPasta2: disabled
 Details_Compare2: disabled
@@ -129,3 +129,4 @@ SUI: disabled
 TalentLoadoutsEx: disabled
 TrueStatValues: disabled
 Blizzard_CombatText: enabled
+BigWigs_Amirdrassil: enabled

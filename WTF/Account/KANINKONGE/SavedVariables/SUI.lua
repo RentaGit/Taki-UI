@@ -12,18 +12,18 @@ SUIDB = {
 		["Ivelea - Argent Dawn"] = "Default",
 		["Takided - Kazzak"] = "Default",
 		["Thaaeyn - Argent Dawn"] = "Default",
-		["Takidin - Kazzak"] = "Default",
+		["Rentaki - Kazzak"] = "Default",
 		["Renqqø - Kazzak"] = "Default",
 		["Rendudu - Kazzak"] = "Default",
 		["Felenia - Doomhammer"] = "Default",
 		["Takeera - Kazzak"] = "Default",
 		["Takiscoper - Kazzak"] = "Default",
-		["Takibank - Argent Dawn"] = "Default",
 		["Rentaco - Kazzak"] = "Default",
+		["Takibank - Argent Dawn"] = "Default",
 		["Takidemon - Kazzak"] = "Default",
 		["Takosa - Kazzak"] = "Default",
 		["Takii - Doomhammer"] = "Default",
-		["Rentaki - Kazzak"] = "Default",
+		["Takidin - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -47,27 +47,27 @@ SUIDB = {
 				["texture"] = "Interface\\AddOns\\Details\\images\\bar_background",
 			},
 			["edit"] = {
-				["queueicon"] = {
-					["y"] = -265.4571007948661,
-					["x"] = -166.1462621444295,
+				["micromenu"] = {
+					["y"] = 3.280181407928467,
+					["x"] = -434.1787414550781,
+					["point"] = "BOTTOM",
 				},
 				["bagbar"] = {
 					["y"] = 40.97347640991211,
 					["x"] = -425.8584289550781,
 					["point"] = "BOTTOM",
 				},
-				["micromenu"] = {
-					["y"] = 3.280181407928467,
-					["x"] = -434.1787414550781,
-					["point"] = "BOTTOM",
+				["queueicon"] = {
+					["y"] = -265.4571007948661,
+					["x"] = -166.1462621444295,
 				},
 			},
 			["castbars"] = {
 				["playerSize"] = 1.2,
 				["focusOnTop"] = true,
-				["targetSize"] = 1.3,
-				["focusSize"] = 1.3,
 				["targetOnTop"] = true,
+				["focusSize"] = 1.3,
+				["targetSize"] = 1.3,
 			},
 			["install"] = true,
 			["chat"] = {
@@ -94,10 +94,9 @@ SUIDB = {
 					["micromenu"] = "mouse_over",
 				},
 				["buttons"] = {
-					["key"] = false,
 					["macro"] = false,
-					["flash"] = true,
 					["size"] = 15,
+					["flash"] = true,
 				},
 			},
 			["nameplates"] = {

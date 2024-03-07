@@ -1,0 +1,5 @@
+SET playerIdentityDefaultChoices "v11##$#%h#%h#%h#%h"
+SET flaggedTutorials "v11##$##K##9##("
+SET nameplateTargetRadialPosition "1"
+SET CameraKeepCharacterCentered "0"
+SET perksActivitiesPendingCompletion "v11"

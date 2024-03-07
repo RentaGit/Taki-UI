@@ -1,13 +1,22 @@
 
 OneRing_Config = nil
 OPie_SavedData = {
+	["_GameVersion"] = "10.2.5",
 	["CharProfiles"] = {
 		["Ravencrest-Rentaki"] = "default",
 	},
-	["_GameVersion"] = "10.2.0",
-	["_OPieVersion"] = "Zeta 2 (4.117)",
+	["_TimeBand"] = 0.5703125,
+	["_OPieVersion"] = "Zeta 4 (4.119)",
 	["ProfileStorage"] = {
 		["default"] = {
+			["RotationTokens"] = {
+				["ABuevVY=FLre"] = "ABuevVY=FLeD",
+				["ABuebVTRc64"] = "ABuennjKAAy",
+				["ABuevVY=FLry"] = "ABuennjKAAr",
+				["ABuevVY=FLru"] = "ABuennjKAAw",
+				["ABuevVY=FLrt"] = "ABuennjKAA1",
+				["ABuevVY=FLr1"] = "ABuevVY=FLwb",
+			},
 			["Bindings"] = {
 				["OPieAutoQuest"] = false,
 				["nTeleports"] = "8",
@@ -29,11 +38,15 @@ OPie_SavedData = {
 					["sliceToken"] = "ABuebVTRc6u",
 					["id"] = 410080,
 				}, -- [1]
+				{
+					["sliceToken"] = "ABuennjKAAy",
+					["id"] = 424142,
+				}, -- [2]
 				["name"] = "Dungeon Teleports (Cataclysm)",
 				["save"] = true,
 			},
 			["OPieFlagStore"] = {
-				["StoreVersion"] = 2,
+				["StoreVersion"] = 3,
 			},
 			["leportsWoD"] = {
 				{
@@ -88,6 +101,14 @@ OPie_SavedData = {
 					["sliceToken"] = "ABuebVTRc6h",
 					["id"] = 410078,
 				}, -- [4]
+				{
+					["sliceToken"] = "ABuennjKAA1",
+					["id"] = 424153,
+				}, -- [5]
+				{
+					["sliceToken"] = "ABuennjKAAt",
+					["id"] = 424163,
+				}, -- [6]
 				["name"] = "Dungeon Teleports (Legion)",
 				["save"] = true,
 			},
@@ -243,62 +264,11 @@ OPie_SavedData = {
 					["sliceToken"] = "ABuebVTRc63",
 					["id"] = 393222,
 				}, -- [8]
+				{
+					["sliceToken"] = "ABuennjKAAr",
+					["id"] = 424197,
+				}, -- [9]
 				["name"] = "Dungeon Teleports (DF)",
-				["save"] = true,
-			},
-			["nTeleports"] = {
-				{
-					"ring", -- [1]
-					"leportsBFA", -- [2]
-					["sliceToken"] = "ABuevVY=FLru",
-				}, -- [1]
-				{
-					"ring", -- [1]
-					"eleportsDF", -- [2]
-					["sliceToken"] = "ABuevVY=FLry",
-				}, -- [2]
-				{
-					"ring", -- [1]
-					"ortsLegion", -- [2]
-					["sliceToken"] = "ABuevVY=FLrt",
-				}, -- [3]
-				{
-					"ring", -- [1]
-					"leportsMoP", -- [2]
-					["sliceToken"] = "ABuevVY=FLr1",
-				}, -- [4]
-				{
-					"ring", -- [1]
-					"eleportsSL", -- [2]
-					["sliceToken"] = "ABuevVY=FLrr",
-				}, -- [5]
-				{
-					"ring", -- [1]
-					"leportsWoD", -- [2]
-					["sliceToken"] = "ABuevVY=FLre",
-				}, -- [6]
-				{
-					"ring", -- [1]
-					"sCataclysm", -- [2]
-					["sliceToken"] = "ABuebVTRc64",
-				}, -- [7]
-				["name"] = "Dungeon Teleports",
-				["save"] = true,
-			},
-			["leportsBFA"] = {
-				{
-					["sliceToken"] = "ABuevVY=FLR",
-					["id"] = 373274,
-				}, -- [1]
-				{
-					["sliceToken"] = "ABuebVTRc6y",
-					["id"] = 410071,
-				}, -- [2]
-				{
-					["sliceToken"] = "ABuebVTRc6t",
-					["id"] = 410074,
-				}, -- [3]
-				["name"] = "Dungeon Teleports (BFA)",
 				["save"] = true,
 			},
 			["rtantStuff"] = {
@@ -390,6 +360,69 @@ OPie_SavedData = {
 				["name"] = "Important Stuff",
 				["save"] = true,
 				["hotkey"] = "F1",
+			},
+			["leportsBFA"] = {
+				{
+					["sliceToken"] = "ABuevVY=FLR",
+					["id"] = 373274,
+				}, -- [1]
+				{
+					["sliceToken"] = "ABuebVTRc6y",
+					["id"] = 410071,
+				}, -- [2]
+				{
+					["sliceToken"] = "ABuebVTRc6t",
+					["id"] = 410074,
+				}, -- [3]
+				{
+					["sliceToken"] = "ABuennjKAAw",
+					["id"] = 424187,
+				}, -- [4]
+				{
+					["sliceToken"] = "ABuennjKAAe",
+					["id"] = 424167,
+				}, -- [5]
+				["name"] = "Dungeon Teleports (BFA)",
+				["save"] = true,
+			},
+			["nTeleports"] = {
+				{
+					"ring", -- [1]
+					"leportsBFA", -- [2]
+					["sliceToken"] = "ABuevVY=FLru",
+				}, -- [1]
+				{
+					"ring", -- [1]
+					"eleportsDF", -- [2]
+					["sliceToken"] = "ABuevVY=FLry",
+				}, -- [2]
+				{
+					"ring", -- [1]
+					"ortsLegion", -- [2]
+					["sliceToken"] = "ABuevVY=FLrt",
+				}, -- [3]
+				{
+					"ring", -- [1]
+					"leportsMoP", -- [2]
+					["sliceToken"] = "ABuevVY=FLr1",
+				}, -- [4]
+				{
+					"ring", -- [1]
+					"eleportsSL", -- [2]
+					["sliceToken"] = "ABuevVY=FLrr",
+				}, -- [5]
+				{
+					"ring", -- [1]
+					"leportsWoD", -- [2]
+					["sliceToken"] = "ABuevVY=FLre",
+				}, -- [6]
+				{
+					"ring", -- [1]
+					"sCataclysm", -- [2]
+					["sliceToken"] = "ABuebVTRc64",
+				}, -- [7]
+				["name"] = "Dungeon Teleports",
+				["save"] = true,
 			},
 		},
 	},

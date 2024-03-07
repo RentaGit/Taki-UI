@@ -6,12 +6,6 @@ MacroToolkitDB = {
 			},
 		},
 	},
-	["global"] = {
-		["backups"] = {
-		},
-		["ebackups"] = {
-		},
-	},
 	["profileKeys"] = {
 		["Hunteraki - Frostmane"] = "profile",
 		["Takilock - Kazzak"] = "profile",
@@ -25,12 +19,18 @@ MacroToolkitDB = {
 		["Thaaeyn - Argent Dawn"] = "profile",
 		["Takidemon - Kazzak"] = "profile",
 		["Felenia - Doomhammer"] = "profile",
-		["Takeera - Kazzak"] = "profile",
+		["Takidin - Kazzak"] = "profile",
 		["Takibank - Argent Dawn"] = "profile",
 		["Rentaki - Kazzak"] = "profile",
 		["Takosa - Kazzak"] = "profile",
 		["Takii - Doomhammer"] = "profile",
-		["Takidin - Kazzak"] = "profile",
+		["Takeera - Kazzak"] = "profile",
+	},
+	["global"] = {
+		["ebackups"] = {
+		},
+		["backups"] = {
+		},
 	},
 	["profiles"] = {
 		["profile"] = {

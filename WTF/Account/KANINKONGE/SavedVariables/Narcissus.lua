@@ -52,32 +52,45 @@ NarcissusDB = {
 	["BaseLineOffset"] = 0,
 	["TalentTreeBiggerUI"] = false,
 	["AlwaysShowModel"] = false,
+	["ColorChoice"] = 0,
 	["QuestCardTheme"] = 1,
-	["DragonridingTourWorldMapPin"] = true,
 	["DressingRoom"] = true,
 	["UseBustShot"] = true,
-	["ConduitTooltip"] = false,
-	["ColorChoice"] = 0,
+	["FontHeightItemName"] = 10,
+	["DragonridingTourWorldMapPin"] = true,
 	["TalentTreeAnchor"] = 1,
 	["TranslateName"] = false,
 	["TalentTreeUseClassBackground"] = false,
-	["Version"] = 10500,
+	["MinimapButton"] = {
+		["Position"] = -1.213037333446773,
+	},
 	["TalentTreeForPaperDoll"] = false,
-	["CameraOrbit"] = true,
-	["DefaultLayout"] = 2,
+	["Tutorials"] = {
+		["Domination"] = false,
+		["ExitConfirmation"] = false,
+		["SpellVisualBrowser"] = false,
+		["WeaponBrowser"] = false,
+		["EquipmentSetManager"] = false,
+		["IndependentMinimapButton"] = false,
+		["NPCBrowserEntance"] = false,
+		["Movement"] = false,
+		["NPCBrowser"] = true,
+	},
+	["NameTranslationPosition"] = 1,
 	["installTime"] = 1675834347,
-	["MissingEnchantAlert"] = true,
+	["DressingRoomShowIconSelect"] = false,
 	["EyeColor"] = 1,
 	["AutoPlayAnimation"] = true,
 	["AFKScreen"] = false,
-	["ShrinkArea"] = 0,
+	["SearchRelativesHotkey"] = "TAB",
 	["AKFScreenDelay"] = false,
 	["HideTextsWithUI"] = true,
-	["AutoFilterGem"] = false,
-	["AutoFilterMail"] = false,
-	["TooltipTheme"] = "Bright",
+	["CorruptionTooltipModel"] = true,
+	["MinimapIconStyle"] = 1,
+	["AutoDisplayQuestItem"] = false,
 	["TalentTreeForEquipmentManager"] = true,
 	["EnableGrainEffect"] = false,
+	["NamePlateNameOffset"] = 0,
 	["PerksProgramDB"] = {
 		["MonthNames"] = {
 			{
@@ -234,81 +247,81 @@ NarcissusDB = {
 			[256] = "::perksVendorCategoryID::1::description::The Scryers wont take lightly to you using this.::price::500::itemModifiedAppearanceID::168794::name::Aldori War Mace::itemID::190562::addedDate::2023/7::",
 			[288] = "::perksVendorCategoryID::1::description::It also works as a paintbrush.::price::50::itemModifiedAppearanceID::168949::transmogSetID::0::speciesID::0::mountID::0::name::Gently-Used Cleaver::itemID::190698::addedDate::2023/9::",
 			[304] = "::perksVendorCategoryID::8::description::Includes a hood and a cloak.::price::100::transmogSetID::2328::name::Ensemble: Vagabond's Violet Threads::itemID::190528::addedDate::2023/7::",
-			[495] = "::perksVendorCategoryID::8::description::Sharp enough to cut through nerubian silk.::price::500::itemModifiedAppearanceID::0::transmogSetID::3110::speciesID::0::mountID::0::name::Webbed Saronite Weaponry::itemID::208666::addedDate::2023/10::",
-			[253] = "::perksVendorCategoryID::1::description::That skull was the last student to get detention.::price::500::itemModifiedAppearanceID::168807::transmogSetID::0::speciesID::0::mountID::0::name::Headmaster's Command::itemID::190578::addedDate::2023/10::",
+			[507] = "::perksVendorCategoryID::8::description::Includes a scarf and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::3037::speciesID::0::mountID::0::name::Ensemble: Wanderer's Sepia Trappings::itemID::206342::addedDate::2023/11::",
+			[502] = "::perksVendorCategoryID::1::description::When the tide calls, this belt will hold.::price::50::itemModifiedAppearanceID::169020::transmogSetID::0::speciesID::0::mountID::0::name::Tidecaller's Cinch::itemID::190806::addedDate::2023/11::",
 			[318] = "::perksVendorCategoryID::1::description::Hatuun's Ridgestalkers require only a stable footing and a steady hand.::price::50::itemModifiedAppearanceID::169046::transmogSetID::0::speciesID::0::mountID::0::name::Krokul Guisarme::itemID::190833::addedDate::2023/11::",
 			[511] = "::perksVendorCategoryID::1::description::Were it not for our masterful negotiators, this hat would cost no less than 2500 tender.::price::200::itemModifiedAppearanceID::190118::transmogSetID::0::speciesID::0::mountID::0::name::Luxurious Niffen Hat::itemID::208786::addedDate::2023/11::",
-			[143] = "::perksVendorCategoryID::1::description::The power of the Last Guardian of Tirisfal is not included with purchase. Only his style.::price::225::itemModifiedAppearanceID::168332::transmogSetID::0::speciesID::0::mountID::0::name::Feathered Cowl of the Guardian::itemID::190216::addedDate::2023/10::",
-			[503] = "::perksVendorCategoryID::1::description::Ever feel like you're being watched?::price::225::itemModifiedAppearanceID::168961::transmogSetID::0::speciesID::0::mountID::0::name::Caged Eye of the Watcher::itemID::190710::addedDate::2023/10::",
-			[471] = "::perksVendorCategoryID::1::description::The game is afoot.::price::150::itemModifiedAppearanceID::189589::transmogSetID::0::speciesID::0::mountID::0::name::Yellow Tweed Cap::itemID::208147::addedDate::2023/9::",
-			[462] = "::perksVendorCategoryID::3::description::These astral phenomena are rarely sighted due to the speed of the slyvern. It is a good omen to have one following you around.::price::650::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::4253::mountID::0::name::Slyvy::itemID::208045::addedDate::2023/9::",
+			[489] = "::perksVendorCategoryID::8::description::As pale as the moon, as deadly the fang.::price::500::itemModifiedAppearanceID::0::transmogSetID::3108::speciesID::0::mountID::0::name::Savage Champion's Aggression::itemID::208675::addedDate::2023/11::",
+			[572] = "::perksVendorCategoryID::2::description::Zhevras are rarely used as mounts in Azeroth due to their stubborn nature and tendency to bite.::price::550::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::0::mountID::224::name::Swift Zhevra::itemID::37719::addedDate::2023/11::",
+			[35] = "::perksVendorCategoryID::1::description::This Alexandra McQueen design was all the rage at Dalaran Fashion Week.::price::50::itemModifiedAppearanceID::168248::name::Fabulously Flashy Finery::itemID::190097::addedDate::2023/3::",
+			[302] = "::perksVendorCategoryID::1::description::Just try to not get the bowstring tangled in the twisted grove.::price::500::itemModifiedAppearanceID::168292::transmogSetID::0::speciesID::0::mountID::0::name::Longbow of the Twisted Grove::itemID::190147::addedDate::2023/11::",
 			[464] = "::perksVendorCategoryID::8::description::Includes a hood and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::3038::speciesID::0::mountID::0::name::Ensemble: Vagabond's Sunny Threads::itemID::206321::addedDate::2023/9::",
 			[480] = "::perksVendorCategoryID::8::description::Blood Onyx assassins are known for their efficiency, not their subtlety.::price::450::itemModifiedAppearanceID::0::transmogSetID::3084::speciesID::0::mountID::0::name::Blood Onyx Uniform::itemID::208405::addedDate::2023/9::",
 			[496] = "::perksVendorCategoryID::8::description::Strike fear into any demon's heart with your flame's controlled chaos.::price::450::itemModifiedAppearanceID::0::transmogSetID::3101::speciesID::0::mountID::0::name::Nathreza Blasphemer's Flames::itemID::208667::addedDate::2023/10::",
 			[257] = "::perksVendorCategoryID::1::description::A recreation of the dress uniform of the Gilnean Rangers from the time of Archibald Greymane.::price::75::itemModifiedAppearanceID::168775::name::Silvered Warcloak::itemID::190543::addedDate::2023/7::",
-			[469] = "::perksVendorCategoryID::8::description::Who needs a spotlight when you have this much style?::price::500::itemModifiedAppearanceID::0::transmogSetID::3080::speciesID::0::mountID::0::name::Armaments of the Light Avenger::itemID::208177::addedDate::2023/9::",
+			[574] = "::perksVendorCategoryID::2::description::How do you not fall right through that thing? -Maztha::price::650::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::0::mountID::441::name::Spectral Wind Rider::itemID::76902::addedDate::2023/11::",
 			[289] = "::perksVendorCategoryID::1::description::More work?::price::50::itemModifiedAppearanceID::168950::transmogSetID::0::speciesID::0::mountID::0::name::Gorian Mining Pick::itemID::190699::addedDate::2023/9::",
 			[305] = "::perksVendorCategoryID::8::description::Includes a scarf and a cloak.::price::100::transmogSetID::2329::name::Ensemble: Wanderer's Violet Trappings::itemID::190529::addedDate::2023/7::",
 			[454] = "::perksVendorCategoryID::3::description::These stunning creatures, awarded to heroes for victory in battle, represent bravery and strength.::price::650::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::179::mountID::0::name::Spirit of Competition::itemID::207962::addedDate::2023/8::",
 			[337] = "::perksVendorCategoryID::8::description::Includes a scarf and a cloak.::price::100::transmogSetID::2344::name::Ensemble: Wanderer's Snowy Trappings::itemID::190921::addedDate::2023/5::",
 			[353] = "::perksVendorCategoryID::8::description::Includes a scarf and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::2341::speciesID::0::mountID::0::name::Ensemble: Wanderer's Crimson Trappings::itemID::190850::addedDate::2023/8::",
-			[262] = "::perksVendorCategoryID::8::description::Includes a scarf and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::2333::speciesID::0::mountID::0::name::Ensemble: Wanderer's Azure Trappings::itemID::190577::addedDate::2023/8::",
+			[506] = "::perksVendorCategoryID::8::description::Includes a hood and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::3048::speciesID::0::mountID::0::name::Ensemble: Vagabond's Sepia Threads::itemID::206331::addedDate::2023/11::",
 			[112] = "::perksVendorCategoryID::1::description::Gold? Check. Spikes? Check.::price::450::itemModifiedAppearanceID::168290::name::Gilded Drakkonid Morningstar::itemID::190145::addedDate::2023/4::",
-			[142] = "::perksVendorCategoryID::1::description::You found it. It was on your head the whole time.::price::200::itemModifiedAppearanceID::168331::name::Lost Crown of the Arcane::itemID::190215::addedDate::2023/5::",
+			[493] = "::perksVendorCategoryID::8::description::The webs of the nerubians aren't just for decor.::price::450::itemModifiedAppearanceID::0::transmogSetID::3109::speciesID::0::mountID::0::name::Webbed Saronite Exoskeleton::itemID::208665::addedDate::2023/10::",
 			[520] = "::perksVendorCategoryID::5::description::It foresees a deduction of your trader's tender balance.::price::350::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::0::mountID::0::name::Imp in a Ball::itemID::32542::addedDate::2023/10::",
-			[233] = "::perksVendorCategoryID::3::description::The pandaren monk is a fearless traveling companion, constantly training in his art... unless you offer him a drink. He considers it rude to refuse.::price::650::speciesID::248::name::Pandaren Monk::itemID::49665::addedDate::2023/3::",
+			[241] = "::perksVendorCategoryID::8::description::Easier to find than Helarjar Calm Discussion Warplate.::price::750::transmogSetID::2679::name::Ensemble: Helarjar Berserker Warplate::itemID::201230::addedDate::2023/6::",
 			[225] = "::perksVendorCategoryID::1::description::The call of the void is unrelenting.::price::500::itemModifiedAppearanceID::169059::name::Shattered Voidspire::itemID::190846::addedDate::2023/2::",
-			[465] = "::perksVendorCategoryID::1::description::Gives you just a small unsatiating taste.::price::400::itemModifiedAppearanceID::51433::transmogSetID::0::speciesID::0::mountID::0::name::Hood of Hungering Darkness::itemID::97213::addedDate::2023/8::",
+			[233] = "::perksVendorCategoryID::3::description::The pandaren monk is a fearless traveling companion, constantly training in his art... unless you offer him a drink. He considers it rude to refuse.::price::650::speciesID::248::name::Pandaren Monk::itemID::49665::addedDate::2023/3::",
 			[481] = "::perksVendorCategoryID::1::description::It's not particularly inconspicuous.::price::500::itemModifiedAppearanceID::189734::transmogSetID::0::speciesID::0::mountID::0::name::Homebrewer's Sampling Crest::itemID::208423::addedDate::2023/9::",
 			[497] = "::perksVendorCategoryID::8::description::Engraved with the Mark of the Ashen Druids.::price::500::itemModifiedAppearanceID::0::transmogSetID::3100::speciesID::0::mountID::0::name::Ashamane's Blessings of Rebirth::itemID::208664::addedDate::2023/10::",
 			[232] = "::perksVendorCategoryID::1::description::A forgotten relic of Lordaeronian ceremony, the shield still offers substantial protection despite its extravagance.::price::250::itemModifiedAppearanceID::169085::name::Filigreed Lion's Maw::itemID::190876::addedDate::2023/3::",
-			[499] = "::perksVendorCategoryID::8::description::Includes a scarf and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::3036::speciesID::0::mountID::0::name::Ensemble: Wanderer's Lively Trappings::itemID::206341::addedDate::2023/10::",
+			[250] = "::perksVendorCategoryID::1::description::Perfect for handling the absurdly large rats in the Barkeep's cellar.::price::75::itemModifiedAppearanceID::168778::name::Polished Shortsword::itemID::190546::addedDate::2023/7::",
 			[224] = "::perksVendorCategoryID::3::description::Ancient Gorian blood runs through Garrlok's veins. As far as anyone knows, only his diminutive stature keeps his imperial ambitions in check.::price::750::speciesID::3252::name::Garrlok::itemID::190607::addedDate::2023/2::",
-			[467] = "::perksVendorCategoryID::8::description::Normally plate would be heavier.::price::450::itemModifiedAppearanceID::0::transmogSetID::3079::speciesID::0::mountID::0::name::Plate of the Light Avenger::itemID::208176::addedDate::2023/9::",
+			[234] = "::perksVendorCategoryID::8::description::The Explorer's League is undecided if they were worn by Kvaldir scouts or made from them.::price::750::transmogSetID::2678::name::Ensemble: Kvaldir Scout Leathers::itemID::201229::addedDate::2023/5::",
 			[60] = "::perksVendorCategoryID::1::description::A well-placed arrow can prove a practical solution for even the magically inclined Azurewing.::price::200::itemModifiedAppearanceID::168224::name::Azure Scalesworn Longbow::itemID::190071::addedDate::2023/2::",
 			[338] = "::perksVendorCategoryID::8::description::Includes a hood and a cloak.::price::100::transmogSetID::2345::name::Ensemble: Vagabond's Snowy Threads::itemID::190922::addedDate::2023/5::",
 			[354] = "::perksVendorCategoryID::8::description::Includes a hood and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::2342::speciesID::0::mountID::0::name::Ensemble: Vagabond's Crimson Threads::itemID::190851::addedDate::2023/8::",
 			[370] = "::perksVendorCategoryID::1::description::Crafted by the finest arctailor in Suramar.::price::50::itemModifiedAppearanceID::169042::transmogSetID::0::speciesID::0::mountID::0::name::Shawl of Flowing Magic::itemID::190829::addedDate::2023/11::",
-			[457] = "::perksVendorCategoryID::1::description::Perfect for gothic galas.::price::100::itemModifiedAppearanceID::189079::transmogSetID::0::speciesID::0::mountID::0::name::Ember Court Soiree Gloves::itemID::208039::addedDate::2023/8::",
-			[473] = "::perksVendorCategoryID::5::description::There's never a bad time to make sure you look the part.::price::500::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::0::mountID::0::name::Ethereal Transmogrifier::itemID::206268::addedDate::2023/8::",
-			[39] = "::perksVendorCategoryID::1::description::The blademasters of the Burning Blade are rarely bested while a sword remains in their hands.::price::225::itemModifiedAppearanceID::168245::name::Triumphant Blademaster's Greatsword::itemID::190092::addedDate::2023/3::",
+			[111] = "::perksVendorCategoryID::1::description::Yarr Harr Fiddle Dee Dee.::price::175::itemModifiedAppearanceID::168289::transmogSetID::0::speciesID::0::mountID::0::name::Irontide Raider's Bicorne::itemID::190144::addedDate::2023/9::",
+			[113] = "::perksVendorCategoryID::1::description::Found amidst the wreckage of Legion ships in the Antoran Wastes.::price::600::itemModifiedAppearanceID::168291::name::Antoran Felspire::itemID::190146::addedDate::2023/7::",
+			[117] = "::perksVendorCategoryID::2::description::More affectionate than their cousins, Magenta Cloud Serpents are known to form close bonds with their riders.::price::900::mountID::1573::name::Reins of the Magenta Cloud Serpent::itemID::189978::addedDate::2023/4::",
 			[434] = "::perksVendorCategoryID::2::description::A symbol of justice throughout all known realms.::price::900::mountID::439::name::Tyrael's Charger::itemID::76755::addedDate::2023/7::",
 			[450] = "::perksVendorCategoryID::1::description::Double the prongs, double the stabbing.::price::400::itemModifiedAppearanceID::169116::transmogSetID::0::speciesID::0::mountID::0::name::Ruby Felfire Splitblade::itemID::190909::addedDate::2023/8::",
 			[466] = "::perksVendorCategoryID::1::description::Power to build snowmen is not included.::price::400::itemModifiedAppearanceID::50109::transmogSetID::0::speciesID::0::mountID::0::name::Crown of Eternal Winter::itemID::95475::addedDate::2023/8::",
-			[130] = "::perksVendorCategoryID::1::description::This bow requires immense strength to draw but its accuracy is unparalleled.::price::50::itemModifiedAppearanceID::168320::name::Huntsman's Recurve Bow::itemID::190204::addedDate::2023/5::",
-			[125] = "::perksVendorCategoryID::1::description::It was coming right for us!::price::100::itemModifiedAppearanceID::168315::name::Well-Worn Grimskull Cinch::itemID::190199::addedDate::2023/5::",
-			[259] = "::perksVendorCategoryID::1::description::Anything can be held together with duct tape and a little prayer.::price::600::itemModifiedAppearanceID::168792::name::Conquest::itemID::190560::addedDate::2023/7::",
-			[449] = "::perksVendorCategoryID::2::description::This clefthoof has seen ages pass, witnessing everything and patiently teaching many to ride.::price::650::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::0::mountID::1785::name::Ancestral Clefthoof::itemID::207821::addedDate::2023/8::",
-			[228] = "::perksVendorCategoryID::1::description::Never forget to stop and smell the roses.::price::100::itemModifiedAppearanceID::169064::name::Rosy Corsage::itemID::190855::addedDate::2023/2::",
-			[223] = "::perksVendorCategoryID::2::description::A beacon of hope; a guiding light in the darkness.::price::900::mountID::376::name::Celestial Steed::itemID::54811::addedDate::2023/2::",
-			[240] = "::perksVendorCategoryID::1::description::Go ahead. Make my day.::price::200::itemModifiedAppearanceID::168548::name::Black Iron Blunderbuss::itemID::190441::addedDate::2023/5::",
-			[144] = "::perksVendorCategoryID::1::description::Legends say this sword once split a mountain in half.::price::400::itemModifiedAppearanceID::168333::name::Fang of the Mountain::itemID::190217::addedDate::2023/5::",
-			[523] = "::perksVendorCategoryID::1::description::The endless pursuit of higher knowledge is its own reward.::price::500::itemModifiedAppearanceID::192903::transmogSetID::0::speciesID::0::mountID::0::name::High Scholar's Grand Staff::itemID::210265::addedDate::2023/9::",
-			[9] = "::perksVendorCategoryID::1::description::A master of subterfuge never leaves home without their trusty bandolier.::price::250::itemModifiedAppearanceID::168077::name::Infiltrator's Bandolier::itemID::189897::addedDate::2023/2::",
 			[453] = "::perksVendorCategoryID::1::description::Can also double as a fork and a knife!::price::400::itemModifiedAppearanceID::189042::transmogSetID::0::speciesID::0::mountID::0::name::Aquamarine Felfire Splitblade::itemID::207959::addedDate::2023/8::",
-			[117] = "::perksVendorCategoryID::2::description::More affectionate than their cousins, Magenta Cloud Serpents are known to form close bonds with their riders.::price::900::mountID::1573::name::Reins of the Magenta Cloud Serpent::itemID::189978::addedDate::2023/4::",
-			[113] = "::perksVendorCategoryID::1::description::Found amidst the wreckage of Legion ships in the Antoran Wastes.::price::600::itemModifiedAppearanceID::168291::name::Antoran Felspire::itemID::190146::addedDate::2023/7::",
-			[111] = "::perksVendorCategoryID::1::description::Yarr Harr Fiddle Dee Dee.::price::175::itemModifiedAppearanceID::168289::transmogSetID::0::speciesID::0::mountID::0::name::Irontide Raider's Bicorne::itemID::190144::addedDate::2023/9::",
+			[125] = "::perksVendorCategoryID::1::description::It was coming right for us!::price::100::itemModifiedAppearanceID::168315::name::Well-Worn Grimskull Cinch::itemID::190199::addedDate::2023/5::",
+			[130] = "::perksVendorCategoryID::1::description::This bow requires immense strength to draw but its accuracy is unparalleled.::price::50::itemModifiedAppearanceID::168320::name::Huntsman's Recurve Bow::itemID::190204::addedDate::2023/5::",
+			[9] = "::perksVendorCategoryID::1::description::A master of subterfuge never leaves home without their trusty bandolier.::price::250::itemModifiedAppearanceID::168077::name::Infiltrator's Bandolier::itemID::189897::addedDate::2023/2::",
+			[523] = "::perksVendorCategoryID::1::description::The endless pursuit of higher knowledge is its own reward.::price::500::itemModifiedAppearanceID::192903::transmogSetID::0::speciesID::0::mountID::0::name::High Scholar's Grand Staff::itemID::210265::addedDate::2023/9::",
+			[144] = "::perksVendorCategoryID::1::description::Legends say this sword once split a mountain in half.::price::400::itemModifiedAppearanceID::168333::name::Fang of the Mountain::itemID::190217::addedDate::2023/5::",
+			[240] = "::perksVendorCategoryID::1::description::Go ahead. Make my day.::price::200::itemModifiedAppearanceID::168548::name::Black Iron Blunderbuss::itemID::190441::addedDate::2023/5::",
+			[223] = "::perksVendorCategoryID::2::description::A beacon of hope; a guiding light in the darkness.::price::900::mountID::376::name::Celestial Steed::itemID::54811::addedDate::2023/2::",
+			[228] = "::perksVendorCategoryID::1::description::Never forget to stop and smell the roses.::price::100::itemModifiedAppearanceID::169064::name::Rosy Corsage::itemID::190855::addedDate::2023/2::",
+			[449] = "::perksVendorCategoryID::2::description::This clefthoof has seen ages pass, witnessing everything and patiently teaching many to ride.::price::650::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::0::mountID::1785::name::Ancestral Clefthoof::itemID::207821::addedDate::2023/8::",
+			[259] = "::perksVendorCategoryID::1::description::Anything can be held together with duct tape and a little prayer.::price::600::itemModifiedAppearanceID::168792::name::Conquest::itemID::190560::addedDate::2023/7::",
+			[39] = "::perksVendorCategoryID::1::description::The blademasters of the Burning Blade are rarely bested while a sword remains in their hands.::price::225::itemModifiedAppearanceID::168245::name::Triumphant Blademaster's Greatsword::itemID::190092::addedDate::2023/3::",
+			[473] = "::perksVendorCategoryID::5::description::There's never a bad time to make sure you look the part.::price::500::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::0::mountID::0::name::Ethereal Transmogrifier::itemID::206268::addedDate::2023/8::",
+			[457] = "::perksVendorCategoryID::1::description::Perfect for gothic galas.::price::100::itemModifiedAppearanceID::189079::transmogSetID::0::speciesID::0::mountID::0::name::Ember Court Soiree Gloves::itemID::208039::addedDate::2023/8::",
 			[451] = "::perksVendorCategoryID::1::description::Enemies will get the point.::price::400::itemModifiedAppearanceID::169117::transmogSetID::0::speciesID::0::mountID::0::name::Ruby Felfire Bulwark::itemID::190910::addedDate::2023/8::",
-			[234] = "::perksVendorCategoryID::8::description::The Explorer's League is undecided if they were worn by Kvaldir scouts or made from them.::price::750::transmogSetID::2678::name::Ensemble: Kvaldir Scout Leathers::itemID::201229::addedDate::2023/5::",
+			[467] = "::perksVendorCategoryID::8::description::Normally plate would be heavier.::price::450::itemModifiedAppearanceID::0::transmogSetID::3079::speciesID::0::mountID::0::name::Plate of the Light Avenger::itemID::208176::addedDate::2023/9::",
 			[242] = "::perksVendorCategoryID::1::description::Something to doing?::price::50::itemModifiedAppearanceID::168538::name::Veteran Grunt's Chopper::itemID::190431::addedDate::2023/6::",
-			[250] = "::perksVendorCategoryID::1::description::Perfect for handling the absurdly large rats in the Barkeep's cellar.::price::75::itemModifiedAppearanceID::168778::name::Polished Shortsword::itemID::190546::addedDate::2023/7::",
+			[499] = "::perksVendorCategoryID::8::description::Includes a scarf and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::3036::speciesID::0::mountID::0::name::Ensemble: Wanderer's Lively Trappings::itemID::206341::addedDate::2023/10::",
 			[260] = "::perksVendorCategoryID::8::description::Includes a hood and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::2332::speciesID::0::mountID::0::name::Ensemble: Vagabond's Azure Threads::itemID::190576::addedDate::2023/8::",
-			[241] = "::perksVendorCategoryID::8::description::Easier to find than Helarjar Calm Discussion Warplate.::price::750::transmogSetID::2679::name::Ensemble: Helarjar Berserker Warplate::itemID::201230::addedDate::2023/6::",
+			[465] = "::perksVendorCategoryID::1::description::Gives you just a small unsatiating taste.::price::400::itemModifiedAppearanceID::51433::transmogSetID::0::speciesID::0::mountID::0::name::Hood of Hungering Darkness::itemID::97213::addedDate::2023/8::",
 			[292] = "::perksVendorCategoryID::1::description::Despite the brutality of the Grimtotem, the Skychasers' legacy lives on.::price::250::itemModifiedAppearanceID::168963::transmogSetID::0::speciesID::0::mountID::0::name::Ancestral Skychaser Totem::itemID::190712::addedDate::2023/9::",
-			[493] = "::perksVendorCategoryID::8::description::The webs of the nerubians aren't just for decor.::price::450::itemModifiedAppearanceID::0::transmogSetID::3109::speciesID::0::mountID::0::name::Webbed Saronite Exoskeleton::itemID::208665::addedDate::2023/10::",
+			[142] = "::perksVendorCategoryID::1::description::You found it. It was on your head the whole time.::price::200::itemModifiedAppearanceID::168331::name::Lost Crown of the Arcane::itemID::190215::addedDate::2023/5::",
 			[324] = "::perksVendorCategoryID::1::description::Despite the old age, it is still just the Maw of Rage.::price::150::itemModifiedAppearanceID::169056::transmogSetID::0::speciesID::0::mountID::0::name::Maw of Rage::itemID::190843::addedDate::2023/11::",
-			[506] = "::perksVendorCategoryID::8::description::Includes a hood and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::3048::speciesID::0::mountID::0::name::Ensemble: Vagabond's Sepia Threads::itemID::206331::addedDate::2023/11::",
+			[262] = "::perksVendorCategoryID::8::description::Includes a scarf and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::2333::speciesID::0::mountID::0::name::Ensemble: Wanderer's Azure Trappings::itemID::190577::addedDate::2023/8::",
 			[356] = "::perksVendorCategoryID::1::description::Crushes stone, skulls, and stone-skulls!::price::150::itemModifiedAppearanceID::169027::transmogSetID::0::speciesID::0::mountID::0::name::Mechanized Skullcrusher::itemID::190813::addedDate::2023/11::",
-			[574] = "::perksVendorCategoryID::2::description::How do you not fall right through that thing? -Maztha::price::650::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::0::mountID::441::name::Spectral Wind Rider::itemID::76902::addedDate::2023/11::",
-			[302] = "::perksVendorCategoryID::1::description::Just try to not get the bowstring tangled in the twisted grove.::price::500::itemModifiedAppearanceID::168292::transmogSetID::0::speciesID::0::mountID::0::name::Longbow of the Twisted Grove::itemID::190147::addedDate::2023/11::",
-			[35] = "::perksVendorCategoryID::1::description::This Alexandra McQueen design was all the rage at Dalaran Fashion Week.::price::50::itemModifiedAppearanceID::168248::name::Fabulously Flashy Finery::itemID::190097::addedDate::2023/3::",
-			[572] = "::perksVendorCategoryID::2::description::Zhevras are rarely used as mounts in Azeroth due to their stubborn nature and tendency to bite.::price::550::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::0::mountID::224::name::Swift Zhevra::itemID::37719::addedDate::2023/11::",
-			[489] = "::perksVendorCategoryID::8::description::As pale as the moon, as deadly the fang.::price::500::itemModifiedAppearanceID::0::transmogSetID::3108::speciesID::0::mountID::0::name::Savage Champion's Aggression::itemID::208675::addedDate::2023/11::",
+			[469] = "::perksVendorCategoryID::8::description::Who needs a spotlight when you have this much style?::price::500::itemModifiedAppearanceID::0::transmogSetID::3080::speciesID::0::mountID::0::name::Armaments of the Light Avenger::itemID::208177::addedDate::2023/9::",
+			[462] = "::perksVendorCategoryID::3::description::These astral phenomena are rarely sighted due to the speed of the slyvern. It is a good omen to have one following you around.::price::650::itemModifiedAppearanceID::0::transmogSetID::0::speciesID::4253::mountID::0::name::Slyvy::itemID::208045::addedDate::2023/9::",
+			[471] = "::perksVendorCategoryID::1::description::The game is afoot.::price::150::itemModifiedAppearanceID::189589::transmogSetID::0::speciesID::0::mountID::0::name::Yellow Tweed Cap::itemID::208147::addedDate::2023/9::",
+			[503] = "::perksVendorCategoryID::1::description::Ever feel like you're being watched?::price::225::itemModifiedAppearanceID::168961::transmogSetID::0::speciesID::0::mountID::0::name::Caged Eye of the Watcher::itemID::190710::addedDate::2023/10::",
+			[143] = "::perksVendorCategoryID::1::description::The power of the Last Guardian of Tirisfal is not included with purchase. Only his style.::price::225::itemModifiedAppearanceID::168332::transmogSetID::0::speciesID::0::mountID::0::name::Feathered Cowl of the Guardian::itemID::190216::addedDate::2023/10::",
 			[452] = "::perksVendorCategoryID::1::description::Being made of felfire does not inherently add fire resistance.::price::400::itemModifiedAppearanceID::189040::transmogSetID::0::speciesID::0::mountID::0::name::Aquamarine Felfire Bulwark::itemID::207957::addedDate::2023/8::",
 			[468] = "::perksVendorCategoryID::8::description::Measure twice; stab once.::price::500::itemModifiedAppearanceID::0::transmogSetID::3082::speciesID::0::mountID::0::name::Blood Onyx Blades::itemID::208179::addedDate::2023/9::",
-			[502] = "::perksVendorCategoryID::1::description::When the tide calls, this belt will hold.::price::50::itemModifiedAppearanceID::169020::transmogSetID::0::speciesID::0::mountID::0::name::Tidecaller's Cinch::itemID::190806::addedDate::2023/11::",
-			[507] = "::perksVendorCategoryID::8::description::Includes a scarf and a cloak.::price::100::itemModifiedAppearanceID::0::transmogSetID::3037::speciesID::0::mountID::0::name::Ensemble: Wanderer's Sepia Trappings::itemID::206342::addedDate::2023/11::",
+			[253] = "::perksVendorCategoryID::1::description::That skull was the last student to get detention.::price::500::itemModifiedAppearanceID::168807::transmogSetID::0::speciesID::0::mountID::0::name::Headmaster's Command::itemID::190578::addedDate::2023/10::",
+			[495] = "::perksVendorCategoryID::8::description::Sharp enough to cut through nerubian silk.::price::500::itemModifiedAppearanceID::0::transmogSetID::3110::speciesID::0::mountID::0::name::Webbed Saronite Weaponry::itemID::208666::addedDate::2023/10::",
 		},
 		["CurrentMonthData"] = {
 			["items"] = {
@@ -344,57 +357,44 @@ NarcissusDB = {
 			["month"] = 11,
 		},
 	},
-	["NamePlateNameOffset"] = 0,
 	["ProgenitorTheme"] = 1,
 	["IndependentMinimapButton"] = false,
 	["GemManager"] = true,
 	["ModelPanelScale"] = 1,
-	["AutoDisplayQuestItem"] = false,
-	["MinimapIconStyle"] = 1,
-	["CorruptionTooltipModel"] = true,
+	["TooltipTheme"] = "Bright",
+	["AutoFilterMail"] = false,
+	["AutoFilterGem"] = false,
 	["TalentTreeForInspection"] = true,
-	["SearchRelativesHotkey"] = "TAB",
+	["ShrinkArea"] = 0,
 	["PhotoModeButton"] = {
 		["HideTexts"] = true,
 	},
-	["DressingRoomShowIconSelect"] = false,
-	["NameTranslationPosition"] = 1,
-	["Tutorials"] = {
-		["Domination"] = false,
-		["ExitConfirmation"] = false,
-		["WeaponBrowser"] = false,
-		["NPCBrowser"] = true,
-		["EquipmentSetManager"] = false,
-		["IndependentMinimapButton"] = false,
-		["NPCBrowserEntance"] = false,
-		["Movement"] = false,
-		["SpellVisualBrowser"] = false,
-	},
+	["MissingEnchantAlert"] = true,
+	["DefaultLayout"] = 2,
+	["CameraOrbit"] = true,
 	["BorderTheme"] = "Bright",
-	["MinimapButton"] = {
-		["Position"] = -1.213037333446773,
-	},
+	["Version"] = 10500,
 	["SearchSuggestEnable"] = true,
-	["FontHeightItemName"] = 10,
+	["ConduitTooltip"] = false,
 	["DressingRoomUseTargetModel"] = false,
 }
 NarciAchievementOptions = {
-	["ShowRedMark"] = false,
+	["IncompleteFirst"] = true,
 	["UseAsDefault"] = false,
 	["DIY"] = {
 	},
-	["Theme"] = 1,
+	["UsedAsPrimary"] = true,
 	["Scale"] = 1,
 	["ReplaceToast"] = true,
-	["UsedAsPrimary"] = true,
-	["IncompleteFirst"] = true,
+	["Theme"] = 1,
+	["ShowRedMark"] = false,
 }
 NarciStatisticsDB = {
 	["ScreenshotsTakenInNarcissus"] = 34,
-	["TimeSpentInNarcissus"] = 1903,
-	["InstalledDate"] = 1657455464,
 	["QuestItems"] = {
 	},
+	["InstalledDate"] = 1657455464,
+	["TimeSpentInNarcissus"] = 1903,
 	["SLQuestReadingTime"] = {
 		"enUS", -- [1]
 		10, -- [2]
@@ -403,6 +403,7 @@ NarciStatisticsDB = {
 		2078, -- [5]
 	},
 	["AddOnActionForbidden"] = {
+		["timeLastError"] = 1700316752,
 		["addons"] = {
 			["TalentLoadoutsEx"] = {
 				["count"] = 10,
@@ -418,24 +419,29 @@ NarciStatisticsDB = {
 			},
 			["WeakAuras"] = {
 				["errorTime"] = {
-					1699523229, -- [1]
-					1699692209, -- [2]
-					1699692210, -- [3]
-					1699692214, -- [4]
-					1699794877, -- [5]
-					1699803062, -- [6]
-					1699803093, -- [7]
-					1699803293, -- [8]
+					1699794877, -- [1]
+					1699803062, -- [2]
+					1699803093, -- [3]
+					1699803293, -- [4]
+					1700090773, -- [5]
+					1700090957, -- [6]
+					1700091007, -- [7]
+					1700091024, -- [8]
+					1700091024, -- [9]
+					1700091024, -- [10]
+					1700122774, -- [11]
+					1700168017, -- [12]
+					1700235485, -- [13]
+					1700316752, -- [14]
 				},
-				["count"] = 28,
-				["timeLastError"] = 1699803293,
+				["count"] = 38,
+				["timeLastError"] = 1700316752,
 			},
 			["Plater"] = {
 				["count"] = 1,
 				["timeLastError"] = 1697350197,
 			},
 		},
-		["timeLastError"] = 1699803293,
 	},
 }
 NarciTurntableOptions = {
@@ -451,15 +457,15 @@ NarciTurntableOptions = {
 	["NoTextImageHeight"] = 800,
 }
 NarciCharacterProfiles = {
-	["05CBB572"] = {
-		["race"] = 2,
-		["name"] = "Rintake",
-		["birth"] = 1698335106,
-		["serverID"] = "3682",
-		["lastVisit"] = 1698335106,
+	["0C54E461"] = {
+		["race"] = 70,
+		["name"] = "Takosa",
+		["birth"] = 1677826609,
+		["serverID"] = "1305",
+		["lastVisit"] = 1677826609,
 		["outfits"] = {
 		},
-		["class"] = 10,
+		["class"] = 13,
 	},
 	["06236218"] = {
 		["race"] = 4,
@@ -507,95 +513,27 @@ NarciCharacterProfiles = {
 		},
 		["class"] = 12,
 	},
-	["0CAC501C"] = {
-		["race"] = 2,
-		["name"] = "Rentaki",
-		["birth"] = 1698124780,
+	["0CABEA37"] = {
+		["race"] = 11,
+		["name"] = "Takilock",
+		["birth"] = 1697965380,
 		["serverID"] = "1305",
-		["lastVisit"] = 1699556742,
+		["lastVisit"] = 1697965538,
 		["outfits"] = {
 			{
-				["s"] = "14989,8850,114927,8847,5518,9374,8854,8852,8853,8848,8851,168078:-1:5394,168078:0:5394",
-				["n"] = "Earthshatter",
+				["s"] = "69593,69650,36552,8597,0,0,169064,50459,73423,13658,91217,70182:-1:5868,0",
+				["n"] = "Eredar",
 			}, -- [1]
 			{
-				["s"] = "190147,8841,22176,8838,103300,18368,8845,8843,8844,8839,8842,70112:-1:5335,70112:0:5335",
-				["n"] = "Cryptstalker",
+				["s"] = "25733,185569,185553,90562,0,0,169064,83164,81803,5097,116040,184343:-1,0",
+				["n"] = "Red Gold",
 			}, -- [2]
 			{
-				["s"] = "55062,84153:146540,116028,168058,83202,83203,169064,84144,84156,145688,84141,115552:-1:6262,115552:0:6262",
-				["n"] = "Deathspeaker",
+				["s"] = "33077,12199,77345,5094,0,0,168244,15949,35909,5097,116040,70182:-1,0",
+				["n"] = "Demon",
 			}, -- [3]
-			{
-				["s"] = "81979,89891,77345,104444,5518,96514,8854,89871,89903,94143,69853,60182:-1:4442,60182:0:4442",
-				["n"] = "Mistcaller",
-			}, -- [4]
-			{
-				["s"] = "193664,46831,77345,168058,83202,83203,169064,180858,101900,37116,101885,60138:-1:5394,60138:0:5394",
-				["n"] = "Bleeding Hollow",
-			}, -- [5]
-			{
-				["s"] = "190144,46831,77345,80971,83202,83203,169064,100521,46825,32818,115967,66556:-1:5394,66556:0:5394",
-				["n"] = "Elementalist",
-			}, -- [6]
-			{
-				["s"] = "10685,77343,77345,25759,83202,83203,104604,75496,75495,47,43,6009:-1:5874,6009:0:5874",
-				["n"] = "Shaman Apprentice",
-			}, -- [7]
-			{
-				["s"] = "107300,32662,77345,32670,168248,18368,104604,32712,32907,32915,32653,104781:-1:6096,104781:0:6096",
-				["n"] = "Amethyst Diver",
-			}, -- [8]
-			{
-				["s"] = "101863,101870,77345,102241,168540,181776,101891,101846,101902,101866,101886,50114:-1:5448,50114:0:5448",
-				["n"] = "Voodoo Doctor",
-			}, -- [9]
-			{
-				["s"] = "190146,188516,77345,169013,83202,83203,169064,81238,81241,79879,115967,100766:-1:5394,100766:0:5394",
-				["n"] = "Fire Lord",
-			}, -- [10]
-			{
-				["s"] = "107300,15794,77345,15805,83202,18368,15122,15920,16209,15927,16048,70152:-1:5335,70152:0:5335",
-				["n"] = "Sunwell Fanatic",
-			}, -- [11]
-			{
-				["s"] = "189808,189810,77345,189803,83202,18369,189806,189809,186536,186521,188862,189061:-1:3225,189061:0:3225",
-				["n"] = "Infinite Seer",
-			}, -- [12]
-			{
-				["s"] = "188624,188626,187751,188621,103312,81608,188628,188623,188627,188625,188622,188489:-1:4099,188489:0:4099",
-				["n"] = "Valajar Honorguard",
-			}, -- [13]
-			{
-				["s"] = "190146,145815,146529,145675,83202,169015,145671,145695,145667,145691,145687,145964:-1:6266,145964:0:6266",
-				["n"] = "Sanguine Tormentor",
-			}, -- [14]
-			{
-				["s"] = "190144,182037,77345,184632,83202,83203,184644,182034,184635,184638,182033,169055:-1:5863,169055:0:5863",
-				["n"] = "Arctic Wolf",
-			}, -- [15]
-			{
-				["s"] = "66610,46831,77345,169013,83202,83203,169064,101844,184634,169008,101852,62880:-1:5394,62880:0:5394",
-				["n"] = "Laughing Skull Berserker",
-			}, -- [16]
-			{
-				["s"] = "190146,83647,165614,83642,83202,186779,169064,83644,83648,79879,83643,50939:-1:5394,50939:0:5394",
-				["n"] = "Life-Binder's Handmaiden",
-			}, -- [17]
-			{
-				["s"] = "81980,103032,77345,103067,83202,83203,104604,102964,116017,102966,102963,115552:-1:5864,115581:0:5868",
-				["n"] = "Sylvanas Loyalist",
-			}, -- [18]
-			{
-				["s"] = "113860,189918,165612,185671,83202,83203,169064,185673,98614,185675,185672,38934:-1:5336,38934:0:5336",
-				["n"] = "Oracle of the Sands",
-			}, -- [19]
-			{
-				["s"] = "116042,185676,114927,116071,168248,186779,169064,116073,116077,185675,116072,185529:-1:6258,185529:0:6258",
-				["n"] = "Sanguine Cultist",
-			}, -- [20]
 		},
-		["class"] = 7,
+		["class"] = 9,
 	},
 	["0C45EA47"] = {
 		["race"] = 1,
@@ -693,12 +631,34 @@ NarciCharacterProfiles = {
 		},
 		["class"] = 7,
 	},
+	["0B0683B1"] = {
+		["race"] = 10,
+		["name"] = "Takidin",
+		["birth"] = 1666036165,
+		["serverID"] = "1305",
+		["lastVisit"] = 1676390724,
+		["outfits"] = {
+			{
+				["s"] = "14932,43677,77345,4490,83202,83203,104604,43705,84223,4491,44379,14939:0:5862,19293",
+				["n"] = "Black & Gold",
+			}, -- [1]
+			{
+				["s"] = "29672,46799,77345,5695,83202,83203,46800,46796,46793,5700,46794,7545:-1:4084,146732",
+				["n"] = "Holy Vanguard",
+			}, -- [2]
+			{
+				["s"] = "29672,165871,77345,5695,83202,83203,46800,165868,165872,5700,165867,111001:-1:4084,108567",
+				["n"] = "Mage Tower",
+			}, -- [3]
+		},
+		["class"] = 2,
+	},
 	["0CB09698"] = {
 		["race"] = 3,
 		["name"] = "Rentaki",
 		["birth"] = 1699558674,
 		["serverID"] = "1305",
-		["lastVisit"] = 1699915038,
+		["lastVisit"] = 1700316763,
 		["outfits"] = {
 			{
 				["s"] = "190144,182037,77345,184632,83202,83203,184644,182034,184635,184638,182033,169055:-1:5863,169055:0:5863",
@@ -783,41 +743,31 @@ NarciCharacterProfiles = {
 		},
 		["class"] = 7,
 	},
-	["05F9F32F"] = {
-		["race"] = 4,
-		["name"] = "Takii",
-		["birth"] = 1698334919,
-		["serverID"] = "1402",
-		["lastVisit"] = 1698334919,
+	["0C1FD7FB"] = {
+		["race"] = 30,
+		["name"] = "Takeera",
+		["birth"] = 1677477349,
+		["serverID"] = "1305",
+		["lastVisit"] = 1691386003,
 		["outfits"] = {
 			{
-				["s"] = "14932,77343,77345,5754,0,25723,73297,5756,8540,5759,5752,66557:0:5868,66554",
-				["n"] = "Fire",
+				["s"] = "14932,104472,77345,5763,0,0,104604,104556,81920,5767,104573,107178:-1:3225,107178:0:3225",
+				["n"] = "Naga",
 			}, -- [1]
 			{
-				["s"] = "14932,34189,77345,5695,0,0,73297,5696,8540,5700,5698,70439:0:4446,23036",
-				["n"] = "Vanguard",
+				["s"] = "77344,55448:55448,77345,4217,0,0,91236,81992,8540,10645,81964,55388:-1:3225,55388:0:3225",
+				["n"] = "Grievous",
 			}, -- [2]
 			{
-				["s"] = "14932,14444,77345,5754,0,0,73297,5756,8540,5759,5752,24201:0:5391,14290",
-				["n"] = "Jade",
+				["s"] = "25733,13944,77345,12238,0,0,91236,9970,84223,9972,7690,14311:-1:3225,14311:0:3225",
+				["n"] = "Bloodscale",
 			}, -- [3]
 			{
-				["s"] = "14932,55905,77345,5805,0,0,73297,5806,8540,5809,5811,24201:0:5391,12392",
-				["n"] = "Glorious",
+				["s"] = "14932,93095:93095,77345,93096,0,0,93101,93097,93098,93099,93100,90360:-1:5862,90360:0:5862",
+				["n"] = "Lightforged",
 			}, -- [4]
 		},
 		["class"] = 1,
-	},
-	["0B14EB4D"] = {
-		["race"] = 27,
-		["name"] = "Takiscoper",
-		["birth"] = 1686486234,
-		["serverID"] = "1305",
-		["lastVisit"] = 1686497614,
-		["outfits"] = {
-		},
-		["class"] = 3,
 	},
 	["0B0DAE15"] = {
 		["race"] = 2,
@@ -903,85 +853,141 @@ NarciCharacterProfiles = {
 		},
 		["class"] = 11,
 	},
-	["0C1FD7FB"] = {
-		["race"] = 30,
-		["name"] = "Takeera",
-		["birth"] = 1677477349,
+	["0B14EB4D"] = {
+		["race"] = 27,
+		["name"] = "Takiscoper",
+		["birth"] = 1686486234,
 		["serverID"] = "1305",
-		["lastVisit"] = 1691386003,
+		["lastVisit"] = 1686497614,
+		["outfits"] = {
+		},
+		["class"] = 3,
+	},
+	["05F9F32F"] = {
+		["race"] = 4,
+		["name"] = "Takii",
+		["birth"] = 1698334919,
+		["serverID"] = "1402",
+		["lastVisit"] = 1698334919,
 		["outfits"] = {
 			{
-				["s"] = "14932,104472,77345,5763,0,0,104604,104556,81920,5767,104573,107178:-1:3225,107178:0:3225",
-				["n"] = "Naga",
+				["s"] = "14932,77343,77345,5754,0,25723,73297,5756,8540,5759,5752,66557:0:5868,66554",
+				["n"] = "Fire",
 			}, -- [1]
 			{
-				["s"] = "77344,55448:55448,77345,4217,0,0,91236,81992,8540,10645,81964,55388:-1:3225,55388:0:3225",
-				["n"] = "Grievous",
+				["s"] = "14932,34189,77345,5695,0,0,73297,5696,8540,5700,5698,70439:0:4446,23036",
+				["n"] = "Vanguard",
 			}, -- [2]
 			{
-				["s"] = "25733,13944,77345,12238,0,0,91236,9970,84223,9972,7690,14311:-1:3225,14311:0:3225",
-				["n"] = "Bloodscale",
+				["s"] = "14932,14444,77345,5754,0,0,73297,5756,8540,5759,5752,24201:0:5391,14290",
+				["n"] = "Jade",
 			}, -- [3]
 			{
-				["s"] = "14932,93095:93095,77345,93096,0,0,93101,93097,93098,93099,93100,90360:-1:5862,90360:0:5862",
-				["n"] = "Lightforged",
+				["s"] = "14932,55905,77345,5805,0,0,73297,5806,8540,5809,5811,24201:0:5391,12392",
+				["n"] = "Glorious",
 			}, -- [4]
 		},
 		["class"] = 1,
 	},
-	["0B0683B1"] = {
-		["race"] = 10,
-		["name"] = "Takidin",
-		["birth"] = 1666036165,
+	["0CAC501C"] = {
+		["race"] = 2,
+		["name"] = "Rentaki",
+		["birth"] = 1698124780,
 		["serverID"] = "1305",
-		["lastVisit"] = 1676390724,
+		["lastVisit"] = 1699556742,
 		["outfits"] = {
 			{
-				["s"] = "14932,43677,77345,4490,83202,83203,104604,43705,84223,4491,44379,14939:0:5862,19293",
-				["n"] = "Black & Gold",
+				["s"] = "14989,8850,114927,8847,5518,9374,8854,8852,8853,8848,8851,168078:-1:5394,168078:0:5394",
+				["n"] = "Earthshatter",
 			}, -- [1]
 			{
-				["s"] = "29672,46799,77345,5695,83202,83203,46800,46796,46793,5700,46794,7545:-1:4084,146732",
-				["n"] = "Holy Vanguard",
+				["s"] = "190147,8841,22176,8838,103300,18368,8845,8843,8844,8839,8842,70112:-1:5335,70112:0:5335",
+				["n"] = "Cryptstalker",
 			}, -- [2]
 			{
-				["s"] = "29672,165871,77345,5695,83202,83203,46800,165868,165872,5700,165867,111001:-1:4084,108567",
-				["n"] = "Mage Tower",
+				["s"] = "55062,84153:146540,116028,168058,83202,83203,169064,84144,84156,145688,84141,115552:-1:6262,115552:0:6262",
+				["n"] = "Deathspeaker",
 			}, -- [3]
+			{
+				["s"] = "81979,89891,77345,104444,5518,96514,8854,89871,89903,94143,69853,60182:-1:4442,60182:0:4442",
+				["n"] = "Mistcaller",
+			}, -- [4]
+			{
+				["s"] = "193664,46831,77345,168058,83202,83203,169064,180858,101900,37116,101885,60138:-1:5394,60138:0:5394",
+				["n"] = "Bleeding Hollow",
+			}, -- [5]
+			{
+				["s"] = "190144,46831,77345,80971,83202,83203,169064,100521,46825,32818,115967,66556:-1:5394,66556:0:5394",
+				["n"] = "Elementalist",
+			}, -- [6]
+			{
+				["s"] = "10685,77343,77345,25759,83202,83203,104604,75496,75495,47,43,6009:-1:5874,6009:0:5874",
+				["n"] = "Shaman Apprentice",
+			}, -- [7]
+			{
+				["s"] = "107300,32662,77345,32670,168248,18368,104604,32712,32907,32915,32653,104781:-1:6096,104781:0:6096",
+				["n"] = "Amethyst Diver",
+			}, -- [8]
+			{
+				["s"] = "101863,101870,77345,102241,168540,181776,101891,101846,101902,101866,101886,50114:-1:5448,50114:0:5448",
+				["n"] = "Voodoo Doctor",
+			}, -- [9]
+			{
+				["s"] = "190146,188516,77345,169013,83202,83203,169064,81238,81241,79879,115967,100766:-1:5394,100766:0:5394",
+				["n"] = "Fire Lord",
+			}, -- [10]
+			{
+				["s"] = "107300,15794,77345,15805,83202,18368,15122,15920,16209,15927,16048,70152:-1:5335,70152:0:5335",
+				["n"] = "Sunwell Fanatic",
+			}, -- [11]
+			{
+				["s"] = "189808,189810,77345,189803,83202,18369,189806,189809,186536,186521,188862,189061:-1:3225,189061:0:3225",
+				["n"] = "Infinite Seer",
+			}, -- [12]
+			{
+				["s"] = "188624,188626,187751,188621,103312,81608,188628,188623,188627,188625,188622,188489:-1:4099,188489:0:4099",
+				["n"] = "Valajar Honorguard",
+			}, -- [13]
+			{
+				["s"] = "190146,145815,146529,145675,83202,169015,145671,145695,145667,145691,145687,145964:-1:6266,145964:0:6266",
+				["n"] = "Sanguine Tormentor",
+			}, -- [14]
+			{
+				["s"] = "190144,182037,77345,184632,83202,83203,184644,182034,184635,184638,182033,169055:-1:5863,169055:0:5863",
+				["n"] = "Arctic Wolf",
+			}, -- [15]
+			{
+				["s"] = "66610,46831,77345,169013,83202,83203,169064,101844,184634,169008,101852,62880:-1:5394,62880:0:5394",
+				["n"] = "Laughing Skull Berserker",
+			}, -- [16]
+			{
+				["s"] = "190146,83647,165614,83642,83202,186779,169064,83644,83648,79879,83643,50939:-1:5394,50939:0:5394",
+				["n"] = "Life-Binder's Handmaiden",
+			}, -- [17]
+			{
+				["s"] = "81980,103032,77345,103067,83202,83203,104604,102964,116017,102966,102963,115552:-1:5864,115581:0:5868",
+				["n"] = "Sylvanas Loyalist",
+			}, -- [18]
+			{
+				["s"] = "113860,189918,165612,185671,83202,83203,169064,185673,98614,185675,185672,38934:-1:5336,38934:0:5336",
+				["n"] = "Oracle of the Sands",
+			}, -- [19]
+			{
+				["s"] = "116042,185676,114927,116071,168248,186779,169064,116073,116077,185675,116072,185529:-1:6258,185529:0:6258",
+				["n"] = "Sanguine Cultist",
+			}, -- [20]
 		},
-		["class"] = 2,
+		["class"] = 7,
 	},
-	["0CABEA37"] = {
-		["race"] = 11,
-		["name"] = "Takilock",
-		["birth"] = 1697965380,
-		["serverID"] = "1305",
-		["lastVisit"] = 1697965538,
-		["outfits"] = {
-			{
-				["s"] = "69593,69650,36552,8597,0,0,169064,50459,73423,13658,91217,70182:-1:5868,0",
-				["n"] = "Eredar",
-			}, -- [1]
-			{
-				["s"] = "25733,185569,185553,90562,0,0,169064,83164,81803,5097,116040,184343:-1,0",
-				["n"] = "Red Gold",
-			}, -- [2]
-			{
-				["s"] = "33077,12199,77345,5094,0,0,168244,15949,35909,5097,116040,70182:-1,0",
-				["n"] = "Demon",
-			}, -- [3]
-		},
-		["class"] = 9,
-	},
-	["0C54E461"] = {
-		["race"] = 70,
-		["name"] = "Takosa",
-		["birth"] = 1677826609,
-		["serverID"] = "1305",
-		["lastVisit"] = 1677826609,
+	["05CBB572"] = {
+		["race"] = 2,
+		["name"] = "Rintake",
+		["birth"] = 1698335106,
+		["serverID"] = "3682",
+		["lastVisit"] = 1698335106,
 		["outfits"] = {
 		},
-		["class"] = 13,
+		["class"] = 10,
 	},
 }
 NarciPhotoModeDB = {

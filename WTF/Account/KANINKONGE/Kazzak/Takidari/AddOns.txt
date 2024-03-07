@@ -98,3 +98,6 @@ MacroToolkitIcons: disabled
 TakUI: disabled
 Blizzard_CombatText: enabled
 BigWigs_Aberrus: enabled
+BigWigs_Amirdrassil: enabled
+BigWigs_DragonIsles: enabled
+BigWigs_VaultOfTheIncarnates: enabled

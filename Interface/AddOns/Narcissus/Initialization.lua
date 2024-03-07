@@ -1,7 +1,7 @@
-local NARCI_VERSION_INFO = "1.4.6";
+local NARCI_VERSION_INFO = "1.5.1";
 
-local VERSION_DATE = 1699375403;
-local CURRENT_VERSION = 10406;
+local VERSION_DATE = 1706975668;
+local CURRENT_VERSION = 10501;
 local PREVIOUS_VERSION = CURRENT_VERSION;
 local TIME_SINCE_LAST_UPDATE = 0;
 
@@ -81,6 +81,7 @@ local DefaultValues = {
     OnlyShowOwnedUpgradeItem = true,            --Filter for gems/enchant scrolls
     ConduitTooltip = false,                     --Show conduit effects of higher ranks
     PaperDollWidget = true,                     --Show Domination/Class Set indicator on the Blizzard character pane
+    SoloQueueLFRDetails = true,                 --Show LFR boss names and lockouts on GossipFrame 
 
     -- Talent Tree --
     TalentTreeForInspection = true,
@@ -114,6 +115,9 @@ local DefaultValues = {
 
     -- Dragonriding --
     DragonridingTourWorldMapPin = true,         --Show Dragonriding Race location on continent map
+
+    -- Perks Program (Trading Post) --
+    TradingPostModifyDefaultPose = false,
 
     --# Initializationd in other files
     --["MinimapIconStyle = 1,                     --Change the icon of minimap button (Main.lua)

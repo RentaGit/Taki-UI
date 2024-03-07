@@ -21,10 +21,43 @@ function Module:OnEnable()
 
         hooksecurefunc(TargetFrame, "Update", function(self)
             healthTexture(self)
+
+            if not db.unitframes.level then
+                local MAX_PLAYER_LEVEL = GetMaxLevelForPlayerExpansion()
+
+                if UnitLevel(self.unit) >= MAX_PLAYER_LEVEL then
+                    -- Hide Target Level
+                    TargetFrame.TargetFrameContent.TargetFrameContentMain.LevelText:Hide()
+
+                    -- Adjust Target Name position
+                    TargetFrame.TargetFrameContent.TargetFrameContentMain.Name:ClearAllPoints()
+                    TargetFrame.TargetFrameContent.TargetFrameContentMain.Name:SetPoint("TOPLEFT", self.TargetFrameContent.TargetFrameContentMain.ReputationColor, "TOPRIGHT", -130, -1)
+                else
+                    -- Adjust Target Name position
+                    TargetFrame.TargetFrameContent.TargetFrameContentMain.Name:ClearAllPoints()
+                    TargetFrame.TargetFrameContent.TargetFrameContentMain.Name:SetPoint("TOPLEFT", self.TargetFrameContent.TargetFrameContentMain.ReputationColor, "TOPRIGHT", -112, -1)
+                end
+            end
         end)
 
         hooksecurefunc(FocusFrame, "Update", function(self)
             healthTexture(self)
+
+            if not db.unitframes.level then
+                local MAX_PLAYER_LEVEL = GetMaxLevelForPlayerExpansion()
+                if UnitLevel(self.unit) >= MAX_PLAYER_LEVEL then
+                    -- Hide Target Level
+                    FocusFrame.TargetFrameContent.TargetFrameContentMain.LevelText:Hide()
+
+                    -- Adjust Target Name position
+                    FocusFrame.TargetFrameContent.TargetFrameContentMain.Name:ClearAllPoints()
+                    FocusFrame.TargetFrameContent.TargetFrameContentMain.Name:SetPoint("TOPLEFT", self.TargetFrameContent.TargetFrameContentMain.ReputationColor, "TOPRIGHT", -130, -1)
+                else
+                    -- Adjust Target Name position
+                    FocusFrame.TargetFrameContent.TargetFrameContentMain.Name:ClearAllPoints()
+                    FocusFrame.TargetFrameContent.TargetFrameContentMain.Name:SetPoint("TOPLEFT", self.TargetFrameContent.TargetFrameContentMain.ReputationColor, "TOPRIGHT", -112, -1)
+                end
+            end
         end)
 
         hooksecurefunc(TargetFrameToT, "Update", function(self)

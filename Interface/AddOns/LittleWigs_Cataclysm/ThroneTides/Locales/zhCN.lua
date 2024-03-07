@@ -9,4 +9,18 @@ if L then
 	L.faceless_seer = "无面先知"
 	L.faceless_watcher = "无面看守者"
 	L.tainted_sentry = "污染哨兵"
+
+	L.ozumat_warmup_trigger = "那头怪兽回来了！绝对不能让它污染我的水域！"
+end
+
+L = BigWigs:NewBossLocale("Lady Naz'jar", "zhCN")
+if L then
+	L.high_tide_trigger1 = "武装起来，我的奴仆！从寒冰深渊中崛起吧！"
+	L.high_tide_trigger2 = "毁灭这些入侵者！将他们丢进无尽的黑暗之中！"
+end
+
+L = BigWigs:NewBossLocale("Ozumat", "zhCN")
+if L then
+	L.custom_on_autotalk = "自动对话"
+	L.custom_on_autotalk_desc = "立即选择对话选项开始战斗。"
 end

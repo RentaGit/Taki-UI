@@ -136,3 +136,4 @@ BigWigs_Aberrus: enabled
 LittleWigs_Shadowlands: enabled
 HandyNotes_Dragonflight: enabled
 Ace3: enabled
+BigWigs_Amirdrassil: enabled

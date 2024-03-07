@@ -1,5 +1,13 @@
 
 NarciBarberShopDB = {
+	["ToggleRandomAppearance"] = false,
+	["ToggleNotification"] = true,
+	["Hotkeys"] = {
+		["RotateRight"] = "D",
+		["RotateLeft"] = "A",
+		["ZoomOut"] = "S",
+		["ZoomIn"] = "W",
+	},
 	["PlayerData"] = {
 		["0CB09698"] = {
 			["playerName"] = "Rentaki",
@@ -56,8 +64,6 @@ NarciBarberShopDB = {
 				[2] = {
 					["male"] = {
 						{
-							["name"] = "Bones",
-							["description"] = "Bladefist Hair Style, Tusk Beard, Hanging Sideburns, Swipe Scars, Bone Nose Ring, Natural Tusks, Brutality Tattoo, Hunched Upright",
 							["data"] = {
 								{
 									20, -- [1]
@@ -124,13 +130,13 @@ NarciBarberShopDB = {
 									438, -- [2]
 								}, -- [16]
 							},
+							["name"] = "Bones",
+							["description"] = "Bladefist Hair Style, Tusk Beard, Hanging Sideburns, Swipe Scars, Bone Nose Ring, Natural Tusks, Brutality Tattoo, Hunched Upright",
 							["timeCreated"] = 1675834625,
 						}, -- [1]
 					},
 					["female"] = {
 						{
-							["name"] = "New Look #2",
-							["description"] = "Thick Hair Style, Swipe Scars, Both Eyesight, Spikes Earrings, Bones Necklace, Ferocity Tattoo",
 							["data"] = {
 								{
 									26, -- [1]
@@ -185,11 +191,11 @@ NarciBarberShopDB = {
 									9386, -- [2]
 								}, -- [13]
 							},
+							["name"] = "New Look #2",
+							["description"] = "Thick Hair Style, Swipe Scars, Both Eyesight, Spikes Earrings, Bones Necklace, Ferocity Tattoo",
 							["timeCreated"] = 1683495428,
 						}, -- [1]
 						{
-							["name"] = "Bones",
-							["description"] = "Thick Hair Style, Swipe Scars, Spikes Earrings, Bones Necklace, Ferocity Tattoo",
 							["data"] = {
 								{
 									26, -- [1]
@@ -240,6 +246,8 @@ NarciBarberShopDB = {
 									9386, -- [2]
 								}, -- [12]
 							},
+							["name"] = "Bones",
+							["description"] = "Thick Hair Style, Swipe Scars, Spikes Earrings, Bones Necklace, Ferocity Tattoo",
 							["timeCreated"] = 1675834418,
 						}, -- [2]
 					},
@@ -283,33 +291,6 @@ NarciBarberShopDB = {
 			},
 			["realmName"] = "Kazzak",
 		},
-		["0CABEA37"] = {
-			["playerName"] = "Takilock",
-			["realmID"] = "1305",
-			["SavedLooks"] = {
-				[11] = {
-					["male"] = {
-					},
-					["female"] = {
-					},
-				},
-				["chrModel184"] = {
-				},
-				["chrModel182"] = {
-				},
-				["chrModel176"] = {
-				},
-				["chrModel180"] = {
-				},
-				["chrModel181"] = {
-				},
-				["chrModel148"] = {
-				},
-				["chrModel183"] = {
-				},
-			},
-			["realmName"] = "Kazzak",
-		},
 		["0C90EB34"] = {
 			["playerName"] = "Rentaki",
 			["realmID"] = "1305",
@@ -318,6 +299,7 @@ NarciBarberShopDB = {
 				},
 				["chrModel123"] = {
 					{
+						["description"] = "Light Skin Scale Type, Green Scales Skin Color, Stag Horns, Gradient Horn Color, Large Spots Pattern, Heavy Horn Style, Single Horn Crest, Hair Jaw, Hair Chin, Horn Nose, Brown Hair Color, Closed Mouth, Bushy Brow, Fin Ears, Both Eyesight, Slit Eye Style, Fin Throat, Spikes Legs, Club Tail, Fin Back, Armor Body Armor, Gold and Green Armor Color",
 						["data"] = {
 							{
 								1610, -- [1]
@@ -417,7 +399,6 @@ NarciBarberShopDB = {
 							}, -- [24]
 						},
 						["name"] = "Dreamweaver",
-						["description"] = "Light Skin Scale Type, Green Scales Skin Color, Stag Horns, Gradient Horn Color, Large Spots Pattern, Heavy Horn Style, Single Horn Crest, Hair Jaw, Hair Chin, Horn Nose, Brown Hair Color, Closed Mouth, Bushy Brow, Fin Ears, Both Eyesight, Slit Eye Style, Fin Throat, Spikes Legs, Club Tail, Fin Back, Armor Body Armor, Gold and Green Armor Color",
 						["timeCreated"] = 1685366683,
 					}, -- [1]
 				},
@@ -438,6 +419,7 @@ NarciBarberShopDB = {
 					},
 					["female"] = {
 						{
+							["description"] = "Bangs Hair Style, Sweeping Horns, Thin Tendrils, Both Eyesight, Long Tail",
 							["data"] = {
 								{
 									134, -- [1]
@@ -481,7 +463,6 @@ NarciBarberShopDB = {
 								}, -- [10]
 							},
 							["name"] = "Standard",
-							["description"] = "Bangs Hair Style, Sweeping Horns, Thin Tendrils, Both Eyesight, Long Tail",
 							["timeCreated"] = 1684868964,
 						}, -- [1]
 					},
@@ -489,13 +470,32 @@ NarciBarberShopDB = {
 			},
 			["realmName"] = "Kazzak",
 		},
-	},
-	["ToggleNotification"] = true,
-	["ToggleRandomAppearance"] = false,
-	["Hotkeys"] = {
-		["RotateRight"] = "D",
-		["RotateLeft"] = "A",
-		["ZoomOut"] = "S",
-		["ZoomIn"] = "W",
+		["0CABEA37"] = {
+			["playerName"] = "Takilock",
+			["realmID"] = "1305",
+			["SavedLooks"] = {
+				[11] = {
+					["male"] = {
+					},
+					["female"] = {
+					},
+				},
+				["chrModel184"] = {
+				},
+				["chrModel182"] = {
+				},
+				["chrModel176"] = {
+				},
+				["chrModel180"] = {
+				},
+				["chrModel181"] = {
+				},
+				["chrModel148"] = {
+				},
+				["chrModel183"] = {
+				},
+			},
+			["realmName"] = "Kazzak",
+		},
 	},
 }

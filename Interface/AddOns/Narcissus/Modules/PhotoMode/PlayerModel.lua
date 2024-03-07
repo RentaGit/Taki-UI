@@ -2498,6 +2498,7 @@ local function ExitGroupPhoto()
 	HighlightButton(SlotLayerButton, true);
 
 	ModelFrames[1] = PrimaryPlayerModel;
+	Narci.groupPhotoMode = false;
 end
 
 local function ShowIndexButtonLabel(self, bool)
@@ -3913,6 +3914,9 @@ function Narci_GroupPhotoToggle_OnClick(self)
 	Narci.showExitConfirm = true;
 
 	Narci_NPCBrowser:Init();
+
+	Narci.groupPhotoMode = true;
+	NarciScreenshotToolbar:ShowUI("PhotoMode");
 end
 
 
@@ -4039,7 +4043,6 @@ NarciActorPanelPopUpMixin = {};
 function NarciActorPanelPopUpMixin:OnShow()
 	self:RegisterEvent("PLAYER_TARGET_CHANGED");
 	self:RegisterEvent("MODIFIER_STATE_CHANGED");
-	
 
 	if UnitExists("target") then
 		self.AddTarget.isTypeLocked = not UnitIsPlayer("target");
@@ -4915,3 +4918,32 @@ local function SetChromaKeyColor(r, g, b, a)
 end
 
 NarciPhotoModeAPI.SetChromaKeyColor = SetChromaKeyColor;
+
+
+
+--Play a sequence of animation on the actor
+local function Moodel_OnAnimFinished_PlaySequence(self)
+	self.sequenceIndex = self.sequenceIndex + 1;
+	local nextAnimationID = self.animationSequence[self.sequenceIndex];
+
+	if nextAnimationID then
+		self:SetAnimation(nextAnimationID, 0);
+	else
+		self:SetScript("OnAnimFinished", NarciGenericModelMixin.OnAnimFinished);
+		self.animationSequence = nil;
+		self.sequenceIndex = nil;
+	end
+end
+
+local function PlayAnimationSequenceOnModel(moldeIndex, ...)
+	-- ... animationIDs
+	local model = ModelFrames[moldeIndex];
+	if model and model:IsVisible() then
+		model.animationSequence = {...};
+		model.sequenceIndex = 1;
+		model:SetScript("OnAnimFinished", Moodel_OnAnimFinished_PlaySequence);
+		model:SetAnimation(model.animationSequence[1], 0);
+	end
+end
+
+Narci.PlayAnimationSequenceOnModel = PlayAnimationSequenceOnModel;

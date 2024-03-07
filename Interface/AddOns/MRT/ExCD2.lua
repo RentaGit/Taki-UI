@@ -4865,17 +4865,11 @@ do
 		end
 	end
 
-	local realmKey = GetRealmName() or ""
-	realmKey = realmKey:gsub(" ","")
-	local realmKey_find = "%-"..realmKey.."$"
-
 	local env = {
 		module = module,
 		_db = _db,
 		eventsView = eventsView,
 		_C = _C,
-
-		realmKey_find = realmKey_find,
 
 		spell_startCDbyAuraApplied_fix = _db.spell_startCDbyAuraApplied_fix,
 		spell_startCDbyAuraApplied = _db.spell_startCDbyAuraApplied,
@@ -4940,8 +4934,6 @@ do
 				if not sourceName then
 					return
 				end
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				local forceUpdateAllData
 
@@ -5143,8 +5135,6 @@ do
 				if not sourceName then
 					return
 				end
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				local CDspellID = spell_startCDbyAuraApplied[spellID]
 				if CDspellID then
@@ -5357,8 +5347,6 @@ do
 				if not sourceName then
 					return
 				end
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				local forceUpdateAllData
 
@@ -5510,32 +5498,24 @@ do
 		]]},
 		SPELL_SUMMON = {isEmpty=true,main=[[
 			return function (timestamp,event,hideCaster,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,spellName)
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				$$$1
 			end
 		]]},
 		SPELL_AURA_APPLIED_DOSE = {isEmpty=true,main=[[
 			return function (timestamp,event,hideCaster,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,spellName,_,type,stack)
-				if Gtype(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if Gtype(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				$$$1
 			end
 		]]},
 		SPELL_AURA_REMOVED_DOSE = {isEmpty=true,main=[[
 			return function (timestamp,event,hideCaster,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,spellName,_,type,stack)
-				if Gtype(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if Gtype(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				$$$1
 			end
 		]]},
 		SPELL_DISPEL = {main=[[
 			return function (timestamp,event,hideCaster,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,spellName,_,destSpell)
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				if spell_dispellsList[spellID] and sourceName then
 					_db.spell_dispellsFix[ sourceName ] = true
@@ -5545,8 +5525,6 @@ do
 		]]},
 		SPELL_DAMAGE = {isEmpty=true,main=[[
 			return function (timestamp,event,hideCaster,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,spellName,_,amount,overkill,school,resisted,blocked,absorbed,critical,glancing,crushing,isOffHand)
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				$$$1
 			end
@@ -5559,24 +5537,18 @@ do
 		]]}},
 		SPELL_HEAL = {isEmpty=true,main=[[
 			return function (timestamp,event,hideCaster,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,spellName,_,amount,overhealing,absorbed,critical)
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				$$$1
 			end
 		]],subevents={SPELL_PERIODIC_HEAL=true}},
 		SPELL_ENERGIZE = {isEmpty=true,main=[[
 			return function (timestamp,event,hideCaster,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,spellName,_,amount,overEnergize,powerType,alternatePowerType)
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				$$$1
 			end
 		]],subevents={SPELL_PERIODIC_ENERGIZE=true}},
 		SPELL_MISSED = {isEmpty=true,main=[[
 			return function (timestamp,event,hideCaster,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,spellName,_,missType,isOffHand,amountMissed,critical)
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				$$$1
 			end
@@ -5589,8 +5561,6 @@ do
 		]]}},
 		SPELL_INTERRUPT = {isEmpty=true,main=[[
 			return function (timestamp,event,hideCaster,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,spellName,_,destSpell)
-				if type(sourceName)=="string" and sourceName:find(realmKey_find) then sourceName = strsplit("-",sourceName) end
-				if type(destName)=="string" and destName:find(realmKey_find) then destName = strsplit("-",destName) end
 				$$$2
 				$$$1
 			end
@@ -8073,29 +8043,57 @@ function module.options:Load()
 	end)
 	self.optColSet.colorPickerBorder = ExRT.lib.CreateColorPickButton(self.optColSet.superTabFrame.tab[3],20,20,nil,361,-65)
 	self.optColSet.colorPickerBorder:SetScript("OnClick",function (self)
-		ColorPickerFrame.previousValues = {currColOpt.textureBorderColorR or module.db.colsDefaults.textureBorderColorR,currColOpt.textureBorderColorG or module.db.colsDefaults.textureBorderColorG,currColOpt.textureBorderColorB or module.db.colsDefaults.textureBorderColorB, currColOpt.textureBorderColorA or module.db.colsDefaults.textureBorderColorA}
-		ColorPickerFrame.hasOpacity = true
-		local nilFunc = ExRT.NULLfunc
-		local function changedCallback(restore)
-			local newR, newG, newB, newA
-			if restore then
-				newR, newG, newB, newA = unpack(restore)
-			else
-				newA, newR, newG, newB = OpacitySliderFrame:GetValue(), ColorPickerFrame:GetColorRGB()
+		if ColorPickerFrame.SetColorRGB then
+			ColorPickerFrame.previousValues = {currColOpt.textureBorderColorR or module.db.colsDefaults.textureBorderColorR,currColOpt.textureBorderColorG or module.db.colsDefaults.textureBorderColorG,currColOpt.textureBorderColorB or module.db.colsDefaults.textureBorderColorB, currColOpt.textureBorderColorA or module.db.colsDefaults.textureBorderColorA}
+			ColorPickerFrame.hasOpacity = true
+			local nilFunc = ExRT.NULLfunc
+			local function changedCallback(restore)
+				local newR, newG, newB, newA
+				if restore then
+					newR, newG, newB, newA = unpack(restore)
+				else
+					newA, newR, newG, newB = OpacitySliderFrame:GetValue(), ColorPickerFrame:GetColorRGB()
+				end
+				currColOpt.textureBorderColorR = newR
+				currColOpt.textureBorderColorG = newG
+				currColOpt.textureBorderColorB = newB
+				currColOpt.textureBorderColorA = newA
+				module:ReloadAllSplits()
+	
+				self.color:SetColorTexture(newR,newG,newB,newA)
 			end
-			currColOpt.textureBorderColorR = newR
-			currColOpt.textureBorderColorG = newG
-			currColOpt.textureBorderColorB = newB
-			currColOpt.textureBorderColorA = newA
-			module:ReloadAllSplits()
-
-			self.color:SetColorTexture(newR,newG,newB,newA)
+			ColorPickerFrame.func, ColorPickerFrame.opacityFunc, ColorPickerFrame.cancelFunc = nilFunc, nilFunc, nilFunc
+			ColorPickerFrame.opacity = currColOpt.textureBorderColorA or module.db.colsDefaults.textureBorderColorA
+			ColorPickerFrame:SetColorRGB(currColOpt.textureBorderColorR or module.db.colsDefaults.textureBorderColorR,currColOpt.textureBorderColorG or module.db.colsDefaults.textureBorderColorG,currColOpt.textureBorderColorB or module.db.colsDefaults.textureBorderColorB)
+			ColorPickerFrame.func, ColorPickerFrame.opacityFunc, ColorPickerFrame.cancelFunc = changedCallback, changedCallback, changedCallback
+			ColorPickerFrame:Show()
+		else
+			local info = {}
+			info.r, info.g, info.b = currColOpt.textureBorderColorR or module.db.colsDefaults.textureBorderColorR,currColOpt.textureBorderColorG or module.db.colsDefaults.textureBorderColorG,currColOpt.textureBorderColorB or module.db.colsDefaults.textureBorderColorB
+			info.opacity = currColOpt.textureBorderColorA or module.db.colsDefaults.textureBorderColorA
+			info.hasOpacity = true
+			info.swatchFunc = function()
+				local newR, newG, newB, newA = ColorPickerFrame:GetColorRGB()
+				currColOpt.textureBorderColorR = newR
+				currColOpt.textureBorderColorG = newG
+				currColOpt.textureBorderColorB = newB
+				currColOpt.textureBorderColorA = newA
+				module:ReloadAllSplits()
+	
+				self.color:SetColorTexture(newR,newG,newB,newA)
+			end
+			info.cancelFunc = function()
+				local newR, newG, newB, newA = ColorPickerFrame:GetPreviousValues()
+				currColOpt.textureBorderColorR = newR
+				currColOpt.textureBorderColorG = newG
+				currColOpt.textureBorderColorB = newB
+				currColOpt.textureBorderColorA = newA
+				module:ReloadAllSplits()
+	
+				self.color:SetColorTexture(newR,newG,newB,newA)
+			end
+			ColorPickerFrame:SetupColorPickerAndShow(info)
 		end
-		ColorPickerFrame.func, ColorPickerFrame.opacityFunc, ColorPickerFrame.cancelFunc = nilFunc, nilFunc, nilFunc
-		ColorPickerFrame.opacity = currColOpt.textureBorderColorA or module.db.colsDefaults.textureBorderColorA
-		ColorPickerFrame:SetColorRGB(currColOpt.textureBorderColorR or module.db.colsDefaults.textureBorderColorR,currColOpt.textureBorderColorG or module.db.colsDefaults.textureBorderColorG,currColOpt.textureBorderColorB or module.db.colsDefaults.textureBorderColorB)
-		ColorPickerFrame.func, ColorPickerFrame.opacityFunc, ColorPickerFrame.cancelFunc = changedCallback, changedCallback, changedCallback
-		ColorPickerFrame:Show()
 	end)
 
 	self.optColSet.chkAnimation = ELib:Check(self.optColSet.superTabFrame.tab[3],L.cd2OtherSetAnimation):Point(10,-97):OnClick(function(self) 
@@ -8148,26 +8146,52 @@ function module.options:Load()
 	self.colorSetupFrame.backCooldownAlpha.inOptName = "textureAlphaCooldown"
 
 	local function colorPickerButtonClick(self)
-		ColorPickerFrame.previousValues = {currColOpt[self.inOptName.."R"] or module.db.colsDefaults[self.inOptName.."R"],currColOpt[self.inOptName.."G"] or module.db.colsDefaults[self.inOptName.."G"],currColOpt[self.inOptName.."B"] or module.db.colsDefaults[self.inOptName.."B"], 1}
-		local nilFunc = ExRT.NULLfunc
-		local function changedCallback(restore)
-			local newR, newG, newB, newA
-			if restore then
-				newR, newG, newB, newA = unpack(restore)
-			else
-				newA, newR, newG, newB = OpacitySliderFrame:GetValue(), ColorPickerFrame:GetColorRGB()
+		if ColorPickerFrame.SetColorRGB then
+			ColorPickerFrame.previousValues = {currColOpt[self.inOptName.."R"] or module.db.colsDefaults[self.inOptName.."R"],currColOpt[self.inOptName.."G"] or module.db.colsDefaults[self.inOptName.."G"],currColOpt[self.inOptName.."B"] or module.db.colsDefaults[self.inOptName.."B"], 1}
+			local nilFunc = ExRT.NULLfunc
+			local function changedCallback(restore)
+				local newR, newG, newB, newA
+				if restore then
+					newR, newG, newB, newA = unpack(restore)
+				else
+					newA, newR, newG, newB = OpacitySliderFrame:GetValue(), ColorPickerFrame:GetColorRGB()
+				end
+				currColOpt[self.inOptName.."R"] = newR
+				currColOpt[self.inOptName.."G"] = newG
+				currColOpt[self.inOptName.."B"] = newB
+				module:ReloadAllSplits()
+	
+				self.color:SetColorTexture(newR,newG,newB,1)
 			end
-			currColOpt[self.inOptName.."R"] = newR
-			currColOpt[self.inOptName.."G"] = newG
-			currColOpt[self.inOptName.."B"] = newB
-			module:ReloadAllSplits()
-
-			self.color:SetColorTexture(newR,newG,newB,1)
+			ColorPickerFrame.func, ColorPickerFrame.opacityFunc, ColorPickerFrame.cancelFunc = nilFunc, nilFunc, nilFunc
+			ColorPickerFrame:SetColorRGB(currColOpt[self.inOptName.."R"] or module.db.colsDefaults[self.inOptName.."R"],currColOpt[self.inOptName.."G"] or module.db.colsDefaults[self.inOptName.."G"],currColOpt[self.inOptName.."B"] or module.db.colsDefaults[self.inOptName.."B"])
+			ColorPickerFrame.func, ColorPickerFrame.cancelFunc = changedCallback, changedCallback
+			ColorPickerFrame:Show()
+		else
+			local info = {}
+			info.r, info.g, info.b = currColOpt[self.inOptName.."R"] or module.db.colsDefaults[self.inOptName.."R"],currColOpt[self.inOptName.."G"] or module.db.colsDefaults[self.inOptName.."G"],currColOpt[self.inOptName.."B"] or module.db.colsDefaults[self.inOptName.."B"]
+			info.opacity = 1
+			info.hasOpacity = false
+			info.swatchFunc = function()
+				local newR, newG, newB, newA = ColorPickerFrame:GetColorRGB()
+				currColOpt[self.inOptName.."R"] = newR
+				currColOpt[self.inOptName.."G"] = newG
+				currColOpt[self.inOptName.."B"] = newB
+				module:ReloadAllSplits()
+	
+				self.color:SetColorTexture(newR,newG,newB,1)
+			end
+			info.cancelFunc = function()
+				local newR, newG, newB, newA = ColorPickerFrame:GetPreviousValues()
+				currColOpt[self.inOptName.."R"] = newR
+				currColOpt[self.inOptName.."G"] = newG
+				currColOpt[self.inOptName.."B"] = newB
+				module:ReloadAllSplits()
+	
+				self.color:SetColorTexture(newR,newG,newB,1)
+			end
+			ColorPickerFrame:SetupColorPickerAndShow(info)
 		end
-		ColorPickerFrame.func, ColorPickerFrame.opacityFunc, ColorPickerFrame.cancelFunc = nilFunc, nilFunc, nilFunc
-		ColorPickerFrame:SetColorRGB(currColOpt[self.inOptName.."R"] or module.db.colsDefaults[self.inOptName.."R"],currColOpt[self.inOptName.."G"] or module.db.colsDefaults[self.inOptName.."G"],currColOpt[self.inOptName.."B"] or module.db.colsDefaults[self.inOptName.."B"])
-		ColorPickerFrame.func, ColorPickerFrame.cancelFunc = changedCallback, changedCallback
-		ColorPickerFrame:Show()
 	end
 
 	local function colorPickerSliderValue(self,newval)
@@ -12081,7 +12105,7 @@ module.db.AllSpells = {
 		nil,{110744,15,0},{110744,15,0},{122121,15,0},
 		isTalent=true},
 	{246287,"PRIEST,HEAL",3,--Проповедь
-		nil,{246287,180,0},nil,nil,
+		nil,{246287,90,0},nil,nil,
 		isTalent=true},
 	{373178,"PRIEST,HEAL",3,--Ярость Света
 		nil,{373178,90,0},nil,nil,
@@ -13722,7 +13746,7 @@ module.db.AllSpells = {
 		]]},
 	{202137,"DEMONHUNTER,UTIL",1,--Печать немоты
 		nil,nil,{202137,60,2},
-		isTalent=true,durationDiff={209281,-1},cdDiff={211489,"*0.75"},
+		isTalent=true,durationDiff={209281,-1},cdDiff={211489,"*0.75"},hasCharges=428557,
 		CLEU_PREP = [[
 			spell389718_var202137 = {}
 		]],CLEU_SPELL_AURA_APPLIED=[[
@@ -13881,8 +13905,11 @@ module.db.AllSpells = {
 		{360806,15,0},
 		isTalent=true},
 	{365585,"EVOKER,DISPEL",5,--Нейтрализация
-		{365585,8,0},
-		isTalent=true,isDispel=true,sameSpell={360823,365585}},
+		nil,{365585,8,0},nil,{365585,8,0},
+		isTalent=true,isDispel=true},
+	{365585,"EVOKER,DISPEL",5,--Натурализация
+		nil,nil,{365585,8,0},nil,
+		isTalent=true,isDispel=true},
 	{374348,"EVOKER,DEF",3,--Обновляющее пламя
 		{374348,90,8},
 		isTalent=true,cdDiff={375577,-30}},

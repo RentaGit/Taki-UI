@@ -2,7 +2,6 @@
 ACP_Data = {
 	["sorter"] = "Group By Name",
 	["NoRecurse"] = false,
-	["NoChildren"] = true,
 	["AddonSet"] = {
 		{
 			"BigWigs", -- [1]
@@ -56,11 +55,13 @@ ACP_Data = {
 			["name"] = "TakUI",
 		}, -- [1]
 	},
+	["NoChildren"] = true,
 	["collapsed"] = {
-		["Details"] = true,
-		["BigWigs"] = true,
-		["LittleWigs"] = true,
+		["Libraries"] = true,
 		["OmniCC"] = true,
+		["Details"] = true,
+		["Blizzard Addons"] = true,
+		["BigWigs"] = true,
 	},
 	["ProtectedAddons"] = {
 		["ACP"] = true,

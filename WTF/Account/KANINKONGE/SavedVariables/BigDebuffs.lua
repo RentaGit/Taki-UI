@@ -18,13 +18,13 @@ BigDebuffsDB = {
 		["Rentakisham - EU Mythic Dungeons"] = "Default",
 		["Takidemon - Kazzak"] = "Default",
 		["Felenia - Doomhammer"] = "Default",
-		["Takidin - Kazzak"] = "Default",
+		["Takil - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
 		["Takibank - Argent Dawn"] = "Default",
 		["Ivelea - Argent Dawn"] = "Default",
 		["Takosa - Kazzak"] = "Default",
 		["Takii - Doomhammer"] = "Default",
-		["Takil - Kazzak"] = "Default",
+		["Takidin - Kazzak"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -58,9 +58,9 @@ BigDebuffsDB = {
 					["enabled"] = false,
 					["size"] = 35,
 				},
-				["party2"] = {
-				},
 				["party1"] = {
+				},
+				["party2"] = {
 				},
 				["arena3"] = {
 				},

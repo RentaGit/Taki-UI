@@ -39,7 +39,7 @@ TomTomDB = {
 		["Rintake - Argent Dawn"] = "Default",
 		["Takiwar - Kazzak"] = "Default",
 		["Takibank - Argent Dawn"] = "Default",
-		["Renwarri - Kazzak"] = "Default",
+		["Takipalaone - Kazzak"] = "Default",
 		["Takiscoper - Kazzak"] = "Default",
 		["Takiragthree - Kazzak"] = "Default",
 		["Taaku - Kazzak"] = "Default",
@@ -75,7 +75,7 @@ TomTomDB = {
 		["Takiragtwo - Kazzak"] = "Default",
 		["Takifistzz - Kazzak"] = "Default",
 		["Rentaki - Ravencrest"] = "Default",
-		["Takipalaone - Kazzak"] = "Default",
+		["Renwarri - Kazzak"] = "Default",
 		["Takiworra - Kazzak"] = "Default",
 		["Felenia - Doomhammer"] = "Default",
 		["Takipalatest - Kazzak"] = "Default",
@@ -139,7 +139,7 @@ TomTomWaypointsM = {
 		["Rintake - Argent Dawn"] = "Rintake - Argent Dawn",
 		["Takiwar - Kazzak"] = "Takiwar - Kazzak",
 		["Takibank - Argent Dawn"] = "Takibank - Argent Dawn",
-		["Renwarri - Kazzak"] = "Renwarri - Kazzak",
+		["Takipalaone - Kazzak"] = "Takipalaone - Kazzak",
 		["Takiscoper - Kazzak"] = "Takiscoper - Kazzak",
 		["Takiragthree - Kazzak"] = "Takiragthree - Kazzak",
 		["Taaku - Kazzak"] = "Taaku - Kazzak",
@@ -175,7 +175,7 @@ TomTomWaypointsM = {
 		["Takiragtwo - Kazzak"] = "Takiragtwo - Kazzak",
 		["Takifistzz - Kazzak"] = "Takifistzz - Kazzak",
 		["Rentaki - Ravencrest"] = "Rentaki - Ravencrest",
-		["Takipalaone - Kazzak"] = "Takipalaone - Kazzak",
+		["Renwarri - Kazzak"] = "Renwarri - Kazzak",
 		["Takiworra - Kazzak"] = "Takiworra - Kazzak",
 		["Felenia - Doomhammer"] = "Felenia - Doomhammer",
 		["Takipalatest - Kazzak"] = "Takipalatest - Kazzak",
@@ -303,7 +303,7 @@ TomTomWaypointsM = {
 		},
 		["Takibank - Argent Dawn"] = {
 		},
-		["Renwarri - Kazzak"] = {
+		["Takipalaone - Kazzak"] = {
 		},
 		["Takiscoper - Kazzak"] = {
 		},
@@ -435,31 +435,6 @@ TomTomWaypointsM = {
 					["world"] = true,
 				},
 			},
-			[542] = {
-				["542:364300000:183000000:Edge of Reality"] = {
-					542, -- [1]
-					0.3643, -- [2]
-					0.183, -- [3]
-					["arrivaldistance"] = 15,
-					["crazy"] = true,
-					["persistent"] = true,
-					["desc"] = "Edge of Reality",
-					["silent"] = true,
-					["cleardistance"] = 10,
-					["title"] = "Edge of Reality",
-					["from"] = "TomTom/way",
-					["callbacks"] = {
-						["distance"] = {
-						},
-						["world"] = {
-						},
-						["minimap"] = {
-						},
-					},
-					["minimap"] = true,
-					["world"] = true,
-				},
-			},
 			[535] = {
 				["535:521400000:411300000:Edge of Reality"] = {
 					535, -- [1]
@@ -488,6 +463,31 @@ TomTomWaypointsM = {
 					535, -- [1]
 					0.4626, -- [2]
 					0.5256000000000001, -- [3]
+					["arrivaldistance"] = 15,
+					["crazy"] = true,
+					["persistent"] = true,
+					["desc"] = "Edge of Reality",
+					["silent"] = true,
+					["cleardistance"] = 10,
+					["title"] = "Edge of Reality",
+					["from"] = "TomTom/way",
+					["callbacks"] = {
+						["distance"] = {
+						},
+						["world"] = {
+						},
+						["minimap"] = {
+						},
+					},
+					["minimap"] = true,
+					["world"] = true,
+				},
+			},
+			[542] = {
+				["542:364300000:183000000:Edge of Reality"] = {
+					542, -- [1]
+					0.3643, -- [2]
+					0.183, -- [3]
 					["arrivaldistance"] = 15,
 					["crazy"] = true,
 					["persistent"] = true,
@@ -772,6 +772,39 @@ TomTomWaypointsM = {
 		["Huntaki - Ravencrest"] = {
 		},
 		["Rentaki - Kazzak"] = {
+			[69] = {
+				["69:600000000:460000000:Dire Maul Moonwell 6"] = {
+					69, -- [1]
+					0.6, -- [2]
+					0.46, -- [3]
+					["arrivaldistance"] = 15,
+					["crazy"] = true,
+					["persistent"] = true,
+					["desc"] = "Dire Maul Moonwell 6",
+					["silent"] = true,
+					["cleardistance"] = 10,
+					["title"] = "Dire Maul Moonwell 6",
+					["from"] = "TomTom/way",
+					["callbacks"] = {
+						["distance"] = {
+							[10] = nil --[[ skipped inline function ]],
+							[15] = nil --[[ skipped inline function ]],
+						},
+						["world"] = {
+							["onclick"] = nil --[[ skipped inline function ]],
+							["tooltip_update"] = nil --[[ skipped inline function ]],
+							["tooltip_show"] = nil --[[ skipped inline function ]],
+						},
+						["minimap"] = {
+							["onclick"] = nil --[[ skipped inline function ]],
+							["tooltip_update"] = nil --[[ skipped inline function ]],
+							["tooltip_show"] = nil --[[ skipped inline function ]],
+						},
+					},
+					["minimap"] = true,
+					["world"] = true,
+				},
+			},
 		},
 		["Nyumi - Argent Dawn"] = {
 		},
@@ -795,7 +828,7 @@ TomTomWaypointsM = {
 		},
 		["Rentaki - Ravencrest"] = {
 		},
-		["Takipalaone - Kazzak"] = {
+		["Renwarri - Kazzak"] = {
 		},
 		["Takiworra - Kazzak"] = {
 		},

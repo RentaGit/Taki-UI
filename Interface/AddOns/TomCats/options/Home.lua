@@ -10,7 +10,7 @@ local spacing = 20
 local function Prime_OnHyperlinkClick(_, _, _, _, region, left, top, width, height)
 	TogglePopup(
 			"https://subs.twitch.tv/TomCat",
-			"Press Control-C to copy the link",
+			"Press " .. (IsMacClient() and "Cmd" or "Ctrl") .. "-C to copy the link",
 			{ "CENTER", SettingsPanel.Container.SettingsCanvas, "CENTER", 0, 0 },
 			region, { left, top, width, height }
 	)
@@ -310,6 +310,49 @@ Home:SetScript("OnShow", function(self)
 			}, timeRiftsConfig.Label, timeRiftsConfig.selectionPopout.Button)
 		end
 
+		if (osd.Superbloom) then
+			local superbloom = CreateFrame("Frame", nil, configurationFrame)
+			superbloom:SetPoint("TOPLEFT", last, "BOTTOMLEFT", 0, -8)
+			last = superbloom
+			superbloom:SetPoint("RIGHT")
+			superbloom:SetHeight(30)
+			superbloom.Label = superbloom:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+			superbloom.Label:SetJustifyH("LEFT")
+			superbloom.Label:SetPoint("LEFT", 32, 0)
+			superbloom.Label:SetText("Superbloom")
+			local superbloomConfigDisplayPreference = osd.Superbloom.GetVisibilityOption()
+			local superbloomRiftsConfigDisplayConstants = addon.constants.accessoryDisplay
+			superbloom.selectionPopout = Templates.CreateSelectionPopoutWithButtons(
+					superbloom,
+					{
+						{
+							label = "Always Shown",
+							value = superbloomRiftsConfigDisplayConstants.ALWAYS,
+							selected = superbloomConfigDisplayPreference == superbloomRiftsConfigDisplayConstants.ALWAYS
+						},
+						{
+							label = "Never Shown",
+							value = superbloomRiftsConfigDisplayConstants.NEVER,
+							selected = superbloomConfigDisplayPreference == superbloomRiftsConfigDisplayConstants.NEVER
+						},
+						{
+							label = "Hide when in instances",
+							value = superbloomRiftsConfigDisplayConstants.NOINSTANCES,
+							selected = superbloomConfigDisplayPreference == superbloomRiftsConfigDisplayConstants.NOINSTANCES
+						},
+					},
+					function()
+						osd.Superbloom.SetVisibilityOption(superbloom.selectionPopout.selected.value)
+					end
+			)
+			superbloom.selectionPopout:SetPoint("LEFT", 230, 0)
+			superbloom.selectionPopout.Popout:Layout()
+			AttachTooltip({
+				"Superbloom",
+				"Set when to display the Superbloom timers within the floating window\n\n(The floating window will only be visible when you have features enabled for it)",
+			}, superbloom.Label, superbloom.selectionPopout.Button)
+		end
+
 		if (osd.Promos) then
 			local twitchDropsConfig = CreateFrame("Frame", nil, configurationFrame)
 			twitchDropsConfig:SetPoint("TOPLEFT", last, "BOTTOMLEFT", 0, -8)
@@ -552,7 +595,7 @@ Home:SetScript("OnShow", function(self)
 			}, noblegardenConfig.Label, noblegardenConfig.checkButton)
 		end
 
-		local featuresTitle = CreateOptionsTitle(contents, "Recently Added Features", configurationFrame)
+		local featuresTitle = CreateOptionsTitle(contents, "Recently Added and Upcoming Features", configurationFrame)
 		local features = CreateFrame("SimpleHTML",nil, contents, "TomCats_HTML_Features")
 		features:SetPoint("TOPLEFT", featuresTitle, "BOTTOMLEFT", 0, 0)
 		features:SetPoint("RIGHT")

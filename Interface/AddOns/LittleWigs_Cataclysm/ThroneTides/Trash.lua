@@ -1,4 +1,3 @@
-local isTenDotTwo = select(4, GetBuildInfo()) >= 100200 --- XXX delete when 10.2 is live everywhere
 --------------------------------------------------------------------------------
 -- Module Declaration
 --
@@ -32,6 +31,8 @@ if L then
 	L.faceless_seer = "Faceless Seer"
 	L.faceless_watcher = "Faceless Watcher"
 	L.tainted_sentry = "Tainted Sentry"
+
+	L.ozumat_warmup_trigger = "The beast has returned! It must not pollute my waters!"
 end
 
 --------------------------------------------------------------------------------
@@ -73,9 +74,54 @@ function mod:GetOptions()
 	}
 end
 
--- XXX delete this entire if block below when 10.2 is live everywhere
-if not isTenDotTwo then
-	-- before 10.2
+function mod:OnBossEnable()
+	if self:Retail() then
+		-- Warmups
+		self:RegisterEvent("CHAT_MSG_MONSTER_SAY")
+	end
+
+	-- Naz'jar Oracle
+	self:Log("SPELL_CAST_START", "Hex", 76820)
+	self:Log("SPELL_AURA_APPLIED", "HexApplied", 76820)
+	self:Log("SPELL_CAST_START", "HealingWave", 76813)
+
+	if self:Retail() then
+		-- Vicious Snap Dragon
+		self:Log("SPELL_AURA_APPLIED", "RavenousPursuitApplied", 426663)
+
+		-- Naz'jar Sentinel
+		self:Log("SPELL_CAST_START", "Shellbreaker", 426741)
+		self:Log("SPELL_AURA_APPLIED", "CrushingDepthsApplied", 428542)
+
+		-- Naz'jar Ravager
+		self:Log("SPELL_CAST_START", "VolatileBolt", 426684)
+		self:Log("SPELL_CAST_START", "AcidBarrage", 426645)
+	end
+
+	-- Naz'jar Tempest Witch
+	self:Log("SPELL_AURA_APPLIED", "LightningSurgeApplied", 75992)
+
+	if self:Retail() then
+		-- Faceless Seer
+		self:Log("SPELL_CAST_START", "MindFlay", 426783)
+		self:Log("SPELL_CAST_START", "NullBlast", 426808)
+	end
+
+	-- Faceless Watcher
+	self:Log("SPELL_CAST_START", "ShadowSmash", 76590)
+	if self:Retail() then
+		self:Log("SPELL_CAST_START", "Crush", 429021)
+	end
+
+	-- Tainted Sentry
+	self:Log("SPELL_CAST_START", "Swell", 76634)
+end
+
+--------------------------------------------------------------------------------
+-- Classic Initialization
+--
+
+if mod:Classic() then
 	function mod:GetOptions()
 		return {
 			-- Naz'jar Oracle
@@ -96,50 +142,22 @@ if not isTenDotTwo then
 	end
 end
 
-function mod:OnBossEnable()
-	-- Naz'jar Oracle
-	self:Log("SPELL_CAST_START", "Hex", 76820)
-	self:Log("SPELL_AURA_APPLIED", "HexApplied", 76820)
-	self:Log("SPELL_CAST_START", "HealingWave", 76813)
-
-	-- XXX remove these lines from the if block when 10.2 is live everywhere
-	if isTenDotTwo then
-		-- Vicious Snap Dragon
-		self:Log("SPELL_AURA_APPLIED", "RavenousPursuitApplied", 426663)
-
-		-- Naz'jar Sentinel
-		self:Log("SPELL_CAST_START", "Shellbreaker", 426741)
-		self:Log("SPELL_AURA_APPLIED", "CrushingDepthsApplied", 428542)
-
-		-- Naz'jar Ravager
-		self:Log("SPELL_CAST_START", "VolatileBolt", 426684)
-		self:Log("SPELL_CAST_START", "AcidBarrage", 426645)
-	end
-
-	-- Naz'jar Tempest Witch
-	self:Log("SPELL_AURA_APPLIED", "LightningSurgeApplied", 75992)
-
-	-- XXX remove these lines from the if block when 10.2 is live everywhere
-	if isTenDotTwo then
-		-- Faceless Seer
-		self:Log("SPELL_CAST_START", "MindFlay", 426783)
-		self:Log("SPELL_CAST_START", "NullBlast", 426808)
-	end
-
-	-- Faceless Watcher
-	self:Log("SPELL_CAST_START", "ShadowSmash", 76590)
-	-- XXX remove this line from the if block when 10.2 is live everywhere
-	if isTenDotTwo then
-		self:Log("SPELL_CAST_START", "Crush", 429021)
-	end
-
-	-- Tainted Sentry
-	self:Log("SPELL_CAST_START", "Swell", 76634)
-end
-
 --------------------------------------------------------------------------------
 -- Event Handlers
 --
+
+-- Warmups
+
+function mod:CHAT_MSG_MONSTER_SAY(_, msg)
+	if msg == L.ozumat_warmup_trigger then
+		-- Ozumat warmup
+		local ozumatModule = BigWigs:GetBossModule("Ozumat", true)
+		if ozumatModule then
+			ozumatModule:Enable()
+			ozumatModule:Warmup()
+		end
+	end
+end
 
 -- Naz'jar Oracle
 
@@ -157,6 +175,9 @@ function mod:HexApplied(args)
 end
 
 function mod:HealingWave(args)
+	if self:Friendly(args.sourceFlags) then -- these NPCs can be mind-controlled by Priests
+		return
+	end
 	self:Message(args.spellId, "yellow", CL.casting:format(args.spellName))
 	self:PlaySound(args.spellId, "alert")
 	--self:NameplateCDBar(args.spellId, 3.6, args.sourceGUID)
@@ -209,7 +230,7 @@ function mod:VolatileBolt(args)
 end
 
 function mod:AcidBarrage(args)
-	self:Message(args.spellId, "red") -- TODO purple?
+	self:Message(args.spellId, "red")
 	self:PlaySound(args.spellId, "alert")
 	--self:NameplateCDBar(args.spellId, 10.9, args.sourceGUID)
 end
@@ -218,11 +239,12 @@ end
 
 function mod:LightningSurgeApplied(args)
 	local onMe = self:Me(args.destGUID)
-	if onMe or self:Dispeller("magic", nil, args.spellId) then
-		self:TargetMessage(args.spellId, "yellow", args.destName)
+	-- don't alert if a NPC is debuffed (usually by a mind-controlled mob)
+	if onMe or (self:Player(args.destFlags) and self:Dispeller("magic", nil, args.spellId)) then
+		self:TargetMessage(args.spellId, "red", args.destName)
 		self:PlaySound(args.spellId, "alarm", nil, args.destName)
 		if onMe then
-			self:Say(args.spellId)
+			self:Say(args.spellId, nil, nil, "Lightning Surge")
 		end
 	end
 	-- if this is uncommented, move to SPELL_CAST_SUCCESS
@@ -234,6 +256,9 @@ end
 do
 	local prev = 0
 	function mod:MindFlay(args)
+		if self:Friendly(args.sourceFlags) then -- these NPCs can be mind-controlled by Priests
+			return
+		end
 		local t = args.time
 		if t - prev > 1.5 then
 			prev = t
@@ -247,6 +272,8 @@ end
 do
 	local prev = 0
 	function mod:NullBlast(args)
+		-- these NPCs can be mind-controlled by Priests and this ability can be cast,
+		-- but don't suppress alerts as the ability still only harms players.
 		local t = args.time
 		if t - prev > 1.5 then
 			prev = t

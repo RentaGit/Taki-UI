@@ -1,40 +1,28 @@
-# [5.8.4](https://github.com/WeakAuras/WeakAuras2/tree/5.8.4) (2023-11-07)
+# [5.10.1](https://github.com/WeakAuras/WeakAuras2/tree/5.10.1) (2024-02-09)
 
-[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/5.8.3...5.8.4)
+[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/5.10.0...5.10.1)
 
 ## Highlights
 
- - Template updates for 10.2.0
-- More options for Buff Triggers
-- Improvements to profiling UI
-- Bug fixes 
+ - Bug Fixes 
 
 ## Commits
 
-InfusOnWoW (8):
+Putro (1):
 
-- Template updates for 10.2
-- Dynamic Group: Fix frame strata setting
-- Totem Trigger: Add a tooltip that a spell id can be entered
-- IconPicker: Fix error for spells that don't have an icon
-- Work around UnitInRange being wonky
-- Model: Remove HasAnimation check
-- BT2: Allow for multiple npcIds in npcId check
-- IconPicker: If a spell id is entered, show the icon for that spell id
+- Localize the title in AuraWarnings
 
-Stanzilla (2):
+Stanzilla (3):
 
-- Update TOC for Retail Patch 10.2.0
-- Update PayPal link in README.md
+- Add more types to Types
+- A few type and spelling fixes
+- Add workaround for actions/checkout#290
 
-mrbuds (8):
+dependabot[bot] (1):
 
-- Profiling: improve system profiling readability by regrouping multiUnits
-- Theat Situation trigger: add nam/realm and npcId filters
-- Colorize "Class and Specialization" options fixes #4657
-- FontInstance:SetFont flags seems to break with "None"
-- BT2: add affectedUnits and unaffectedUnits tables when Fetch affected names option is toggle
-- Add "Not Item Equipped" load option, and make both Item Equipped option take multiple inputs
-- Workaround fonts not loading correctly on first login
-- Fix keybinding display
+- Bump peter-evans/create-pull-request from 5 to 6
+
+emptyrivers (1):
+
+- move type checking code for WeakAurasArchive
 

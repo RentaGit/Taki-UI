@@ -1,8 +1,8 @@
-﻿## Interface: 100200
+﻿## Interface: 100205
 ## Title: Talent Loadouts Ex
 ## Author: Morizo
 ## Notes: Save at least 10 Talent Loadouts.
-## Version: 1.5.8
+## Version: 1.5.12
 ## IconTexture: Interface\AddOns\TalentLoadoutsEx\icon.blp
 ## DefaultState: Enabled
 ## LoadOnDemand: 0

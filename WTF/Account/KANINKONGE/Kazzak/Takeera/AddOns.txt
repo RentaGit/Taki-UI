@@ -55,3 +55,9 @@ TakUI: disabled
 Blizzard_CombatText: enabled
 LittleWigs_Cataclysm: enabled
 BigWigs_Aberrus: enabled
+LittleWigs_BattleForAzeroth: enabled
+LittleWigs_WarlordsOfDraenor: enabled
+BigWigs_Amirdrassil: enabled
+BigWigs_DragonIsles: enabled
+BigWigs_VaultOfTheIncarnates: enabled
+LittleWigs_Classic: enabled

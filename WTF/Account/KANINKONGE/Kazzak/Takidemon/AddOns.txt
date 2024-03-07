@@ -92,3 +92,5 @@ LibClassicCasterino: enabled
 LibGetFrame-1.0: enabled
 Blizzard_CombatText: enabled
 BigWigs_Aberrus: enabled
+OPie_Classic: disabled
+BigWigs_Amirdrassil: enabled

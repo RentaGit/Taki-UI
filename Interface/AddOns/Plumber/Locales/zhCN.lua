@@ -1,5 +1,7 @@
 ﻿if not (GetLocale() == "zhCN") then return end;
 
+
+
 local _, addon = ...
 local L = addon.L;
 
@@ -9,6 +11,21 @@ L["Module Control"] = "功能选项";
 L["Quick Slot Generic Description"] = "\n\n*快捷按钮是一组在特定情形下出现的、可交互的按钮。";
 L["Restriction Combat"] = "战斗中不可用";    --Indicate a feature can only work when out of combat
 L["Map Pin Change Size Method"] = "\n\n*如需更改标记大小，请打开 世界地图 - 地图筛选 - Plumber";
+
+
+--Module Categories
+--- order: 0
+L["Module Category Unknown"] = "未知"    --Don't need to translate
+--- order: 1
+L["Module Category General"] = "常规";
+--- order: 2
+L["Module Category NPC Interaction"] = "NPC 交互";
+--- order: 3
+L["Module Category Class"] = "职业";   --Player Class (rogue, paladin...)
+--- order: 4
+L["Module Category Dreamseeds"] = "梦境之种";     --Added in patch 10.2.0
+--- order: 5
+L["Module Category AzerothianArchives"] = "艾泽拉斯档案馆";     --Added in patch 10.2.5
 
 
 --AutoJoinEvents
@@ -34,6 +51,8 @@ L["Numbers Of Earned"] = "已获取";    --The number of stuff the player has ea
 L["Track Upgrade Currency"] = "追踪纹章";     --Crest: e.g. Drake’s Dreaming Crest
 L["Track Upgrade Currency Tooltip"] = "在最左侧显示你已获得的最高等级的纹章。";
 L["Currently Pinned Colon"] = "当前显示：";     --Tells the currently pinned item
+L["Bar Inside The Bag"] = "显示在背包窗口内部";
+L["Bar Inside The Bag Tooltip"] = "将工具栏放置在背包窗口的内部。\n\n仅在使用暴雪默认背包的“分开的小包”模式下生效。";
 
 
 --GossipFrameMedal
@@ -48,7 +67,7 @@ L["ModuleDescription DruidModelFix"] = "修复使用群星雕文导致人物界�
 
 --PlayerChoiceFrameToken (PlayerChoiceFrame)
 L["ModuleName PlayerChoiceFrameToken"] = "显示捐献物品数";
-L["ModuleDescription PlayerChoiceFrameToken"] = "Show how many to-be-donated items you have on the PlayerChoice UI.\n\nCurrently only supports Dreamseed Nurturing.";
+L["ModuleDescription PlayerChoiceFrameToken"] = "在捐献界面上显示你有多少待捐物品。\n\n目前仅支持梦境之种的培育。";
 
 
 --EmeraldBountySeedList (Show available Seeds when approaching Emerald Bounty 10.2.0)
@@ -73,12 +92,68 @@ L["ModuleDescription HandyLockpick"] = "右键点击可直接解锁放在背包�
 L["Instruction Pick Lock"] = "<右键点击以解锁>";
 
 
+--BlizzFixEventToast (Make the toast banner (Level-up, Weekly Reward Unlocked, etc.) non-interactable so it doesn't block your mouse clicks)
+L["ModuleName BlizzFixEventToast"] = "暴雪UI改进: 事件通知";
+L["ModuleDescription BlizzFixEventToast"] = "让事件通知不挡住你的鼠标，并且允许你右键点击来立即关闭它。\n\n*“事件通知”指的是当你完成一些活动时，在屏幕上方出现的横幅。";
+
+
+--Talking Head
+L["ModuleName TalkingHead"] = "对话特写头像";
+L["ModuleDescription TalkingHead"] = "用简洁的界面取代默认的对话特写头像。";
+L["EditMode TalkingHead"] = "Plumber: "..L["ModuleName TalkingHead"];
+L["TalkingHead Option InstantText"] = "立即显示文本";   --Should texts immediately, no gradual fading
+L["TalkingHead Option TextOutline"] = "文字描边";
+L["TalkingHead Option Condition Header"] = "隐藏来自以下情形的文字：";
+L["TalkingHead Option Condition WorldQuest"] = "世界任务";
+L["TalkingHead Option Condition WorldQuest Tooltip"] = "隐藏来自世界任务的文字。\n有时对话会在接受世界任务之前触发，此时我们将无法隐藏这段文字。";
+L["TalkingHead Option Condition Instance"] = "副本";
+L["TalkingHead Option Condition Instance Tooltip"] = "在副本里隐藏文字。";
+
+
+--AzerothianArchives
+L["ModuleName Technoscryers"] = "快捷按钮: 科技占卜器";
+L["ModuleDescription Technoscryers"] = "在你做“科技考古”世界任务时显示一个可以让你直接戴上科技占卜器的按钮。"..L["Quick Slot Generic Description"];
+
+
+--Navigator(Waypoint/SuperTrack) Shared Strings
+L["Priority"] = "优先级";
+L["Priority Default"] = "游戏默认";  --WoW's default waypoint priority: Corpse, Quest, Scenario, Content
+L["Priority Default Tooltip"] = "遵从游戏默认设定。如果可能的话，优先追踪任务、尸体和商人位置，否则开始搜索新种子。";
+L["Stop Tracking"] = "停止追踪";
+L["Click To Track Location"] = "|TInterface/AddOns/Plumber/Art/SuperTracking/SuperTrackIcon:0:0:0:0|t " .. "左键点击以开始追踪种子。";
+L["Click To Track In TomTom"] = "|TInterface/AddOns/Plumber/Art/SuperTracking/TooltipIcon-TomTom:0:0:0:0|t " .. "左键点击以创建 TomTom 箭头";
+
+
+--Navigator_Dreamseed (Use Super Tracking to navigate players)
+L["ModuleName Navigator_Dreamseed"] = "导航: 梦境之种";
+L["ModuleDescription Navigator_Dreamseed"] = "使用路径点系统指引你到达梦境之种生长的位置。\n\n*右键点击图标可查看更多选项。\n\n|cffd4641c当你身处翡翠梦境时，此插件将取代游戏自带的路径指引系统。|r";
+L["Priority New Seeds"] = "搜索新种子";
+L["Priority Rewards"] = "拾取奖励";
+L["Stop Tracking Dreamseed Tooltip"] = "停止搜索种子。你可以点击大地图上正在生长的种子来恢复追踪。";
+
+
+--BlizzFixWardrobeTrackingTip (Permanently disable the tip for wardrobe shortcuts)
+L["ModuleName BlizzFixWardrobeTrackingTip"] = "暴雪UI改进: 试衣间小提示";
+L["ModuleDescription BlizzFixWardrobeTrackingTip"] = "隐藏试衣间快捷键教程。";
+
+
 --Rare/Location Announcement
 L["Announce Location Tooltip"] = "在聊天频道中分享这个位置。";
 L["Announce Forbidden Reason In Cooldown"] = "你不久前分享过位置。";
 L["Announce Forbidden Reason Duplicate Message"] = "其他玩家不久前分享过这个位置。";
 L["Announce Forbidden Reason Soon Despawn"] = "你不能通告一个即将消失的位置。";
 L["Available In Format"] = "此时间后可用：|cffffffff%s|r";
+L["Seed Color Epic"] = "紫色";
+L["Seed Color Rare"] = "蓝色";
+L["Seed Color Uncommon"] = "绿色";
+
+
+--Generic
+L["Reposition Button Horizontal"] = "水平方向移动";   --Move the window horizontally
+L["Reposition Button Vertical"] = "竖直方向移动";
+L["Reposition Button Tooltip"] = "左键点击并拖拉来移动这个窗口。";
+L["Font Size"] = "字体大小";
+L["Reset To Default Position"] = "重置到默认位置";
 
 
 

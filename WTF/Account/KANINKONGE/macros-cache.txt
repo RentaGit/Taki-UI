@@ -1,3 +1,15 @@
+VER 3 000000000000013F "!PING PLAYER" "134400"
+/ping [@player] WARNING
+END
+VER 3 000000000000013C "!SMOLDY" "524793"
+/click ExtraActionButton1
+/run WeakAuras.ScanEvents("NS_PA_MACRO", true)
+/raid i clicked macro
+END
+VER 3 0000000000000140 ".EJECT" "2065631"
+/run EjectPassengerFromSeat(1)
+/run EjectPassengerFromSeat(2)
+END
 VER 3 000000000000013A ".p barrier/blind" "134400"
 #showtooltip
 /cast [known:115750] blinding light
@@ -30,7 +42,13 @@ VER 3 000000000000009B ".sh CAP" "136013"
 #showtooltip capacitor totem
 /cast [@cursor] capacitor totem
 END
-VER 3 0000000000000129 ".sh DW/PW" "1035054"
+VER 3 0000000000000129 ".sh DW/PW" "134400"
+#showtooltip
+/cast [known:375982] Primordial Wave
+/cast [known:Doom Winds] Doom Winds
+/cast [mod:alt,@mouseover,known:375982] Primordial Wave
+END
+VER 3 0000000000000141 ".sh DW/PW" "INV_Misc_QuestionMark"
 #showtooltip
 /cast [known:Doom Winds] Doom Winds
 /cast [mod:alt,@mouseover,known:375982] Primordial Wave
@@ -63,7 +81,7 @@ VER 3 0000000000000104 ".sh FS" "135813"
 /cast [nomod] flame shock
 /cast [mod:alt, @mouseover] flame shock 
 END
-VER 3 0000000000000126 ".sh GoW/SW" "1029585"
+VER 3 0000000000000126 ".sh GoW/SW" "134400"
 #showtooltip
 /cast [known:Gust of Wind] Gust of Wind;
 /cast [known:Spirit Walk] Spirit Walk;
@@ -77,15 +95,15 @@ VER 3 00000000000000B9 ".sh HR" "136037"
 #showtooltip Healing Rain
 /cast [@cursor] Healing Rain
 END
-VER 3 0000000000000128 ".sh IS/FN" "135845"
+VER 3 0000000000000128 ".sh IS/FN" "134400"
 #showtooltip
 /cast [known:Ice Strike] Ice Strike
 /cast [known:Fire Nova] Fire Nova
 END
 VER 3 0000000000000132 ".sh LL" "134400"
 #showtooltip lava lash
-/use [@player] Totemic Projection
 /cast lava lash
+/use [@player] Totemic Projection
 END
 VER 3 00000000000000B2 ".sh LMT/IF" "135855"
 #showtooltip
@@ -115,13 +133,16 @@ VER 3 0000000000000122 ".sh SK/ASC" "134400"
 END
 VER 3 0000000000000134 ".sh ss" "132314"
 #showtooltip stormstrike
-/use [@player] Totemic Projection
 /cast stormstrike
 END
 VER 3 0000000000000127 ".sh SST/TAT" "4667425"
 #showtooltip
 /cast [known:Stoneskin Totem] Stoneskin Totem;
 /cast [known:Tranquil Air Totem] Tranquil Air Totem;
+END
+VER 3 000000000000013D ".sh totem proj" "134400"
+#showtooltip
+/use [@player] Totemic Projection
 END
 VER 3 000000000000012B ".sh TP" "538574"
 #showtooltip
@@ -139,8 +160,13 @@ VER 3 000000000000012D "cancelaura" "132220"
 /cancelaura goblin glider
 /cancelaura parachute
 END
+VER 3 000000000000013E "focus" "132196"
+/focus
+/run if not GetRaidTargetIndex("focus") then SetRaidTarget("focus",2) end
+END
 VER 3 0000000000000131 "focus mouseover" "1033497"
-/focus [@mouseover,harm,nodead] [harm]
+/focus [@mouseover,nodead]
+/run if not GetRaidTargetIndex("focus") then SetRaidTarget("focus",2) end
 END
 VER 3 000000000000012A "NS/ASC" "134400"
 #showtooltip
@@ -174,11 +200,11 @@ VER 3 00000000000000DE "use cloak" "852263"
 #showtooltip
 /use 15
 END
-VER 3 00000000000000E0 "use trinket 1" "134490"
+VER 3 00000000000000E0 "use trinket 1" "134400"
 #showtooltip
-/use [@cursor] 13
+/use [@mouseover, help, exists][] 13
 END
-VER 3 0000000000000107 "use trinket 2" "134491"
+VER 3 0000000000000107 "use trinket 2" "134400"
 #showtooltip
 /use 14
 END

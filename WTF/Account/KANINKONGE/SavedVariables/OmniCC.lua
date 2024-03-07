@@ -1,9 +1,5 @@
 
 OmniCCDB = {
-	["global"] = {
-		["dbVersion"] = 6,
-		["addonVersion"] = "10.1.2",
-	},
 	["profileKeys"] = {
 		["Rentamdi - Kazzak"] = "Default",
 		["Takikin - Kazzak"] = "Default",
@@ -19,27 +15,31 @@ OmniCCDB = {
 		["Takil - Kazzak"] = "Default",
 		["Rintake - Ragnaros"] = "Default",
 		["Takidin - Ravencrest"] = "Default",
-		["Takidari - Ravencrest"] = "Default",
-		["Takidin - Kazzak"] = "Default",
+		["Takilock - Kazzak"] = "Default",
+		["Takided - Kazzak"] = "Default",
 		["Rentakidh - Argent Dawn"] = "Default",
 		["Takidari - Kazzak"] = "Default",
-		["Takiworra - Kazzak"] = "Default",
+		["Rintake - Argent Dawn"] = "Default",
 		["Rentaki - Kazzak"] = "Default",
-		["Takided - Kazzak"] = "Default",
-		["Ivelea - Argent Dawn"] = "Default",
+		["Takidin - Kazzak"] = "Default",
+		["Takosa - Kazzak"] = "Default",
 		["Thaaeyn - Argent Dawn"] = "Default",
-		["Takitalon - Arathi"] = "Default",
-		["Rendudu - Kazzak"] = "Default",
+		["Rentaki - Ravencrest"] = "Default",
+		["Rentaco - Kazzak"] = "Default",
 		["Takidemon - Kazzak"] = "Default",
 		["Takeera - Kazzak"] = "Default",
 		["Takidk - Kazzak"] = "Default",
 		["Huntaki - Ravencrest"] = "Default",
-		["Rentaco - Kazzak"] = "Default",
-		["Rentaki - Ravencrest"] = "Default",
-		["Takosa - Kazzak"] = "Default",
-		["Rintake - Argent Dawn"] = "Default",
+		["Rendudu - Kazzak"] = "Default",
+		["Takitalon - Arathi"] = "Default",
+		["Ivelea - Argent Dawn"] = "Default",
+		["Takiworra - Kazzak"] = "Default",
 		["Rentaco - Ravencrest"] = "Default",
-		["Takilock - Kazzak"] = "Default",
+		["Takidari - Ravencrest"] = "Default",
+	},
+	["global"] = {
+		["dbVersion"] = 6,
+		["addonVersion"] = "10.2.5",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -71,16 +71,16 @@ OmniCCDB = {
 						["minutes"] = {
 						},
 						["hours"] = {
-							["r"] = 1,
+							["b"] = 1,
 							["scale"] = 1,
 							["g"] = 1,
-							["b"] = 1,
+							["r"] = 1,
 						},
 						["charging"] = {
 							["a"] = 1,
-							["b"] = 1,
-							["scale"] = 1,
 							["r"] = 1,
+							["scale"] = 1,
+							["b"] = 1,
 						},
 						["controlled"] = {
 							["b"] = 1,
@@ -96,11 +96,11 @@ OmniCCDB = {
 				},
 				["Plater Nameplates Theme"] = {
 					["textStyles"] = {
-						["soon"] = {
+						["seconds"] = {
 						},
 						["minutes"] = {
 						},
-						["seconds"] = {
+						["soon"] = {
 						},
 					},
 					["fontFace"] = "Interface\\Addons\\SUI\\Media\\Fonts\\Prototype.ttf",
@@ -153,17 +153,17 @@ OmniCC4Config = {
 					["r"] = 1,
 				},
 			},
-			["fontFace"] = "Interface\\Addons\\SharedMedia\\fonts\\vixar\\vixar.ttf",
-			["yOff"] = -1,
+			["fontSize"] = 16,
+			["mmSSDuration"] = 600,
 			["spiralOpacity"] = 1.00999997742474,
 			["minDuration"] = 2,
 			["xOff"] = 0,
 			["tenthsDuration"] = 0,
 			["fontOutline"] = "OUTLINE",
 			["minSize"] = 0.5,
-			["mmSSDuration"] = 600,
 			["minEffectDuration"] = 30,
-			["fontSize"] = 16,
+			["yOff"] = -1,
+			["fontFace"] = "Interface\\Addons\\SharedMedia\\fonts\\vixar\\vixar.ttf",
 		},
 	},
 	["groups"] = {

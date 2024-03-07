@@ -16,32 +16,47 @@ end
 local API = addon.API;
 local GetPlayerMapCoord = API.GetPlayerMapCoord;
 local GetCreatureIDFromGUID = API.GetCreatureIDFromGUID;
-local AreWaypointsClose = API.AreWaypointsClose;
+local QuickSlot = addon.QuickSlot;
 
 local MAPID_EMRALD_DREAM = 2200;
 local VIGID_BOUNTY = 5971;
 local RANGE_PLANT_SEED = 10;
 local FORMAT_ITEM_COUNT_ICON = "%s|T%s:0:0:0:0:64:64:0:64:0:64|t";
 local SEED_ITEM_IDS = {208047, 208067, 208066};     --Gigantic, Plump, Small Dreamseed
+local SEED_SPELL_IDS = {417508, 417645, 417642};
+local QUICKSLOT_NAME = "dreamseed";
 
+local math = math;
 local sqrt = math.sqrt;
 local format = string.format;
+local pairs = pairs;
+local ipairs = ipairs;
 local C_VignetteInfo = C_VignetteInfo;
 local GetVignetteInfo = C_VignetteInfo.GetVignetteInfo;
+local GetVignettes = C_VignetteInfo.GetVignettes
 local GetStatusBarWidgetVisualizationInfo = C_UIWidgetManager.GetStatusBarWidgetVisualizationInfo;
 local GetItemDisplayVisualizationInfo = C_UIWidgetManager.GetItemDisplayVisualizationInfo;
 local GetAllWidgetsBySetID = C_UIWidgetManager.GetAllWidgetsBySetID;
 local IsFlying = IsFlying;
 local IsMounted = IsMounted;
-local InCombatLockdown = InCombatLockdown;
 local GetAchievementCriteriaInfoByID = GetAchievementCriteriaInfoByID;
 local UIParent = UIParent;
 local GetItemCount = GetItemCount;
 local GetItemIconByID = C_Item.GetItemIconByID;
+local GetBestMapForUnit = C_Map.GetBestMapForUnit;
 local time = time;
+local GetTime = GetTime;
+local UnitChannelInfo = UnitChannelInfo;
+
+local IS_SEED_SPELL = {};
+do
+    for _, spellID in ipairs(SEED_SPELL_IDS) do
+        IS_SEED_SPELL[spellID] = true;
+    end
+end
 
 local function GetVisibleEmeraldBountyGUID()
-    local vignetteGUIDs = C_VignetteInfo.GetVignettes();
+    local vignetteGUIDs = GetVignettes();
     local info;
 
     for i, vignetteGUID in ipairs(vignetteGUIDs) do
@@ -58,300 +73,6 @@ local DataProvider = {};
 local EL = CreateFrame("Frame", nil, UIParent);
 
 
-local function RealActionButton_OnLeave(self)
-    if not InCombatLockdown() then
-        self:SetScript("OnLeave", nil);
-        self:Release();
-    end
-
-    if self.owner then
-        self.owner:UnlockHighlight();
-        self.owner:SetStateNormal();
-        self.owner.hasActionButton = nil;
-        self.owner = nil;
-        EL:SetHeaderText();
-        EL:StartShowingDefaultHeaderCountdown(true);
-    end
-end
-
-local function RealActionButton_PostClick(self, button)
-    if self.owner then
-        if self.owner:HasCharges() then
-            self.owner:ShowPostClickEffect();
-        end
-    end
-end
-
-local function RealActionButton_OnMouseDown(self, button)
-    if self.owner then
-        if self.owner:HasCharges() then
-            self.owner:SetStatePushed();
-        end
-    end
-end
-
-local function RealActionButton_OnMouseUp(self)
-    if self.owner then
-        self.owner:SetStateNormal();
-    end
-end
-
-local function ItemButton_OnEnter(self)
-    EL:SetHeaderText(API.GetColorizedItemName(self.id));
-    EL:StartShowingDefaultHeaderCountdown(false);
-
-    local RealActionButton = addon.AcquireSecureActionButton();
-
-    if RealActionButton then
-        local w, h = self:GetSize();
-        RealActionButton:SetFrameStrata("DIALOG");
-        RealActionButton:SetFixedFrameStrata(true);
-        RealActionButton:SetScript("OnEnter", nil);
-        RealActionButton:SetScript("OnLeave", RealActionButton_OnLeave);
-        RealActionButton:SetScript("PostClick", RealActionButton_PostClick);
-        RealActionButton:SetScript("OnMouseDown", RealActionButton_OnMouseDown);
-        RealActionButton:SetScript("OnMouseUp", RealActionButton_OnMouseUp);
-        RealActionButton:ClearAllPoints();
-        RealActionButton:SetParent(self);
-        RealActionButton:SetSize(w, h);
-        RealActionButton:SetPoint("CENTER", self, "CENTER", 0, 0);
-        RealActionButton:Show();
-        RealActionButton.owner = self;
-
-        local macroText = format("/use item:%s", self.id);
-        RealActionButton:SetAttribute("type", "macro");     --Any Mouseclick
-        RealActionButton:SetMacroText(macroText);
-        RealActionButton:RegisterForClicks("LeftButtonDown", "LeftButtonUp", "RightButtonDown", "RightButtonUp");
-
-        self:LockHighlight();
-        self.hasActionButton = true;
-    end
-end
-
-local function ItemButton_OnLeave(self)
-    if not (self:IsVisible() and self:IsMouseOver()) then
-        EL:SetHeaderText();
-        EL:StartShowingDefaultHeaderCountdown(true);
-    end
-end
-
-function EL:Init()
-    local SEED_SPELL_IDS = {417508, 417645, 417642};
-
-    self.Container = CreateFrame("Frame", nil, self);
-    self.Container:SetSize(46, 46);
-    self.Container:SetAlpha(0);
-
-    local buttonSize = 46;
-    local gap = 4;
-
-    local numButtons = #SEED_ITEM_IDS;
-    local span = (buttonSize + gap)*numButtons - gap;
-    self.Container:SetWidth(span);
-
-    local Header = self.Container:CreateFontString(nil, "OVERLAY", "GameTooltipText");
-    self.Header = Header;
-    Header:SetJustifyH("CENTER");
-    Header:SetJustifyV("MIDDLE");
-    Header:SetPoint("BOTTOM", self.Container, "TOP", 0, 8);
-    Header:SetSpacing(2);
-
-    local font, height = GameTooltipText:GetFont();
-    Header:SetFont(font, height, "");   --OUTLINE
-    Header:SetShadowColor(0, 0, 0);
-    Header:SetShadowOffset(1, -1);
-
-    local HeaderShadow = self.Container:CreateTexture(nil, "ARTWORK");
-    HeaderShadow:SetPoint("TOPLEFT", Header, "TOPLEFT", -8, 6);
-    HeaderShadow:SetPoint("BOTTOMRIGHT", Header, "BOTTOMRIGHT", 8, -8);
-    HeaderShadow:SetTexture("Interface/AddOns/Plumber/Art/Button/GenericTextDropShadow");
-    HeaderShadow:Hide();
-    HeaderShadow:SetAlpha(0);
-
-    function EL:SetHeaderText(text, transparentText)
-        if text then
-            Header:SetSize(0, 0);
-            Header:SetText(text);
-            if transparentText then
-                local toAlpha = 0.6;
-                API.UIFrameFade(Header, 0.5, toAlpha);
-                API.UIFrameFade(HeaderShadow, 0.25, 0);
-            else
-                API.UIFrameFadeIn(Header, 0.25);
-                API.UIFrameFade(HeaderShadow, 0.25, 1);
-            end
-
-            local textWidth = Header:GetWrappedWidth() - 2;
-            if textWidth > EL.headerMaxWidth then
-                Header:SetSize(EL.headerMaxWidth, 64);
-                local numLines = Header:GetNumLines();
-                Header:SetHeight(numLines*18);
-                textWidth = Header:GetWrappedWidth();
-                Header:SetWidth(textWidth + 2);
-            end
-        else
-            API.UIFrameFade(Header, 0.5, 0);
-            API.UIFrameFade(HeaderShadow, 0.25, 0);
-        end
-    end
-
-    self.Buttons = {};
-    self.SpellXButton = {};
-
-    for i, itemID in ipairs(SEED_ITEM_IDS) do
-        local button = addon.CreatePeudoActionButton(self.Container);
-        self.Buttons[i] = button;
-        self.SpellXButton[ SEED_SPELL_IDS[i] ] = button;
-        button:SetPoint("LEFT", self.Container, "LEFT", (i - 1) * (buttonSize +  gap), 0);
-        button:SetItem(itemID, button);
-        button.spellID = SEED_SPELL_IDS[i];
-        button:SetScript("OnEnter", ItemButton_OnEnter);
-        button:SetScript("OnLeave", ItemButton_OnLeave);
-    end
-
-    self.SpellCastOverlay = addon.CreateActionButtonSpellCastOverlay(self.Container);
-    self.SpellCastOverlay:Hide();
-
-    --self:SetFrameLayout(2);
-
-    self.Init = nil;
-end
-
-
-local function ContainerFrame_OnUpdate(self, elapsed)
-    self.t = self.t + elapsed;
-    if self.t > 1 then
-        self:SetScript("OnUpdate", nil);
-        EL:SetHeaderText(EL.defaultHeaderText, true);
-    end
-end
-
-function EL:StartShowingDefaultHeaderCountdown(state)
-    if state then
-        self.Container.t = 0;
-        self.Container:SetScript("OnUpdate", ContainerFrame_OnUpdate);
-    else
-        self.Container:SetScript("OnUpdate", nil);
-    end
-end
-
-
-local function GetCastBar()
-    return _G["PlayerCastingBarFrame"]
-end
-
-function EL:SetFrameLayout(layoutIndex)
-    local buttonSize = 46;
-
-    if layoutIndex == 1 then
-        --Normal, below the center
-        --CastingBar's position is changed conditionally
-        local buttonGap = 4;
-
-        local anchorTo = GetCastBar();
-        local y = anchorTo:GetTop();
-        local scale = anchorTo:GetScale();
-
-        self.Container:ClearAllPoints();
-        self.Container:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 250); --(y + 30)*scale   --Default CastingBar moves up 29y when start casting
-
-        for i, button in ipairs(self.Buttons) do
-            button:ClearAllPoints();
-            button:SetPoint("LEFT", self.Container, "LEFT", (i - 1) * (buttonSize +  buttonGap), 0);
-        end
-
-        self.Header:ClearAllPoints();
-        self.Header:SetPoint("BOTTOM", self.Container, "TOP", 0, 8);
-        self.headerMaxWidth = 0;
-    else
-        --Circular, on the right side
-        local radius = math.floor( (0.5 * UIParent:GetHeight()*16/9 /3) + (buttonSize*0.5) + 0.5);
-        local gapArc = 8 + buttonSize;
-        local radianGap = gapArc/radius;
-
-        local radian;
-        local x, y;
-        local cx, cy = UIParent:GetCenter();
-
-        for i, button in ipairs(self.Buttons) do
-            button:ClearAllPoints();
-            radian = (1 - i)*radianGap;
-            x = cx + radius * math.cos(radian);
-            y = cy + radius * math.sin(radian);
-            button:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x, y);
-        end
-
-        local headerRadiusOffset = 112;  --Positive value moves towards center
-        local headerMaxWidth = 2*(headerRadiusOffset - buttonSize*0.5) - 8;
-        radian = -(#self.Buttons - 1)*radianGap*0.5;
-        x = cx + (radius - headerRadiusOffset) * math.cos(radian);
-        y = cy + (radius - headerRadiusOffset) * math.sin(radian);
-
-        self.headerMaxWidth = headerMaxWidth;
-        self.Header:ClearAllPoints();
-        self.Header:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x, y);
-    end
-end
-
-function EL:SetInteractable(state, dueToCombat)
-    if state then
-        API.UIFrameFade(self.Container, 0.5, 1);
-    else
-        if dueToCombat then
-            if self.Container:IsShown() then
-                local toAlpha = 0.25;
-                API.UIFrameFade(self.Container, 0.2, toAlpha);
-            end
-        else
-
-        end
-    end
-
-    for i, button in ipairs(self.Buttons) do
-        button:SetEnabled(state);
-        button:EnableMouse(state);
-        button:UnlockHighlight();
-    end
-end
-
-function EL:UpdateItemCount()
-    for i, button in ipairs(self.Buttons) do
-        button:UpdateCount();
-    end
-end
-
-function EL:OnSpellCastChanged(spellID, isStartCasting)
-    local targetButton = self.SpellXButton[spellID];
-
-    if self.lastTargetButton then
-        self.lastTargetButton.Count:Show();
-    end
-    self.lastTargetButton = targetButton;
-
-    if targetButton then
-        if isStartCasting then
-            self.isPlayerMoving = false;
-            self.isChanneling = true;
-            for i, button in ipairs(self.Buttons) do
-                if button.spellID == spellID then
-                    local _, _, _, startTime, endTime = UnitChannelInfo("player");
-
-                    self.SpellCastOverlay:ClearAllPoints();
-                    self.SpellCastOverlay:SetPoint("CENTER", button, "CENTER", 0, 0);
-                    self.SpellCastOverlay:FadeIn();
-                    self.SpellCastOverlay:SetDuration( (endTime - startTime) / 1000);
-                    self.SpellCastOverlay:SetFrameStrata("HIGH");
-
-                    button.Count:Hide();
-                end
-            end
-        else
-            self.isChanneling = false;
-            self.SpellCastOverlay:FadeOut();
-        end
-    end
-end
-
 function EL:IsTrackedPlantGrowing()
     return self.trackedObjectGUID and DataProvider:IsPlantGrowing(self.trackedObjectGUID);
 end
@@ -361,31 +82,14 @@ function EL:AttemptShowUI()
         return
     end
 
-    if self.Init then
-        self:Init();
-    end
-
-    self:RegisterEvent("BAG_UPDATE");
-    self:RegisterEvent("PLAYER_REGEN_DISABLED");
-    self:RegisterEvent("PLAYER_REGEN_ENABLED");
-    self:RegisterEvent("UI_SCALE_CHANGED");
     self:RegisterEvent("UPDATE_UI_WIDGET");
-
-    self:SetFrameLayout(2);
-    self:UpdateItemCount();
-
-    for _, button in ipairs(self.Buttons) do
-        button.Count:Show();
-    end
+    self:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_START", "player");
+    self:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_STOP", "player");
 
     self.isChanneling = nil;
-    self.Container:Show();
 
-    if InCombatLockdown() then
-        self:SetInteractable(false, true);
-    else
-        self:SetInteractable(true);
-    end
+    QuickSlot:SetButtonData(SEED_ITEM_IDS, SEED_SPELL_IDS, QUICKSLOT_NAME);
+    QuickSlot:ShowUI();
 
     if self.trackedObjectGUID then
         local plantName, criteriaComplete = DataProvider:GetPlantNameAndProgress(self.trackedObjectGUID);
@@ -394,32 +98,22 @@ function EL:AttemptShowUI()
             if criteriaComplete then
                 plantName = "|TInterface/AddOns/Plumber/Art/Button/Checkmark-Green-Shadow:16:16:-4:-2|t"..plantName;  --"|A:common-icon-checkmark:0:0:-4:-2|a" |TInterface/AddOns/Plumber/Art/Button/Checkmark-Green:0:0:-4:-2|t
             end
-            self:SetHeaderText(plantName, true);
-            self.defaultHeaderText = plantName;
+            QuickSlot:SetHeaderText(plantName, true);
+            QuickSlot:SetDefaultHeaderText(plantName);
         end
     else
-        self.defaultHeaderText = nil;
+        QuickSlot:SetDefaultHeaderText(nil);
     end
 
     return true
 end
 
 function EL:CloseUI()
-    if self.Container and self.Container:IsShown() then
-        --self.Container:Hide();
-        --self.Container:ClearAllPoints();
-        --self.Container:SetPoint("TOP", UIParent, "BOTTOM", 0, -64);
-        API.UIFrameFade(self.Container, 0.5, 0);
-        self:UnregisterEvent("BAG_UPDATE");
-        self:UnregisterEvent("PLAYER_REGEN_DISABLED");
-        self:UnregisterEvent("PLAYER_REGEN_ENABLED");
-        self:UnregisterEvent("UI_SCALE_CHANGED");
-        self:UnregisterEvent("UPDATE_UI_WIDGET");
-        self:SetInteractable(false);
-        self.isChanneling = nil;
-        self.defaultHeaderText = nil;
-        self.SpellCastOverlay:Hide();
-    end
+    self:UnregisterEvent("UPDATE_UI_WIDGET");
+    self:UnregisterEvent("UNIT_SPELLCAST_CHANNEL_START");
+    self:UnregisterEvent("UNIT_SPELLCAST_CHANNEL_STOP");
+
+    QuickSlot:RequestCloseUI(QUICKSLOT_NAME);
 end
 
 function EL:GetMapPointsDistance(x1, y1, x2, y2)
@@ -456,31 +150,44 @@ function EL:OnEvent(event, ...)
         if IsMounted() then
             self.isPlayerMoving = true;
         end
+        if event == "UNIT_SPELLCAST_SUCCEEDED" then
+            local _, _, spellID = ...
+            if spellID and IS_SEED_SPELL[spellID] then
+                --This event fires when start Channeling (and we don't have a SPELLCAST_CHANNEL equivalent, it doesn't make sense)
+                --UNIT_SPELLCAST_CHANNEL_START fires before this event
+                --UNIT_SPELLCAST_CHANNEL_STOP fires regardless of finishing cast or not
+                --So we check if the the channel stops after endTime
+                local name, text, texture, startTime, endTime, isTradeSkill = UnitChannelInfo("player");
+                self.channelEndTime = endTime;
+            else
+                self.channelEndTime = nil;
+            end
+        end
     elseif event == "UPDATE_UI_WIDGET" then
         local widgetInfo = ...
         if DataProvider:IsValuableWidget(widgetInfo.widgetID) then
             if self:IsTrackedPlantGrowing() then
                 self:StopTrackingPosition();
-                --self:CloseUI();
             end
         end
-
     elseif event == "UNIT_SPELLCAST_CHANNEL_START" then
-        local _, _, spellID = ...
-        self:OnSpellCastChanged(spellID, true);
-    elseif event == "UNIT_SPELLCAST_CHANNEL_UPDATE" then
+        self.isChanneling = true;
 
     elseif event == "UNIT_SPELLCAST_CHANNEL_STOP" then
-        local _, _, spellID = ...
-        self:OnSpellCastChanged(spellID, false);
-    elseif event == "BAG_UPDATE" then
-        self:UpdateItemCount();
-    elseif event == "PLAYER_REGEN_DISABLED" then
-        self:SetInteractable(false, true);
-    elseif event == "PLAYER_REGEN_ENABLED" then
-        self:SetInteractable(true);
-    elseif event == "UI_SCALE_CHANGED" then
-        self:SetFrameLayout(2);
+        self.isChanneling = nil;
+        if self.channelEndTime then
+            local t = GetTime();
+            t = t * 1000;
+            local diff = t - self.channelEndTime;
+            if diff < 200 and diff > -200 then
+                --Natural Complete
+                C_Timer.After(0.2, function()
+                    DataProvider:MarkNearestPlantContributed();
+                end);
+            else
+                --Interrupted
+            end
+        end
     end
 end
 EL:SetScript("OnEvent", EL.OnEvent);
@@ -548,6 +255,9 @@ end
 function EL:UpdateMap()
     self.mapWidth, self.mapHeight = C_Map.GetMapWorldSize(MAPID_EMRALD_DREAM);
 end
+EL.mapWidth = 7477.1201171875;
+EL.mapHeight = 4983.330078125;
+
 
 function EL:CalculatePlayerToTargetDistance()
     self.playerX, self.playerY = GetPlayerMapCoord(MAPID_EMRALD_DREAM);
@@ -579,20 +289,10 @@ end
 function EL:OnApproachingSoil()
     local success = self:AttemptShowUI();
     --Frame not shown if Growth Cycle has already begun
-
-    if success then
-        self:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_START", "player");
-        self:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_STOP", "player");
-        self:RegisterUnitEvent("UNIT_SPELLCAST_CHANNEL_UPDATE", "player");
-    end
 end
 
 function EL:OnLeavingSoil()
     self:CloseUI();
-
-    self:UnregisterEvent("UNIT_SPELLCAST_CHANNEL_START");
-    self:UnregisterEvent("UNIT_SPELLCAST_CHANNEL_STOP");
-    self:UnregisterEvent("UNIT_SPELLCAST_CHANNEL_UPDATE");
 end
 
 
@@ -601,7 +301,7 @@ local ZoneTriggerModule;
 local function EnableModule(state)
     if state then
         if not ZoneTriggerModule then
-            local module = API.CreateZoneTriggeredModule();
+            local module = API.CreateZoneTriggeredModule("quickslotseed");
             ZoneTriggerModule = module;
             module:SetValidZones(MAPID_EMRALD_DREAM);
             EL:UpdateMap();
@@ -637,12 +337,12 @@ do
         dbKey = "EmeraldBountySeedList",
         description = addon.L["ModuleDescription EmeraldBountySeedList"],
         toggleFunc = EnableModule,
+        categoryID = 10020001,
+        uiOrder = 1,
     };
 
     addon.ControlCenter:AddModule(moduleData);
 end
-
---/script local map = C_Map.GetBestMapForUnit("player");local position = C_Map.GetPlayerMapPosition(map, "player");print(position:GetXY())
 
 
 local PLANT_DATA = {
@@ -704,9 +404,15 @@ function DataProvider:GetGrowthTimesByCreatureID(creatureID)
         end
     end
 end
+
 function DataProvider:GetGrowthTimes(objectGUID)
     local creatureID = GetCreatureIDFromGUID(objectGUID);
     return self:GetGrowthTimesByCreatureID(creatureID)
+end
+
+function DataProvider:IsPlantGrowingByCreatureID(creatureID)
+    local remainingTime = self:GetGrowthTimesByCreatureID(creatureID)
+    return remainingTime and remainingTime > 0
 end
 
 function DataProvider:IsPlantGrowing(objectGUID)
@@ -897,36 +603,6 @@ end
 
 --[[
 function DataProvider:HasAnyRewardByCreatureID(creatureID)
-    --Three widgetSet for each plant, mapped to 3 different rarities
-    --All three Emerald Bloom rewards of each widgetSet will be flagged simultaneously
-    --All three status bar of each widgetSet also change in sync
-    --Save the objectGUID and position if it has unclaimed reward
-    --Returns: hasAnyReward, isRewardLocationCached
-    if creatureID and PLANT_DATA[creatureID] then
-        if self:IsDreamseedChestAvailableByCreatureID(creatureID) then
-            return true, true
-        end
-        local info, widgetSetID, setWidgets;
-        for i = 15, 17 do
-            widgetSetID = PLANT_DATA[creatureID][i];
-            setWidgets = GetAllWidgetsBySetID(widgetSetID);
-            if setWidgets then
-                for _, widgetInfo in ipairs(setWidgets) do
-                    if widgetInfo.widgetType == 27 then
-                        info = GetItemDisplayVisualizationInfo(widgetInfo.widgetID);
-                        if info and info.shownState == 1 and info.itemInfo and info.itemInfo.showAsEarned then
-                            return true, false
-                        end
-                    end
-                end
-            end
-        end
-    end
-    return false, false
-end
---]]
-
-function DataProvider:HasAnyRewardByCreatureID(creatureID)
     --We now use a more RAM friendly (not getting all the widgets in a wigetSet), but less robust approach
     if creatureID and PLANT_DATA[creatureID] then
         if self:IsDreamseedChestAvailableByCreatureID(creatureID) then
@@ -943,6 +619,7 @@ function DataProvider:HasAnyRewardByCreatureID(creatureID)
     end
     return false, false
 end
+--]]
 
 function DataProvider:HasAnyReward(objectGUID)
     local creatureID = GetCreatureIDFromGUID(objectGUID);
@@ -1002,19 +679,6 @@ function DataProvider:GetChestOwnerCreatureIDs()
     return tbl
 end
 
-function DataProvider:IsDreamseedChestAvailableByCreatureID(creatureID)
-    if not self.dreamseedChestStates then
-        return false
-    end
-
-    return self.dreamseedChestStates[creatureID] ~= nil
-end
-
-function DataProvider:IsDreamseedChestAvailable(objectGUID)
-    local creatureID = GetCreatureIDFromGUID(objectGUID);
-    return self:IsDreamseedChestAvailableByCreatureID(creatureID)
-end
-
 function DataProvider:SetChestStateByCreatureID(creatureID, state, objectGUID, x, y)
     if not creatureID then return end;
 
@@ -1030,6 +694,11 @@ function DataProvider:SetChestStateByCreatureID(creatureID, state, objectGUID, x
         end
     else
         self.dreamseedChestStates[creatureID] = nil;
+    end
+
+    if not state then
+        --Player looted the chest
+        self:SetPlantContributedByCreatureID(creatureID, nil);
     end
 end
 
@@ -1061,7 +730,7 @@ function DataProvider:EnumerateSpawnLocations()
 end
 
 function DataProvider:GetNearbyPlantInfo()
-    local uiMapID = C_Map.GetBestMapForUnit("player");
+    local uiMapID = GetBestMapForUnit("player");
     if uiMapID ~= MAPID_EMRALD_DREAM then return end;
 
     local x, y = GetPlayerMapCoord(MAPID_EMRALD_DREAM);
@@ -1074,6 +743,229 @@ function DataProvider:GetNearbyPlantInfo()
                 return creatureID, position[1], position[2]
             end
         end
+    end
+end
+
+function DataProvider:BuildPlantIndexTable()
+    local function SortByCriteriaID(a, b)
+        return PLANT_DATA[a] < PLANT_DATA[b]
+    end
+
+    local plants = {};
+    local n = 0;
+
+    for creatureID, data in pairs(PLANT_DATA) do
+        n = n + 1;
+        plants[n] = creatureID;
+    end
+
+    table.sort(plants, SortByCriteriaID);
+
+    local plantXIndex = {};
+    for index, creatureID in ipairs(plants) do
+        plantXIndex[creatureID] = index;
+    end
+
+    self.indexXPlant = plants;
+    self.plantXIndex = plantXIndex;
+end
+
+function DataProvider:GetPlantIndexByCreatureID(creatureID)
+    if not self.plantXIndex then
+        self:BuildPlantIndexTable();
+    end
+
+    return self.plantXIndex[creatureID]
+end
+
+function DataProvider:GetPlantCreatureIDByIndex(index)
+    if not self.indexXPlant then
+        self:BuildPlantIndexTable();
+    end
+
+    return self.indexXPlant[index]
+end
+
+function DataProvider:SetPlantContributedByCreatureID(creatureID, chestFlag)
+    --chestFlag:
+    --nil (no chest)
+    --1 Potential chest (data from WidgetInfo)
+    --2 Chest (Player made contribution during current game session)
+    if not self.plantContributed then
+        self.plantContributed = {};
+    end
+    self.plantContributed[creatureID] = chestFlag
+end
+
+function DataProvider:HasAnyRewardByCreatureID(creatureID)
+    --Alternative approach due to inconsistent data between actual spawn and widgetInfo
+    --Check if player has successfully cast Dreamseed / made contributions using PlayerChoiceUI
+    if creatureID and PLANT_DATA[creatureID] then
+        if not self.plantContributed then
+            self.plantContributed = {};
+        end
+        return self.plantContributed[creatureID] ~= nil
+    end
+    return false, false
+end
+
+function DataProvider:MarkNearestPlantContributed()
+    local creatureID = self:GetNearbyPlantInfo();
+    if creatureID then
+        self:SetPlantContributedByCreatureID(creatureID, 2);
+    end
+end
+
+function DataProvider:GetPlayerDistanceToTarget(playerX, playerY, targetX, targetY)
+    return EL:GetMapPointsDistance(playerX, playerY, targetX, targetY);
+end
+
+
+---- Workaround for inconsistent Chest flag:
+---- 1. When player logs in, query UIWidgetManager to get chests from previous game session
+---- 2. We check if the chests actually exist when player gets to their approximate locations
+
+function DataProvider:HasAnyPotentialRewardByCreatureID(creatureID)
+    --We now use a more RAM friendly (not getting all the widgets in a wigetSet), but less robust approach
+    if creatureID and PLANT_DATA[creatureID] then
+        local creatureData = PLANT_DATA[creatureID];
+        local info;
+        for i = 6, 11 do
+            info = GetItemDisplayVisualizationInfo(creatureData[i]);
+            if info and info.shownState == 1 and info.itemInfo and info.itemInfo.showAsEarned then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+function DataProvider:GetChestOwnerCreatureID(vignetteID)
+    if not self.chestOwnerCreatureIDs then
+        self.chestOwnerCreatureIDs = self:GetChestOwnerCreatureIDs();
+    end
+    return vignetteID and self.chestOwnerCreatureIDs[vignetteID]
+end
+
+function DataProvider:IsDreamseedChest(vignetteID)
+    return self:GetChestOwnerCreatureID(vignetteID) ~= nil
+end
+
+function DataProvider:RequestScanChests()
+    if self.scanComplete then return end;
+
+    if self.scanner then
+        self.scanner.t = 0;
+        self.scanner:Show();
+        return
+    end
+
+    local anyPotentionReward;
+    local targetList = {};
+
+    local chestFlagAuto = 1;
+    local numTargets = 0;
+
+    for creatureID in pairs(PLANT_DATA) do
+        if self:HasAnyPotentialRewardByCreatureID(creatureID) then
+            anyPotentionReward = true;
+            if self.BackupCreaturePositions[creatureID] then
+                targetList[creatureID] = true;
+                self:SetPlantContributedByCreatureID(creatureID, chestFlagAuto);
+                numTargets = numTargets + 1;
+            end
+        end
+    end
+
+    --debugprint("numTargets", numTargets)
+
+
+    --[[
+        --Disable AB Testing (Dreamseed Chests Icon can still be stuck on the map, so we have to enable on-set scanning every game session)
+    if PlumberDB then
+        if PlumberDB.DreamseedChestABTesting == nil then
+            PlumberDB.DreamseedChestABTesting = math.random(100) >= 50;
+        end
+        if not PlumberDB.DreamseedChestABTesting then
+            self.scanComplete = true;
+            return
+        end
+    end
+    --]]
+
+    if anyPotentionReward then
+        if not self.scanner then
+            self.scanner = CreateFrame("Frame");
+            self.scanner.t = 0;
+            self.scanner:SetScript("OnUpdate", function(f, elapsed)
+                f.t = f.t + elapsed;
+                if f.t > 3 then
+                    f.t = 0;
+                    local playerX, playerY = GetPlayerMapCoord(MAPID_EMRALD_DREAM);
+                    local distance;
+                    if playerX and playerY then
+                        local anyTarget, nearbyCreatureID, location;
+
+                        for creatureID in pairs(targetList) do
+                            anyTarget = true;
+                            location = self.BackupCreaturePositions[creatureID];
+                            if location then
+                                distance = self:GetPlayerDistanceToTarget(playerX, playerY, location[1], location[2]);
+                                if distance <= 200 then
+                                    nearbyCreatureID = creatureID;
+                                    break
+                                end
+                            end
+                        end
+
+                        if not anyTarget then
+                            f:SetScript("OnUpdate", nil);
+                            f.t = nil;
+                            self.scanComplete = true;
+                            --debugprint("Scan Complete");
+                        end
+
+                        if nearbyCreatureID then
+                            local vignetteGUIDs = GetVignettes();
+                            local info, ownerCreatureID;
+                            for i, vignetteGUID in ipairs(vignetteGUIDs) do
+                                info = GetVignetteInfo(vignetteGUID);
+                                if info then
+                                    ownerCreatureID = self:GetChestOwnerCreatureID(info.vignetteID);
+                                    if ownerCreatureID then
+                                        --debugprint(ownerCreatureID, nearbyCreatureID)
+                                    end
+                                    if ownerCreatureID == nearbyCreatureID then
+                                        targetList[ownerCreatureID] = nil;
+                                        self:SetPlantContributedByCreatureID(nearbyCreatureID, 2);
+                                        --debugprint("Found One");
+                                        break
+                                    end
+                                end
+                            end
+                            if self.plantContributed[nearbyCreatureID] == chestFlagAuto then
+                                if DataProvider:IsPlantGrowingByCreatureID(nearbyCreatureID) then
+                                    --debugprint("Still Growing");
+                                else
+                                    self:SetPlantContributedByCreatureID(nearbyCreatureID, nil);
+                                    --debugprint("Doesn't Exist");
+                                end
+                            end
+                        end
+                    end
+                end
+            end);
+        end
+    else
+        self.scanComplete = true;
+    end
+end
+
+function DataProvider:PauseScanner()
+    if self.scanComplete then return end;
+
+    if self.scanner then
+        self.scanner:Hide();
     end
 end
 
@@ -1276,33 +1168,3 @@ local UiWidgets_Reward_Bounty = {
     {5242, 5244, 5243, 5241, 5278, 5279},
 };
 --]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

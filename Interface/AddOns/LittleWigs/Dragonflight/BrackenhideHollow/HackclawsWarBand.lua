@@ -106,7 +106,7 @@ function mod:SavageChargeApplied(args)
 	if self:Tank() or onMe then
 		self:PlaySound(381444, "warning", nil, args.destName)
 		if onMe then
-			self:Say(381444)
+			self:Say(381444, nil, nil, "Savage Charge")
 		end
 	else
 		self:PlaySound(381444, "alert", nil, args.destName)
@@ -219,7 +219,7 @@ do
 	function mod:MarkedForButchery(args)
 		self:StopBar(CL.count:format(args.spellName, markedForButcheryCount))
 		markedForButcheryCount = markedForButcheryCount + 1
-		self:GetBossTarget(printTarget, 0.4, args.sourceGUID)
+		self:GetUnitTarget(printTarget, 0.4, args.sourceGUID)
 		self:CDBar(args.spellId, 59.5, CL.count:format(args.spellName, markedForButcheryCount))
 	end
 end

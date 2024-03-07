@@ -85,7 +85,7 @@ do
 			local t = args.time
 			if t - prev > 1.5 then
 				prev = t
-				self:MessageOld(args.spellId == 59854 and 49034 or args.spellId, "blue", "alert", CL.you:format(args.spellName))
+				self:MessageOld(args.spellId == 59854 and 49034 or args.spellId, "blue", "alert", CL.you:format(args.spellName)) -- SetOption:47346,49034:::
 			end
 		end
 	end
@@ -143,6 +143,6 @@ function mod:WrathOfMiseryCastSuccess()
 end
 
 function mod:SummonMinions(args)
-	self:Message(args.spellId, "yellow", CL.spawned:format(CL.adds))
+	self:Message(args.spellId, "yellow", CL.adds_spawned)
 	self:CDBar(args.spellId, 39.8) -- time until the next SPELL_CAST_START, 39.8 - 42.3s
 end

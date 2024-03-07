@@ -1,1 +1,1 @@
-- Patch updates
+- Update spells

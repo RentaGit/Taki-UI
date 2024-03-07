@@ -1,4 +1,3 @@
-local isTenDotTwo = select(4, GetBuildInfo()) >= 100200 --- XXX delete when 10.2 is live everywhere
 --------------------------------------------------------------------------------
 -- Module Declaration
 --
@@ -15,10 +14,23 @@ mod:SetStage(1)
 --
 
 local highTideCount = 1
+local focusedTempestCount = 1
 local nextShockBlast = 0
 local shockBlastCD = 0
 local nextGeysers = 0
 local geysersCD = 0
+local nextFocusedTempest = 0
+local focusedTempestCD = 0
+
+--------------------------------------------------------------------------------
+-- Localization
+--
+
+local L = mod:GetLocale()
+if L then
+	L.high_tide_trigger1 = "Take arms, minions! Rise from the icy depths!"
+	L.high_tide_trigger2 = "Destroy these intruders! Leave them for the great dark beyond!"
+end
 
 --------------------------------------------------------------------------------
 -- Initialization
@@ -30,7 +42,7 @@ function mod:GetOptions()
 		75683, -- High Tide
 		{428054, "SAY"}, -- Shock Blast
 		427771, -- Geysers
-		{428374, "ME_ONLY_EMPHASIZE"}, -- Focused Tempest
+		428374, -- Focused Tempest
 		{428263, "OFF"}, -- Water Bolt
 		-- Naz'jar Honor Guard
 		428293, -- Trident Flurry
@@ -42,14 +54,13 @@ end
 
 function mod:OnBossEnable()
 	-- Lady Naz'jar
-	-- XXX convert to self:Classic() when 10.2 is live everywhere
-	if isTenDotTwo then
+	if self:Retail() then
+		self:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 		self:Log("SPELL_CAST_START", "HighTideStarting", 75683)
 	end
 	self:Log("SPELL_AURA_APPLIED", "HighTide", 75683)
 	self:Log("SPELL_AURA_REMOVED", "HighTideOver", 75683)
-	-- XXX convert to self:Classic() when 10.2 is live everywhere
-	if isTenDotTwo then
+	if self:Retail() then
 		self:Log("SPELL_AURA_APPLIED", "ShockBlast", 429263)
 		self:Log("SPELL_CAST_START", "Geysers", 427771)
 		self:Log("SPELL_CAST_START", "FocusedTempest", 428374)
@@ -62,27 +73,35 @@ function mod:OnBossEnable()
 end
 
 function mod:OnEngage()
-	highTideCount = 1
+	local t = GetTime()
 	self:SetStage(1)
-	-- XXX remove these timers from the if block when 10.2 is live everywhere
-	if isTenDotTwo then
-		local t = GetTime()
-		shockBlastCD = 18.0
-		nextShockBlast = t + shockBlastCD
-		geysersCD = 16.1
-		nextGeysers = t + geysersCD
-		self:CDBar(428374, 7.0) -- Focused Tempest
-		self:CDBar(427771, geysersCD) -- Geysers
-		self:CDBar(428054, shockBlastCD) -- Shock Blast
-	end
+	highTideCount = 1
+	focusedTempestCount = 1
+	focusedTempestCD = 7.0
+	nextFocusedTempest = t + focusedTempestCD
+	shockBlastCD = 18.0
+	nextShockBlast = t + shockBlastCD
+	geysersCD = 16.1
+	nextGeysers = t + geysersCD
+	self:CDBar(428374, focusedTempestCD, CL.count:format(self:SpellName(428374), focusedTempestCount)) -- Focused Tempest
+	self:CDBar(427771, geysersCD) -- Geysers
+	self:CDBar(428054, shockBlastCD) -- Shock Blast
 end
 
--- XXX convert to mod:Classic() when 10.2 is live everywhere
-if not isTenDotTwo then
+--------------------------------------------------------------------------------
+-- Classic Initialization
+--
+
+if mod:Classic() then
 	function mod:GetOptions()
 		return {
 			75683, -- Waterspout
 		}
+	end
+
+	function mod:OnEngage()
+		self:SetStage(1)
+		highTideCount = 1
 	end
 end
 
@@ -92,8 +111,15 @@ end
 
 -- Lady Naz'jar
 
-function mod:HighTideStarting(args)
-	self:StopBar(428374) -- Focused Tempest
+function mod:CHAT_MSG_MONSTER_YELL(_, msg)
+	if msg == L.high_tide_trigger1 or msg == L.high_tide_trigger2 then
+		-- we can clean up the bars a bit early based on the yells
+		self:HighTideStarting()
+	end
+end
+
+function mod:HighTideStarting()
+	self:StopBar(CL.count:format(self:SpellName(428374), focusedTempestCount)) -- Focused Tempest
 	self:StopBar(427771) -- Geysers
 	self:StopBar(428054) -- Shock Blast
 end
@@ -110,65 +136,99 @@ function mod:HighTideOver(args)
 	self:SetStage(1)
 	self:Message(args.spellId, "cyan", CL.over:format(args.spellName))
 	self:PlaySound(args.spellId, "info")
-	-- XXX convert to self:Classic() when 10.2 is live everywhere
-	if isTenDotTwo then
+	if self:Retail() then
 		local t = GetTime()
+		focusedTempestCD = 2.4
+		nextFocusedTempest = t + focusedTempestCD
 		shockBlastCD = 24.3
 		nextShockBlast = t + shockBlastCD
 		geysersCD = 28.0
 		nextGeysers = t + geysersCD
-		self:CDBar(428374, 2.4) -- Focused Tempest
+		self:CDBar(428374, focusedTempestCD, CL.count:format(self:SpellName(428374), focusedTempestCount)) -- Focused Tempest
 		self:CDBar(428054, shockBlastCD) -- Shock Blast
 		self:CDBar(427771, geysersCD) -- Geysers
 	end
 end
 
-function mod:ShockBlast(args)
-	self:TargetMessage(428054, "red", args.destName)
-	self:PlaySound(428054, "alarm", nil, args.destName)
-	if self:Me(args.destGUID) then
-		self:Say(428054)
+do
+	local function printTarget(self, name, guid)
+		self:TargetMessage(428054, "red", name)
+		self:PlaySound(428054, "alarm", nil, name)
+		if self:Me(guid) then
+			self:Say(428054, nil, nil, "Shock Blast")
+		end
 	end
-	local t = GetTime()
-	shockBlastCD = 21.8
-	nextShockBlast = t + shockBlastCD
-	self:CDBar(428054, shockBlastCD)
+
+	function mod:ShockBlast(args)
+		local t = GetTime()
+		-- this debuff is sometimes applied to the tank instead of the targeted player,
+		-- so we have to revert back to target scanning to get the real target. if this
+		-- is ever fixed we can just check who gets the debuff instead.
+		self:GetUnitTarget(printTarget, 0.1, args.sourceGUID)
+		shockBlastCD = 21.8
+		nextShockBlast = t + shockBlastCD
+		self:CDBar(428054, shockBlastCD)
+		-- 3.67s delay after this spell before anything else can be cast
+		if nextGeysers - t < 3.67 then
+			nextGeysers = t + 3.67
+			self:CDBar(427771, {3.67, geysersCD}) -- Geysers
+		end
+		if nextFocusedTempest - t < 3.67 then
+			nextFocusedTempest = t + 3.67
+			if focusedTempestCD < 3.67 then
+				focusedTempestCD = 3.67
+			end
+			self:CDBar(428374, {3.67, focusedTempestCD}, CL.count:format(self:SpellName(428374), focusedTempestCount)) -- Focused Tempest
+		end
+	end
 end
 
 function mod:Geysers(args)
+	local t = GetTime()
 	self:Message(args.spellId, "orange")
 	self:PlaySound(args.spellId, "alarm")
-	local t = GetTime()
 	geysersCD = 23.0
 	nextGeysers = t + geysersCD
 	self:CDBar(args.spellId, geysersCD)
+	-- 3.67s delay after this spell before anything else can be cast
+	if nextShockBlast - t < 3.67 then
+		nextShockBlast = t + 3.67
+		self:CDBar(428054, {3.67, shockBlastCD}) -- Shock Blast
+	end
+	if nextFocusedTempest - t < 3.67 then
+		nextFocusedTempest = t + 3.67
+		if focusedTempestCD < 3.67 then
+			focusedTempestCD = 3.67
+		end
+		self:CDBar(428374, {3.67, focusedTempestCD}, CL.count:format(self:SpellName(428374), focusedTempestCount)) -- Focused Tempest
+	end
 end
 
-do
-	local function printTarget(self, player, guid)
-		if self:Healer() or self:Me(guid) then
-			self:TargetMessage(428374, "yellow", player)
-			self:PlaySound(428374, "alert", nil, player)
-		end
+function mod:FocusedTempest(args)
+	local t = GetTime()
+	self:StopBar(CL.count:format(args.spellName, focusedTempestCount))
+	self:Message(args.spellId, "yellow", CL.count:format(args.spellName, focusedTempestCount))
+	self:PlaySound(args.spellId, "alert")
+	focusedTempestCount = focusedTempestCount + 1
+	focusedTempestCD = 17.0
+	nextFocusedTempest = t + focusedTempestCD
+	self:CDBar(args.spellId, focusedTempestCD, CL.count:format(args.spellName, focusedTempestCount))
+	-- 7.3s delay after this spell before anything else can be cast
+	if nextShockBlast - t < 7.3 then
+		nextShockBlast = t + 7.3
+		self:CDBar(428054, {7.3, shockBlastCD}) -- Shock Blast
 	end
-
-	function mod:FocusedTempest(args)
-		self:GetBossTarget(printTarget, 0.4, args.sourceGUID)
-		self:CDBar(args.spellId, 17.0)
-		-- 7.3s delay after this spell before anything else can be cast
-		local t = GetTime()
-		if nextShockBlast - t < 7.3 then
-			self:CDBar(428054, {7.3, shockBlastCD}) -- Shock Blast
-		end
-		if nextGeysers - t < 7.3 then
-			self:CDBar(427771, {7.3, geysersCD}) -- Geysers
-		end
+	if nextGeysers - t < 7.3 then
+		nextGeysers = t + 7.3
+		self:CDBar(427771, {7.3, geysersCD}) -- Geysers
 	end
 end
 
 function mod:WaterBolt(args)
 	self:Message(args.spellId, "red", CL.casting:format(args.spellName))
-	self:PlaySound(args.spellId, "alert")
+	if self:Interrupter() then
+		self:PlaySound(args.spellId, "alert")
+	end
 end
 
 -- Naz'jar Honor Guard

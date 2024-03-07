@@ -5,7 +5,7 @@ TomCats_Account = {
 	},
 	["hallowsend"] = {
 	},
-	["lastExpirationWarning"] = 1698335101,
+	["lastExpirationWarning"] = 1707074649,
 	["discoveriesResetCount"] = 0,
 	["noblegarden"] = {
 		["enabled"] = true,
@@ -21,12 +21,12 @@ TomCats_Account = {
 				["class"] = "WARRIOR",
 				["boxes"] = 0,
 				["charms"] = 0,
-				["tokens"] = 0,
-				["level"] = 1,
 				["name"] = "Takibank",
+				["timestamp"] = 1675661285,
+				["tokens"] = 0,
 				["faction"] = "Alliance",
 				["completedDungeon"] = true,
-				["timestamp"] = 1675661285,
+				["level"] = 1,
 				["canLootMount"] = false,
 				["realm"] = "ArgentDawn",
 			},
@@ -35,7 +35,7 @@ TomCats_Account = {
 		},
 	},
 	["discoveriesVersion"] = "2.3.24",
-	["lastVersionSeen"] = "2.4.98",
+	["lastVersionSeen"] = "2.5.09",
 	["preferences"] = {
 		["TomCats-HallowsEndMinimapButton"] = {
 			["hidden"] = false,
@@ -60,8 +60,11 @@ TomCats_Account = {
 		},
 		["AccessoryWindow"] = {
 			["primeGamingLoot"] = 3,
-			["elementalStorms"] = 3,
-			["treasureGoblin"] = 3,
+			["blizzardOther"] = 3,
+			["snoozed"] = {
+			},
+			["superbloom"] = 3,
+			["timeRifts"] = 3,
 			["WindowLocation"] = {
 				"TOPRIGHT", -- [1]
 				nil, -- [2]
@@ -70,10 +73,9 @@ TomCats_Account = {
 				-82.50017547607422, -- [5]
 			},
 			["display"] = 100,
+			["elementalStorms"] = 3,
+			["treasureGoblin"] = 3,
 			["twitchDrops"] = 3,
-			["timeRifts"] = 3,
-			["snoozed"] = {
-			},
 		},
 		["betaEnabled"] = false,
 		["TomCats-LunarFestivalMinimapButton2023"] = {

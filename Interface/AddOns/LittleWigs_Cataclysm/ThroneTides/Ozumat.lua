@@ -1,4 +1,3 @@
-local isTenDotTwo = select(4, GetBuildInfo()) >= 100200 --- XXX delete when 10.2 is live everywhere
 --------------------------------------------------------------------------------
 -- Module Declaration
 --
@@ -11,7 +10,7 @@ mod:RegisterEnableMob(
 	44566   -- Ozumat
 )
 mod:SetEncounterID(1047)
-mod:SetRespawnTime(41.5) -- 30s for Neptulon then 11.5s for Ink of Ozumat
+mod:SetRespawnTime(mod:Classic() and 26 or 41.5) -- 30s for Neptulon then 11.5s for Ink of Ozumat
 mod:SetStage(1)
 
 --------------------------------------------------------------------------------
@@ -21,14 +20,28 @@ mod:SetStage(1)
 local putridRoarCount = 1
 
 --------------------------------------------------------------------------------
+-- Localization
+--
+
+local L = mod:GetLocale()
+if L then
+	L.custom_on_autotalk = "Autotalk"
+	L.custom_on_autotalk_desc = "Instantly selects the gossip option to start the fight."
+	L.custom_on_autotalk_icon = "ui_chat"
+	L.warmup_icon = "achievement_dungeon_throne of the tides"
+end
+
+--------------------------------------------------------------------------------
 -- Initialization
 --
 
 function mod:GetOptions()
 	return {
+		"warmup",
 		"stages",
 		-- Ink of Ozumat
 		{428407, "SAY"}, -- Blotting Barrage
+		428404, -- Blotting Darkness
 		428868, -- Putrid Roar
 		428530, -- Murk Spew
 		{428889, "TANK"}, -- Foul Bolt
@@ -44,56 +57,62 @@ function mod:GetOptions()
 end
 
 function mod:OnBossEnable()
-	-- TODO intial RP? probably from trash module
-	-- "<0.77 01:31:41> [CHAT_MSG_MONSTER_SAY] The beast has returned! It must not pollute my waters!#Neptulon###Delko##0#0##0#146#nil#0#false#false#false#false", -- [2]
-	-- "<12.05 01:31:53> [NAME_PLATE_UNIT_ADDED] Ink of Ozumat#Creature-0-5770-643-4692-213770-00001F9BC6", -- [10]
+	-- Stages
+	self:Death("InkOfOzumatDeath", 213770)
 
-	if isTenDotTwo then
-		-- Stages
-		self:Death("InkOfOzumatDeath", 213770)
+	-- Ink of Ozumat
+	self:Log("SPELL_CAST_START", "BlottingBarrage", 428401)
+	self:Log("SPELL_AURA_APPLIED", "BlottingBarrageApplied", 428407)
+	self:Log("SPELL_AURA_REMOVED", "BlottingBarrageRemoved", 428407)
+	-- do not register AURA_APPLIED or PERIODIC_MISSED for Blotting Darkness, those events
+	-- are expected when you have Cleansing Flux.
+	self:Log("SPELL_PERIODIC_DAMAGE", "BlottingDarknessDamage", 428404)
+	self:Log("SPELL_CAST_START", "PutridRoar", 428868)
+	self:Log("SPELL_CAST_START", "MurkSpew", 428530)
+	self:Log("SPELL_CAST_START", "FoulBolt", 428889)
 
-		-- Ink of Ozumat
-		self:Log("SPELL_CAST_START", "BlottingBarrage", 428401)
-		self:Log("SPELL_AURA_APPLIED", "BlottingBarrageApplied", 428407)
-		self:Log("SPELL_CAST_START", "PutridRoar", 428868)
-		self:Log("SPELL_CAST_START", "MurkSpew", 428530)
-		self:Log("SPELL_CAST_START", "FoulBolt", 428889)
+	-- Neptulon
+	self:Log("SPELL_CAST_SUCCESS", "CleansingFlux", 428674)
+	self:Log("SPELL_AURA_APPLIED", "CleansingFluxApplied", 428668, 431368) -- first player, second player
 
-		-- Neptulon
-		self:Log("SPELL_CAST_SUCCESS", "CleansingFlux", 428674)
-		self:Log("SPELL_AURA_APPLIED", "CleansingFluxApplied", 428668)
-
-		-- Ozumat
-		self:Log("SPELL_CAST_SUCCESS", "DelugeOfFilth", 428594)
-	else
-		-- XXX delete these listeners when 10.2 is live everywhere
-		self:Log("SPELL_CAST_SUCCESS", "EntanglingGrasp", 83463) -- Entangling Grasp, 3 adds that need to be killed in P2 cast this on Neptulon
-		self:Log("SPELL_AURA_REMOVED", "EntanglingGraspRemoved", 83463)
-		self:Log("SPELL_CAST_SUCCESS", "TidalSurge", 76133) -- the buff Neptulon applies to players in P3
-	end
+	-- Ozumat
+	self:Log("SPELL_CAST_SUCCESS", "DelugeOfFilth", 428594)
 end
 
 function mod:OnEngage()
 	putridRoarCount = 1
+	self:StopBar(CL.active) -- Warmup
 	self:SetStage(1)
-	self:CDBar(428407, 5.1) -- Blotting Barrage
-	self:CDBar(428530, 10.7) -- Murk Spew
+	self:CDBar(428407, 5.7) -- Blotting Barrage
+	self:CDBar(428530, 10.6) -- Murk Spew
 	self:CDBar(428668, 15.0) -- Cleansing Flux
-	self:CDBar(428594, 20.8) -- Deluge of Filth
-	self:CDBar(428868, 25.3, CL.count:format(self:SpellName(428868), putridRoarCount)) -- Putrid Roar
+	self:CDBar(428868, 18.2, CL.count:format(self:SpellName(428868), putridRoarCount)) -- Putrid Roar
+	self:CDBar(428594, 20.6) -- Deluge of Filth
 end
 
--- TODO delete the block below when 10.2 is live everywhere
-if not isTenDotTwo then
+--------------------------------------------------------------------------------
+-- Classic Initialization
+--
+
+if mod:Classic() then
 	function mod:GetOptions()
 		return {
+			"custom_on_autotalk",
 			"stages",
 		}
 	end
+
+	function mod:OnBossEnable()
+		self:RegisterEvent("GOSSIP_SHOW")
+		self:Log("SPELL_CAST_SUCCESS", "EntanglingGrasp", 83463) -- Entangling Grasp, 3 adds that need to be killed in P2 cast this on Neptulon
+		self:Log("SPELL_AURA_REMOVED", "EntanglingGraspRemoved", 83463)
+		self:Log("SPELL_CAST_SUCCESS", "TidalSurge", 76133) -- the buff Neptulon applies to players in P3
+	end
+
 	function mod:OnEngage()
 		self:SetStage(1)
 		-- this stage lasts 1:40 on both difficulties, EJ's entry is incorrect
-		self:Bar("stages", 100, CL.stage:format(1), "Achievement_Dungeon_Throne of the Tides") -- Yes, " " is the correct delimiter.
+		self:Bar("stages", 100, CL.stage:format(1), L.warmup_icon)
 		self:DelayedMessage("stages", 90, "cyan", CL.soon:format(CL.stage:format(2)))
 	end
 end
@@ -101,6 +120,15 @@ end
 --------------------------------------------------------------------------------
 -- Event Handlers
 --
+
+-- Warmup
+
+function mod:Warmup()
+	-- triggered from trash module on CHAT_MSG_MONSTER_SAY
+	-- 0.77 [CHAT_MSG_MONSTER_SAY] The beast has returned! It must not pollute my waters!#Neptulon
+	-- 12.05 [NAME_PLATE_UNIT_ADDED] Ink of Ozumat
+	self:Bar("warmup", 11.3, CL.active, L.warmup_icon)
+end
 
 -- Stages
 
@@ -111,7 +139,7 @@ function mod:InkOfOzumatDeath(args)
 	self:StopBar(428668) -- Cleansing Flux
 	self:StopBar(428594) -- Deluge of Filth
 	self:SetStage(2)
-	self:Message("stages", "cyan", -2219, 76133) -- Stage 2: Tidal Surge, Tidal Surge
+	self:Message("stages", "cyan", -2219, 76133) -- Stage Two: Tidal Surge, Tidal Surge
 	self:PlaySound("stages", "long")
 end
 
@@ -122,7 +150,7 @@ do
 
 	function mod:BlottingBarrage(args)
 		playerList = {}
-		self:CDBar(428407, 30.3)
+		self:CDBar(428407, 35.2)
 	end
 
 	function mod:BlottingBarrageApplied(args)
@@ -130,7 +158,29 @@ do
 		self:TargetsMessage(args.spellId, "red", playerList, 3)
 		self:PlaySound(args.spellId, "alarm", nil, playerList)
 		if self:Me(args.destGUID) then
-			self:Say(args.spellId)
+			self:Say(args.spellId, nil, nil, "Blotting Barrage")
+		end
+	end
+end
+
+do
+	local prev = 0
+
+	function mod:BlottingBarrageRemoved(args)
+		if self:Me(args.destGUID) then
+			-- Blotting Darkness spawns under each player that Blotting Barrage is removed from.
+			-- give some time to run out of Blotting Darkness by resetting prev here.
+			prev = args.time
+		end
+	end
+
+	function mod:BlottingDarknessDamage(args)
+		local t = args.time
+		-- suppress alerts for the tank, who is not allowed to leave melee range
+		if not self:Tank() and self:Me(args.destGUID) and t - prev > 2.1 then
+			prev = t
+			self:PersonalMessage(args.spellId, "underyou")
+			self:PlaySound(args.spellId, "underyou", nil, args.destName)
 		end
 	end
 end
@@ -140,13 +190,13 @@ function mod:PutridRoar(args)
 	self:Message(args.spellId, "yellow", CL.count:format(args.spellName, putridRoarCount))
 	self:PlaySound(args.spellId, "alert")
 	putridRoarCount = putridRoarCount + 1
-	self:CDBar(args.spellId, 30.3, CL.count:format(args.spellName, putridRoarCount))
+	self:CDBar(args.spellId, 35.2, CL.count:format(args.spellName, putridRoarCount))
 end
 
 function mod:MurkSpew(args)
 	self:Message(args.spellId, "purple")
 	self:PlaySound(args.spellId, "alarm")
-	self:CDBar(args.spellId, 32.7)
+	self:CDBar(args.spellId, 37.6)
 end
 
 function mod:FoulBolt(args)
@@ -162,13 +212,13 @@ do
 
 	function mod:CleansingFlux(args)
 		playerList = {}
-		self:CDBar(428668, 30.3)
+		self:CDBar(428668, 35.2)
 	end
 
 	function mod:CleansingFluxApplied(args)
 		playerList[#playerList + 1] = args.destName
-		self:TargetsMessage(args.spellId, "green", playerList, 2)
-		self:PlaySound(args.spellId, "info", nil, playerList)
+		self:PlaySound(428668, "info", nil, playerList)
+		self:TargetsMessage(428668, "green", playerList, 2)
 	end
 end
 
@@ -177,29 +227,34 @@ end
 function mod:DelugeOfFilth(args)
 	self:Message(args.spellId, "orange")
 	self:PlaySound(args.spellId, "alarm")
-	self:CDBar(args.spellId, 30.3)
+	self:CDBar(args.spellId, 35.2)
 end
 
--- TODO delete the block below when 10.2 is live everywhere
-if not isTenDotTwo then
-	function mod:TidalSurge()
-		self:SetStage(3)
-		self:MessageOld("stages", "cyan", "long", CL.stage:format(3), false)
+--------------------------------------------------------------------------------
+-- Classic Event Handlers
+--
+
+function mod:TidalSurge()
+	self:SetStage(3)
+	self:Message("stages", "cyan", CL.stage:format(3), false)
+	self:PlaySound("stages", "long")
+end
+
+do
+	local prev, addsAlive = 0, 0
+	function mod:EntanglingGrasp(args)
+		addsAlive = addsAlive + 1
+		local t = args.time
+		if t - prev > 10 then
+			prev = t
+			self:SetStage(2)
+			self:Message("stages", "cyan", CL.stage:format(2), false)
+			self:PlaySound("stages", "long")
+		end
 	end
-	do
-		local prev, addsAlive = 0, 0
-		function mod:EntanglingGrasp()
-			addsAlive = addsAlive + 1
-			local t = GetTime()
-			if t-prev > 10 then
-				prev = t
-				self:SetStage(2)
-				self:MessageOld("stages", "cyan", "long", CL.stage:format(2), false)
-			end
-		end
-		function mod:EntanglingGraspRemoved()
-			addsAlive = addsAlive - 1
-			self:MessageOld("stages", "cyan", nil, CL.add_remaining:format(addsAlive), false)
-		end
+
+	function mod:EntanglingGraspRemoved()
+		addsAlive = addsAlive - 1
+		self:Message("stages", "cyan", CL.add_remaining:format(addsAlive), false)
 	end
 end

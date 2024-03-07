@@ -28,9 +28,9 @@ local UnitIsUnit = _G.UnitIsUnit
 local UnitGUID = _G.UnitGUID
 local GetSpellInfo = _G.GetSpellInfo
 local floor = _G.floor
-local UnitAuraSlots = _G.UnitAuraSlots
-local UnitAuraBySlot = _G.UnitAuraBySlot
-local UnitAura = _G.UnitAura
+local UnitAuraSlots = _G.UnitAuraSlots or (C_UnitAuras and C_UnitAuras.GetAuraSlots)
+local UnitAuraBySlot = _G.UnitAuraBySlot or (C_UnitAuras and (function(...) local auraData = C_UnitAuras.GetAuraDataBySlot(...); if not auraData then return nil; end; return AuraUtil.UnpackAuraData(auraData); end))
+local UnitAura = _G.UnitAura or (C_UnitAuras and (function(...) local auraData = C_UnitAuras.GetAuraDataByIndex(unitToken, index, filter); if not auraData then return nil; end; return AuraUtil.UnpackAuraData(auraData); end))
 local GetAuraDataBySlot = _G.C_UnitAuras and _G.C_UnitAuras.GetAuraDataBySlot
 local BackdropTemplateMixin = _G.BackdropTemplateMixin
 local BUFF_MAX_DISPLAY = _G.BUFF_MAX_DISPLAY
@@ -321,6 +321,9 @@ local function CreatePlaterNamePlateAuraTooltip()
 		local nineSlice = self.NineSlice or self
 		nineSlice:ApplyBackdrop(...)
 	end
+	
+	--This is a fallback to save tooltips in classic... can't have nice things.
+	IS_NEW_UNIT_AURA_AVAILABLE = tooltip.SetUnitBuffByAuraInstanceID and true or false
 	
 	return tooltip
 end
@@ -697,7 +700,7 @@ local function getUnitAuras(unit, filter)
 	repeat -- until continuationToken == nil
 		local numSlots = 0
 		local slots
-		if IS_WOW_PROJECT_MAINLINE then
+		if IS_NEW_UNIT_AURA_AVAILABLE then
 			slots = { UnitAuraSlots(unit, filter, BUFF_MAX_DISPLAY, continuationToken) }
 			continuationToken = slots[1]
 			numSlots = #slots
@@ -714,7 +717,7 @@ local function getUnitAuras(unit, filter)
 				end
 			else
 				local name, icon, applications, dispelName, duration, expirationTime, sourceUnit, isStealable, nameplateShowPersonal, spellId, canApplyAura, isBossAura, isFromPlayerOrPlayerPet, nameplateShowAll, timeMod, applications
-				if IS_WOW_PROJECT_MAINLINE then
+				if IS_NEW_UNIT_AURA_AVAILABLE then
 					local slot = slots[i]
 					name, icon, applications, dispelName, duration, expirationTime, sourceUnit, isStealable, nameplateShowPersonal, spellId, canApplyAura, isBossAura, isFromPlayerOrPlayerPet, nameplateShowAll, timeMod, applications = UnitAuraBySlot(unit, slot)
 				else
@@ -879,7 +882,6 @@ end
 		for index, iconFramesTable in pairs (aurasDuplicated) do
 			--how many auras with the same name the unit has
 			local amountOfSimilarAuras = #iconFramesTable
-			local totalStacks = iconFramesTable [1][1].Stacks > 0 and iconFramesTable [1][1].Stacks or 1
 			
 			if (amountOfSimilarAuras > 1) then
 				--sort order: the aura with the least time left is shown by default
@@ -889,12 +891,19 @@ end
 					table.sort (iconFramesTable, DF.SortOrder2)
 				end
 				
+				local totalStacks = 0
+				
 				--hide all auras except for the first occurrence of this aura
-				for i = 2, amountOfSimilarAuras do
+				for i = 1, amountOfSimilarAuras do
 					local iconFrame = iconFramesTable [i][1]
-					iconFrame.ShowAnimation:Stop()
-					iconFrame:Hide()
-					iconFrame.InUse = false
+					if i == 1 then --ensure the sorted icon is always shown
+						iconFrame:Show()
+						iconFrame.InUse = true
+					else --hide other icons
+						iconFrame.ShowAnimation:Stop()
+						iconFrame:Hide()
+						iconFrame.InUse = false
+					end
 					
 					totalStacks = totalStacks + (iconFrame.Stacks > 0 and iconFrame.Stacks or 1)
 					
@@ -933,7 +942,7 @@ end
 							auraIconFrame.InUse = true --don't play animation
 							Plater.AddAura(buffFrame, auraIconFrame, -1, spellName.."_player_ghost", spellIcon, 1, "DEBUFF", 0, 0, "player", false, false, -spellId, false, false, false, false, "DEBUFF", 1)
 							auraIconFrame:EnableMouse (false) --don't use tooltips, as there is no real aura
-							if IS_WOW_PROJECT_MAINLINE then
+							if auraIconFrame.EnableMouseMotion then
 								auraIconFrame:EnableMouseMotion (false) --don't use tooltips, as there is no real aura
 							end
 							auraIconFrame.IsGhostAura = true
@@ -1258,7 +1267,7 @@ end
 		newIcon.Cooldown:SetPoint ("center", 0, -1)
 		newIcon.Cooldown:SetAllPoints()
 		newIcon.Cooldown:EnableMouse (false)
-		if IS_WOW_PROJECT_MAINLINE then
+		if newIcon.Cooldown.EnableMouseMotion then
 			newIcon.Cooldown:EnableMouseMotion (false)
 		end
 		newIcon.Cooldown:SetHideCountdownNumbers (true)
@@ -1288,7 +1297,7 @@ end
 		newIcon.CountFrame = CreateFrame ("frame", "$parentCountFrame", newIcon, BackdropTemplateMixin and "BackdropTemplate")
 		newIcon.CountFrame:SetAllPoints()
 		newIcon.CountFrame:EnableMouse (false)
-		if IS_WOW_PROJECT_MAINLINE then
+		if newIcon.CountFrame.EnableMouseMotion then
 			newIcon.CountFrame:EnableMouseMotion (false)
 		end
 		newIcon.CountFrame.Count = newIcon.CountFrame:CreateFontString (nil, "artwork", "NumberFontNormalSmall")
@@ -1375,7 +1384,7 @@ end
 			curBuffFrame = 2
 		end
 		
-		local i = self.NextAuraIcon
+		local i = self.NextAuraIcon or 1
 		
 		if (not self.PlaterBuffList[i]) then
 			local newFrameIcon = platerInternal.CreateAuraIcon (self, self.unitFrame:GetName() .. "Plater" .. self.Name .. "AuraIcon" .. i)
@@ -1586,8 +1595,8 @@ end
 		end
 		
 		--ensure proper state:
-		--auraIconFrame:EnableMouse (profile.aura_show_tooltip)
-		if IS_WOW_PROJECT_MAINLINE then
+		if auraIconFrame.EnableMouseMotion then
+			auraIconFrame:EnableMouse (false)
 			auraIconFrame:EnableMouseMotion (profile.aura_show_tooltip)
 		else
 			auraIconFrame:EnableMouse (profile.aura_show_tooltip)
@@ -1880,8 +1889,7 @@ end
 			iconFrame.filter = filter
 			iconFrame:SetScript ("OnEnter", Plater.OnEnterAura)
 			iconFrame:SetScript ("OnLeave", Plater.OnLeaveAura)
-			--iconFrame:EnableMouse (profile.aura_show_tooltip)
-			if IS_WOW_PROJECT_MAINLINE then
+			if iconFrame.EnableMouseMotion then
 				iconFrame:EnableMouse (false)
 				iconFrame:EnableMouseMotion (profile.aura_show_tooltip)
 			else
@@ -1891,7 +1899,7 @@ end
 			iconFrame:SetScript ("OnEnter", nil)
 			iconFrame:SetScript ("OnLeave", nil)
 			iconFrame:EnableMouse (false)
-			if IS_WOW_PROJECT_MAINLINE then
+			if iconFrame.EnableMouseMotion then
 				iconFrame:EnableMouseMotion (false)
 			end
 		end

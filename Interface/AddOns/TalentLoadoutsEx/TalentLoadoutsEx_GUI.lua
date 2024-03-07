@@ -8,26 +8,26 @@ TalentLoadoutsExGUI = TalentLoadoutsExGUI or {};
 TLX.Icons = {
 	-- M+
 	{
-		{4578412, "Brackenhide Hollow", "BH"},
-		{4578415, "Halls of Infusion", "HoI"},
-		{4578417, "Neltharus", "NELT"},
-		{4578418, "Uldaman: Legacy of Tyr", "ULD"},
-		{2011112, "Freehold", "FH"},
-		{2011151, "The Underrot", "UNDR"},
-		{1417429, "Neltharion's Lair", "NL"},
-		{409599, "Vortex Pinnacle", "VP"},
+		{2011105, "Atal'dazar", "AD"},
+		{1417423, "Black Rook Hold", "BRH"},
+		{1417425, "Darkheart Thicket", "DHT"},
+		{1052644, "Everbloom", "EB"},
+		{5247561, "DOTI: Galakrond's Fall", "FALL"},
+		{5247561, "DOTI: Murozond's Rise", "RISE"},
+		{409600,  "Throne of the Tides", "TOTT"},
+		{2011154, "Waycrest Manor", "WM"},
 	},
 	-- Raid
 	{
-		{5161745, "Kazzara, the Hellforged"},
-		{5161743, "The Amalgamation Chamber"},
-		{5161744, "The Forgotten Experiments"},
-		{5161751, "Assault of the Zaqali"},
-		{5161749, "Rashok, the Elder"},
-		{5161752, "The Vigilant Steward, Zskarn"},
-		{5161746, "Magmorax"},
-		{5161747, "Echo of Neltharion"},
-		{5161750, "Scalecommander Sarkareth"},
+		{5342924, "Gnarlroot"},
+		{5342926, "Igira the Cruel"},
+		{5342928, "Volcoross"},
+		{5342919, "Council of Dreams"},
+		{5342927, "Larodar, Keeper of the Flame"},
+		{5342920, "Nymue, Weaver of the Cycle"},
+		{5342930, "Smolderon"},
+		{5342923, "Tindral Sageswift, Seer of the Flame"},
+		{5342925, "Fyrakk the Blazing"},
 	},
 };
 
@@ -392,8 +392,10 @@ end
 
 function TlxPopupMixin:OnHide()
 	IconSelectorPopupFrameTemplateMixin.OnHide(self);
-	self.iconDataProvider:Release();
-	self.iconDataProvider = nil;
+	if self.iconDataProvider then
+		self.iconDataProvider:Release();
+		self.iconDataProvider = nil;
+	end
 end
 
 function TlxPopupMixin:Update()
@@ -509,6 +511,17 @@ local SetAddOn_LMIS = function()
 		fileData[5161746] = "inv_achievement_raiddragon_magmorax";
 		fileData[5161747] = "inv_achievement_raiddragon_neltharion";
 		fileData[5161750] = "inv_achievement_raiddragon_sarkareth";
+		fileData[5247561] = "achievement_dungeon_dawnoftheinfinite";
+		fileData[5342924] = "inv_achievement_raidemeralddream_fieryancient";
+		fileData[5342926] = "inv_achievement_raidemeralddream_igira-the-cruel";
+		fileData[5342928] = "inv_achievement_raidemeralddream_lavaserpent";
+		fileData[5342919] = "inv_achievement_raidemeralddream_dreamcouncil";
+		fileData[5342927] = "inv_achievement_raidemeralddream_keeperoftheflames";
+		fileData[5342920] = "inv_achievement_raidemeralddream_dreamweaver";
+		fileData[5342930] = "inv_achievement_raidemeralddream_smolderon";
+		fileData[5342923] = "inv_achievement_raidemeralddream_druidoftheflame";
+		fileData[5342925] = "inv_achievement_raidemeralddream_fyrakk";
+
 		LargerMacroIconSelectionData.GetFileDataRetail = function(self)
 			return fileData;
 		end

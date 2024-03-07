@@ -10,10 +10,12 @@ end
 local MAPID_EMRALD_DREAM = 2200;
 local OPTION_FRAME_WIDTH = 196;
 local OPTION_FRAME_GAP = 48;
-local UI_OFFSET_Y = 0;
+local UI_OFFSET_X = 0;      --Set by user via RepositionButton
+local UI_OFFSET_Y = 0;      --Controlled by Camera Zoom
 local PATTERN_RESOURCE_DISPLAY = "%s |T%s:16:16:0:0:64:64:4:60:4:60|t";
 
 local API = addon.API;
+local L = addon.L;
 local GetCreatureIDFromGUID = API.GetCreatureIDFromGUID;
 local DreamseedUtil = API.DreamseedUtil;
 local GetWaypointFromText = API.GetWaypointFromText;
@@ -48,7 +50,7 @@ do
 end
 
 
-local function HideBlizzardFrame()
+local function HideBlizzardFrame_Default()
     local f = PlayerChoiceFrame;
     if f then
         f:ClearAllPoints();
@@ -56,6 +58,38 @@ local function HideBlizzardFrame()
         f:SetPoint("TOP", UIParent, "BOTTOM", 0, -64);
     end
 end
+
+local function HideBlizzardFrame_MoveAny()
+    --Fixed an compatibility issue where after "MoveAny" users adjust the PlayerChoiceFrame
+    --the frame will be clamped to screen and constantly restore its previous position
+    --Mechanism: MoveAny hooks frame's SetPoint method
+    --see MoveAny\moveframes.lua
+
+    local f = PlayerChoiceFrame;
+    if f then
+        f:ClearAllPoints();
+        f:SetClampedToScreen(false);
+        f.maframesetpoint = true;
+        f:SetPoint("TOP", UIParent, "BOTTOM", 0, -64);
+        f.maframesetpoint = false;
+    end
+end
+
+local function HideBlizzardFrame_Drift()
+    --Similar to MoveAny, they hook the SetPoint method
+    --see Drift\DriftHelpers.lua
+
+    local f = PlayerChoiceFrame;
+    if f then
+        f:ClearAllPoints();
+        f:SetClampedToScreen(false);
+        f.DriftAboutToSetPoint = true;
+        f:SetPoint("TOP", UIParent, "BOTTOM", 0, -64);
+        f.DriftAboutToSetPoint = false;
+    end
+end
+
+local HideBlizzardFrame = HideBlizzardFrame_Default;
 
 local function OnUpdate_OnShot(self)
     self:SetScript("OnUpdate", nil);
@@ -71,11 +105,12 @@ end
 
 local PlayerChoiceUI = CreateFrame("Frame", nil, UIParent);
 PlayerChoiceUI:SetSize(64, 64);
-PlayerChoiceUI:SetPoint("CENTER", UIParent, "CENTER", 0, UI_OFFSET_Y);
+PlayerChoiceUI:SetPoint("CENTER", UIParent, "CENTER", UI_OFFSET_X, UI_OFFSET_Y);
 PlayerChoiceUI:Hide();
 PlayerChoiceUI:SetFrameStrata("DIALOG");
 PlayerChoiceUI:SetFixedFrameStrata(true);
 PlayerChoiceUI:SetFrameLevel(50);
+PlayerChoiceUI:SetClampedToScreen(true);
 PlayerChoiceUI.LongClickWatcher = CreateFrame("Frame", nil, PlayerChoiceUI);
 
 
@@ -104,6 +139,10 @@ function OptionFrameMixin:SetupItem(itemID, showAsEarned)
 
         if showAsEarned then
             self.RewardFrame.Checkmark:Show();
+            if PlayerChoiceUI.requireRewardCheck then
+                PlayerChoiceUI.requireRewardCheck = false;
+                DreamseedUtil:MarkNearestPlantContributed();
+            end
         else
             self.RewardFrame.Checkmark:Hide();
         end
@@ -553,9 +592,12 @@ function PlayerChoiceUI:Init()
     CloseButton:SetScript("OnEnter", CloseButton_OnEnter);
     CloseButton:SetScript("OnLeave", CloseButton_OnLeave);
     CloseButton:SetScript("OnClick", CloseButton_OnClick);
+
+    local rb = addon.CreateRepositionButton(self);
+    self.RepositionButton = rb;
+    rb:SetOrientation("x");
+    rb:SetPoint("TOP", CloseButton, "BOTTOM", 0, -40);
 end
-
-
 
 
 local AnnounceButtonData = {};
@@ -609,11 +651,11 @@ function AnnounceButtonData.GenerateMessage()
     local colorText;
 
     if tint == 6 then   --purple
-        colorText = ICON_TAG_RAID_TARGET_DIAMOND3 or "Purple";
+        colorText = L["Seed Color Epic"];
     elseif tint == 7 then   --green
-        colorText = ICON_TAG_RAID_TARGET_TRIANGLE3 or "Green";
+        colorText = L["Seed Color Uncommon"];
     elseif tint == 8 then   --blue
-        colorText = ICON_TAG_RAID_TARGET_SQUARE3 or "Blue";
+        colorText = L["Seed Color Rare"];
     end
 
     if colorText then
@@ -657,7 +699,6 @@ function PlayerChoiceUI:SetupAnnounceButton()
 end
 
 local INTRO_DURATION = 0.35;
---local UI_FROM_OFFSET = UI_OFFSET_Y - 20;
 
 local function Intro_OnUpdate(self, elapsed)
     self.t = self.t + elapsed;
@@ -665,16 +706,15 @@ local function Intro_OnUpdate(self, elapsed)
     if alpha > 1 then
         alpha = 1;
     end
-    --local y = easingFunc(self.t, UI_FROM_OFFSET, UI_OFFSET_Y, INTRO_DURATION);
+
     local height = easingFunc(self.t, self.fullHeight - 48, self.fullHeight, INTRO_DURATION);
 
     if self.t > INTRO_DURATION then
-        --y = UI_OFFSET_Y;
         alpha = 1;
         height = self.fullHeight;
         self:SetScript("OnUpdate", nil);
     end
-    --PlayerChoiceUI:SetPoint("CENTER", 0, y);
+
     PlayerChoiceUI:SetAlpha(alpha);
     PlayerChoiceUI:SetHeight(height);
 end
@@ -705,7 +745,7 @@ function PlayerChoiceUI:ShowUI()
         self:RegisterEvent("PLAYER_DEAD");
         self:RegisterEvent("PLAYER_ENTERING_WORLD");
         self.consumeNextClick = false;
-
+        self.requireRewardCheck = true;
         self:SetupAnnounceButton();
     end
 
@@ -902,12 +942,32 @@ function PlayerChoiceUI:Disable()
 end
 
 
+local function SetAndSaveFramePosition(offsetX)
+    UI_OFFSET_X = offsetX;
+    PlumberDB.playerchoiceuiOffsetX = offsetX;
+    local y = ZoomCalculator.fromY or 0;
+    PlayerChoiceUI:SetPoint("CENTER", UI_OFFSET_X, y);
+end
+
+
+local function LoadFramePosition()
+    local userPositionX = PlumberDB and PlumberDB.playerchoiceuiOffsetX;
+    if userPositionX then
+        if type(userPositionX) ~= "number" then
+            userPositionX = 0;
+            PlumberDB.playerchoiceuiOffsetX = userPositionX;
+        end
+        SetAndSaveFramePosition(userPositionX);
+    end
+end
+
+
 local ZoneTriggerModule;
 
 local function EnableModule(state)
     if state then
         if not ZoneTriggerModule then
-            local module = API.CreateZoneTriggeredModule();
+            local module = API.CreateZoneTriggeredModule("nurture");
             ZoneTriggerModule = module;
             module:SetValidZones(MAPID_EMRALD_DREAM);
 
@@ -921,9 +981,21 @@ local function EnableModule(state)
 
             module:SetEnterZoneCallback(OnEnterZoneCallback);
             module:SetLeaveZoneCallback(OnLeaveZoneCallback);
+
+            LoadFramePosition();
         end
         ZoneTriggerModule:SetEnabled(true);
         ZoneTriggerModule:Update();
+
+        if C_AddOns then
+            if C_AddOns.IsAddOnLoaded("MoveAny") then
+                HideBlizzardFrame = HideBlizzardFrame_MoveAny;
+            elseif C_AddOns.IsAddOnLoaded("Drift") then
+                HideBlizzardFrame = HideBlizzardFrame_Drift;
+            end
+            --BlizzMove does not support PlayerChoiceFrame
+            --MoveAnything cannot move anything after 10.0
+        end
     else
         if ZoneTriggerModule then
             ZoneTriggerModule:SetEnabled(false);
@@ -934,10 +1006,12 @@ end
 
 do
     local moduleData = {
-        name = addon.L["ModuleName AlternativePlayerChoiceUI"],
+        name = L["ModuleName AlternativePlayerChoiceUI"],
         dbKey = "AlternativePlayerChoiceUI",
-        description = addon.L["ModuleDescription AlternativePlayerChoiceUI"],
+        description = L["ModuleDescription AlternativePlayerChoiceUI"],
         toggleFunc = EnableModule,
+        categoryID = 10020001,
+        uiOrder = 3,
     };
 
     addon.ControlCenter:AddModule(moduleData);
@@ -994,7 +1068,7 @@ function ZoomCalculator:Sync()
         self.zoom = zoom;
         local toY = CalculateOffsetYFromZoom(zoom);
         self.fromY = toY;
-        PlayerChoiceUI:SetPoint("CENTER", 0, toY);
+        PlayerChoiceUI:SetPoint("CENTER", UI_OFFSET_X, toY);
     end
 end
 
@@ -1028,8 +1102,40 @@ FrameMover:SetScript("OnUpdate", function(self, elapsed)
         self:Hide();
     end
     ZoomCalculator.fromY = y;
-    PlayerChoiceUI:SetPoint("CENTER", 0, y);
+    PlayerChoiceUI:SetPoint("CENTER", UI_OFFSET_X, y);
 end);
+
+
+
+
+local function CalculateOffsetXToUIParentCenter()
+    local uiCenterX, uiCenterY = UIParent:GetCenter();
+    local x, y = PlayerChoiceUI:GetCenter();
+    return x - uiCenterX, y - uiCenterY
+end
+
+function PlayerChoiceUI:ResetFramePosition()
+    SetAndSaveFramePosition(0);
+end
+
+function PlayerChoiceUI:SnapShotFramePosition()
+    self.repositionFromX, self.repositionFromY = CalculateOffsetXToUIParentCenter();
+end
+
+function PlayerChoiceUI:ConfirmNewPosition()
+    local x = CalculateOffsetXToUIParentCenter();
+    SetAndSaveFramePosition(x);
+    self.repositionFromX, self.repositionFromY = nil, nil;
+end
+
+function PlayerChoiceUI:RepositionFrame(offsetX, offsetY)
+    if not self.repositionFromX then
+        self:SnapShotFramePosition();
+    end
+    self:SetPoint("CENTER", self.repositionFromX + (offsetX or 0), self.repositionFromY + (offsetY or 0));
+end
+
+
 
 
 do
@@ -1069,8 +1175,8 @@ AjustButton:SetScript("OnMouseUp", function(self)
     self:SetScript("OnUpdate", nil);
 end);
 
-
 function TestAnim()
     PlayerChoiceUI:ShowUI();
+    PlayerChoiceUI:Show();
 end
 -]]

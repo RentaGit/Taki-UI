@@ -20,14 +20,22 @@ function Module:OnEnable()
                 self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
                 self.healthbar.AnimatedLossBar:SetStatusBarTexture(db.texture)
                 self.healthbar.AnimatedLossBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-                self.myHealPredictionBar:SetTexture(db.texture)
-                self.otherHealPredictionBar:SetTexture(db.texture)
-                self.myManaCostPredictionBar:SetTexture(db.texture)
             end
         end
 
         PlayerFrame:HookScript("OnEvent", function(self, event)
             healthTexture(self, event)
+
+            if not db.unitframes.cornericon then
+                PlayerFrame.PlayerFrameContent.PlayerFrameContentContextual.PlayerPortraitCornerIcon:Hide()
+            end
+
+            if not db.unitframes.level then
+                local MAX_PLAYER_LEVEL = GetMaxLevelForPlayerExpansion()
+                if UnitLevel("player") >= MAX_PLAYER_LEVEL then
+                    PlayerLevelText:Hide()
+                end
+            end
 
             if not db.classbar then
                 if RogueComboPointBarFrame then
@@ -70,15 +78,6 @@ function Module:OnEnable()
             if event == "PLAYER_ENTERING_WORLD" then
                 self.healthbar:SetStatusBarTexture(db.texture)
                 self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
-            end
-
-            local powerColor = GetPowerBarColor(self.manabar.powerType)
-            self.manabar.texture:SetTexture(db.texture)
-
-            if self.manabar.powerType == 0 then
-                self.manabar:SetStatusBarColor(0, 0.5, 1)
-            else
-                self.manabar:SetStatusBarColor(powerColor.r, powerColor.g, powerColor.b)
             end
         end)
     end
